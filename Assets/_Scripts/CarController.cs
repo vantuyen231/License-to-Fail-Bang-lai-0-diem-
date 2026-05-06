@@ -1,30 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class CarController : TuyenMonoBehaviour
 {
+    [Header("WheelCollider")]
+    [SerializeField] protected WheelCollider FrontRightWheelCollider;
+    [SerializeField] protected WheelCollider FrontLeftWheelCollider;
+    [SerializeField] protected WheelCollider BackRightWheelCollider;
+    [SerializeField] protected WheelCollider BackLeftWheelCollider;
+
+    [SerializeField] protected Transform FrontLeft;
+    [SerializeField] protected Transform FrontRight;
+    [SerializeField] protected Transform BackRight;
+    [SerializeField] protected Transform BackLeft;
+
+
+
     [Header("References")]
     [SerializeField] protected Rigidbody rbCar;
-    [SerializeField] protected Transform[] rayPoints;
-    [SerializeField] protected LayerMask drivable;//Be mat xe co the chay
-
-    [Header("Suspention Settings")]
-    [SerializeField] protected float springStiffness;//Do cung lo xo
-    [SerializeField] protected float damperStiffness;
-    [SerializeField] protected float restLength;//Chieu dai nghi
-    [SerializeField] protected float springTravel;//Nen gian toi da
-    [SerializeField] protected float wheelRadius;//Ban kinh ban xe
+    //[SerializeField] protected Transform accelerationPoint;
+    ////[SerializeField] protected bool isGrounded = false;
+    ////[SerializeField] protected int[] wheelsIsGround = new int[4];
 
 
     [Header("Input")]
     private CarControls playerInputSystem;
     [SerializeField] protected Vector2 move = Vector2.zero;
-    [SerializeField] protected Vector2 carRotation = Vector2.zero;
-    [SerializeField] protected Vector2 _straight = Vector2.zero;
-    [SerializeField] protected float speedCar = 5;
+    [SerializeField] protected float moveInput = 0;
+    [SerializeField] protected float steerInput = 0;
+
+    //[Header("Car Settings")]
+    //[SerializeField] protected float acceleration = 25f;
+    //[SerializeField] protected float maxSpeed = 100f;
+    //[SerializeField] protected float deceleration = 10f;
+
+    //[SerializeField] private Vector3 currentCarLocalVecocity = Vector3.zero;
+    //[SerializeField] private float carVelocityRatio = 0;
 
     protected override void Awake()
     {
@@ -42,13 +57,16 @@ public class CarController : TuyenMonoBehaviour
     private void Update()
     {
         move = playerInputSystem.Player.Move.ReadValue<Vector2>();
-        Debug.Log(move);
-        Drive(move.y);
-        Turn(move.x);
+        moveInput = move.y;
+        steerInput = move.x;
+        //Debug.Log("move" + moveInput);
+        //Debug.Log("steer" + steerInput);
+
     }
     private void FixedUpdate()
     {
-        Suspension();
+        CarForce();
+        UpdateWheel();
     }
 
     private void OnEnable()
@@ -62,50 +80,28 @@ public class CarController : TuyenMonoBehaviour
         playerInputSystem.Disable();
     }
 
-    private void LoadRayPoint()
+    private void CarForce()
     {
-
+        FrontLeftWheelCollider.motorTorque = 100f *moveInput;
+        FrontRightWheelCollider.motorTorque = 100f *moveInput;
     }
-    private void Suspension()
+
+    private void UpdateWheel()
     {
-        foreach (Transform rayPoint in rayPoints)
-        {
-            RaycastHit hit;
-            float maxLength = restLength + springTravel;
-
-            if (Physics.Raycast(rayPoint.position, -rayPoint.up, out hit, maxLength + wheelRadius, drivable))
-            {
-                float currentSpringLenght = hit.distance - wheelRadius;
-                float springCompression = (restLength - currentSpringLenght) / springTravel;
-
-                float springVelocity = Vector3.Dot(rbCar.GetPointVelocity(rayPoint.position), rayPoint.up);
-                float damForce = damperStiffness * springVelocity;
-
-                float springForce = springStiffness * springCompression;
-
-                float netForce = springForce- damForce;
-
-                rbCar.AddForceAtPosition(netForce * rayPoint.up, rayPoint.position);
-
-                Debug.DrawLine(rayPoint.position,hit.point, Color.red);
-            }
-            else
-            {
-                Debug.DrawLine(rayPoint.position,rayPoint.position+(wheelRadius + maxLength)* -rayPoint.up, Color.green);
-            }
-        }
-
-    }
-    private void Drive(float straightCar)
-    {
-        ;
-        //rbCar.AddRelativeForce(_straight.x, speedCar);
+        RotationWheel(FrontLeftWheelCollider,FrontLeft);
+        RotationWheel(FrontRightWheelCollider,FrontRight);
+        RotationWheel(BackLeftWheelCollider, BackLeft);
+        RotationWheel(BackRightWheelCollider, BackRight);
 
     }
 
-    private void Turn(float turnRotation)
+    private void RotationWheel(WheelCollider wheelCollider, Transform transform)
     {
-        carRotation.y = carRotation.y + turnRotation;
-        transform.localEulerAngles = carRotation;
+        Vector3 pos;
+        Quaternion rot;
+        wheelCollider.GetWorldPose(out pos, out rot);
+        transform.position = pos;
+        transform.rotation = rot;
     }
+
 }

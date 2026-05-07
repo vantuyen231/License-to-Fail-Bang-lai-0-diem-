@@ -24,8 +24,11 @@ public class CarController : TuyenMonoBehaviour
     [SerializeField] protected Rigidbody rbCar;
     [SerializeField] protected float motorForce = 200f;
     [SerializeField] protected float steerWheel = 30f;
-    ////[SerializeField] protected int[] wheelsIsGround = new int[4];
-
+    [SerializeField] protected Transform lookAtPoint;
+    [SerializeField] protected Vector3 targetLookAt;
+    [SerializeField] protected float maxTurn = 2f;
+    [SerializeField] protected float lookAtShiftSpeed = 2f;      
+    [SerializeField] protected float returnSpeed = 0.02f;
 
     [Header("Input")]
     private CarControls playerInputSystem;
@@ -35,8 +38,7 @@ public class CarController : TuyenMonoBehaviour
 
     //[Header("Car Settings")]
     //[SerializeField] protected float acceleration = 25f;
-    //[SerializeField] protected float maxSpeed = 100f;
-    //[SerializeField] protected float deceleration = 10f;
+
 
     //[SerializeField] private Vector3 currentCarLocalVecocity = Vector3.zero;
     //[SerializeField] private float carVelocityRatio = 0;
@@ -59,15 +61,13 @@ public class CarController : TuyenMonoBehaviour
         move = playerInputSystem.Player.Move.ReadValue<Vector2>();
         moveInput = move.y;
         steerInput = move.x;
-        //Debug.Log("move" + moveInput);
-        //Debug.Log("steer" + steerInput);
-
     }
     private void FixedUpdate()
     {
         CarForce();
         UpdateWheel();
         Steering();
+        TurnCam();
     }
 
     private void OnEnable()
@@ -92,6 +92,38 @@ public class CarController : TuyenMonoBehaviour
         FrontLeftWheelCollider.steerAngle = steerWheel * steerInput;
         FrontRightWheelCollider.steerAngle = steerWheel * steerInput;
     }
+
+    private void TurnCam()
+    {
+        targetLookAt = lookAtPoint.localPosition;
+        targetLookAt.x += lookAtShiftSpeed *  steerInput * Time.deltaTime;
+        if(steerInput == 0)
+        {
+            targetLookAt.x = Mathf.MoveTowards(targetLookAt.x, 0, returnSpeed);
+        }
+        Debug.Log(targetLookAt.x);
+        targetLookAt.x = Mathf.Clamp(targetLookAt.x,-maxTurn,maxTurn);
+        lookAtPoint.localPosition = targetLookAt;
+
+    }
+
+    //private void TurnCam(float directionCam)
+    //{
+    //    Vector3 targetPos = lookAtPoint.localPosition;
+
+    //    if (Mathf.Abs(directionCam) > 0.1f)
+    //    {
+    //        targetPos.x += directionCam * lookAtShiftSpeed * Time.fixedDeltaTime;
+    //    }
+    //    else
+    //    {
+    //        targetPos.x = Mathf.MoveTowards(targetPos.x, 0, returnSpeed * Time.fixedDeltaTime);
+    //    }
+
+    //    targetPos.x = Mathf.Clamp(targetPos.x, -maxShiftX, maxShiftX);
+
+    //    lookAtPoint.localPosition = targetPos;
+    //}
 
     private void UpdateWheel()
     {

@@ -22,8 +22,8 @@ public class CarController : TuyenMonoBehaviour
 
     [Header("References")]
     [SerializeField] protected Rigidbody rbCar;
-    //[SerializeField] protected Transform accelerationPoint;
-    ////[SerializeField] protected bool isGrounded = false;
+    [SerializeField] protected float motorForce = 200f;
+    [SerializeField] protected float steerWheel = 30f;
     ////[SerializeField] protected int[] wheelsIsGround = new int[4];
 
 
@@ -67,6 +67,7 @@ public class CarController : TuyenMonoBehaviour
     {
         CarForce();
         UpdateWheel();
+        Steering();
     }
 
     private void OnEnable()
@@ -82,8 +83,14 @@ public class CarController : TuyenMonoBehaviour
 
     private void CarForce()
     {
-        FrontLeftWheelCollider.motorTorque = 100f *moveInput;
-        FrontRightWheelCollider.motorTorque = 100f *moveInput;
+        BackLeftWheelCollider.motorTorque = motorForce * moveInput;
+        BackRightWheelCollider.motorTorque = motorForce * moveInput;
+    }
+
+    private void Steering()
+    {
+        FrontLeftWheelCollider.steerAngle = steerWheel * steerInput;
+        FrontRightWheelCollider.steerAngle = steerWheel * steerInput;
     }
 
     private void UpdateWheel()

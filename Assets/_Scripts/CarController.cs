@@ -22,8 +22,15 @@ public class CarController : TuyenMonoBehaviour
 
     [Header("References")]
     [SerializeField] protected Rigidbody rbCar;
+    [SerializeField] protected Transform carCentreOfMess;
+
+    [Header("Drive Systems")]
     [SerializeField] protected float motorForce = 200f;
     [SerializeField] protected float steerWheel = 30f;
+    [SerializeField] protected float brakeForce = 100f;
+
+
+    [Header("Camera Follow")]
     [SerializeField] protected Transform lookAtPoint;
     [SerializeField] protected Vector3 targetLookAt;
     [SerializeField] protected float maxTurn = 2f;
@@ -45,9 +52,9 @@ public class CarController : TuyenMonoBehaviour
 
     protected override void Awake()
     {
-
         playerInputSystem = new CarControls();
         rbCar = GetComponent<Rigidbody>();
+        rbCar.centerOfMass = carCentreOfMess.position;
     }
 
     protected override void LoadComponents()
@@ -73,12 +80,13 @@ public class CarController : TuyenMonoBehaviour
     private void OnEnable()
     {
         playerInputSystem.Enable();
-
+        playerInputSystem.Player.Brake.performed += ctx => { ApplyBrake(); };
     }
 
     private void OnDisable()
     {
         playerInputSystem.Disable();
+        
     }
 
     private void CarForce()
@@ -93,6 +101,12 @@ public class CarController : TuyenMonoBehaviour
         FrontRightWheelCollider.steerAngle = steerWheel * steerInput;
     }
 
+    private void ApplyBrake()
+    {
+        FrontLeftWheelCollider.brakeTorque = brakeForce;
+        FrontRightWheelCollider.brakeTorque = brakeForce;
+    }
+
     private void TurnCam()
     {
         targetLookAt = lookAtPoint.localPosition;
@@ -101,29 +115,10 @@ public class CarController : TuyenMonoBehaviour
         {
             targetLookAt.x = Mathf.MoveTowards(targetLookAt.x, 0, returnSpeed);
         }
-        Debug.Log(targetLookAt.x);
         targetLookAt.x = Mathf.Clamp(targetLookAt.x,-maxTurn,maxTurn);
         lookAtPoint.localPosition = targetLookAt;
 
     }
-
-    //private void TurnCam(float directionCam)
-    //{
-    //    Vector3 targetPos = lookAtPoint.localPosition;
-
-    //    if (Mathf.Abs(directionCam) > 0.1f)
-    //    {
-    //        targetPos.x += directionCam * lookAtShiftSpeed * Time.fixedDeltaTime;
-    //    }
-    //    else
-    //    {
-    //        targetPos.x = Mathf.MoveTowards(targetPos.x, 0, returnSpeed * Time.fixedDeltaTime);
-    //    }
-
-    //    targetPos.x = Mathf.Clamp(targetPos.x, -maxShiftX, maxShiftX);
-
-    //    lookAtPoint.localPosition = targetPos;
-    //}
 
     private void UpdateWheel()
     {
@@ -141,6 +136,11 @@ public class CarController : TuyenMonoBehaviour
         wheelCollider.GetWorldPose(out pos, out rot);
         transform.position = pos;
         transform.rotation = rot;
+    }
+
+    private void SimulatorRollBodyCar()
+    {
+
     }
 
 }

@@ -5,14 +5,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class CarController : TuyenMonoBehaviour
+public class CarController1 : TuyenMonoBehaviour
 {
     [Header("WheelCollider")]
     [SerializeField] protected List<WheelCollider> wheelCollidersCtrl = new List<WheelCollider>();
-    [SerializeField] protected WheelCollider FrontRightWheelCollider;
-    [SerializeField] protected WheelCollider FrontLeftWheelCollider;
-    [SerializeField] protected WheelCollider BackRightWheelCollider;
-    [SerializeField] protected WheelCollider BackLeftWheelCollider;
 
     [SerializeField] protected List <WheelTransformCtrl> wheelTransformsCtrl = new List<WheelTransformCtrl>();
     [SerializeField] protected Transform FrontLeft;
@@ -142,31 +138,31 @@ public class CarController : TuyenMonoBehaviour
     #endregion
     private void CarForce()
     {
-        BackLeftWheelCollider.motorTorque = motorForce * moveInput;
-        BackRightWheelCollider.motorTorque = motorForce * moveInput;
+        wheelCollidersCtrl[1].motorTorque = motorForce * moveInput;
+        wheelCollidersCtrl[2].motorTorque = motorForce * moveInput;
     }
 
     private void Steering()
     {
-        FrontLeftWheelCollider.steerAngle = steerWheel * steerInput;
-        FrontRightWheelCollider.steerAngle = steerWheel * steerInput;
+        wheelCollidersCtrl[3].steerAngle = steerWheel * steerInput;
+        wheelCollidersCtrl[4].steerAngle = steerWheel * steerInput;
 
     }
 
     #region Brake
     private void ApplyBrake()
     {
-        FrontLeftWheelCollider.brakeTorque = brakeForce;
-        FrontRightWheelCollider.brakeTorque = brakeForce;
+        wheelCollidersCtrl[3].brakeTorque = brakeForce;
+        wheelCollidersCtrl[4].brakeTorque = brakeForce;
 
-        BackLeftWheelCollider.motorTorque = 0;
-        BackRightWheelCollider.motorTorque = 0;
+        wheelCollidersCtrl[1].motorTorque = 0;
+        wheelCollidersCtrl[2].motorTorque = 0;
     }
 
     private void ReleaseBrake()
     {
-        FrontLeftWheelCollider.brakeTorque = 0;
-        FrontRightWheelCollider.brakeTorque = 0;
+        wheelCollidersCtrl[3].brakeTorque = 0;
+        wheelCollidersCtrl[4].brakeTorque = 0;
     }
     #endregion
 
@@ -186,10 +182,10 @@ public class CarController : TuyenMonoBehaviour
     #region wheelCollider
     private void UpdateWheel()
     {
-        RotationWheel(FrontLeftWheelCollider,FrontLeft);
-        RotationWheel(FrontRightWheelCollider,FrontRight);
-        RotationWheel(BackLeftWheelCollider, BackLeft);
-        RotationWheel(BackRightWheelCollider, BackRight);
+        RotationWheel(wheelCollidersCtrl[3], FrontLeft);
+        RotationWheel(wheelCollidersCtrl[4], FrontRight);
+        RotationWheel(wheelCollidersCtrl[1], BackLeft);
+        RotationWheel(wheelCollidersCtrl[2], BackRight);
 
     }
 

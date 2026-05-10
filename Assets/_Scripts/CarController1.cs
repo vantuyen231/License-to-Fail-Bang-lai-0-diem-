@@ -11,10 +11,10 @@ public class CarController1 : TuyenMonoBehaviour
     [SerializeField] protected List<WheelCollider> wheelCollidersCtrl = new List<WheelCollider>();
 
     [SerializeField] protected List <WheelTransformCtrl> wheelTransformsCtrl = new List<WheelTransformCtrl>();
-    [SerializeField] protected Transform FrontLeft;
-    [SerializeField] protected Transform FrontRight;
-    [SerializeField] protected Transform BackRight;
-    [SerializeField] protected Transform BackLeft;
+    //[SerializeField] protected Transform FrontLeft;
+    //[SerializeField] protected Transform FrontRight;
+    //[SerializeField] protected Transform BackRight;
+    //[SerializeField] protected Transform BackLeft;
 
 
 
@@ -59,6 +59,7 @@ public class CarController1 : TuyenMonoBehaviour
         base.LoadComponents();
         this.LoadWheelColliders();
         this.LoadPointCamLook();
+        this.LoadWheelTransform();
     }
 
     protected virtual void LoadWheelColliders()
@@ -73,6 +74,16 @@ public class CarController1 : TuyenMonoBehaviour
 
     protected virtual void LoadWheelTransform()
     {
+        //Transform carObj = transform.Find("sedan");
+        //if (carObj == null) return;
+        ////if(wheelCollidersCtrl != null) return;
+        //foreach (Transform child in carObj)
+        //{
+
+        //    WheelTransformCtrl wheelTransform = child.GetComponentInChildren<WheelTransformCtrl>();
+        //    this.wheelTransformsCtrl.Add(wheelTransform);
+        //}
+        if (this.wheelTransformsCtrl.Count > 0) return;
         Transform sedanObj = transform.Find("sedan");
 
         if (sedanObj != null)
@@ -138,31 +149,31 @@ public class CarController1 : TuyenMonoBehaviour
     #endregion
     private void CarForce()
     {
+        wheelCollidersCtrl[0].motorTorque = motorForce * moveInput;
         wheelCollidersCtrl[1].motorTorque = motorForce * moveInput;
-        wheelCollidersCtrl[2].motorTorque = motorForce * moveInput;
     }
 
     private void Steering()
     {
+        wheelCollidersCtrl[2].steerAngle = steerWheel * steerInput;
         wheelCollidersCtrl[3].steerAngle = steerWheel * steerInput;
-        wheelCollidersCtrl[4].steerAngle = steerWheel * steerInput;
 
     }
 
     #region Brake
     private void ApplyBrake()
     {
+        wheelCollidersCtrl[2].brakeTorque = brakeForce;
         wheelCollidersCtrl[3].brakeTorque = brakeForce;
-        wheelCollidersCtrl[4].brakeTorque = brakeForce;
 
+        wheelCollidersCtrl[0].motorTorque = 0;
         wheelCollidersCtrl[1].motorTorque = 0;
-        wheelCollidersCtrl[2].motorTorque = 0;
     }
 
     private void ReleaseBrake()
     {
+        wheelCollidersCtrl[2].brakeTorque = 0;
         wheelCollidersCtrl[3].brakeTorque = 0;
-        wheelCollidersCtrl[4].brakeTorque = 0;
     }
     #endregion
 
@@ -182,11 +193,16 @@ public class CarController1 : TuyenMonoBehaviour
     #region wheelCollider
     private void UpdateWheel()
     {
-        RotationWheel(wheelCollidersCtrl[3], FrontLeft);
-        RotationWheel(wheelCollidersCtrl[4], FrontRight);
-        RotationWheel(wheelCollidersCtrl[1], BackLeft);
-        RotationWheel(wheelCollidersCtrl[2], BackRight);
+        RotationWheel(wheelCollidersCtrl[2], wheelTransformsCtrl[2].transform);
+        RotationWheel(wheelCollidersCtrl[3], wheelTransformsCtrl[3].transform);
+        RotationWheel(wheelCollidersCtrl[0], wheelTransformsCtrl[0].transform);
+        RotationWheel(wheelCollidersCtrl[1], wheelTransformsCtrl[1].transform);
+        //if (wheelCollidersCtrl.Count != wheelTransformsCtrl.Count) return;
 
+        //for (int i = 0; i < wheelCollidersCtrl.Count; i++)
+        //{
+        //    RotationWheel(wheelCollidersCtrl[i], wheelTransformsCtrl[i].transform);
+        //}
     }
 
     private void RotationWheel(WheelCollider wheelCollider, Transform transform)

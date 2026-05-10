@@ -687,6 +687,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 467650353}
+  - component: {fileID: 467650354}
   m_Layer: 0
   m_Name: CamLookAtPoint
   m_TagString: Untagged
@@ -709,6 +710,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1463389559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &467650354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467650352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76bfa992de6385545be8fd6a0ebc5d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &525956144 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7948660828100032839, guid: 0ade0690e7dc15e46b1d925f09d3fed9, type: 3}
@@ -1557,7 +1570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1463389559}
   - component: {fileID: 1463389558}
-  - component: {fileID: 1463389557}
+  - component: {fileID: 1463389560}
   m_Layer: 0
   m_Name: Car (1)
   m_TagString: Untagged
@@ -1565,48 +1578,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1463389557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1463389556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8201fa652b76f2c429d6088474560003, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wheelCollidersCtrl:
-  - {fileID: 414751340}
-  - {fileID: 2057127592}
-  - {fileID: 753816514}
-  - {fileID: 2010994530}
-  FrontRightWheelCollider: {fileID: 0}
-  FrontLeftWheelCollider: {fileID: 0}
-  BackRightWheelCollider: {fileID: 0}
-  BackLeftWheelCollider: {fileID: 0}
-  wheelTransformsCtrl: []
-  FrontLeft: {fileID: 0}
-  FrontRight: {fileID: 0}
-  BackRight: {fileID: 0}
-  BackLeft: {fileID: 0}
-  rbCar: {fileID: 0}
-  carCentreOfMess: {fileID: 0}
-  bodyCar: {fileID: 0}
-  rollAngle: 5
-  yawAngle: 3
-  motorForce: 200
-  steerWheel: 30
-  brakeForce: 1000
-  lookAtPoint: {fileID: 0}
-  targetLookAt: {x: 0, y: 0, z: 0}
-  maxTurn: 2
-  lookAtShiftSpeed: 2
-  returnSpeed: 0.02
-  move: {x: 0, y: 0}
-  moveInput: 0
-  steerInput: 0
 --- !u!54 &1463389558
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1652,6 +1623,44 @@ Transform:
   - {fileID: 191301773}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1463389560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463389556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9888fb3508cd11148a37733b40bddcc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wheelCollidersCtrl:
+  - {fileID: 414751340}
+  - {fileID: 2057127592}
+  - {fileID: 753816514}
+  - {fileID: 2010994530}
+  wheelTransformsCtrl:
+  - {fileID: 680510802}
+  - {fileID: 905243346}
+  - {fileID: 775786580}
+  - {fileID: 525956148}
+  rbCar: {fileID: 0}
+  carCentreOfMess: {fileID: 191301773}
+  bodyCar: {fileID: 2082725022}
+  rollAngle: 5
+  yawAngle: 3
+  motorForce: 200
+  steerWheel: 30
+  brakeForce: 1000
+  lookAtPoint: {fileID: 467650353}
+  targetLookAt: {x: 0, y: 0, z: 0}
+  maxTurn: 2
+  lookAtShiftSpeed: 2
+  returnSpeed: 0.02
+  move: {x: 0, y: 0}
+  moveInput: 0
+  steerInput: 0
 --- !u!1 &1721218414
 GameObject:
   m_ObjectHideFlags: 0
@@ -2465,6 +2474,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3115497, y: 1.0977774, z: 2.4412026}
   m_Center: {x: 0.0025465786, y: 0.6011113, z: -0.019583225}
+--- !u!4 &2082725022 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5861409178561632961, guid: 0ade0690e7dc15e46b1d925f09d3fed9, type: 3}
+  m_PrefabInstance: {fileID: 1870834823}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2121601971
 GameObject:
   m_ObjectHideFlags: 0

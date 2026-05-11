@@ -4,6 +4,7 @@ using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class CarController : TuyenMonoBehaviour
 {
@@ -11,16 +12,20 @@ public class CarController : TuyenMonoBehaviour
     [SerializeField] protected List<WheelCollider> wheelCollidersCtrl = new List<WheelCollider>();
 
     [SerializeField] protected List<WheelTransformCtrl> wheelTransformsCtrl = new List<WheelTransformCtrl>();
-
+    //[SerializeField] protected Transform FrontLeft;
+    //[SerializeField] protected Transform FrontRight;
+    //[SerializeField] protected Transform BackRight;
+    //[SerializeField] protected Transform BackLeft;
 
 
 
     [Header("References")]
     [SerializeField] protected Rigidbody rbCar;
-    [SerializeField] protected CentreMass carCentreOfMess;
+    [SerializeField] protected Transform carCentreOfMess;
+
 
     [Header("Roll Body Car")]
-    [SerializeField] protected Transform bodyCar;
+    [SerializeField] protected BodyCar bodyCar;
     [SerializeField] protected float rollAngle = 5f;
     [SerializeField] protected float yawAngle = 3f;
 
@@ -58,6 +63,7 @@ public class CarController : TuyenMonoBehaviour
         this.LoadPointCamLook();
         this.LoadWheelTransform();
         this.LoadCentreMass();
+        this.LoadBodyCar();
     }
 
     protected virtual void LoadWheelColliders()
@@ -67,49 +73,56 @@ public class CarController : TuyenMonoBehaviour
         this.wheelCollidersCtrl.AddRange(GetComponentsInChildren<WheelCollider>());
 
 
-        Debug.Log(transform.name + ": Loaded " + wheelCollidersCtrl.Count + " WheelColliders");
+        //Debug.Log(transform.name + ": Loaded " + wheelCollidersCtrl.Count + " WheelColliders");
     }
 
     protected virtual void LoadWheelTransform()
     {
-        //Transform carObj = transform.Find("sedan");
-        //if (carObj == null) return;
-        ////if(wheelCollidersCtrl != null) return;
-        //foreach (Transform child in carObj)
-        //{
-
-        //    WheelTransformCtrl wheelTransform = child.GetComponentInChildren<WheelTransformCtrl>();
-        //    this.wheelTransformsCtrl.Add(wheelTransform);
-        //}
         if (this.wheelTransformsCtrl.Count > 0) return;
-        Transform sedanObj = transform.Find("sedan");
 
-        if (sedanObj != null)
-        {
-            foreach (Transform child in sedanObj)
-            {
-                WheelTransformCtrl wheel = child.GetComponent<WheelTransformCtrl>();
-                if (wheel != null)
-                {
-                    this.wheelTransformsCtrl.Add(wheel);
-                }
-            }
-        }
+        //WheelTransformCtrl[] wheels = GetComponentsInChildren<WheelTransformCtrl>();
+
+        //foreach (WheelTransformCtrl wheel in wheels)
+        //{
+        //    this.wheelTransformsCtrl.Add(wheel.transform);
+        //}
+
+        this.wheelTransformsCtrl.AddRange(GetComponentsInChildren<WheelTransformCtrl>());
+        //if (this.wheelTransformsCtrl.Count > 0) return;
+        //Transform sedanObj = transform.Find("sedan");
+
+        //if (sedanObj != null)
+        //{
+        //    foreach (Transform child in sedanObj)
+        //    {
+        //        WheelTransformCtrl wheel = child.GetComponent<WheelTransformCtrl>();
+        //        if (wheel != null)
+        //        {
+        //            this.wheelTransformsCtrl.Add(wheel);
+        //        }
+        //    }
+        //}
     }
 
     protected virtual void LoadPointCamLook()
     {
-        if (lookAtPoint != null) return;
-        this.lookAtPoint = transform.Find("CamLookAtPoint").GetComponent<Transform>();
-        Debug.Log(transform.name + ": Loaded " + lookAtPoint + " LoadPointCamLook");
+        if (this.lookAtPoint != null) return;
+        CamLookAtPoint scriptLookAtPoint = GetComponentInChildren<CamLookAtPoint>();
+        this.lookAtPoint = scriptLookAtPoint.transform;
     }
 
     protected virtual void LoadCentreMass()
     {
-        if(carCentreOfMess !=null) return;
-        this.carCentreOfMess = transform.GetComponentInChildren<CentreMass>();
+        if (this.carCentreOfMess != null) return;
+        CarCentreOfMass scriptMess = GetComponentInChildren<CarCentreOfMass>();
+        this.carCentreOfMess = scriptMess.transform;
     }
 
+    protected virtual void LoadBodyCar()
+    {
+        if (this.bodyCar != null) return;
+        this.bodyCar = GetComponentInChildren<BodyCar>();
+    }
     #endregion
 
     #region inputSystem, Update
@@ -118,7 +131,7 @@ public class CarController : TuyenMonoBehaviour
         base.Awake();
         playerInputSystem = new CarControls();
         rbCar = GetComponent<Rigidbody>();
-        rbCar.centerOfMass = carCentreOfMess.transform.localPosition;
+        rbCar.centerOfMass = carCentreOfMess.localPosition;
     }
 
 
@@ -197,10 +210,14 @@ public class CarController : TuyenMonoBehaviour
     #region wheelCollider
     private void UpdateWheel()
     {
-        RotationWheel(wheelCollidersCtrl[2], wheelTransformsCtrl[2].transform);
-        RotationWheel(wheelCollidersCtrl[3], wheelTransformsCtrl[3].transform);
-        RotationWheel(wheelCollidersCtrl[0], wheelTransformsCtrl[0].transform);
-        RotationWheel(wheelCollidersCtrl[1], wheelTransformsCtrl[1].transform);
+        for (int i = 0; i < wheelCollidersCtrl.Count; i++)
+        {
+            RotationWheel(wheelCollidersCtrl[i], wheelTransformsCtrl[i].transform);
+        }
+        //RotationWheel(wheelCollidersCtrl[2], wheelTransformsCtrl[2].transform);
+        //RotationWheel(wheelCollidersCtrl[3], wheelTransformsCtrl[3].transform);
+        //RotationWheel(wheelCollidersCtrl[0], wheelTransformsCtrl[0].transform);
+        //RotationWheel(wheelCollidersCtrl[1], wheelTransformsCtrl[1].transform);
         //if (wheelCollidersCtrl.Count != wheelTransformsCtrl.Count) return;
 
         //for (int i = 0; i < wheelCollidersCtrl.Count; i++)
@@ -224,7 +241,7 @@ public class CarController : TuyenMonoBehaviour
         float targetRollAngle = steerInput * rollAngle;
         float targetTurnAngle = steerInput * yawAngle;
         Quaternion targetRot = Quaternion.Euler(0, targetTurnAngle, targetRollAngle);
-        bodyCar.localRotation = Quaternion.Lerp(bodyCar.localRotation, targetRot, Time.deltaTime * 5f);
+        bodyCar.transform.localRotation = Quaternion.Lerp(bodyCar.transform.localRotation, targetRot, Time.deltaTime * 5f);
     }
 
 }

@@ -33,6 +33,8 @@ public class CarController : TuyenMonoBehaviour
     [SerializeField] protected float motorForce = 200f;
     [SerializeField] protected float steerWheel = 30f;
     [SerializeField] protected float brakeForce = 1000f;
+    [SerializeField] protected float carVelocity;
+    [SerializeField] protected float carSpeed = 0;
 
 
     [Header("Camera Follow")]
@@ -40,7 +42,7 @@ public class CarController : TuyenMonoBehaviour
     [SerializeField] protected Vector3 targetLookAt;
     [SerializeField] protected float maxTurn = 2f;
     [SerializeField] protected float lookAtShiftSpeed = 2f;
-    [SerializeField] protected float returnSpeed = 0.02f;
+    [SerializeField] protected float returnSpeed = 2f;
 
     [Header("Input")]
     private CarControls playerInputSystem;
@@ -149,6 +151,7 @@ public class CarController : TuyenMonoBehaviour
         Steering();
         TurnCam();
         SimulatorRollBodyCar();
+        CarSpeed();
     }
 
     private void OnEnable()
@@ -196,14 +199,19 @@ public class CarController : TuyenMonoBehaviour
 
     private void TurnCam()
     {
-        if (moveInput == 0) { return; }
+        if (carVelocity <= 0.1 && Mathf.Approximately(targetLookAt.x,0)) { return; }
         targetLookAt = lookAtPoint.localPosition;
-        targetLookAt.x += lookAtShiftSpeed * steerInput * Time.deltaTime;
         if (steerInput == 0)
         {
-            targetLookAt.x = Mathf.MoveTowards(targetLookAt.x, 0, returnSpeed);
+            targetLookAt.x = Mathf.MoveTowards(targetLookAt.x, 0, returnSpeed*Time.deltaTime);
+        }
+        else
+        {
+            targetLookAt.x += lookAtShiftSpeed * steerInput * Time.deltaTime;
+
         }
         targetLookAt.x = Mathf.Clamp(targetLookAt.x, -maxTurn, maxTurn);
+
         lookAtPoint.localPosition = targetLookAt;
 
     }
@@ -237,11 +245,24 @@ public class CarController : TuyenMonoBehaviour
     #endregion
     private void SimulatorRollBodyCar()
     {
-        if (moveInput == 0) { return; }
+        if (moveInput == 0 && Mathf.Approximately(targetLookAt.x, 0)) { return; }
         float targetRollAngle = steerInput * rollAngle;
         float targetTurnAngle = steerInput * yawAngle;
         Quaternion targetRot = Quaternion.Euler(0, targetTurnAngle, targetRollAngle);
         bodyCar.transform.localRotation = Quaternion.Lerp(bodyCar.transform.localRotation, targetRot, Time.deltaTime * 5f);
     }
 
+    private void CarSpeed()
+    {
+        carVelocity = rbCar.velocity.magnitude;
+        float rawSpeed = carVelocity * 3.6f;
+        if (rawSpeed < 0.01f)
+        {
+            carSpeed = 0;
+        }
+        else
+        {
+            carSpeed = rawSpeed;
+        }
+    }
 }

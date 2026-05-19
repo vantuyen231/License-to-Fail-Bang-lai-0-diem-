@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCRagdoll : MonoBehaviour
+public class NPCRagdoll : TuyenMonoBehaviour
 {
     [SerializeField] protected Animator npcAnimator;
     [SerializeField] protected CapsuleCollider npcCapsuleCollider;
@@ -10,14 +10,48 @@ public class NPCRagdoll : MonoBehaviour
     [SerializeField] public List<Collider> npcColliders = new List<Collider>();
     [SerializeField] protected bool isRagdoll = false;
 
-    private void Awake()
+    protected override void LoadComponents()
     {
-        TryGetComponent(out npcAnimator);
-        TryGetComponent(out npcCapsuleCollider);
-        if (npcAnimator == null) return;
+        base.LoadComponents();
+        this.LoadNPCRigidbodies();
+        this.LoadNPCAnimator();
+        this.LoadNPCCapsuleCollider();
+        this.LoadNPCCollider();
+    }
 
-        GetComponentsInChildren(npcColliders);
-        GetComponentsInChildren(npcRigidbodies);
+    protected virtual void LoadNPCAnimator()
+    {
+        if(npcAnimator != null) return;
+        TryGetComponent(out npcAnimator);
+    }
+
+    protected virtual void LoadNPCCapsuleCollider()
+    {
+        if(npcCapsuleCollider != null) return;
+        TryGetComponent(out npcCapsuleCollider);
+    }
+
+    protected virtual void LoadNPCRigidbodies()
+    {
+        if (npcRigidbodies.Count > 0) return;
+        this.npcRigidbodies.AddRange(GetComponentsInChildren<Rigidbody>());
+    }
+
+    protected virtual void LoadNPCCollider()
+    {
+        if (npcColliders.Count > 0) return;
+        this.npcColliders.AddRange(GetComponentsInChildren<Collider>());
+    }
+
+
+    protected override void Awake()
+    {
+        //TryGetComponent(out npcAnimator);
+        //TryGetComponent(out npcCapsuleCollider);
+        //if (npcAnimator == null) return;
+
+        //GetComponentsInChildren(npcColliders);
+        //GetComponentsInChildren(npcRigidbodies);
 
         for (int i = 0; i < npcRigidbodies.Count; i++)
         {

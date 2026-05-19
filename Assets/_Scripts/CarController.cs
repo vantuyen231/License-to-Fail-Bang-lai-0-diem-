@@ -10,18 +10,13 @@ public class CarController : TuyenMonoBehaviour
 {
     [Header("WheelCollider")]
     [SerializeField] protected List<WheelCollider> wheelCollidersCtrl = new List<WheelCollider>();
-
     [SerializeField] protected List<WheelTransformCtrl> wheelTransformsCtrl = new List<WheelTransformCtrl>();
-    //[SerializeField] protected Transform FrontLeft;
-    //[SerializeField] protected Transform FrontRight;
-    //[SerializeField] protected Transform BackRight;
-    //[SerializeField] protected Transform BackLeft;
-
 
 
     [Header("References")]
     [SerializeField] protected Rigidbody rbCar;
     [SerializeField] protected Transform carCentreOfMess;
+    public Rigidbody RbCar => rbCar;
 
 
     [Header("Roll Body Car")]
@@ -34,8 +29,9 @@ public class CarController : TuyenMonoBehaviour
     [SerializeField] protected float steerWheel = 30f;
     [SerializeField] protected float brakeForce = 1000f;
     [SerializeField] protected float carVelocity;
-    public float CarVeclocity => carVelocity;
     [SerializeField] protected float carSpeed = 0;
+    public float CarVeclocity => carVelocity;
+
 
 
     [Header("Camera Follow")]
@@ -51,12 +47,7 @@ public class CarController : TuyenMonoBehaviour
     [SerializeField] protected float moveInput = 0;
     [SerializeField] protected float steerInput = 0;
 
-    //[Header("Car Settings")]
-    //[SerializeField] protected float acceleration = 25f;
 
-
-    //[SerializeField] private Vector3 currentCarLocalVecocity = Vector3.zero;
-    //[SerializeField] private float carVelocityRatio = 0;
 
     #region Loand Components
     protected override void LoadComponents()
@@ -72,39 +63,14 @@ public class CarController : TuyenMonoBehaviour
     protected virtual void LoadWheelColliders()
     {
         if (this.wheelCollidersCtrl.Count > 0) return;
-
         this.wheelCollidersCtrl.AddRange(GetComponentsInChildren<WheelCollider>());
-
-
-        //Debug.Log(transform.name + ": Loaded " + wheelCollidersCtrl.Count + " WheelColliders");
     }
 
     protected virtual void LoadWheelTransform()
     {
         if (this.wheelTransformsCtrl.Count > 0) return;
-
-        //WheelTransformCtrl[] wheels = GetComponentsInChildren<WheelTransformCtrl>();
-
-        //foreach (WheelTransformCtrl wheel in wheels)
-        //{
-        //    this.wheelTransformsCtrl.Add(wheel.transform);
-        //}
-
         this.wheelTransformsCtrl.AddRange(GetComponentsInChildren<WheelTransformCtrl>());
-        //if (this.wheelTransformsCtrl.Count > 0) return;
-        //Transform sedanObj = transform.Find("sedan");
 
-        //if (sedanObj != null)
-        //{
-        //    foreach (Transform child in sedanObj)
-        //    {
-        //        WheelTransformCtrl wheel = child.GetComponent<WheelTransformCtrl>();
-        //        if (wheel != null)
-        //        {
-        //            this.wheelTransformsCtrl.Add(wheel);
-        //        }
-        //    }
-        //}
     }
 
     protected virtual void LoadPointCamLook()
@@ -136,7 +102,6 @@ public class CarController : TuyenMonoBehaviour
         rbCar = GetComponent<Rigidbody>();
         rbCar.centerOfMass = carCentreOfMess.localPosition;
     }
-
 
 
     private void Update()
@@ -187,8 +152,6 @@ public class CarController : TuyenMonoBehaviour
         wheelCollidersCtrl[2].brakeTorque = brakeForce;
         wheelCollidersCtrl[3].brakeTorque = brakeForce;
 
-        //wheelCollidersCtrl[0].motorTorque = 0;
-        //wheelCollidersCtrl[1].motorTorque = 0;
         wheelCollidersCtrl[0].brakeTorque = brakeForce;
         wheelCollidersCtrl[1].brakeTorque = brakeForce;
     }

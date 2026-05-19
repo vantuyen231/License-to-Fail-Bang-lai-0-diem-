@@ -214,16 +214,7 @@ public class CarController1 : TuyenMonoBehaviour
         {
             RotationWheel(wheelCollidersCtrl[i], wheelTransformsCtrl[i].transform);
         }
-        //RotationWheel(wheelCollidersCtrl[2], wheelTransformsCtrl[2].transform);
-        //RotationWheel(wheelCollidersCtrl[3], wheelTransformsCtrl[3].transform);
-        //RotationWheel(wheelCollidersCtrl[0], wheelTransformsCtrl[0].transform);
-        //RotationWheel(wheelCollidersCtrl[1], wheelTransformsCtrl[1].transform);
-        //if (wheelCollidersCtrl.Count != wheelTransformsCtrl.Count) return;
 
-        //for (int i = 0; i < wheelCollidersCtrl.Count; i++)
-        //{
-        //    RotationWheel(wheelCollidersCtrl[i], wheelTransformsCtrl[i].transform);
-        //}
     }
 
     private void RotationWheel(WheelCollider wheelCollider, Transform transform)

@@ -28,15 +28,7 @@ public class NPCRagdoll : MonoBehaviour
         npcCapsuleCollider.isTrigger = false;
     }
 
-    private void Update()
-    {
-        if (isRagdoll)
-        {
-            EnableRagdoll();
-        }
-    } 
-
-    private void EnableRagdoll()
+    public void EnableRagdoll()
     {
         isRagdoll = !isRagdoll;
         for (int i = 0; i < npcRigidbodies.Count; i++)
@@ -44,8 +36,12 @@ public class NPCRagdoll : MonoBehaviour
             npcRigidbodies[i].isKinematic = false;
             npcRigidbodies[i].velocity = Vector3.zero;
             npcColliders[i].isTrigger = false;
+            npcRigidbodies[i].WakeUp();
         }
         npcAnimator.enabled = false;
         npcCapsuleCollider.isTrigger = true;
     }
+
+
+
 }

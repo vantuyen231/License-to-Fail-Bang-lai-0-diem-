@@ -34,6 +34,7 @@ public class CarController : TuyenMonoBehaviour
     [SerializeField] protected float steerWheel = 30f;
     [SerializeField] protected float brakeForce = 1000f;
     [SerializeField] protected float carVelocity;
+    public float CarVeclocity => carVelocity;
     [SerializeField] protected float carSpeed = 0;
 
 
@@ -186,14 +187,19 @@ public class CarController : TuyenMonoBehaviour
         wheelCollidersCtrl[2].brakeTorque = brakeForce;
         wheelCollidersCtrl[3].brakeTorque = brakeForce;
 
-        wheelCollidersCtrl[0].motorTorque = 0;
-        wheelCollidersCtrl[1].motorTorque = 0;
+        //wheelCollidersCtrl[0].motorTorque = 0;
+        //wheelCollidersCtrl[1].motorTorque = 0;
+        wheelCollidersCtrl[0].brakeTorque = brakeForce;
+        wheelCollidersCtrl[1].brakeTorque = brakeForce;
     }
 
     private void ReleaseBrake()
     {
         wheelCollidersCtrl[2].brakeTorque = 0;
         wheelCollidersCtrl[3].brakeTorque = 0;
+
+        wheelCollidersCtrl[0].brakeTorque = 0;
+        wheelCollidersCtrl[1].brakeTorque = 0;
     }
     #endregion
 
@@ -222,16 +228,7 @@ public class CarController : TuyenMonoBehaviour
         {
             RotationWheel(wheelCollidersCtrl[i], wheelTransformsCtrl[i].transform);
         }
-        //RotationWheel(wheelCollidersCtrl[2], wheelTransformsCtrl[2].transform);
-        //RotationWheel(wheelCollidersCtrl[3], wheelTransformsCtrl[3].transform);
-        //RotationWheel(wheelCollidersCtrl[0], wheelTransformsCtrl[0].transform);
-        //RotationWheel(wheelCollidersCtrl[1], wheelTransformsCtrl[1].transform);
-        //if (wheelCollidersCtrl.Count != wheelTransformsCtrl.Count) return;
 
-        //for (int i = 0; i < wheelCollidersCtrl.Count; i++)
-        //{
-        //    RotationWheel(wheelCollidersCtrl[i], wheelTransformsCtrl[i].transform);
-        //}
     }
 
     private void RotationWheel(WheelCollider wheelCollider, Transform transform)
@@ -265,4 +262,6 @@ public class CarController : TuyenMonoBehaviour
             carSpeed = rawSpeed;
         }
     }
+
+
 }

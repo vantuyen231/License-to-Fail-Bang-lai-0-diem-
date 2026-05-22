@@ -53,6 +53,7 @@ public class CarController : TuyenMonoBehaviour
     protected override void LoadComponents()
     {
         base.LoadComponents();
+        this.LoadRigidbody();
         this.LoadWheelColliders();
         this.LoadPointCamLook();
         this.LoadWheelTransform();
@@ -60,6 +61,11 @@ public class CarController : TuyenMonoBehaviour
         this.LoadBodyCar();
     }
 
+    protected virtual void LoadRigidbody()
+    {
+        if(rbCar != null) return;
+        rbCar = GetComponent<Rigidbody>();
+    }
     protected virtual void LoadWheelColliders()
     {
         if (this.wheelCollidersCtrl.Count > 0) return;
@@ -99,7 +105,6 @@ public class CarController : TuyenMonoBehaviour
     {
         base.Awake();
         playerInputSystem = new CarControls();
-        rbCar = GetComponent<Rigidbody>();
         rbCar.centerOfMass = carCentreOfMess.localPosition;
     }
 

@@ -8,24 +8,27 @@ public class MapTrigger : TuyenMonoBehaviour
 
 
 
+
     protected virtual void OnTriggerEnter(Collider other)
     {
-        this.AddCity(other);
+        AreaCollider areaCollider = other.GetComponent<AreaCollider>();
+        if (areaCollider != null)
+        {
+            areaCollider.TriggerMapEnter();
+            this.AddCity(other);
+        }
+
     }
 
     protected virtual void OnTriggerExit(Collider other)
     {
-        this.RemoveCity(other);
-    }
-
-    protected virtual void ToggleAreaBuildings(Collider other, bool isActive)
-    {
         AreaCollider areaCollider = other.GetComponent<AreaCollider>();
-
-        if (areaCollider != null)
+        if(areaCollider != null)
         {
-           // areaCollider.SetBuildingsActive(isActive);
+            areaCollider.TriggerMapExit();
+            this.RemoveCity(other);
         }
+
     }
 
     protected virtual void AddCity(Collider other)

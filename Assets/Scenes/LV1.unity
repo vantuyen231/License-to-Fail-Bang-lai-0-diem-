@@ -62743,11 +62743,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: be1bbafe98ae8fe47a534027bf5258cf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 5.0125003
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: be1bbafe98ae8fe47a534027bf5258cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21
+      value: -21.0435
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: be1bbafe98ae8fe47a534027bf5258cf, type: 3}
       propertyPath: m_LocalPosition.y

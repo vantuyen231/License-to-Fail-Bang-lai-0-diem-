@@ -18,6 +18,16 @@ public class MapTrigger : TuyenMonoBehaviour
         this.RemoveCity(other);
     }
 
+    protected virtual void ToggleAreaBuildings(Collider other, bool isActive)
+    {
+        AreaCollider areaCollider = other.GetComponent<AreaCollider>();
+
+        if (areaCollider != null)
+        {
+           // areaCollider.SetBuildingsActive(isActive);
+        }
+    }
+
     protected virtual void AddCity(Collider other)
     {
         AreaCollider areaCollider = other.GetComponent<AreaCollider>();

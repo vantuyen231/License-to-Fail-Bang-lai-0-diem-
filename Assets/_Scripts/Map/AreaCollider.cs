@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class AreaCollider : TuyenMonoBehaviour
 {
-    protected CityCtrl cityCtrl;
+    [SerializeField] protected CityCtrl cityCtrl;
+    [SerializeField] protected BoxCollider areaCollider;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadCityCtrl();
+        this.LoadAreaCollider();
     }
 
     protected virtual void LoadCityCtrl()
     {
         this.cityCtrl = GetComponentInParent<CityCtrl>();
+    }
+
+    protected virtual void LoadAreaCollider()
+    {
+        if(this.areaCollider != null) return;
+        this.areaCollider = GetComponent<BoxCollider>();
     }
     public void TriggerMapEnter()
     {
@@ -22,7 +30,6 @@ public class AreaCollider : TuyenMonoBehaviour
         {
             cityCtrl.OnArea();
         }
-        Debug.Log("Trigger Map: on");
     }
     public void TriggerMapExit()
     {
@@ -30,6 +37,5 @@ public class AreaCollider : TuyenMonoBehaviour
         {
             cityCtrl.OffArea();
         }
-        Debug.Log("Trigger Map: off");
     }
 }

@@ -2,25 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CityCtrl : MonoBehaviour
+public class CityCtrl : TuyenMonoBehaviour
 {
-    [SerializeField] protected GameObject buildingHoldel;
+    [SerializeField] protected HomeCtrl homeCtrl;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        this.OffArea();
+    }
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadHomeCtrl();
+    }
+
+    protected virtual void LoadHomeCtrl()
+    {
+        if(homeCtrl != null) return;
+        homeCtrl = GetComponentInChildren<HomeCtrl>();
+    }
 
     public virtual void OnArea()
     {
         this.SetBuildingsActive(true);
+        Debug.Log("On:" + homeCtrl.name);
     }
 
     public virtual void OffArea()
     {
         this.SetBuildingsActive(false);
+        Debug.Log("Off:"+homeCtrl.name);
     }
     public void SetBuildingsActive(bool isAreaActive)
     {
-        if(buildingHoldel != null)
+        if(homeCtrl.gameObject != null)
         {
-            buildingHoldel.SetActive(isAreaActive);
+            homeCtrl.gameObject.SetActive(isAreaActive);
         }
     }
 }

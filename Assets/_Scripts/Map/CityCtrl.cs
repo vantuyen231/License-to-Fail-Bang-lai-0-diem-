@@ -26,13 +26,11 @@ public class CityCtrl : TuyenMonoBehaviour
     public virtual void OnArea()
     {
         this.SetBuildingsActive(true);
-        Debug.Log("On:" + homeCtrl.name);
     }
 
     public virtual void OffArea()
     {
         this.SetBuildingsActive(false);
-        Debug.Log("Off:"+homeCtrl.name);
     }
     public void SetBuildingsActive(bool isAreaActive)
     {

@@ -37,7 +37,6 @@ public class MapTrigger : TuyenMonoBehaviour
         if (areaCollider == null) return;
         CityCtrl cityCtrl = areaCollider.GetComponentInParent<CityCtrl>();
         this.cityCtrls.Add(cityCtrl);
-        Debug.Log(areaCollider );
     }
 
     protected virtual void RemoveCity(Collider other)

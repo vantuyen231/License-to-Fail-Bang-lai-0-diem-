@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NPCRagdoll : TuyenMonoBehaviour
 {
@@ -9,6 +10,7 @@ public class NPCRagdoll : TuyenMonoBehaviour
     [SerializeField] public List<Rigidbody> npcRigidbodies = new List<Rigidbody>();
     [SerializeField] public List<Collider> npcColliders = new List<Collider>();
     [SerializeField] protected bool isRagdoll = false;
+    [SerializeField] protected NavMeshAgent navMeshAgent;
 
     protected override void LoadComponents()
     {
@@ -17,12 +19,18 @@ public class NPCRagdoll : TuyenMonoBehaviour
         this.LoadNPCAnimator();
         this.LoadNPCCapsuleCollider();
         this.LoadNPCCollider();
+        this.LoadNPCNav();
     }
 
     protected virtual void LoadNPCAnimator()
     {
         if(npcAnimator != null) return;
         TryGetComponent(out npcAnimator);
+    }
+    protected virtual void LoadNPCNav()
+    {
+        if (navMeshAgent != null) return;
+        TryGetComponent(out navMeshAgent);
     }
 
     protected virtual void LoadNPCCapsuleCollider()
@@ -46,19 +54,13 @@ public class NPCRagdoll : TuyenMonoBehaviour
 
     protected override void Awake()
     {
-        //TryGetComponent(out npcAnimator);
-        //TryGetComponent(out npcCapsuleCollider);
-        //if (npcAnimator == null) return;
-
-        //GetComponentsInChildren(npcColliders);
-        //GetComponentsInChildren(npcRigidbodies);
 
         for (int i = 0; i < npcRigidbodies.Count; i++)
         {
             npcRigidbodies[i].isKinematic = true;
             npcColliders[i].isTrigger = true;
         }
-
+        
         npcCapsuleCollider.isTrigger = false;
     }
 
@@ -73,6 +75,7 @@ public class NPCRagdoll : TuyenMonoBehaviour
             npcRigidbodies[i].WakeUp();
         }
         npcAnimator.enabled = false;
+        navMeshAgent.enabled = false;
         npcCapsuleCollider.isTrigger = true;
     }
 

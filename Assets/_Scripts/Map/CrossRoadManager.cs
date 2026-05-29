@@ -10,9 +10,10 @@ public class CrossRoadManager : TuyenMonoBehaviour
     {
         base.LoadComponents();
         this.LoadPointPath();
+        this.DistributeLocalPoints();
     }
     
-    protected virtual void LoadPointPath()
+    public virtual void LoadPointPath()
     {
         if(this.pointPath.Count > 0) return;
         foreach(Transform child in transform)
@@ -21,4 +22,22 @@ public class CrossRoadManager : TuyenMonoBehaviour
             pointPath.Add(pointPaths);
         }
     }
+    public virtual void DistributeLocalPoints()
+    {
+        if (this.pointPath.Count == 0) return;
+
+        foreach (PointPath point in this.pointPath)
+        {
+            if (point != null)
+            {
+                point.SetLocalPoints(this.pointPath);
+            }
+        }
+    }
+
+    public virtual List<PointPath> GetPointPaths()
+    {
+        return this.pointPath;
+    }
+
 }

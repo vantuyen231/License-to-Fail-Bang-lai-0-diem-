@@ -7,10 +7,11 @@ public class PointPath : TuyenMonoBehaviour
     [SerializeField] protected List<PointPath> nextCrossRoadPoints = new List<PointPath>();
     [SerializeField] protected List<PointPath> localPoints;
 
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
-       
+        
     }
 
     public virtual void SetLocalPoints(List<PointPath> allPoints)

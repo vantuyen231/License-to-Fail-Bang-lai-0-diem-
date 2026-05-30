@@ -5,6 +5,7 @@ using UnityEngine;
 public class PathsManager : TuyenMonoBehaviour
 {
     [SerializeField] protected List<CrossRoadManager> crosses = new List<CrossRoadManager>();
+    [SerializeField] protected List<PointPath> allPointsInMap = new List<PointPath>();
     [SerializeField] protected float minDistance = 10f; 
     [SerializeField] protected float maxDistance =500f;
 
@@ -24,12 +25,11 @@ public class PathsManager : TuyenMonoBehaviour
             crosses.Add(cross);
         }
     }
-
-    public virtual void AutoLinkOppositePoints()
+    protected virtual void LoadPointPath()
     {
         if (this.crosses.Count < 2) return;
 
-        List<PointPath> allPointsInMap = new List<PointPath>();
+
 
         foreach (CrossRoadManager cross in this.crosses)
         {
@@ -40,6 +40,11 @@ public class PathsManager : TuyenMonoBehaviour
         }
 
         foreach (PointPath p in allPointsInMap) p.ClearNextCrossRoadPoints();
+    }
+
+    public virtual void AutoLinkOppositePoints()
+    {
+        this.LoadPointPath();
 
         float threshold = 1.5f; 
 
@@ -145,4 +150,6 @@ public class PathsManager : TuyenMonoBehaviour
             }
         }
     }
+
+
 }

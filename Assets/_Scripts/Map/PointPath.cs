@@ -39,4 +39,8 @@ public class PointPath : TuyenMonoBehaviour
     {
         return this.nextCrossRoadPoints;
     }
+    public virtual List<PointPath> GetLocalPoints()
+    {
+        return this.localPoints;
+    }
 }

@@ -10,6 +10,7 @@ public class NPCRagdoll : TuyenMonoBehaviour
     [SerializeField] public List<Rigidbody> npcRigidbodies = new List<Rigidbody>();
     [SerializeField] public List<Collider> npcColliders = new List<Collider>();
     [SerializeField] protected bool isRagdoll = false;
+    public bool IsRagdoll => isRagdoll;
     [SerializeField] protected NavMeshAgent navMeshAgent;
 
     protected override void LoadComponents()

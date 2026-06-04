@@ -5,7 +5,7 @@ using UnityEngine;
 public class FrontBumpCtrl : TuyenMonoBehaviour
 {
     [SerializeField] protected CarController carController;
-    [SerializeField] protected float forceMultiplier = 1f;
+    [SerializeField] protected float forceMultiplier = 0.5f;
 
     protected override void LoadComponents()
     {

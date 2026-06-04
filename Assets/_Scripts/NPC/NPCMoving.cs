@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class NPCMoving : MonoBehaviour
 {
@@ -16,24 +17,73 @@ public class NPCMoving : MonoBehaviour
     [SerializeField] protected float targetDistance = 0f;
     [SerializeField] protected float stopDistance =1f;
 
+    [SerializeField] protected float waitTime = 3f;
+    [SerializeField] protected float countDown = 0f;
+    [SerializeField] protected bool isWaiting = false;
+    [SerializeField] protected int countAction = 2;
+
 
     public void Start()
     {
-
+        agent.SetDestination(pointToGo.transform.position);
+        this.SetTimeCountDown();
     }
 
     protected void FixedUpdate()
     {
         this.GoToTarget();
+        this.TimerSystem();
     }
-    protected virtual void GoToTarget()
-    {
-        if (pointToGo == null) return;
-        Vector3 position = this.pointToGo.transform.position;
 
-        agent.SetDestination(position);
-        targetDistance = Vector3.Distance(transform.position, this.pointToGo.transform.position);
-        if (targetDistance < stopDistance)
+    protected virtual void ChoiceAction()
+    {
+        int numAction = Random.Range(0, crossOptions.Count);
+        if(numAction == 0)
+        {
+            this.GoToTarget();
+        }
+        else
+        {
+            
+        }
+    }
+
+    protected virtual void SetTimeCountDown()
+    {
+        countDown = waitTime;
+    }
+
+    protected virtual void TimerSystem()
+    {
+        isWaiting = true;
+        countDown -= Time.deltaTime;
+        if(countDown <= 0f)
+        {
+            isWaiting = false;
+        }
+        //this.SetTimeCountDown();
+        return;
+    }
+
+    protected virtual void Idle()
+    {
+        if(isWaiting)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
+    public virtual void GoToTarget()
+    {
+        if (pointToGo == null || agent == null || !agent.isActiveAndEnabled ) return;
+
+        if (agent.pathPending) return;
+
+        if (agent.remainingDistance <= agent.stoppingDistance)
         {
             this.LoadNextPoint();
             this.ChoiceNextPoint();
@@ -41,12 +91,13 @@ public class NPCMoving : MonoBehaviour
     }
     protected virtual void LoadNextPoint()
     {
-        
+
         localOptions = this.pointToGo.GetLocalPoints();
         crossOptions = this.pointToGo.GetNextCrossRoadPoints();
 
 
     }
+
 
     protected virtual void ChoiceNextPoint()
     {
@@ -87,8 +138,6 @@ public class NPCMoving : MonoBehaviour
         }
         pointToGo = selectedPoint;
         agent.SetDestination(pointToGo.transform.position);
-        //int choicesPoint = Random.Range(0,allAvailableChoices.Count);
-        //this.pointToGo = allAvailableChoices[choicesPoint];
-        //agent.SetDestination(pointToGo.transform.position);
+
     }
 }

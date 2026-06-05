@@ -44,7 +44,7 @@ public class NPCMoving : MonoBehaviour
         }
         else
         {
-            
+            this.Idle();
         }
     }
 

@@ -31,20 +31,30 @@ public class NPCMoving : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        this.GoToTarget();
-        this.TimerSystem();
+
+        if (isWaiting)
+        {
+            this.TimerSystem();
+        }
+        else
+        {
+            this.GoToTarget();
+        }
     }
 
     protected virtual void ChoiceAction()
     {
         int numAction = Random.Range(0, crossOptions.Count);
+        Debug.Log(numAction);
         if(numAction == 0)
         {
-            this.GoToTarget();
+            this.ContinueJourney();
+            Debug.Log("Walk");
         }
         else
         {
             this.Idle();
+            Debug.Log("Wait");
         }
     }
 
@@ -55,26 +65,23 @@ public class NPCMoving : MonoBehaviour
 
     protected virtual void TimerSystem()
     {
-        isWaiting = true;
         countDown -= Time.deltaTime;
-        if(countDown <= 0f)
+        if (countDown <= 0)
         {
             isWaiting = false;
+
+            agent.isStopped = false;
+            this.ContinueJourney();
         }
-        //this.SetTimeCountDown();
-        return;
+
     }
 
     protected virtual void Idle()
     {
-        if(isWaiting)
-        {
+        isWaiting = true;
+        agent.isStopped = true;
+        this.SetTimeCountDown();
 
-        }
-        else
-        {
-
-        }
     }
 
     public virtual void GoToTarget()
@@ -85,9 +92,15 @@ public class NPCMoving : MonoBehaviour
 
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
-            this.LoadNextPoint();
-            this.ChoiceNextPoint();
+            this.ChoiceAction();
+            //this.LoadNextPoint();
+            //this.ChoiceNextPoint();
         }
+    }
+    protected virtual void ContinueJourney()
+    {
+        this.LoadNextPoint();
+        this.ChoiceNextPoint();
     }
     protected virtual void LoadNextPoint()
     {

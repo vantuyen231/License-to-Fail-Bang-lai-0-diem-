@@ -11,16 +11,21 @@ public class NPCMoving : MonoBehaviour
     [SerializeField] protected List<PointPath> crossOptions = new List<PointPath>();
     [SerializeField] protected PointPath pointToGo;
 
-
+    [Header("Agent Settings")]
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected int crossRoadChance = 70;
     [SerializeField] protected float targetDistance = 0f;
     [SerializeField] protected float stopDistance =1f;
 
+    [Header("Timer Settings")]
     [SerializeField] protected float waitTime = 3f;
     [SerializeField] protected float countDown = 0f;
     [SerializeField] protected bool isWaiting = false;
-    [SerializeField] protected int countAction = 2;
+    [SerializeField] protected int waitChance = 50;
+
+    [Header("Random Settings")]
+    [SerializeField] protected int minRandom = 0;
+    [SerializeField] protected int maxRandom = 100;
 
 
     public void Start()
@@ -44,9 +49,9 @@ public class NPCMoving : MonoBehaviour
 
     protected virtual void ChoiceAction()
     {
-        int numAction = Random.Range(0, crossOptions.Count);
+        int numAction = Random.Range(minRandom, maxRandom);
         Debug.Log(numAction);
-        if(numAction == 0)
+        if(numAction > waitChance)
         {
             this.ContinueJourney();
             Debug.Log("Walk");
@@ -93,8 +98,6 @@ public class NPCMoving : MonoBehaviour
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
             this.ChoiceAction();
-            //this.LoadNextPoint();
-            //this.ChoiceNextPoint();
         }
     }
     protected virtual void ContinueJourney()
@@ -125,7 +128,7 @@ public class NPCMoving : MonoBehaviour
 
         PointPath selectedPoint = null;
 
-        int numRoll = Random.Range(0, 100);
+        int numRoll = Random.Range(minRandom, maxRandom);
 
         if (numRoll <= crossRoadChance)
         {

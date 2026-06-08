@@ -28521,7 +28521,9 @@ MonoBehaviour:
   waitTime: 3
   countDown: 0
   isWaiting: 0
-  countAction: 2
+  waitChance: 50
+  minRandom: 0
+  maxRandom: 100
 --- !u!195 &398191011
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -156371,7 +156373,9 @@ MonoBehaviour:
   waitTime: 3
   countDown: 0
   isWaiting: 0
-  countAction: 2
+  waitChance: 50
+  minRandom: 0
+  maxRandom: 100
 --- !u!195 &5866666019867895984
 NavMeshAgent:
   m_ObjectHideFlags: 0

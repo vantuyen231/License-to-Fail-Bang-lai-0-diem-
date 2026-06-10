@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCCtrl : TuyenMonoBehaviour
+public class NPCCtrl : PoolObj
 {
     [SerializeField] protected NPCRagdoll npcRagdoll;
     [SerializeField] protected NPCMoving npcMoving;
 
     [SerializeField] protected bool npcIsHit;
 
+
     protected void FixedUpdate()
     {
         OffMoving();
     }
+    public override string GetName()
+    {
+        return "NPC";
+    }
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -40,4 +46,6 @@ public class NPCCtrl : TuyenMonoBehaviour
             npcMoving.enabled = false;
         }
     }
+
+
 }

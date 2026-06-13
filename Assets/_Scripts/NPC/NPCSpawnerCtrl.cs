@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCSpawnerCtrl : MonoBehaviour
+public class NPCSpawnerCtrl : TuyenSingleton<NPCSpawnerCtrl>
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] protected NPCSpawner spawn;
+    public NPCSpawner Spawner => spawn;
+
+    protected override void LoadComponents()
     {
-        
+        base.LoadComponents();
+        this.LoadNPCSpawner();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void LoadNPCSpawner()
     {
-        
+        if(spawn != null) return;
+        spawn = GetComponent<NPCSpawner>();
+        Debug.Log("Load " + spawn);
     }
+
 }

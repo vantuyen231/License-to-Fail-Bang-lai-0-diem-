@@ -50,16 +50,16 @@ public class NPCMoving : MonoBehaviour
     protected virtual void ChoiceAction()
     {
         int numAction = Random.Range(minRandom, maxRandom);
-        Debug.Log(numAction);
+        //Debug.Log(numAction);
         if(numAction > waitChance)
         {
             this.ContinueJourney();
-            Debug.Log("Walk");
+            //Debug.Log("Walk");
         }
         else
         {
             this.Idle();
-            Debug.Log("Wait");
+            //Debug.Log("Wait");
         }
     }
 

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class NPCSpawnerCtrl : TuyenSingleton<NPCSpawnerCtrl>
 {
-    [SerializeField] protected NPCSpawner spawn;
-    public NPCSpawner Spawner => spawn;
+    [SerializeField] protected NPCSpawner spawner;
+    public NPCSpawner Spawner => spawner;
 
     protected override void LoadComponents()
     {
@@ -15,9 +15,9 @@ public class NPCSpawnerCtrl : TuyenSingleton<NPCSpawnerCtrl>
 
     protected virtual void LoadNPCSpawner()
     {
-        if(spawn != null) return;
-        spawn = GetComponent<NPCSpawner>();
-        Debug.Log("Load " + spawn);
+        if(spawner != null) return;
+        spawner = GetComponent<NPCSpawner>();
+        Debug.Log(transform.name + ": LoadNPCSpawner", gameObject);
     }
 
 }

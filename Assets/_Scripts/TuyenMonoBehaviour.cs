@@ -23,7 +23,7 @@ public class TuyenMonoBehaviour : MonoBehaviour
 
     }
 
-    protected virtual void SetActive(bool status)
+    public virtual void SetActive(bool status)
     {
         gameObject.SetActive(status);
     }

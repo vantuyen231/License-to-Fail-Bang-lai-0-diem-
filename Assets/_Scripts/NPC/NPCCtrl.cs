@@ -8,6 +8,7 @@ public class NPCCtrl : PoolObj
     [SerializeField] protected NPCMoving npcMoving;
 
     [SerializeField] protected bool npcIsHit;
+    public bool NPCIsHit => npcIsHit;
 
 
     protected void FixedUpdate()
@@ -37,6 +38,7 @@ public class NPCCtrl : PoolObj
         if (npcMoving != null) return;
         npcMoving = GetComponent<NPCMoving>();
     }
+
 
     protected virtual void OffMoving()
     {

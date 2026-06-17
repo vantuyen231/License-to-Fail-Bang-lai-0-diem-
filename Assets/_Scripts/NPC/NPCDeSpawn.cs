@@ -8,10 +8,15 @@ public class NPCDespawn : DespawnBase
     [SerializeField] protected float delay = 5f;
     [SerializeField] protected float countDespawn = 0f;
 
-    protected void OnEnable()
+    protected virtual void FixedUpdate()
     {
-        Invoke(nameof(DoDespawn), this.delay);
+        this.TimeToDeSpawn();
     }
+
+    //protected virtual void OnEnable()
+    //{
+    //    Invoke(nameof(this.DoDespawn), this.delay);
+    //}
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -30,6 +35,7 @@ public class NPCDespawn : DespawnBase
         countDespawn += Time.deltaTime;
         if(countDespawn >= delay)
         {
+            countDespawn = 0f;
             this.DoDespawn();
         }
     }

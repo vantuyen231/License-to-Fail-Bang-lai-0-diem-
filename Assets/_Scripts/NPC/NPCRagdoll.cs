@@ -80,6 +80,19 @@ public class NPCRagdoll : TuyenMonoBehaviour
         npcCapsuleCollider.isTrigger = true;
     }
 
+    public void DisableRagdoll()
+    {
+        isRagdoll = false;
+        for (int i = 0; i < npcRigidbodies.Count; i++)
+        {
+            npcRigidbodies[i].isKinematic = true;
+            npcColliders[i].isTrigger = true;
+        }
 
+
+        npcAnimator.enabled = true;
+        navMeshAgent.enabled = true;
+        npcCapsuleCollider.isTrigger = false;
+    }
 
 }

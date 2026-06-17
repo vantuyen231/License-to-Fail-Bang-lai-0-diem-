@@ -7,11 +7,15 @@ public class NPCsSpawning : TuyenMonoBehaviour
     [SerializeField] protected NPCSpawnerCtrl npcCtrl;
     [SerializeField] protected float timer = 0f;
     [SerializeField] protected float delay = 3f;
-    [SerializeField] protected int spawnMax = 5;
-    [SerializeField] protected int spawnCount = 0;
+    [SerializeField] protected int spawnMax = 10;
+    [SerializeField] protected int numNPCActive;
+    [SerializeField] protected int numNPCOff;
+    [SerializeField] protected int numNPCOn;
+    
 
     protected virtual void FixedUpdate()
     {
+        this.NPCActive();
         this.RunTime();
     }
 
@@ -28,9 +32,22 @@ public class NPCsSpawning : TuyenMonoBehaviour
         Debug.Log(transform.name + ": LoadNPCSpawnerCtrl", gameObject);
     }
 
+    protected virtual void NPCActive()
+    {
+        if (npcCtrl == null || npcCtrl.Spawner == null) 
+        {
+            Debug.Log("Null:" + npcCtrl + "||" + npcCtrl.Spawner);
+            return;
+        }
+        numNPCOff = npcCtrl.Spawner.InPoolObjs.Count;
+        numNPCOn = npcCtrl.Spawner.SpawnCount;
+        numNPCActive = numNPCOn - numNPCOff;
+    }
+
     protected virtual void RunTime()
     {
-        if(spawnCount >= spawnMax) return;
+        
+        if (numNPCActive >= spawnMax) return;
         timer += Time.deltaTime;
         if(timer < delay ) return;
         timer = 0;
@@ -39,6 +56,5 @@ public class NPCsSpawning : TuyenMonoBehaviour
         NPCCtrl newNPC = this.npcCtrl.Spawner.Spawn(npcPrefab);
         newNPC.SetActive(true);
 
-        spawnCount++;
     }
 }

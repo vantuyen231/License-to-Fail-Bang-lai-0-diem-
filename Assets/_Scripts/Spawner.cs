@@ -5,12 +5,14 @@ using UnityEngine;
 public abstract class Spawner<T> : TuyenMonoBehaviour where T : PoolObj
 {
     [SerializeField] protected int spawnCount = 0;
+    public int SpawnCount => spawnCount;
     [SerializeField] protected Transform poolHolder;
 
     [SerializeField] protected PoolPrefabs<T> poolPrefabs;
     public PoolPrefabs<T> PoolPrefabs => poolPrefabs;
 
     [SerializeField] protected List<T> inPoolObjs = new();
+    public List<T> InPoolObjs => inPoolObjs;
 
     protected override void LoadComponents()
     {

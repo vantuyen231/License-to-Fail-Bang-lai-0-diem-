@@ -67,7 +67,8 @@ public class NPCRagdoll : TuyenMonoBehaviour
 
     public void EnableRagdoll()
     {
-        isRagdoll = !isRagdoll;
+        //isRagdoll = !isRagdoll;
+        isRagdoll = true;
         for (int i = 0; i < npcRigidbodies.Count; i++)
         {
             npcRigidbodies[i].isKinematic = false;

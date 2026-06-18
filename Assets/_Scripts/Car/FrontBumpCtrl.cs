@@ -24,6 +24,7 @@ public class FrontBumpCtrl : TuyenMonoBehaviour
 
         if (npcRagdoll != null)
         {
+
             npcRagdoll.EnableRagdoll();
 
             Vector3 pushDirection = carController.RbCar.velocity.normalized;

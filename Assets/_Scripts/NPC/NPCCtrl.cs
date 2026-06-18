@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPCCtrl : PoolObj
 {
     [SerializeField] protected NPCRagdoll npcRagdoll;
+    public NPCRagdoll NpcRagdoll => npcRagdoll;
     [SerializeField] protected NPCMoving npcMoving;
 
     [SerializeField] protected bool npcIsHit;

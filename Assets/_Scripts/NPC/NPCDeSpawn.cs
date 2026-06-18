@@ -31,7 +31,7 @@ public class NPCDespawn : DespawnBase
 
     protected virtual void TimeToDeSpawn()
     {
-        if(ctrl.NPCIsHit == false) return;
+        if(ctrl.NpcRagdoll.IsRagdoll == false) return;
         countDespawn += Time.deltaTime;
         if(countDespawn >= delay)
         {

@@ -54,6 +54,7 @@ public class NPCsSpawning : TuyenMonoBehaviour
 
         NPCCtrl npcPrefab = this.npcCtrl.Spawner.PoolPrefabs.GetByName("NPC_0");
         NPCCtrl newNPC = this.npcCtrl.Spawner.Spawn(npcPrefab);
+        newNPC.NpcRagdoll.DisableRagdoll();
         newNPC.SetActive(true);
 
     }

@@ -43,4 +43,10 @@ public class NPCDespawn : DespawnBase
     {
         NPCSpawnerCtrl.Instance.Spawner.Despawn(ctrl);
     }
+
+    public virtual void OutAreaPlayer()
+    {
+        this.DoDespawn();
+        Debug.Log("DeSpawn");
+    }
 }

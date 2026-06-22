@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class CarManager : TuyenMonoBehaviour
     [SerializeField] protected CarController controller;
     [SerializeField] protected FrontBumpCtrl frontBumpCtrl;
     [SerializeField] protected MapTrigger mapTrigger;
+    [SerializeField] protected NPCSpawnTrigger spawnTrigger;
 
     protected override void LoadComponents()
     {
@@ -14,6 +16,14 @@ public class CarManager : TuyenMonoBehaviour
         this.LoadCarCtrl();
         this.LoandFrontBumpCtrl();
         this.LoadMapTrigger();
+        this.LoadNPCSpawnTrigger();
+    }
+
+    private void LoadNPCSpawnTrigger()
+    {
+        if(spawnTrigger != null) return;
+        spawnTrigger = GetComponentInChildren<NPCSpawnTrigger>();
+        Debug.Log(transform.name + ": NPCSpawnTrigger", gameObject);
     }
 
     protected virtual void LoadCarCtrl()

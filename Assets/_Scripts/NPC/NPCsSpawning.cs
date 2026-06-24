@@ -11,7 +11,9 @@ public class NPCsSpawning : TuyenMonoBehaviour
     [SerializeField] protected int numNPCActive;
     [SerializeField] protected int numNPCOff;
     [SerializeField] protected int numNPCOn;
-    
+    [SerializeField] protected PointPath selectedPoint;
+
+
 
     protected virtual void FixedUpdate()
     {
@@ -51,11 +53,28 @@ public class NPCsSpawning : TuyenMonoBehaviour
         timer += Time.deltaTime;
         if(timer < delay ) return;
         timer = 0;
+        this.RandomChoisePointSpawn();
+        if(selectedPoint == null) return;
+
 
         NPCCtrl npcPrefab = this.npcCtrl.Spawner.PoolPrefabs.GetByName("NPC_0");
         NPCCtrl newNPC = this.npcCtrl.Spawner.Spawn(npcPrefab);
+
+        newNPC.transform.position = this.selectedPoint.transform.position;
+        newNPC.transform.rotation = this.selectedPoint.transform.rotation;
+
         newNPC.NpcRagdoll.DisableRagdoll();
         newNPC.SetActive(true);
 
+    }
+
+    protected virtual void RandomChoisePointSpawn()
+    {
+        NPCSpawnTrigger.Instance.ChoiceSpawnPoint();
+        if (NPCSpawnTrigger.Instance == null || NPCSpawnTrigger.Instance.SpawnPoints.Count == 0) return;
+
+        int randomIndex = Random.Range(0, NPCSpawnTrigger.Instance.SpawnPoints.Count);
+        selectedPoint = NPCSpawnTrigger.Instance.SpawnPoints[randomIndex];
+        Debug.Log(selectedPoint);
     }
 }

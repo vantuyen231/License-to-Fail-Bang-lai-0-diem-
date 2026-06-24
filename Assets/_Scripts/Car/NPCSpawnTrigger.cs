@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCSpawnTrigger : TuyenMonoBehaviour
+public class NPCSpawnTrigger : TuyenSingleton<NPCSpawnTrigger>
 {
     [SerializeField] protected MaxSpawnTrigger maxSpawnTrigger;
-    public MaxSpawnTrigger MaxSpawnTrigger => maxSpawnTrigger;
     [SerializeField] protected MinSpawnTrigger minSpawnTrigger;
-    public MinSpawnTrigger MinSpawnTrigger => minSpawnTrigger;  
+
+    [SerializeField] protected List<PointPath> spawnPoints = new List<PointPath>();
+    public List<PointPath> SpawnPoints => spawnPoints;
+
 
     protected override void LoadComponents()
     {
@@ -32,13 +34,20 @@ public class NPCSpawnTrigger : TuyenMonoBehaviour
 
     }
 
-    protected virtual void OnTriggerExit(Collider other)
+    public virtual void ChoiceSpawnPoint()
     {
-        NPCCtrl npcCtrl = other.gameObject.GetComponentInChildren<NPCCtrl>();
-        NPCDespawn npcDespawn = npcCtrl.GetComponentInChildren<NPCDespawn>();
-        if (npcDespawn != null)
+        if (this.maxSpawnTrigger == null || this.minSpawnTrigger == null) return;
+
+        this.spawnPoints.Clear();
+        this.spawnPoints.AddRange(this.maxSpawnTrigger.PointsInMaxRange);
+
+        foreach (PointPath minPoint in this.minSpawnTrigger.PointsInMinRanger)
         {
-            npcDespawn.OutAreaPlayer();
+            if (this.spawnPoints.Contains(minPoint))
+            {
+                this.spawnPoints.Remove(minPoint);
+            }
         }
     }
+
 }

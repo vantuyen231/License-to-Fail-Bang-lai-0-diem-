@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.67058825, g: 0.79215693, b: 0.90196085, a: 0.6156863}
   m_FogMode: 1
   m_FogDensity: 0.01
@@ -39547,6 +39547,7 @@ MonoBehaviour:
   controller: {fileID: 417423764}
   frontBumpCtrl: {fileID: 1435379175}
   mapTrigger: {fileID: 2059033747}
+  spawnTrigger: {fileID: 1817610289}
 --- !u!1 &417857343
 GameObject:
   m_ObjectHideFlags: 0
@@ -56058,6 +56059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b5a2fdf1b41bb4481213408d5e5273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsInMinRange: []
 --- !u!135 &587613526
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -56077,8 +56079,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 90
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 50
+  m_Center: {x: 0, y: 0, z: 20}
 --- !u!1001 &588414011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -168740,6 +168742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpawnTrigger: {fileID: 2115431676}
   minSpawnTrigger: {fileID: 587613525}
+  spawnPoints: []
 --- !u!1001 &1817816590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -192277,6 +192280,7 @@ MonoBehaviour:
   numNPCActive: 0
   numNPCOff: 0
   numNPCOn: 0
+  selectedPoint: {fileID: 0}
 --- !u!114 &2049501437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198812,6 +198816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95cbd977c4369104cb83df1bd09124b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsInMaxRange: []
 --- !u!135 &2115431677
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -198831,7 +198836,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 120
+  m_Radius: 100
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2115487179
 PrefabInstance:
@@ -203423,7 +203428,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 30
+  m_Speed: 7
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 360
@@ -203434,7 +203439,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!114 &5866666019867895985
 MonoBehaviour:
   m_ObjectHideFlags: 0

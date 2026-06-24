@@ -47,6 +47,6 @@ public class NPCDespawn : DespawnBase
     public virtual void OutAreaPlayer()
     {
         this.DoDespawn();
-        Debug.Log("DeSpawn");
+        Debug.Log("DeSpawn"); 
     }
 }

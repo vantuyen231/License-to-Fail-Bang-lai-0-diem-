@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class MinSpawnTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] protected List<PointPath> pointsInMinRange = new List<PointPath>();
+    public List<PointPath> PointsInMinRanger => pointsInMinRange;
+
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        
+        PointPath pointPath = other.GetComponent<PointPath>(); 
+        if(pointPath != null && !pointsInMinRange.Contains(pointPath))
+        {
+            pointsInMinRange.Add(pointPath);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void OnTriggerExit(Collider other)
     {
-        
+        PointPath pointPath = other.GetComponent<PointPath>();
+        if (pointPath != null && pointsInMinRange.Contains(pointPath))
+        {
+            pointsInMinRange.Remove(pointPath);
+        }
     }
 }

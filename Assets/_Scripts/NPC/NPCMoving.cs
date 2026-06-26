@@ -90,7 +90,14 @@ public class NPCMoving : TuyenMonoBehaviour
 
     protected virtual void UpdateAnimator()
     {
-        this.isWalking = !this.agent.isStopped;
+        if (this.agent.isOnNavMesh)
+        {
+            this.isWalking = !this.agent.isStopped;
+        }
+        else
+        {
+            this.isWalking = false; 
+        }
         this.anim.SetBool("IsWalking", this.isWalking);
     }
     protected virtual void ChoiceAction()
@@ -120,9 +127,8 @@ public class NPCMoving : TuyenMonoBehaviour
         if (countDown <= 0)
         {
             isWaiting = false;
-
-            agent.isStopped = false;
             this.ContinueJourney();
+            agent.isStopped = false;
         }
 
     }

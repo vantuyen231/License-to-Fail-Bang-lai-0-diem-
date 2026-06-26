@@ -6,6 +6,7 @@ using UnityEngine;
 public class LocalPointStreet : TuyenMonoBehaviour
 {
     [SerializeField] protected LocalPointStreet nextPointInStreet;
+    public LocalPointStreet NextPointInStreet => nextPointInStreet;
 
     protected override void LoadComponents()
     {

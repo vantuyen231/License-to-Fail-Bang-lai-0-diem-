@@ -67,7 +67,7 @@ public class NPCsSpawning : TuyenMonoBehaviour
 
         int randomIndex = Random.Range(0, NPCSpawnTrigger.Instance.SpawnPoints.Count);
         selectedPoint = NPCSpawnTrigger.Instance.SpawnPoints[randomIndex];
-        Debug.Log(selectedPoint);
+        //Debug.Log(selectedPoint);
     }
 
     protected virtual void SpawnNPC()

@@ -13,10 +13,6 @@ public class NPCDespawn : DespawnBase
         this.TimeToDeSpawn();
     }
 
-    //protected virtual void OnEnable()
-    //{
-    //    Invoke(nameof(this.DoDespawn), this.delay);
-    //}
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -32,7 +28,7 @@ public class NPCDespawn : DespawnBase
     protected virtual void TimeToDeSpawn()
     {
         if(ctrl.NpcRagdoll.IsRagdoll == false) return;
-        countDespawn += Time.deltaTime;
+        countDespawn += Time.fixedDeltaTime;
         if(countDespawn >= delay)
         {
             countDespawn = 0f;
@@ -46,7 +42,8 @@ public class NPCDespawn : DespawnBase
 
     public virtual void OutAreaPlayer()
     {
+        if (this.ctrl != null && this.ctrl.NpcRagdoll != null && this.ctrl.NpcRagdoll.IsRagdoll) return;
+
         this.DoDespawn();
-        Debug.Log("DeSpawn"); 
     }
 }

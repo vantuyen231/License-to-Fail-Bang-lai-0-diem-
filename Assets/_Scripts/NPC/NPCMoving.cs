@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
-public class NPCMoving : MonoBehaviour
+public class NPCMoving : TuyenMonoBehaviour
 {
     [Header("List Point NPC choices")]
     [SerializeField] protected List<PointPath> localOptions = new List<PointPath>();
@@ -17,6 +17,10 @@ public class NPCMoving : MonoBehaviour
     [SerializeField] protected float targetDistance = 0f;
     [SerializeField] protected float stopDistance =1f;
 
+    [Header("Animtor")]
+    [SerializeField] protected Animator anim;
+    [SerializeField] protected bool isWalking;
+
     [Header("Timer Settings")]
     [SerializeField] protected float waitTime = 3f;
     [SerializeField] protected float countDown = 0f;
@@ -28,9 +32,20 @@ public class NPCMoving : MonoBehaviour
     [SerializeField] protected int maxRandom = 100;
 
 
-    public void Start()
+    public virtual void SetInitialPoint(PointPath startPoint)
     {
-        agent.SetDestination(pointToGo.transform.position);
+        if (startPoint == null) return;
+
+        this.pointToGo = startPoint;
+        this.isWaiting = false;
+
+        if (agent != null && agent.isActiveAndEnabled)
+        {
+            agent.isStopped = false;
+            agent.stoppingDistance = this.stopDistance;
+            agent.SetDestination(this.pointToGo.transform.position);
+        }
+
         this.SetTimeCountDown();
     }
 
@@ -47,6 +62,37 @@ public class NPCMoving : MonoBehaviour
         }
     }
 
+    protected void LateUpdate()
+    {
+        this.UpdateAnimator();
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadAnimator();
+        this.LoadNavAgent();
+    }
+
+    protected virtual void LoadAnimator()
+    {
+        if (anim != null) return;
+        anim = GetComponent<Animator>();
+        Debug.Log(transform.name + ": LoadAnimator", gameObject);
+    }
+
+    protected virtual void LoadNavAgent()
+    {
+        if (agent != null) return;
+        agent = GetComponent<NavMeshAgent>();
+        Debug.Log(transform.name + ": LoadNavAgent", gameObject);
+    }
+
+    protected virtual void UpdateAnimator()
+    {
+        this.isWalking = !this.agent.isStopped;
+        this.anim.SetBool("IsWalking", this.isWalking);
+    }
     protected virtual void ChoiceAction()
     {
         int numAction = Random.Range(minRandom, maxRandom);
@@ -70,7 +116,7 @@ public class NPCMoving : MonoBehaviour
 
     protected virtual void TimerSystem()
     {
-        countDown -= Time.deltaTime;
+        countDown -= Time.fixedDeltaTime;
         if (countDown <= 0)
         {
             isWaiting = false;
@@ -86,7 +132,6 @@ public class NPCMoving : MonoBehaviour
         isWaiting = true;
         agent.isStopped = true;
         this.SetTimeCountDown();
-
     }
 
     public virtual void GoToTarget()
@@ -94,6 +139,7 @@ public class NPCMoving : MonoBehaviour
         if (pointToGo == null || agent == null || !agent.isActiveAndEnabled ) return;
 
         if (agent.pathPending) return;
+
 
         if (agent.remainingDistance <= agent.stoppingDistance)
         {

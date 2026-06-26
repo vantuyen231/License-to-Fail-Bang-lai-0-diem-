@@ -25,13 +25,14 @@ public class MaxSpawnTrigger : TuyenMonoBehaviour
             if (npcCtrl != null)
             {
                 npcDespawn = npcCtrl.GetComponentInChildren<NPCDespawn>();
+                if (npcDespawn != null)
+                {
+                    npcDespawn.OutAreaPlayer();
+                }
             }
         }
 
-        if (npcDespawn != null)
-        {
-            npcDespawn.OutAreaPlayer();
-        }
+
 
         PointPath pointPath = other.GetComponent<PointPath>();
         if (pointPath != null && pointsInMaxRange.Contains(pointPath))

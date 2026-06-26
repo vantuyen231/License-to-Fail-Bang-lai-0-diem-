@@ -56,15 +56,7 @@ public class NPCsSpawning : TuyenMonoBehaviour
         this.RandomChoisePointSpawn();
         if(selectedPoint == null) return;
 
-
-        NPCCtrl npcPrefab = this.npcCtrl.Spawner.PoolPrefabs.GetByName("NPC_0");
-        NPCCtrl newNPC = this.npcCtrl.Spawner.Spawn(npcPrefab);
-
-        newNPC.transform.position = this.selectedPoint.transform.position;
-        newNPC.transform.rotation = this.selectedPoint.transform.rotation;
-
-        newNPC.NpcRagdoll.DisableRagdoll();
-        newNPC.SetActive(true);
+        this.SpawnNPC();
 
     }
 
@@ -77,4 +69,24 @@ public class NPCsSpawning : TuyenMonoBehaviour
         selectedPoint = NPCSpawnTrigger.Instance.SpawnPoints[randomIndex];
         Debug.Log(selectedPoint);
     }
+
+    protected virtual void SpawnNPC()
+    {
+        NPCCtrl npcPrefab = this.npcCtrl.Spawner.PoolPrefabs.GetByName("NPC_0");
+        NPCCtrl newNPC = this.npcCtrl.Spawner.Spawn(npcPrefab);
+
+        newNPC.transform.position = this.selectedPoint.transform.position;
+        newNPC.transform.rotation = this.selectedPoint.transform.rotation;
+
+        newNPC.NpcRagdoll.DisableRagdoll();
+        newNPC.SetActive(true);
+
+        NPCMoving movingScript = newNPC.GetComponentInChildren<NPCMoving>();
+        if (movingScript != null)
+        {
+            movingScript.enabled = true;
+            movingScript.SetInitialPoint(this.selectedPoint);
+        }
+    }
+
 }

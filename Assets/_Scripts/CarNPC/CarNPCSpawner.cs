@@ -4,5 +4,16 @@ using UnityEngine;
 
 public class CarNPCSpawner : Spawner<CarNPCCtrl>
 {
+    [SerializeField] protected CarNPCPrefabs carNPCPrefabs;
 
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+
+    }
+
+    protected virtual void LoadCarNPCPrefabs()
+    {
+        if(carNPCPrefabs != null) return;
+    }
 }

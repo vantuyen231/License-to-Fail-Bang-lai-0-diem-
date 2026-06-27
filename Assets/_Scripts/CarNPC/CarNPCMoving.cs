@@ -7,37 +7,59 @@ using UnityEngine.UIElements;
 public class CarNPCMoving : TuyenMonoBehaviour
 {
     [SerializeField] protected LocalPointStreet pointToGo;
-    [SerializeField] protected NavMeshAgent agent;
+    [SerializeField] protected CarNPCCtrl ctrl;
     [SerializeField] protected LocalPointStreet nextPoint;
 
+    protected override void Start()
+    {
+        //if (this.ctrl.Agent == null) this.ctrl.Agent = GetComponent<NavMeshAgent>();
 
-
+        this.MoveToTarget();
+    }
     protected virtual void LateUpdate()
     {
         this.CheckDistanceAndChangePoint();
     }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadCarCtrl();
+    }
+
+    protected virtual void LoadCarCtrl()
+    {
+        if (ctrl != null) return;
+        ctrl = GetComponent<CarNPCCtrl>();
+        Debug.Log(transform.name + ": LoadCarCtrl", gameObject);
+    }
+
     protected virtual void MoveToTarget()
     {
-        if (agent == null) return;
-        Vector3 point = pointToGo.transform.position;
+        if (this.ctrl.Agent == null) return;
+        if(pointToGo == null)
+        {
+            
+        }
 
-        agent.SetDestination(point);
-        Debug.Log("Move");
+        this.ctrl.Agent.SetDestination(pointToGo.transform.position);
+        //Debug.Log("Move");
     }
 
     protected virtual void LoadNextPoint()
     {
         pointToGo = this.pointToGo.NextPointInStreet;
-        Debug.Log("Load");
+        //Debug.Log("Load");
     }
 
     protected virtual void CheckDistanceAndChangePoint()
     {
-        if (this.agent.remainingDistance <= this.agent.stoppingDistance)
+        if (this.ctrl.Agent == null || this.pointToGo == null) return;
+        if (!this.ctrl.Agent.pathPending && this.ctrl.Agent.remainingDistance <= this.ctrl.Agent.stoppingDistance)
         {
             this.LoadNextPoint();
             this.MoveToTarget();
-
+            
         }
     }
 }

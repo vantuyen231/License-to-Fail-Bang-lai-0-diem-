@@ -49,9 +49,21 @@ public class NPCMoving : TuyenMonoBehaviour
         this.SetTimeCountDown();
     }
 
-    protected void FixedUpdate()
-    {
+    //protected void FixedUpdate()
+    //{
 
+    //    if (isWaiting)
+    //    {
+    //        this.TimerSystem();
+    //    }
+    //    else
+    //    {
+    //        this.GoToTarget();
+    //    }
+    //}
+
+    protected void LateUpdate()
+    {
         if (isWaiting)
         {
             this.TimerSystem();
@@ -60,10 +72,6 @@ public class NPCMoving : TuyenMonoBehaviour
         {
             this.GoToTarget();
         }
-    }
-
-    protected void LateUpdate()
-    {
         this.UpdateAnimator();
     }
 

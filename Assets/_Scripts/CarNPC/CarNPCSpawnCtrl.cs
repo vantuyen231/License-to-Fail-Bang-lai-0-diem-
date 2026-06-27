@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarNPCSpawnCtrl : MonoBehaviour
+public class CarNPCSpawnCtrl : TuyenMonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] protected CarNPCSpawner carNPCSpawner;
+    public CarNPCSpawner CarNPCSpawner => carNPCSpawner;
 
-    // Update is called once per frame
-    void Update()
+
+    protected override void LoadComponents()
     {
-        
+        base.LoadComponents();
+        this.LoadCarNPCSpawner();
+    }
+    protected virtual void LoadCarNPCSpawner()
+    {
+        if (this.carNPCSpawner != null) return;
+        carNPCSpawner = GetComponent<CarNPCSpawner>();
+        Debug.Log(transform.name + ": LoadCarNPCSpawner", gameObject);
     }
 }

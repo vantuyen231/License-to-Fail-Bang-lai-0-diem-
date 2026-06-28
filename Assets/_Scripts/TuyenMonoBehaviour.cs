@@ -6,7 +6,7 @@ public class TuyenMonoBehaviour : MonoBehaviour
 {
     protected virtual void Awake()
     {
-        this.Reset();
+        this.LoadComponents();
     }
 
     protected virtual void Start()

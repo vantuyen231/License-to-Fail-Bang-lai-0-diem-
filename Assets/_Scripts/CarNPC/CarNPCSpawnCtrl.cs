@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarNPCSpawnCtrl : TuyenMonoBehaviour
+public class CarNPCSpawnCtrl : TuyenSingleton<CarNPCSpawnCtrl>
 {
     [SerializeField] protected CarNPCSpawner carNPCSpawner;
     public CarNPCSpawner CarNPCSpawner => carNPCSpawner;

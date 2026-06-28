@@ -15,7 +15,7 @@ public class CarNPCCtrl : PoolObj
     }
     public override string GetName()
     {
-        throw new System.NotImplementedException();
+        return "CarNPC";
     }
 
     protected virtual void LoadNavAgent()

@@ -28,7 +28,12 @@ public class LocalPointStreet : TuyenMonoBehaviour
         }
         else
         {
+            
             this.nextPointInStreet = parent.GetChild(0).GetComponent<LocalPointStreet>();
         }
+    }
+    public virtual void SetNextPoint(LocalPointStreet nextPoint)
+    {
+        this.nextPointInStreet = nextPoint;
     }
 }

@@ -4,8 +4,40 @@ using UnityEngine;
 
 public class CarNPCDespawn : DespawnBase
 {
+    [SerializeField] protected CarNPCCtrl carCtrl;
+
+    [SerializeField] protected float timeDespawn = 5;
+    [SerializeField] protected float coolDown = 0;
+
+    protected virtual void FixedUpdate()
+    {
+        //this.DeSpawnTimeOut();
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadCarNPCCtrl();
+    }
+
+    protected virtual void LoadCarNPCCtrl()
+    {
+        if(this.carCtrl != null) return;
+        carCtrl = transform.parent.GetComponent<CarNPCCtrl>();
+        Debug.Log(transform.name + ": LoadCarNPCCtrl ", gameObject);
+    }
+
+    protected virtual void DeSpawnTimeOut()
+    {
+        coolDown += Time.fixedDeltaTime;
+        if (coolDown < timeDespawn) return;
+        this.DoDespawn();
+        coolDown = 0;
+    }
     public override void DoDespawn()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("DoDespawn");
+        CarNPCSpawnCtrl.Instance.CarNPCSpawner.Despawn(carCtrl);
     }
+
 }

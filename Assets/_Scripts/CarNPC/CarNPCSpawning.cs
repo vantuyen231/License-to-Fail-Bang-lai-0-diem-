@@ -6,6 +6,8 @@ public class CarNPCSpawning : TuyenMonoBehaviour
 {
     [SerializeField] protected float timer = 0;
     [SerializeField] protected float spawnTime = 2;
+    [SerializeField] protected int spawnCount = 0;
+    [SerializeField] protected int maxSpawn = 20;
     [SerializeField] protected CarNPCSpawnCtrl carNPCSpawnCtrl;
 
 
@@ -28,10 +30,12 @@ public class CarNPCSpawning : TuyenMonoBehaviour
     }
     protected virtual void TimeSystemSpawn()
     {
+        if(spawnCount >= maxSpawn) return;
         this.timer += Time.fixedDeltaTime;
         if (this.timer < spawnTime) return;
         this.SpawnCarNPCs();
         this.timer = 0; 
+        spawnCount++;
 
 
     }
@@ -41,5 +45,7 @@ public class CarNPCSpawning : TuyenMonoBehaviour
         Debug.Log("Spawn Car");
         CarNPCCtrl carNPCPrefab = this.carNPCSpawnCtrl.CarNPCSpawner.PoolPrefabs.GetByName("Car_NPC_0");
         CarNPCCtrl newCarNPC = this.carNPCSpawnCtrl.CarNPCSpawner.Spawn(carNPCPrefab);
+
+        newCarNPC.SetActive(true);
     }
 }

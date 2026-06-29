@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class MaxSpawnTrigger : TuyenMonoBehaviour
 {
-    [SerializeField] protected List<PointPath> pointsInMaxRange = new List<PointPath>();
-    public List<PointPath> PointsInMaxRange => pointsInMaxRange;
+    [SerializeField] protected List<PointPath> pointsNPCInMaxRange = new List<PointPath>();
+    public List<PointPath> PointsInMaxRange => pointsNPCInMaxRange;
+
+    [SerializeField] protected List<LocalPointStreet> pointStreetsInMaxRange = new List<LocalPointStreet>();
+    public List <LocalPointStreet> PointStreets => pointStreetsInMaxRange;
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        PointPath pointPath = other.GetComponent<PointPath>();
-        if (pointPath != null && !pointsInMaxRange.Contains(pointPath))
-        {
-            pointsInMaxRange.Add(pointPath);
-        }
+        this.AddPointPath(other);
+
+        this.AddPointStreet(other);
     }
 
     protected virtual void OnTriggerExit(Collider other)
@@ -32,12 +33,44 @@ public class MaxSpawnTrigger : TuyenMonoBehaviour
             }
         }
 
+        this.RemovePointPath(other);
 
+        this.RemovePointStreet(other);
+    }
 
+    protected virtual void AddPointPath(Collider other)
+    {
         PointPath pointPath = other.GetComponent<PointPath>();
-        if (pointPath != null && pointsInMaxRange.Contains(pointPath))
+        if (pointPath != null && !pointsNPCInMaxRange.Contains(pointPath))
         {
-            pointsInMaxRange.Remove(pointPath);
+            pointsNPCInMaxRange.Add(pointPath);
+        }
+    }
+
+    protected virtual void AddPointStreet(Collider other)
+    {
+        LocalPointStreet pointStreet = other.GetComponent<LocalPointStreet>();
+        if (pointStreet != null && !pointStreetsInMaxRange.Contains(pointStreet))
+        {
+            pointStreetsInMaxRange.Add(pointStreet);
+        }
+    }
+
+    protected void RemovePointPath(Collider other)
+    {
+        PointPath pointPath = other.GetComponent<PointPath>();
+        if (pointPath != null && pointsNPCInMaxRange.Contains(pointPath))
+        {
+            pointsNPCInMaxRange.Remove(pointPath);
+        }
+    }
+
+    protected virtual void RemovePointStreet(Collider other)
+    {
+        LocalPointStreet pointStreet = other.GetComponent<LocalPointStreet>();
+        if (pointStreet != null && pointStreetsInMaxRange.Contains(pointStreet))
+        {
+            pointStreetsInMaxRange.Remove(pointStreet);
         }
     }
 }

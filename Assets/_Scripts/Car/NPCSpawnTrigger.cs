@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class NPCSpawnTrigger : TuyenSingleton<NPCSpawnTrigger>
 {
+    [Header("Trigger")]
     [SerializeField] protected MaxSpawnTrigger maxSpawnTrigger;
     [SerializeField] protected MinSpawnTrigger minSpawnTrigger;
 
+    [Header("List NPC Spawn Point")]
     [SerializeField] protected List<PointPath> spawnPoints = new List<PointPath>();
     public List<PointPath> SpawnPoints => spawnPoints;
+
+    [Header("List CarNPC Spawn Point")]
+    [SerializeField] protected List<LocalPointStreet> localPointStreets = new List<LocalPointStreet>();
+    public List<LocalPointStreet> LocalPointStreet => localPointStreets;
 
 
     protected override void LoadComponents()
@@ -34,7 +40,7 @@ public class NPCSpawnTrigger : TuyenSingleton<NPCSpawnTrigger>
 
     }
 
-    public virtual void ChoiceSpawnPoint()
+    public virtual void ChoiceNPCSpawnPoint()
     {
         if (this.maxSpawnTrigger == null || this.minSpawnTrigger == null) return;
 

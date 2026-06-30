@@ -38,7 +38,7 @@ public class NPCsSpawning : TuyenMonoBehaviour
     {
         if (npcCtrl == null || npcCtrl.Spawner == null) 
         {
-            Debug.Log("Null:" + npcCtrl + "||" + npcCtrl.Spawner);
+            //Debug.Log("Null:" + npcCtrl + "||" + npcCtrl.Spawner);
             return;
         }
         numNPCOff = npcCtrl.Spawner.InPoolObjs.Count;
@@ -52,16 +52,17 @@ public class NPCsSpawning : TuyenMonoBehaviour
         if (numNPCActive >= spawnMax) return;
         timer += Time.deltaTime;
         if(timer < delay ) return;
-        timer = 0;
         this.RandomChoisePointSpawn();
         if(selectedPoint == null) return;
 
         this.SpawnNPC();
+        timer = 0;
 
     }
 
     protected virtual void RandomChoisePointSpawn()
     {
+        this.selectedPoint = null;
         NPCSpawnTrigger.Instance.ChoiceNPCSpawnPoint();
         if (NPCSpawnTrigger.Instance == null || NPCSpawnTrigger.Instance.SpawnPoints.Count == 0) return;
 

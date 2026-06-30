@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class NPCSpawnTrigger : TuyenSingleton<NPCSpawnTrigger>
@@ -56,4 +57,19 @@ public class NPCSpawnTrigger : TuyenSingleton<NPCSpawnTrigger>
         }
     }
 
+    public virtual void ChoiceCarNPCSpawnPoint()
+    {
+        if (this.maxSpawnTrigger == null || this.minSpawnTrigger == null) return;
+
+        this.localPointStreets.Clear();
+        this.localPointStreets.AddRange(this.maxSpawnTrigger.PointStreets);
+
+        foreach (LocalPointStreet minPointStreet in this.minSpawnTrigger.PointStreetInMinRange)
+        {
+            if (this.localPointStreets.Contains(minPointStreet))
+            {
+                this.localPointStreets.Remove(minPointStreet);
+            }
+        }
+    }
 }

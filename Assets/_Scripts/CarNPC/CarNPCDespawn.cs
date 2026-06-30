@@ -40,4 +40,10 @@ public class CarNPCDespawn : DespawnBase
         CarNPCSpawnCtrl.Instance.CarNPCSpawner.Despawn(carCtrl);
     }
 
+    public virtual void OutAreaPlayer()
+    {
+        //if (this.carCtrl != null && this.carCtrl != null && this.carCtrl) return;
+
+        this.DoDespawn();
+    }
 }

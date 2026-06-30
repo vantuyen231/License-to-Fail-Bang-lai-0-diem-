@@ -55,7 +55,7 @@ public class MinSpawnTrigger : MonoBehaviour
     protected virtual void RemovePointStreet(Collider other)
     {
         LocalPointStreet pointStreet = other.GetComponent<LocalPointStreet>();
-        if (pointStreet != null && !pointStreetsInMinRange.Contains(pointStreet))
+        if (pointStreet != null && pointStreetsInMinRange.Contains(pointStreet))
         {
             pointStreetsInMinRange.Remove(pointStreet);
         }

@@ -34,13 +34,15 @@ public class CarNPCMoving : TuyenMonoBehaviour
         Debug.Log(transform.name + ": LoadCarCtrl", gameObject);
     }
 
+    public virtual void SetStartPointCarNPC(LocalPointStreet streetStartPoint)
+    {
+        if( streetStartPoint == null) return;   
+        this.pointToGo = streetStartPoint;
+    }
     protected virtual void MoveToTarget()
     {
         if (this.ctrl.Agent == null) return;
-        if(pointToGo == null)
-        {
-            
-        }
+
 
         this.ctrl.Agent.SetDestination(pointToGo.transform.position);
         //Debug.Log("Move");

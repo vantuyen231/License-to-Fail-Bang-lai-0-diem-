@@ -33,6 +33,20 @@ public class MaxSpawnTrigger : TuyenMonoBehaviour
             }
         }
 
+        CarNPCDespawn carNPCDespawn = other.gameObject.GetComponentInParent<CarNPCDespawn>();
+        if (npcDespawn == null)
+        {
+            CarNPCCtrl carNPCCtrl = other.gameObject.GetComponentInParent<CarNPCCtrl>();
+            if (carNPCCtrl != null)
+            {
+                carNPCDespawn = carNPCCtrl.GetComponentInChildren<CarNPCDespawn>();
+                if (carNPCDespawn != null)
+                {
+                    carNPCDespawn.OutAreaPlayer();
+                }
+            }
+        }
+
         this.RemovePointPath(other);
 
         this.RemovePointStreet(other);

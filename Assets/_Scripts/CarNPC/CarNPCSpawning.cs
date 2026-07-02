@@ -7,7 +7,7 @@ public class CarNPCSpawning : TuyenMonoBehaviour
     [SerializeField] protected CarNPCSpawnCtrl carNPCSpawnCtrl;
     [SerializeField] protected LocalPointStreet selectedCarNPCPoint;
     [SerializeField] protected float timer = 0;
-    [SerializeField] protected float spawnTime = 2;
+    [SerializeField] protected float spawnTime = 5;
     [SerializeField] protected int maxSpawn = 20;
     [SerializeField] protected int carNPCActive;
     [SerializeField] protected int carNPCOff;
@@ -67,8 +67,8 @@ public class CarNPCSpawning : TuyenMonoBehaviour
     protected virtual void SpawnCarNPCs()
     {
         Debug.Log("Spawn Car");
-
-        CarNPCCtrl carNPCPrefab = this.carNPCSpawnCtrl.CarNPCSpawner.PoolPrefabs.GetByName("Car_NPC_0");
+        //Random randomSpawnCarNPC = Random.Range(0,carNPCSpawnCtrl.CarNPCSpawner.PoolPrefabs.Get)
+        CarNPCCtrl carNPCPrefab = this.carNPCSpawnCtrl.CarNPCSpawner.PoolPrefabs.GetRandom();
         CarNPCCtrl newCarNPC = this.carNPCSpawnCtrl.CarNPCSpawner.Spawn(carNPCPrefab);
 
         newCarNPC.transform.position = this.selectedCarNPCPoint.transform.position;

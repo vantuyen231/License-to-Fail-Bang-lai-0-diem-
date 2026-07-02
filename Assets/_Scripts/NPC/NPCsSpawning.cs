@@ -73,7 +73,7 @@ public class NPCsSpawning : TuyenMonoBehaviour
 
     protected virtual void SpawnNPC()
     {
-        NPCCtrl npcPrefab = this.npcCtrl.Spawner.PoolPrefabs.GetByName("NPC_0");
+        NPCCtrl npcPrefab = this.npcCtrl.Spawner.PoolPrefabs.GetRandom();
         NPCCtrl newNPC = this.npcCtrl.Spawner.Spawn(npcPrefab);
 
         newNPC.transform.position = this.selectedPoint.transform.position;

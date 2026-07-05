@@ -66,7 +66,7 @@ public class CarNPCSpawning : TuyenMonoBehaviour
 
     protected virtual void SpawnCarNPCs()
     {
-        Debug.Log("Spawn Car");
+        //Debug.Log("Spawn Car");
         //Random randomSpawnCarNPC = Random.Range(0,carNPCSpawnCtrl.CarNPCSpawner.PoolPrefabs.Get)
         CarNPCCtrl carNPCPrefab = this.carNPCSpawnCtrl.CarNPCSpawner.PoolPrefabs.GetRandom();
         CarNPCCtrl newCarNPC = this.carNPCSpawnCtrl.CarNPCSpawner.Spawn(carNPCPrefab);

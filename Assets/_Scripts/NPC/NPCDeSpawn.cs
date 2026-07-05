@@ -46,4 +46,5 @@ public class NPCDespawn : DespawnBase
 
         this.DoDespawn();
     }
+
 }

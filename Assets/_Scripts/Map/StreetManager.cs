@@ -34,7 +34,7 @@ public class StreetManager : TuyenMonoBehaviour
 
             if (i + 1 < index)
             {
-                Debug.Log(index);
+                //Debug.Log(index);
 
                 this.streetList[i].SetNextPoint(this.streetList[i + 1]);
             }

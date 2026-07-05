@@ -96,4 +96,5 @@ public class NPCRagdoll : TuyenMonoBehaviour
         npcCapsuleCollider.isTrigger = false;
     }
 
+
 }

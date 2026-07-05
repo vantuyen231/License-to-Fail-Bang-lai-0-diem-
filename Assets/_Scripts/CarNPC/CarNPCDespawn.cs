@@ -36,7 +36,7 @@ public class CarNPCDespawn : DespawnBase
     }
     public override void DoDespawn()
     {
-        Debug.Log("DoDespawn");
+        //Debug.Log("DoDespawn");
         CarNPCSpawnCtrl.Instance.CarNPCSpawner.Despawn(carCtrl);
     }
 

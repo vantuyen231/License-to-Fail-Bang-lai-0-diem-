@@ -9,6 +9,7 @@ public class CarManager : TuyenMonoBehaviour
     [SerializeField] protected FrontBumpCtrl frontBumpCtrl;
     [SerializeField] protected MapTrigger mapTrigger;
     [SerializeField] protected NPCSpawnTrigger spawnTrigger;
+    [SerializeField] protected PlayerScore playerScore;
 
     protected override void LoadComponents()
     {
@@ -17,6 +18,7 @@ public class CarManager : TuyenMonoBehaviour
         this.LoandFrontBumpCtrl();
         this.LoadMapTrigger();
         this.LoadNPCSpawnTrigger();
+        this.LoadPlayerScore();
     }
 
     private void LoadNPCSpawnTrigger()
@@ -42,5 +44,12 @@ public class CarManager : TuyenMonoBehaviour
     {
         if (mapTrigger != null) return;
         mapTrigger = GetComponentInChildren<MapTrigger>();
+    }
+
+    protected virtual void LoadPlayerScore()
+    {
+        if (playerScore != null) return;
+        playerScore = GetComponentInChildren<PlayerScore>();
+        Debug.Log(transform.name + ": LoadPlayerScore", gameObject );
     }
 }

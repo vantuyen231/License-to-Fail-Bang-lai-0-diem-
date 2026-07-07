@@ -22,12 +22,24 @@ public class FrontBumpCtrl : TuyenMonoBehaviour
     {
         PlayerScore playerScore = carController.GetComponentInChildren<PlayerScore>();
 
-        this.HitNPCTrigger(other,playerScore);
-        this.HitCarNPCTrigger(other, playerScore);
+        CarNPCInfo carNPCInfo = other.gameObject.GetComponentInParent<CarNPCInfo>();
+        if(carNPCInfo != null)
+        {
+            this.HitCarNPCTrigger(carNPCInfo, playerScore);
+            return;
+        }
+
+        NPCGameInfo npcGameInfo = other.gameObject.GetComponentInParent<NPCGameInfo>(); 
+        if(npcGameInfo != null)
+        {
+            this.HitNPCTrigger(other, npcGameInfo, playerScore);
+            return;
+        }
     }
 
-    protected virtual void HitNPCTrigger(Collider other, PlayerScore playerScore)
+    protected virtual void HitNPCTrigger(Collider other, NPCGameInfo npcGameInfo, PlayerScore playerScore)
     {
+        if (npcGameInfo == null) return;
         NPCRagdoll npcRagdoll = other.gameObject.GetComponentInParent<NPCRagdoll>();
 
         if (npcRagdoll != null)
@@ -50,17 +62,20 @@ public class FrontBumpCtrl : TuyenMonoBehaviour
                     npcRb.AddForce(finalPushForce, ForceMode.Impulse);
                 }
             }
-            playerScore.LoadCroceHitNPC();
         }
+        HitObjectType type = npcGameInfo.ObjectDataSO.hitObjectType;
+        string nameNPC = npcGameInfo.ObjectDataSO.hitObjectName;
+        int scoreReward = npcGameInfo.ObjectDataSO.hitCount;
+        playerScore.AddScore(type, scoreReward, nameNPC);
     }
 
-    protected virtual void HitCarNPCTrigger(Collider other, PlayerScore playerScore)
+    protected virtual void HitCarNPCTrigger(CarNPCInfo carNPCInfo, PlayerScore playerScore)
     {
-        CarNPCMoving carNPCMove = other.gameObject.GetComponentInParent<CarNPCMoving>();
-        if(carNPCMove != null)
-        {
-            playerScore.LoadCroceHitCarNPC();
+        if (carNPCInfo.ObjectDataSO == null) return;
 
-        }
+        HitObjectType type = carNPCInfo.ObjectDataSO.hitObjectType;
+        string nameCar = carNPCInfo.ObjectDataSO.hitObjectName;
+        int scoreReward = carNPCInfo.ObjectDataSO.hitCount;
+        playerScore.AddScore(type, scoreReward, nameCar);
     }
 }

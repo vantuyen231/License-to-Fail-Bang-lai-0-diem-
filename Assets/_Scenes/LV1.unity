@@ -22806,6 +22806,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   despawn: {fileID: 788346805}
   agent: {fileID: 190474595}
+  carNPCMoving: {fileID: 190474596}
+  carNPCInfo: {fileID: 190474597}
+  triggerStopCar: {fileID: 333662512}
 --- !u!195 &190474595
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -40140,6 +40143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd2652c7d18d404cba0dd04e0668f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carNPCMoving: {fileID: 190474596}
+  stopCar: 0
 --- !u!65 &333662513
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41453,6 +41458,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd2652c7d18d404cba0dd04e0668f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carNPCMoving: {fileID: 672699686}
+  stopCar: 0
 --- !u!1 &341108471
 GameObject:
   m_ObjectHideFlags: 0
@@ -41575,6 +41582,8 @@ MonoBehaviour:
   star: 0
   pedestrianCollision: 0
   vehicleCollision: 0
+  currentHitCarNPC: 0
+  upStarHitCar: 2
 --- !u!1001 &343924986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61693,6 +61702,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   despawn: {fileID: 545794668}
   agent: {fileID: 497809745}
+  carNPCMoving: {fileID: 497809746}
+  carNPCInfo: {fileID: 497809747}
+  triggerStopCar: {fileID: 1972000283}
 --- !u!195 &497809745
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -81291,6 +81303,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   despawn: {fileID: 1894111786}
   agent: {fileID: 672699688}
+  carNPCMoving: {fileID: 672699686}
+  carNPCInfo: {fileID: 672699690}
+  triggerStopCar: {fileID: 340598983}
 --- !u!114 &672699690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105150,6 +105165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd2652c7d18d404cba0dd04e0668f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carNPCMoving: {fileID: 1381012051}
+  stopCar: 0
 --- !u!65 &880732969
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -146851,6 +146868,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   despawn: {fileID: 973262537}
   agent: {fileID: 1230682331}
+  carNPCMoving: {fileID: 1230682332}
+  carNPCInfo: {fileID: 1230682333}
+  triggerStopCar: {fileID: 2118068454}
 --- !u!195 &1230682331
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -147039,6 +147059,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd2652c7d18d404cba0dd04e0668f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carNPCMoving: {fileID: 1653141849}
+  stopCar: 0
 --- !u!65 &1230969156
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -152344,6 +152366,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   despawn: {fileID: 952830379}
   agent: {fileID: 1278447821}
+  carNPCMoving: {fileID: 1278447822}
+  carNPCInfo: {fileID: 1278447823}
+  triggerStopCar: {fileID: 1654915053}
 --- !u!195 &1278447821
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -162062,6 +162087,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   despawn: {fileID: 1322282807}
   agent: {fileID: 1381012050}
+  carNPCMoving: {fileID: 1381012051}
+  carNPCInfo: {fileID: 1381012052}
+  triggerStopCar: {fileID: 880732968}
 --- !u!195 &1381012050
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -190412,6 +190440,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   despawn: {fileID: 1696804442}
   agent: {fileID: 1653141848}
+  carNPCMoving: {fileID: 1653141849}
+  carNPCInfo: {fileID: 1653141850}
+  triggerStopCar: {fileID: 1230969155}
 --- !u!195 &1653141848
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -190769,6 +190800,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd2652c7d18d404cba0dd04e0668f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carNPCMoving: {fileID: 1278447822}
+  stopCar: 0
 --- !u!65 &1654915054
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -228548,6 +228581,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd2652c7d18d404cba0dd04e0668f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carNPCMoving: {fileID: 497809746}
+  stopCar: 0
 --- !u!65 &1972000284
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -245577,6 +245612,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd2652c7d18d404cba0dd04e0668f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carNPCMoving: {fileID: 1230682332}
+  stopCar: 0
 --- !u!65 &2118068455
 BoxCollider:
   m_ObjectHideFlags: 0

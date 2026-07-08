@@ -64,4 +64,10 @@ public class CarNPCMoving : TuyenMonoBehaviour
             
         }
     }
+
+    public virtual void SetStopCar(bool triggerStop)
+    {
+        if (this.ctrl.Agent == null) return;
+        this.ctrl.Agent.isStopped = triggerStop;
+    }
 }

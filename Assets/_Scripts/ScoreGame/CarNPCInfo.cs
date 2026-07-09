@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class CarNPCInfo : InfoObjectHit
 {
-    //[SerializeField] protected HitObjectDataSO carDataSO;
-    //public HitObjectDataSO CarDataSO => carDataSO;
+    [SerializeField] protected bool isHitCarNPC = false;
+    public bool IsHitCarNPC => isHitCarNPC;
     protected override void Start()
     {
         if(objectDataSO != null) return;
         Debug.LogWarning("Load SO in CarNPC");
+    }
+
+    public virtual void CarNPCCollision()
+    {
+        isHitCarNPC = true;
+    }
+
+    protected virtual void OnEnable()
+    {
+        isHitCarNPC = false;
     }
 }

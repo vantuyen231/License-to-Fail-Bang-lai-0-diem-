@@ -13,6 +13,8 @@ public class CarNPCCtrl : PoolObj
 
     public NavMeshAgent Agent => agent;
 
+    [SerializeField] protected bool isHit;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();

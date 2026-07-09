@@ -20,6 +20,7 @@ public class FrontBumpCtrl : TuyenMonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         PlayerScore playerScore = carController.GetComponentInChildren<PlayerScore>();
 
         CarNPCInfo carNPCInfo = other.gameObject.GetComponentInParent<CarNPCInfo>();
@@ -39,11 +40,12 @@ public class FrontBumpCtrl : TuyenMonoBehaviour
 
     protected virtual void HitNPCTrigger(Collider other, NPCGameInfo npcGameInfo, PlayerScore playerScore)
     {
+        
         if (npcGameInfo == null) return;
         NPCRagdoll npcRagdoll = other.gameObject.GetComponentInParent<NPCRagdoll>();
-
         if (npcRagdoll != null)
         {
+            if (npcRagdoll.IsRagdoll == true) return;
 
             npcRagdoll.EnableRagdoll();
 
@@ -73,6 +75,8 @@ public class FrontBumpCtrl : TuyenMonoBehaviour
     {
         if (carNPCInfo.ObjectDataSO == null) return;
 
+        if(carNPCInfo.IsHitCarNPC ==  true) return;
+        carNPCInfo.CarNPCCollision();
         HitObjectType type = carNPCInfo.ObjectDataSO.hitObjectType;
         string nameCar = carNPCInfo.ObjectDataSO.hitObjectName;
         int scoreReward = carNPCInfo.ObjectDataSO.hitCount;

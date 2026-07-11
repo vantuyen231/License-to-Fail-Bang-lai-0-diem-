@@ -17,6 +17,7 @@ public class CarNPCSpawning : TuyenMonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        this.CheckCarNPCActive();
         this.TimeSystemSpawn();
     }
 

@@ -10,10 +10,24 @@ public class CarNPCMoving : TuyenMonoBehaviour
     [SerializeField] protected CarNPCCtrl ctrl;
     [SerializeField] protected LocalPointStreet nextPoint;
 
+    [Header("Flags")]
+    [SerializeField] protected bool stopCarTrigger = false;
+    [SerializeField] protected bool stopCarRaycast = false;
+    public bool IsCarStopping => stopCarTrigger || stopCarRaycast;
+
+    [Header("Anit Stuck")]
+    [SerializeField] protected float currentTimeStuck = 0f;
+    [SerializeField] protected float maxTimeStuck = 5f;
+    [SerializeField] protected float currentDistance = 0f;
+    [SerializeField] protected float stuckCheckDistance = 1f;
+
+
     [Header("Raycast")]
     [SerializeField] protected CarNPCRaycast raycast;
     [SerializeField] protected int maxRaycast = 5;
+    public int MaxRaycast => maxRaycast;
     [SerializeField] protected LayerMask obstacleLayer;
+    public LayerMask ObstacleLayer => obstacleLayer;
 
     protected override void Start()
     {
@@ -51,6 +65,7 @@ public class CarNPCMoving : TuyenMonoBehaviour
     {
         if( streetStartPoint == null) return;   
         this.pointToGo = streetStartPoint;
+
     }
     protected virtual void MoveToTarget()
     {
@@ -64,13 +79,15 @@ public class CarNPCMoving : TuyenMonoBehaviour
     protected virtual void LoadNextPoint()
     {
         pointToGo = this.pointToGo.NextPointInStreet;
+        nextPoint = pointToGo.NextPointInStreet;
         //Debug.Log("Load");
     }
 
     protected virtual void CheckDistanceAndChangePoint()
     {
         if (this.ctrl.Agent == null || this.pointToGo == null) return;
-        this.CarNPCRaycast();
+        raycast.RaycastCar();
+        this.CheckDistancePoint();
         if (!this.ctrl.Agent.pathPending && this.ctrl.Agent.remainingDistance <= this.ctrl.Agent.stoppingDistance)
         {
             this.LoadNextPoint();
@@ -79,25 +96,37 @@ public class CarNPCMoving : TuyenMonoBehaviour
         }
     }
 
-    protected virtual void CarNPCRaycast()
+    protected virtual void CheckDistancePoint()
     {
-        if(raycast == null ) return;
-        RaycastHit hit;
+        currentDistance = ctrl.Agent.remainingDistance;
+        if(currentDistance <= stuckCheckDistance)
+        {
 
-        if(Physics.Raycast(raycast.transform.position, raycast.transform.forward, out hit, maxRaycast, obstacleLayer))
-        {
-            Debug.DrawLine(raycast.transform.position, hit.point, Color.red);
-        }
-        else
-        {
-            Debug.DrawLine(raycast.transform.position,raycast.transform.position+(raycast.transform.forward * this.maxRaycast), Color.green);
         }
     }
 
-    public virtual void SetStopCar(bool triggerStop)
+    protected virtual void CheckTimeStuck()
+    {
+
+    }
+
+    public virtual void SetStopByTrigger(bool state)
+    {
+        this.stopCarTrigger = state;
+        this.SetStopCar();
+    }
+
+    public virtual void SetStopByRaycast(bool state)
+    {
+        this.stopCarRaycast = state;
+        this.SetStopCar();
+    }
+
+    public virtual void SetStopCar()
     {
         if (this.ctrl.Agent == null) return;
-        this.ctrl.Agent.isStopped = triggerStop;
+        
+        this.ctrl.Agent.isStopped = IsCarStopping;
     }
 
 

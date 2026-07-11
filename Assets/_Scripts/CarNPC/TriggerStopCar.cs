@@ -5,15 +5,14 @@ using UnityEngine;
 public class TriggerStopCar : TuyenMonoBehaviour
 {
     [SerializeField] protected CarNPCMoving carNPCMoving;
-    [SerializeField] protected bool stopCar = false;
-    public bool StopCar => stopCar;
+
     protected virtual void OnTriggerEnter(Collider other)
     {
         CarNPCCtrl carNPCCtrl = other.gameObject.GetComponentInParent<CarNPCCtrl>();
 
         if (carNPCCtrl != null)
         {
-            //Debug.Log(carNPCCtrl.gameObject);
+            Debug.Log(carNPCCtrl.gameObject);
             this.StopCarNPC();
         }
 
@@ -33,7 +32,7 @@ public class TriggerStopCar : TuyenMonoBehaviour
 
         if (carNPCCtrl != null)
         {
-            //Debug.Log(carNPCCtrl.gameObject);
+            Debug.Log(carNPCCtrl.gameObject);
             this.MoveCar();
         }
 
@@ -63,14 +62,13 @@ public class TriggerStopCar : TuyenMonoBehaviour
     protected virtual void StopCarNPC()
     {
         if (carNPCMoving == null) return;
-        stopCar = true;
-        this.carNPCMoving.SetStopCar(stopCar);
+        
+        this.carNPCMoving.SetStopByTrigger(true);
     }
 
     protected virtual void MoveCar()
     {
         if (carNPCMoving == null) return;
-        stopCar = false;
-        this.carNPCMoving.SetStopCar(stopCar);
+        this.carNPCMoving.SetStopByTrigger(false);
     }
 }

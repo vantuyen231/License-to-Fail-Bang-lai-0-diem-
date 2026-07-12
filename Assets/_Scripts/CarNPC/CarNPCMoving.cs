@@ -19,7 +19,9 @@ public class CarNPCMoving : TuyenMonoBehaviour
     [SerializeField] protected float currentTimeStuck = 0f;
     [SerializeField] protected float maxTimeStuck = 5f;
     [SerializeField] protected float currentDistance = 0f;
-    [SerializeField] protected float stuckCheckDistance = 1f;
+    [SerializeField] protected float stuckCheckDistance = 3f;
+    [SerializeField] protected float velocityCarNPC;
+    [SerializeField] protected bool isStuck = false;
 
 
     [Header("Raycast")]
@@ -86,8 +88,10 @@ public class CarNPCMoving : TuyenMonoBehaviour
     protected virtual void CheckDistanceAndChangePoint()
     {
         if (this.ctrl.Agent == null || this.pointToGo == null) return;
+        currentDistance = ctrl.Agent.remainingDistance;
+        velocityCarNPC = ctrl.Rb.velocity.sqrMagnitude;
         raycast.RaycastCar();
-        this.CheckDistancePoint();
+        this.CheckTimeStuck();
         if (!this.ctrl.Agent.pathPending && this.ctrl.Agent.remainingDistance <= this.ctrl.Agent.stoppingDistance)
         {
             this.LoadNextPoint();
@@ -96,19 +100,37 @@ public class CarNPCMoving : TuyenMonoBehaviour
         }
     }
 
-    protected virtual void CheckDistancePoint()
+    protected virtual IEnumerator EscapeStuckRoutine()
     {
-        currentDistance = ctrl.Agent.remainingDistance;
-        if(currentDistance <= stuckCheckDistance)
-        {
+        isStuck = true;
 
+        if (this.ctrl.Agent != null)
+        {
+            this.ctrl.Agent.isStopped = false;
         }
+
+        this.LoadNextPoint();
+        this.MoveToTarget();
+
+        yield return new WaitForSeconds(2f);
+
+        this.isStuck = false; 
+        this.SetStopCar();
     }
 
     protected virtual void CheckTimeStuck()
     {
+        if (this.isStuck == true) return;
+        if (currentDistance > stuckCheckDistance || velocityCarNPC > 0.1) return;
+        currentTimeStuck += Time.deltaTime;
+        if(currentTimeStuck >= maxTimeStuck)
+        {
+            currentTimeStuck = 0f;
+            StartCoroutine(this.EscapeStuckRoutine());
+        }
 
     }
+
 
     public virtual void SetStopByTrigger(bool state)
     {
@@ -125,7 +147,11 @@ public class CarNPCMoving : TuyenMonoBehaviour
     public virtual void SetStopCar()
     {
         if (this.ctrl.Agent == null) return;
-        
+        if (this.isStuck)
+        {
+            this.ctrl.Agent.isStopped = false;
+            return;
+        }
         this.ctrl.Agent.isStopped = IsCarStopping;
     }
 

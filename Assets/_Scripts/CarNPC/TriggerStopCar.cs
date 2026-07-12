@@ -12,7 +12,7 @@ public class TriggerStopCar : TuyenMonoBehaviour
 
         if (carNPCCtrl != null)
         {
-            Debug.Log(carNPCCtrl.gameObject);
+            //Debug.Log(carNPCCtrl.gameObject);
             this.StopCarNPC();
         }
 
@@ -32,7 +32,7 @@ public class TriggerStopCar : TuyenMonoBehaviour
 
         if (carNPCCtrl != null)
         {
-            Debug.Log(carNPCCtrl.gameObject);
+            //Debug.Log(carNPCCtrl.gameObject);
             this.MoveCar();
         }
 

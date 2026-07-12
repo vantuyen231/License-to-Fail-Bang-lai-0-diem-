@@ -9,9 +9,11 @@ public class CarNPCCtrl : PoolObj
     [SerializeField] protected CarNPCMoving carNPCMoving;
     [SerializeField] protected CarNPCInfo carNPCInfo;
     [SerializeField] protected TriggerStopCar triggerStopCar;
+    [SerializeField] protected Rigidbody rb;
     public TriggerStopCar TriggerStopCar => triggerStopCar;
 
     public NavMeshAgent Agent => agent;
+    public Rigidbody Rb => rb;
 
     [SerializeField] protected bool isHit;
 
@@ -22,6 +24,7 @@ public class CarNPCCtrl : PoolObj
         this.LoadCarNPCMoving();
         this.LoadCarNPCInfo();
         this.LoadTriggerStopCar();
+        this.LoadRigidbody();
     }
     public override string GetName()
     {
@@ -33,6 +36,13 @@ public class CarNPCCtrl : PoolObj
         if(agent != null) return;
         agent = GetComponent<NavMeshAgent>();
         Debug.Log(transform.name + ": LoadNavAgent", gameObject);
+    }
+
+    protected virtual void LoadRigidbody()
+    {
+        if (rb != null) return;
+        rb = GetComponent<Rigidbody>();
+        Debug.Log(transform.name + ": LoadRigidbody", gameObject);
     }
 
     protected virtual void LoadCarNPCMoving()

@@ -29,8 +29,9 @@ public class CarController : TuyenMonoBehaviour
     [SerializeField] protected float steerWheel = 30f;
     [SerializeField] protected float brakeForce = 1000f;
     [SerializeField] protected float carVelocity;
-    [SerializeField] protected float carSpeed = 0;
+    [SerializeField] protected int  playerSpeed = 0;
     public float CarVeclocity => carVelocity;
+    public int PlayerSpeed => playerSpeed;
 
 
 
@@ -137,6 +138,8 @@ public class CarController : TuyenMonoBehaviour
         playerInputSystem.Disable();
 
     }
+
+
     #endregion
     private void CarForce()
     {
@@ -223,11 +226,11 @@ public class CarController : TuyenMonoBehaviour
         float rawSpeed = carVelocity * 3.6f;
         if (rawSpeed < 0.01f)
         {
-            carSpeed = 0;
+            playerSpeed = 0;
         }
         else
         {
-            carSpeed = rawSpeed;
+            playerSpeed = (int)rawSpeed;
         }
     }
 

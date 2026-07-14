@@ -11,6 +11,8 @@ public class CarManager : TuyenMonoBehaviour
     [SerializeField] protected NPCSpawnTrigger spawnTrigger;
     [SerializeField] protected PlayerScore playerScore;
 
+    public PlayerScore PlayerScore => playerScore;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -52,4 +54,6 @@ public class CarManager : TuyenMonoBehaviour
         playerScore = GetComponentInChildren<PlayerScore>();
         Debug.Log(transform.name + ": LoadPlayerScore", gameObject );
     }
+
+
 }

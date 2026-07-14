@@ -14,6 +14,10 @@ public class PlayerScore : TuyenMonoBehaviour
     [SerializeField] protected int currentHitCarNPC = 0;
     [SerializeField] protected int upStarHitCar = 2;
 
+    public int CurrentScore => currentScore;
+
+    public int Star => star;
+
     protected override void Start()
     {
         currentScore = maxScore;

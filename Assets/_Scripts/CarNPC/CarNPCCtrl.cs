@@ -23,7 +23,7 @@ public class CarNPCCtrl : PoolObj
         this.LoadNavAgent();
         this.LoadCarNPCMoving();
         this.LoadCarNPCInfo();
-        this.LoadTriggerStopCar();
+        //this.LoadTriggerStopCar();
         this.LoadRigidbody();
     }
     public override string GetName()

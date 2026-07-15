@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class UICarVelocity : TuyenMonoBehaviour
+public class UICarVelocity : TextAbstract
 {
     [SerializeField] protected CarController carController;
-    [SerializeField] protected TextMeshProUGUI uiCarVelocity;
 
     protected virtual void LateUpdate()
     {
@@ -17,7 +16,6 @@ public class UICarVelocity : TuyenMonoBehaviour
     {
         base.LoadComponents();
         this.LoadCarCtrl();
-        this.LoadUIVelocity();
     }
 
 
@@ -28,16 +26,10 @@ public class UICarVelocity : TuyenMonoBehaviour
         Debug.Log(transform.name + ": LoadCarCtrl", gameObject);
     }
 
-    protected virtual void LoadUIVelocity()
-    {
-        if(uiCarVelocity != null) return;
-        uiCarVelocity = GetComponent<TextMeshProUGUI>();
-        Debug.Log(transform.name + ": LoadUIVelocity", gameObject);
-    }
 
     protected virtual void CarVelocity()
     {
         string speed = carController.PlayerSpeed.ToString();
-        this.uiCarVelocity.text = speed;
+        textMeshProUGUI.text = speed;
     }
 }

@@ -4,10 +4,9 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ScoreLicense : TuyenMonoBehaviour
+public class ScoreLicense : TextAbstract
 {
     [SerializeField] protected CarManager carMng;
-    [SerializeField] protected TextMeshProUGUI textMeshProUGUI;
 
     protected virtual void  LateUpdate()
     {

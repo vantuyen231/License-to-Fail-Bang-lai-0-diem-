@@ -10,6 +10,13 @@ public class UIManager : TuyenMonoBehaviour
     [SerializeField] protected UIBottomR bottomRight;
     [SerializeField] protected UIBottomL bottomLeft;
 
+
+    protected virtual void FixedUpdate()
+    {
+        this.UpdateUI();
+    }
+
+    #region Load Components
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -54,5 +61,13 @@ public class UIManager : TuyenMonoBehaviour
         bottomLeft = GetComponentInChildren<UIBottomL>();
         Debug.Log(transform.name + ": LoadUIBottomL", gameObject);
     }
+    #endregion
 
+
+    protected virtual void UpdateUI()
+    {
+        if(GameManager.Instance == null) return;
+        this.topLeft.UpdateUITopLeft();
+        this.topRight.UpdateUITopR();
+    }
 }

@@ -6,16 +6,8 @@ using UnityEngine;
 
 public class ScoreLicense : TextAbstract
 {
-    [SerializeField] protected CarManager carMng;
-
-    protected virtual void  LateUpdate()
+    public virtual void SetScoreText(string scoreStr)
     {
-        this.UpdateScoreUI();
-    }
-
-    protected virtual void UpdateScoreUI()
-    {
-        string scorePlayer = carMng.PlayerScore.CurrentScore.ToString();
-        textMeshProUGUI.text = scorePlayer;
+        textMeshProUGUI.text = scoreStr;
     }
 }

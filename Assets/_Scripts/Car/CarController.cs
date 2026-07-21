@@ -232,6 +232,8 @@ public class CarController : TuyenMonoBehaviour
         {
             playerSpeed = (int)rawSpeed;
         }
+
+        GameManager.Instance.UpdateVelocity(playerSpeed);
     }
 
 

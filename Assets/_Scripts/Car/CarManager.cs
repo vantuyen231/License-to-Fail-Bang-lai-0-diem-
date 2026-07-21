@@ -20,7 +20,7 @@ public class CarManager : TuyenMonoBehaviour
         this.LoandFrontBumpCtrl();
         this.LoadMapTrigger();
         this.LoadNPCSpawnTrigger();
-        //this.LoadPlayerScore();
+        this.LoadPlayerScore();
     }
 
     private void LoadNPCSpawnTrigger()

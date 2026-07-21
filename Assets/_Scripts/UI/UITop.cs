@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UITop : MonoBehaviour
+public class UITop : TuyenMonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] protected UIStarManager uIStarManager;
+
+
+    protected override void LoadComponents()
     {
-        
+        base.LoadComponents();
+        this.LoadUIStarManager();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void LoadUIStarManager()
     {
-        
+        if (uIStarManager != null) return;
+        uIStarManager = GetComponentInChildren<UIStarManager>();
+        Debug.Log(transform.name + ": LoadUIStarManager", gameObject);
     }
+
+
 }

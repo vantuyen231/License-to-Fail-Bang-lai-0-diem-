@@ -5,31 +5,10 @@ using UnityEngine;
 
 public class UICarVelocity : TextAbstract
 {
-    [SerializeField] protected CarController carController;
 
-    protected virtual void LateUpdate()
+
+    public virtual void SetCarVelocity(string velocityCar)
     {
-        this.CarVelocity();
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadCarCtrl();
-    }
-
-
-    protected virtual void LoadCarCtrl()
-    {
-        if (carController != null) return;
-        carController = GetComponentInParent<CarController>();
-        Debug.Log(transform.name + ": LoadCarCtrl", gameObject);
-    }
-
-
-    protected virtual void CarVelocity()
-    {
-        string speed = carController.PlayerSpeed.ToString();
-        textMeshProUGUI.text = speed;
+        textMeshProUGUI.text = velocityCar;
     }
 }

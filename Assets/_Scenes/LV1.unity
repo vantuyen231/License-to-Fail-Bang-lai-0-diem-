@@ -19668,6 +19668,7 @@ MonoBehaviour:
   currentScore: 12
   currentStars: 0
   currentStatus: 0
+  currentVelocity: 0
 --- !u!4 &171216054 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 08064cb3782ede241a6ed90cc59e4a8c, type: 3}
@@ -45108,6 +45109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7cdc67e1710484386385a8ae4f2f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uIStarManager: {fileID: 1707896034}
 --- !u!1 &394393679
 GameObject:
   m_ObjectHideFlags: 0
@@ -67628,6 +67630,7 @@ GameObject:
   - component: {fileID: 590066281}
   - component: {fileID: 590066283}
   - component: {fileID: 590066282}
+  - component: {fileID: 590066284}
   m_Layer: 5
   m_Name: UnHappy
   m_TagString: Untagged
@@ -67689,6 +67692,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590066280}
   m_CullTransparentMesh: 1
+--- !u!114 &590066284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590066280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab82d65ca6c9c12458c793589513cfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &590434103
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99052,6 +99067,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 868772983}
+  - component: {fileID: 868772984}
   m_Layer: 5
   m_Name: Status
   m_TagString: Untagged
@@ -99081,6 +99097,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &868772984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868772982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b872d8a212c489b41b67bd4e0ca5ede3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uIStatusPlayers:
+  - {fileID: 1232347956}
+  - {fileID: 983305965}
+  - {fileID: 590066284}
+  statusNow: 0
 --- !u!1001 &869424082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -112312,6 +112345,7 @@ GameObject:
   - component: {fileID: 983305962}
   - component: {fileID: 983305964}
   - component: {fileID: 983305963}
+  - component: {fileID: 983305965}
   m_Layer: 5
   m_Name: Happy
   m_TagString: Untagged
@@ -112373,6 +112407,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983305961}
   m_CullTransparentMesh: 1
+--- !u!114 &983305965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983305961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab82d65ca6c9c12458c793589513cfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &983704907
 GameObject:
   m_ObjectHideFlags: 0
@@ -132119,6 +132165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de35ea75cad5998438d198ab58f57259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreLicense: {fileID: 1372850599}
+  statusManager: {fileID: 868772984}
 --- !u!1001 &1151975206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -142163,6 +142211,7 @@ GameObject:
   - component: {fileID: 1232347953}
   - component: {fileID: 1232347955}
   - component: {fileID: 1232347954}
+  - component: {fileID: 1232347956}
   m_Layer: 5
   m_Name: Angry
   m_TagString: Untagged
@@ -142224,6 +142273,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232347952}
   m_CullTransparentMesh: 1
+--- !u!114 &1232347956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232347952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab82d65ca6c9c12458c793589513cfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1233116537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156047,7 +156108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshProUGUI: {fileID: 1372850597}
-  carMng: {fileID: 417423766}
 --- !u!1 &1373449031
 GameObject:
   m_ObjectHideFlags: 0
@@ -189100,7 +189160,7 @@ GameObject:
   - component: {fileID: 1707896033}
   - component: {fileID: 1707896034}
   m_Layer: 5
-  m_Name: Hide
+  m_Name: UIStarManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201489,7 +201549,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshProUGUI: {fileID: 1808272696}
-  carController: {fileID: 417423764}
 --- !u!1001 &1808549118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -225931,7 +225990,7 @@ GameObject:
   - component: {fileID: 2010231922}
   - component: {fileID: 2010231921}
   m_Layer: 5
-  m_Name: Button Setting
+  m_Name: Setting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -241093,6 +241152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e64f17d285d56bc4f8d4ad6325b0bc40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carVelocity: {fileID: 1808272698}
 --- !u!1001 &2138513363
 PrefabInstance:
   m_ObjectHideFlags: 0

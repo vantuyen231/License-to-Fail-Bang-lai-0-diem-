@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UITopR : MonoBehaviour
+public class UITopR : TuyenMonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] protected UICarVelocity carVelocity;
+
+    protected override void LoadComponents()
     {
-        
+        base.LoadComponents();
+        this.LoadUICarVelocity();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void LoadUICarVelocity()
     {
-        
+        if (carVelocity != null) return;
+        carVelocity = GetComponentInChildren<UICarVelocity>();
+        Debug.Log(transform.name + ": LoadUICarVelocity", gameObject);
+    }
+
+
+    public virtual void UpdateUITopR()
+    {
+        int velocity = GameManager.Instance.CurrentVelocity;
+        this.carVelocity.SetCarVelocity(velocity.ToString());
     }
 }

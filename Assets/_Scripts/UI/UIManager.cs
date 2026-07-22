@@ -69,5 +69,6 @@ public class UIManager : TuyenMonoBehaviour
         if(GameManager.Instance == null) return;
         this.topLeft.UpdateUITopLeft();
         this.topRight.UpdateUITopR();
+        this.topUI.UITopUpdate();
     }
 }

@@ -6,12 +6,13 @@ using UnityEngine;
 public class UIStarManager : TuyenMonoBehaviour
 {
     [SerializeField] protected List<StarPlayer> starPlayers = new List<StarPlayer>();
+    [SerializeField] protected int starCount = 0;
 
-    protected virtual void Update()
+    protected override void Start()
     {
+        base.Start();
         this.LoadStartStar();
     }
-
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -32,8 +33,12 @@ public class UIStarManager : TuyenMonoBehaviour
         this.starPlayers.AddRange(GetComponentsInChildren<StarPlayer>());
     }
 
-    protected virtual void AddStar()
+    public virtual void AddStar()
     {
+        if(starPlayers == null && starCount >4) return;
+
+        starPlayers[starCount].gameObject.SetActive(true);
+
 
     }
 }

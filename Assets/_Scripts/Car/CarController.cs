@@ -124,6 +124,10 @@ public class CarController : TuyenMonoBehaviour
         TurnCam();
         SimulatorRollBodyCar();
         CarSpeed();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Space!");
+        }
     }
 
     private void OnEnable()

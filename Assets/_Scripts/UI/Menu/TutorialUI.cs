@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialUI : MonoBehaviour
+public class TutorialUI : TuyenSingleton<TutorialUI>
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] protected bool isShow;
+
+    protected override void Start()
     {
-        
+        base.Start();
+        this.Hide();
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void Hide()
     {
-        
+        isShow = false;
+        gameObject.SetActive(isShow);
+    }
+
+    public virtual void Show()
+    {
+        isShow = true;
+        gameObject.SetActive(isShow);
     }
 }

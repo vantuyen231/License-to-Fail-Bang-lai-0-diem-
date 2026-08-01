@@ -6,7 +6,11 @@ public class MenuUI : TuyenSingleton<MenuUI>
 {
     [SerializeField] protected bool isShow = true;
 
-
+    protected override void Start()
+    {
+        base.Start();
+        this.Hide();
+    }
 
     public virtual void Hide()
     {

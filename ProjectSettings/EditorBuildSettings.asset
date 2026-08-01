@@ -4,6 +4,15 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Scenes/Start Game.unity
+    guid: f1d1d3104849470489afc48091685f14
+  - enabled: 1
+    path: Assets/_Scenes/Garage Scene.unity
+    guid: fc8d314157b58ef4e9d2c61b670be9c8
+  - enabled: 1
+    path: Assets/_Scenes/LV1.unity
+    guid: 4ff766bc2ca5e3e49854b367d906b2c3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3e00695d87055f842835952573d09a35, type: 3}

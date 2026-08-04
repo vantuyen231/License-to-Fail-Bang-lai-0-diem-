@@ -6,12 +6,17 @@ public class PreviewBase : TuyenMonoBehaviour
 { 
     [SerializeField] protected float currentSpin = 10f;
     [SerializeField] protected int indexCar = 0;
+    public int index;
 
     [SerializeField] protected List<CarPlayer> carPlayers = new List<CarPlayer>();
 
     protected override void Start()
     {
         this.ShowCar(indexCar);
+        if(ShopManager.Instance != null)
+        {
+            ShopManager.Instance.SetMaxCar(carPlayers.Count);
+        }
     }
     protected virtual void FixedUpdate()
     {
@@ -44,6 +49,17 @@ public class PreviewBase : TuyenMonoBehaviour
         }
     }
 
+    protected virtual void OnEnable()
+    {
+        ShopManager.OnCarChanged += this.UpdateDisplayedCar;
+    }
+
+    protected virtual void OnDisable()
+    {
+        ShopManager.OnCarChanged -= this.UpdateDisplayedCar;
+
+    }
+
     public virtual void ShowCar(int index)
     {
 
@@ -53,10 +69,12 @@ public class PreviewBase : TuyenMonoBehaviour
         }
     }
 
-    public virtual void NextCar()
+    public virtual void UpdateDisplayedCar()
     {
-        int index = GameManager.Instance.CurrentCar;
+        index = ShopManager.Instance.CurrentCar;
         ShowCar(index);
         Debug.Log("Base");
     }
+
+
 }

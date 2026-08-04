@@ -27,7 +27,7 @@ public class CarController : TuyenMonoBehaviour
     [Header("Drive Systems")]
     [SerializeField] protected float motorForce = 200f;
     [SerializeField] protected float steerWheel = 30f;
-    [SerializeField] protected float brakeForce = 1000f;
+    [SerializeField] protected float brakeForce = 50f;
     [SerializeField] protected float carVelocity;
     [SerializeField] protected int  playerSpeed = 0;
     public float CarVeclocity => carVelocity;

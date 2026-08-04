@@ -16,10 +16,7 @@ public class GameManager : TuyenSingleton<GameManager>
     public int CurrentVelocity => currentVelocity;
 
 
-    [Header("ShopCar")]
-    [SerializeField] protected int currentCar = 0;
 
-    public int CurrentCar => currentCar;
     protected override void Awake()
     {
         base.Awake();
@@ -38,9 +35,5 @@ public class GameManager : TuyenSingleton<GameManager>
         this.currentVelocity = velocity;
     }
 
-    public void NextCar()
-    {
-        currentCar++;
-        Debug.Log("nextCar");
-    }
+
 }

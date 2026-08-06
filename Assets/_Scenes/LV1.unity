@@ -48049,9 +48049,9 @@ MonoBehaviour:
   bodyCar: {fileID: 638340177}
   rollAngle: 5
   yawAngle: 3
-  motorForce: 200
-  steerWheel: 30
-  brakeForce: 50
+  motorForce: 100
+  steerWheel: 25
+  brakeForce: 40
   carVelocity: 0
   playerSpeed: 0
   lookAtPoint: {fileID: 991121236}
@@ -73642,6 +73642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53dd6651334ca145b93910662630d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carData: {fileID: 11400000, guid: 8f5aca10237c92849a978cf3ec598c26, type: 2}
 --- !u!1 &639888654
 GameObject:
   m_ObjectHideFlags: 0

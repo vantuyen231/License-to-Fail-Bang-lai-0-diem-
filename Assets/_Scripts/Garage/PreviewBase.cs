@@ -6,9 +6,12 @@ public class PreviewBase : TuyenMonoBehaviour
 { 
     [SerializeField] protected float currentSpin = 10f;
     [SerializeField] protected int indexCar = 0;
-    public int index;
+    [SerializeField] protected int index = 0;
+
+    [SerializeField] protected string nameC;
 
     [SerializeField] protected List<CarPlayer> carPlayers = new List<CarPlayer>();
+
 
     protected override void Start()
     {
@@ -21,6 +24,7 @@ public class PreviewBase : TuyenMonoBehaviour
     protected virtual void FixedUpdate()
     {
         this.SpinBase();
+        this.GetCurrentCarData();
     }
 
     protected override void LoadComponents()
@@ -66,6 +70,7 @@ public class PreviewBase : TuyenMonoBehaviour
         for(int i = 0;  i < carPlayers.Count; i++)
         {
             carPlayers[i].gameObject.SetActive(i == index);
+
         }
     }
 
@@ -77,4 +82,10 @@ public class PreviewBase : TuyenMonoBehaviour
     }
 
 
+    public virtual void GetCurrentCarData()
+    {
+        if (this.index < 0 || this.index >= this.carPlayers.Count) return;
+
+        nameC = this.carPlayers[this.index].CarP.nameCar;
+    }
 }

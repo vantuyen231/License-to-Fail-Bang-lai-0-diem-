@@ -38,4 +38,9 @@ public class ShopManager : TuyenSingleton<ShopManager>
         Debug.Log("prevCar");
         OnCarChanged?.Invoke();
     }
+
+    protected virtual void NameCar()
+    {
+
+    }
 }

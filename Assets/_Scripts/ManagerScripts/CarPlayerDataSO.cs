@@ -6,6 +6,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CarData", menuName = "GameData/CartableObjectData")]
 public class CarPlayerDataSO : ScriptableObject
 {
+    [Header("NameCar")]
+    public string nameCar;
+
     [Header("Roll Car")]
     public int rollAngel;
     public int yallAngel;

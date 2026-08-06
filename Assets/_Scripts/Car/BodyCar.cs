@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BodyCar : MonoBehaviour
+public class BodyCar : TuyenMonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] protected CarPlayerDataSO carData;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public CarPlayerDataSO CarData => carData;
 }

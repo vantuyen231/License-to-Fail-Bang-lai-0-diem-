@@ -60,6 +60,7 @@ public class CarController : TuyenMonoBehaviour
         this.LoadWheelTransform();
         this.LoadCentreMass();
         this.LoadBodyCar();
+        this.LoadStatusCar();
     }
 
     protected virtual void LoadRigidbody()
@@ -98,6 +99,19 @@ public class CarController : TuyenMonoBehaviour
     {
         if (this.bodyCar != null) return;
         this.bodyCar = GetComponentInChildren<BodyCar>();
+    }
+
+    protected virtual void LoadStatusCar()
+    {
+        if(bodyCar ==  null || this.bodyCar.CarData == null) return;
+
+        CarPlayerDataSO dataCar = this.bodyCar.CarData;
+
+        this.rollAngle = dataCar.rollAngel;
+        this.yawAngle = dataCar.yallAngel;
+        this.motorForce = dataCar.motorForce;
+        this.steerWheel = dataCar.steerWheel;
+        this.brakeForce = dataCar.brakeForce;
     }
     #endregion
 

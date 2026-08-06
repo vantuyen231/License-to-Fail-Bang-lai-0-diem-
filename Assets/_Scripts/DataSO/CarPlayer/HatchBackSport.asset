@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fab6a6a75a180742be5dc3334f1736a, type: 3}
   m_Name: HatchBackSport
   m_EditorClassIdentifier: 
+  nameCar: HatchBack Sport
   rollAngel: 5
   yallAngel: 3
   motorForce: 150

@@ -15,16 +15,15 @@ public class PreviewBase : TuyenMonoBehaviour
 
     protected override void Start()
     {
-        this.ShowCar(indexCar);
         if(ShopManager.Instance != null)
         {
             ShopManager.Instance.SetMaxCar(carPlayers.Count);
         }
+        this.UpdateDisplayedCar();
     }
     protected virtual void FixedUpdate()
     {
         this.SpinBase();
-        this.GetCurrentCarData();
     }
 
     protected override void LoadComponents()
@@ -56,6 +55,7 @@ public class PreviewBase : TuyenMonoBehaviour
     protected virtual void OnEnable()
     {
         ShopManager.OnCarChanged += this.UpdateDisplayedCar;
+
     }
 
     protected virtual void OnDisable()
@@ -78,7 +78,8 @@ public class PreviewBase : TuyenMonoBehaviour
     {
         index = ShopManager.Instance.CurrentCar;
         ShowCar(index);
-        Debug.Log("Base");
+        //Debug.Log("Base");
+        this.GetCurrentCarData();
     }
 
 
@@ -87,5 +88,7 @@ public class PreviewBase : TuyenMonoBehaviour
         if (this.index < 0 || this.index >= this.carPlayers.Count) return;
 
         nameC = this.carPlayers[this.index].CarP.nameCar;
+        ShopManager.Instance.SetNameCar(nameC);
+
     }
 }

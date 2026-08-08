@@ -9,6 +9,9 @@ public class CarPlayerDataSO : ScriptableObject
     [Header("NameCar")]
     public string nameCar;
 
+    [Header("Cost")]
+    public int costCar;
+
     [Header("Roll Car")]
     public int rollAngel;
     public int yallAngel;

@@ -8,11 +8,11 @@ public class ShopManager : TuyenSingleton<ShopManager>
     [Header("ShopCar")]
     [SerializeField] protected int maxCar = 0;
     [SerializeField] protected int currentCar = 0;
-    [SerializeField] protected string nameCar;
+    [SerializeField] protected CarPlayerDataSO carStats;
     public static Action OnCarChanged;
 
     public int CurrentCar => currentCar;
-    public string NameCar => nameCar;
+    public CarPlayerDataSO CarStatsTest => carStats;
 
     public void SetMaxCar(int max)
     {
@@ -41,8 +41,10 @@ public class ShopManager : TuyenSingleton<ShopManager>
         OnCarChanged?.Invoke();
     }
 
-    public virtual void SetNameCar(string car)
+
+    internal void CarStats(CarPlayerDataSO statsCar)
     {
-        this.nameCar = car;
+        this.carStats = statsCar;
+
     }
 }

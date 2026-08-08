@@ -8,7 +8,7 @@ public class PreviewBase : TuyenMonoBehaviour
     [SerializeField] protected int indexCar = 0;
     [SerializeField] protected int index = 0;
 
-    [SerializeField] protected string nameC;
+    [SerializeField] protected CarPlayerDataSO statsCar;
 
     [SerializeField] protected List<CarPlayer> carPlayers = new List<CarPlayer>();
 
@@ -79,16 +79,20 @@ public class PreviewBase : TuyenMonoBehaviour
         index = ShopManager.Instance.CurrentCar;
         ShowCar(index);
         //Debug.Log("Base");
-        this.GetCurrentCarData();
+        statsCar = this.GetCurrentCarData();
+        if (ShopManager.Instance != null)
+        {
+            ShopManager.Instance.CarStats(statsCar);
+        }
     }
 
 
-    public virtual void GetCurrentCarData()
+    public virtual CarPlayerDataSO GetCurrentCarData()
     {
-        if (this.index < 0 || this.index >= this.carPlayers.Count) return;
-
-        nameC = this.carPlayers[this.index].CarP.nameCar;
-        ShopManager.Instance.SetNameCar(nameC);
-
+        if (this.index < 0 || this.index >= this.carPlayers.Count) return null;
+        if (this.carPlayers[this.index] == null) return null;
+        return this.carPlayers[this.index].CarP;
+        
+        
     }
 }

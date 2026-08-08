@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Truck
   m_EditorClassIdentifier: 
   nameCar: Truck
+  costCar: 450
   rollAngel: 5
   yallAngel: 3
   motorForce: 200

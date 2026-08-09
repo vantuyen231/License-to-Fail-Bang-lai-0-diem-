@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Sedan
   m_EditorClassIdentifier: 
   nameCar: Sedan
+  costCar: 0
   rollAngel: 5
   yallAngel: 3
   motorForce: 100
   steerWheel: 25
   brakeForce: 40
+  isBuy: 1
+  isUse: 0

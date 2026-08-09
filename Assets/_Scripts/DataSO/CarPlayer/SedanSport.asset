@@ -19,3 +19,5 @@ MonoBehaviour:
   motorForce: 150
   steerWheel: 30
   brakeForce: 50
+  isBuy: 1
+  isUse: 0

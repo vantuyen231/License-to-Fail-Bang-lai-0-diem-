@@ -174,7 +174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &33944429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +191,7 @@ MonoBehaviour:
   currentStars: 0
   currentStatus: 0
   currentVelocity: 0
+  carPlayerData: {fileID: 0}
 --- !u!4 &33944430
 Transform:
   m_ObjectHideFlags: 0
@@ -955,7 +956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 212829959}
-  text: {fileID: 1343342486}
+  textBtn: {fileID: 0}
 --- !u!1001 &254284013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2172,7 +2173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 483416024}
-  text: {fileID: 0}
+  textBtn: {fileID: 0}
 --- !u!114 &483416024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2655,6 +2656,7 @@ MonoBehaviour:
   maxCar: 0
   currentCar: 0
   carStats: {fileID: 0}
+  isUse: 1
 --- !u!4 &567455718
 Transform:
   m_ObjectHideFlags: 0
@@ -3836,7 +3838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 923560257}
-  text: {fileID: 514223304}
+  textBtn: {fileID: 514223304}
   isShow: 0
 --- !u!1001 &928286704
 PrefabInstance:
@@ -4871,7 +4873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 0}
-  text: {fileID: 0}
+  textBtn: {fileID: 0}
 --- !u!114 &1321944842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5409,7 +5411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1362217859}
-  text: {fileID: 0}
+  textBtn: {fileID: 0}
 --- !u!114 &1362217859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5627,7 +5629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1411060770}
-  text: {fileID: 1197699133}
+  textBtn: {fileID: 0}
 --- !u!1 &1440533892
 GameObject:
   m_ObjectHideFlags: 0
@@ -8541,7 +8543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 2007230413}
-  text: {fileID: 1814024681}
+  textBtn: {fileID: 1814024681}
   nextScene: 2
 --- !u!1 &2019106484
 GameObject:
@@ -8596,7 +8598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 2019106487}
-  text: {fileID: 0}
+  textBtn: {fileID: 0}
 --- !u!114 &2019106487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8915,7 +8917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 2084807132}
-  text: {fileID: 0}
+  textBtn: {fileID: 0}
 --- !u!114 &2084807132
 MonoBehaviour:
   m_ObjectHideFlags: 0

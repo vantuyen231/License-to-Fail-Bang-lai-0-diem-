@@ -9,6 +9,7 @@ public class ShopManager : TuyenSingleton<ShopManager>
     [SerializeField] protected int maxCar = 0;
     [SerializeField] protected int currentCar = 0;
     [SerializeField] protected CarPlayerDataSO carStats;
+    [SerializeField] protected bool isUse;
     public static Action OnCarChanged;
 
     public int CurrentCar => currentCar;
@@ -46,5 +47,31 @@ public class ShopManager : TuyenSingleton<ShopManager>
     {
         this.carStats = statsCar;
 
+    }
+
+    public virtual void SetUseCar()
+    {
+        this.SetIsUseCar();
+        if (isUse)
+        {
+            GameManager.Instance.GetUseCar(carStats);
+            Debug.Log("Set Done");
+        }
+        else
+        {
+            Debug.Log("Can't Select");
+        }
+    }
+
+    public virtual void SetIsUseCar()
+    {
+        if(carStats.isBuy == true)
+        {
+            isUse = true;
+        }
+        else
+        {
+            isUse = false;
+        }
     }
 }

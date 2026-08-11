@@ -14,5 +14,6 @@ public class PlayGaraBtn : ButtonAbstract
     protected virtual void PlayGame()
     {
         SceneManager.LoadScene(this.nextScene);
+        ShopManager.Instance.SetUseCar();
     }
 }

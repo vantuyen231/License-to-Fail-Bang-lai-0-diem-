@@ -10,10 +10,14 @@ public class GameManager : TuyenSingleton<GameManager>
     [SerializeField] protected int currentStatus = 0;
     [SerializeField] private int currentVelocity =0;
 
+    [SerializeField] protected CarPlayerDataSO carPlayerData;
+
     public int CurrentScore => currentScore;
     public int CurrentStars => currentStars;
     public int CurrentStatus => currentStatus;
     public int CurrentVelocity => currentVelocity;
+
+    public CarPlayerDataSO CarPlayerData => carPlayerData;
 
 
 
@@ -35,5 +39,8 @@ public class GameManager : TuyenSingleton<GameManager>
         this.currentVelocity = velocity;
     }
 
-
+    public void GetUseCar(CarPlayerDataSO car)
+    {
+        this.carPlayerData = car;
+    }
 }

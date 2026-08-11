@@ -23,5 +23,4 @@ public class CarPlayerDataSO : ScriptableObject
 
     [Header("Player")]
     public bool isBuy;
-    public bool isUse;
 }

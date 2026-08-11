@@ -6,12 +6,15 @@ using UnityEngine;
 public class CarManager : TuyenMonoBehaviour
 {
     [SerializeField] protected CarController controller;
+    [SerializeField] protected CamLookAtPoint lookAtPoint;
     [SerializeField] protected FrontBumpCtrl frontBumpCtrl;
     [SerializeField] protected MapTrigger mapTrigger;
     [SerializeField] protected NPCSpawnTrigger spawnTrigger;
     [SerializeField] protected PlayerScore playerScore;
 
     public PlayerScore PlayerScore => playerScore;
+    public CamLookAtPoint LookAtPoint => lookAtPoint;
+
 
     protected override void LoadComponents()
     {
@@ -21,8 +24,16 @@ public class CarManager : TuyenMonoBehaviour
         this.LoadMapTrigger();
         this.LoadNPCSpawnTrigger();
         this.LoadPlayerScore();
+        this.LoadCamLookAtPoint();
     }
 
+
+    private void LoadCamLookAtPoint()
+    {
+        if (lookAtPoint != null) return;
+        lookAtPoint = GetComponentInChildren<CamLookAtPoint>();
+        Debug.Log(transform.name + ": LoadCamLookAtPoint", gameObject);
+    }
     private void LoadNPCSpawnTrigger()
     {
         if(spawnTrigger != null) return;

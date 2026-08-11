@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 9946354}
+  textBtn: {fileID: 0}
 --- !u!114 &9946354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,6 +715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 231938959}
+  textBtn: {fileID: 0}
 --- !u!114 &231938959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,6 +1067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 328234558}
+  textBtn: {fileID: 0}
 --- !u!1 &368561136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,6 +1203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 368561138}
+  textBtn: {fileID: 0}
   sceneName: 1
 --- !u!1 &459224487
 GameObject:
@@ -1455,6 +1459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 704583578}
+  textBtn: {fileID: 0}
 --- !u!114 &704583578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1958,6 +1963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 0}
+  textBtn: {fileID: 0}
 --- !u!114 &1038271175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2778,6 +2784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 0}
+  textBtn: {fileID: 0}
 --- !u!1 &1368862610
 GameObject:
   m_ObjectHideFlags: 0
@@ -3526,6 +3533,7 @@ MonoBehaviour:
   currentStars: 0
   currentStatus: 0
   currentVelocity: 0
+  carPlayerData: {fileID: 0}
 --- !u!4 &1779293218
 Transform:
   m_ObjectHideFlags: 0
@@ -3797,6 +3805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1888418020}
+  textBtn: {fileID: 0}
 --- !u!1 &1904252838
 GameObject:
   m_ObjectHideFlags: 0

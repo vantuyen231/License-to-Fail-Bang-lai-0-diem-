@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fab6a6a75a180742be5dc3334f1736a, type: 3}
   m_Name: SedanSport
   m_EditorClassIdentifier: 
+  carPrefabs: {fileID: 3123935450046293520, guid: de6c0ba3b1507d9409ff0bae9a95232e, type: 3}
   nameCar: Sedan R
   costCar: 50
   rollAngel: 5
@@ -20,4 +21,3 @@ MonoBehaviour:
   steerWheel: 30
   brakeForce: 50
   isBuy: 1
-  isUse: 0

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fab6a6a75a180742be5dc3334f1736a, type: 3}
   m_Name: Van
   m_EditorClassIdentifier: 
+  carPrefabs: {fileID: 5131603877567866569, guid: a397fac4c21280a4d92f14b36049c32f, type: 3}
   nameCar: Van
   costCar: 200
   rollAngel: 5
@@ -19,3 +20,4 @@ MonoBehaviour:
   motorForce: 180
   steerWheel: 20
   brakeForce: 75
+  isBuy: 0

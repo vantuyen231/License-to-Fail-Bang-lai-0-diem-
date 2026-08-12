@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
@@ -8,6 +9,8 @@ using UnityEngine.UIElements;
 
 public class CarController : TuyenMonoBehaviour
 {
+    [SerializeField] protected CarManager carManager;
+
     [Header("WheelCollider")]
     [SerializeField] protected List<WheelCollider> wheelCollidersCtrl = new List<WheelCollider>();
     [SerializeField] protected List<WheelTransformCtrl> wheelTransformsCtrl = new List<WheelTransformCtrl>();
@@ -48,7 +51,10 @@ public class CarController : TuyenMonoBehaviour
     [SerializeField] protected float moveInput = 0;
     [SerializeField] protected float steerInput = 0;
 
-
+    protected override void Start()
+    {
+        base.Start();
+    }
 
     #region Loand Components
     protected override void LoadComponents()
@@ -60,6 +66,7 @@ public class CarController : TuyenMonoBehaviour
         this.LoadWheelTransform();
         this.LoadCentreMass();
         this.LoadBodyCar();
+        this.LoadCarManager();
         this.LoadStatusCar();
     }
 
@@ -101,11 +108,18 @@ public class CarController : TuyenMonoBehaviour
         this.bodyCar = GetComponentInChildren<BodyCar>();
     }
 
+    protected virtual void LoadCarManager()
+    {
+        if (carManager != null) return;
+        carManager = GetComponent<CarManager>();
+        Debug.Log(transform.name + ": LoadCarManager", gameObject);
+    }
+
     protected virtual void LoadStatusCar()
     {
         if(bodyCar ==  null || this.bodyCar.CarData == null) return;
 
-        CarPlayerDataSO dataCar = this.bodyCar.CarData;
+        CarPlayerDataSO dataCar = this.carManager.PlayerSpawner.PlayerDataSO;
 
         this.rollAngle = dataCar.rollAngel;
         this.yawAngle = dataCar.yallAngel;

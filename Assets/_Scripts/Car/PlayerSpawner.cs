@@ -9,6 +9,8 @@ public class PlayerSpawner : TuyenMonoBehaviour
     [SerializeField] protected CarPlayerDataSO playerData;
     [SerializeField] protected CinemachineVirtualCamera virtualCamera;
     [SerializeField] protected CarManager carManager;
+
+    public CarPlayerDataSO PlayerDataSO => playerData;
     
     protected override void Start()
     {
@@ -50,5 +52,10 @@ public class PlayerSpawner : TuyenMonoBehaviour
         virtualCamera.LookAt = carManager.LookAtPoint.transform;
         virtualCamera.Follow = carManager.transform;
         Debug.Log("Set Done");
+    }
+
+    protected virtual void SpawnerCar()
+    {
+        
     }
 }

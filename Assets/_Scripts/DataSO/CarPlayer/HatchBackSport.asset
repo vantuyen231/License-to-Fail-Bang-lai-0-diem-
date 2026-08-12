@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fab6a6a75a180742be5dc3334f1736a, type: 3}
   m_Name: HatchBackSport
   m_EditorClassIdentifier: 
+  carPrefabs: {fileID: 2904045235980039990, guid: 06d04451ac9a62e4785a8e312c88bd20, type: 3}
   nameCar: Hatch R
   costCar: 100
   rollAngel: 5
@@ -19,3 +20,4 @@ MonoBehaviour:
   motorForce: 150
   steerWheel: 35
   brakeForce: 50
+  isBuy: 0

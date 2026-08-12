@@ -11,7 +11,7 @@ public class TuyenMonoBehaviour : MonoBehaviour
 
     protected virtual void Start()
     {
-
+        this.LoadComponents();
     }
     protected virtual void Reset()
     {

@@ -6,6 +6,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CarData", menuName = "GameData/CartableObjectData")]
 public class CarPlayerDataSO : ScriptableObject
 {
+    [Header("Prefabs")]
+    [SerializeField] protected GameObject carPrefabs;
+
     [Header("NameCar")]
     public string nameCar;
 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fab6a6a75a180742be5dc3334f1736a, type: 3}
   m_Name: Race
   m_EditorClassIdentifier: 
+  carPrefabs: {fileID: 993548706635770169, guid: a8a6afe748cb9324db560aeae44bd9b8, type: 3}
   nameCar: Race
   costCar: 1000
   rollAngel: 5
@@ -19,3 +20,4 @@ MonoBehaviour:
   motorForce: 300
   steerWheel: 45
   brakeForce: 200
+  isBuy: 0

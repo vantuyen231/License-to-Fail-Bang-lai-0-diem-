@@ -20,6 +20,7 @@ public class CarManager : TuyenMonoBehaviour
     protected override void Start()
     {
         base.Start();
+        this.LoadComponents();
     }
 
     protected override void LoadComponents()

@@ -665,6 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b2e580813059345b23497667e2d4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpawner: {fileID: 0}
   controller: {fileID: 6042145043783084671}
   lookAtPoint: {fileID: 5073251215177661959}
   frontBumpCtrl: {fileID: 2038436108262162891}
@@ -683,6 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8201fa652b76f2c429d6088474560003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carManager: {fileID: 2663235676014978772}
   wheelCollidersCtrl:
   - {fileID: 8956739904063785668}
   - {fileID: 3658311964504015676}
@@ -698,9 +700,9 @@ MonoBehaviour:
   bodyCar: {fileID: 2558358472710772085}
   rollAngle: 5
   yawAngle: 3
-  motorForce: 100
-  steerWheel: 25
-  brakeForce: 40
+  motorForce: 200
+  steerWheel: 30
+  brakeForce: 50
   carVelocity: 0
   playerSpeed: 0
   lookAtPoint: {fileID: 4171415508468613031}

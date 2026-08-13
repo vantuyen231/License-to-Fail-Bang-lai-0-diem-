@@ -7,7 +7,7 @@ using UnityEngine;
 public class CarPlayerDataSO : ScriptableObject
 {
     [Header("Prefabs")]
-    [SerializeField] protected GameObject carPrefabs;
+    public GameObject carPrefabs;
 
     [Header("NameCar")]
     public string nameCar;

@@ -15,7 +15,8 @@ public class PlayerSpawner : TuyenMonoBehaviour
     protected override void Start()
     {
         GetCarData();
-        this.SetCamera();
+        this.LoadComponents();
+        this.SpawnerCar();
     }
 
     protected override void LoadComponents()
@@ -56,6 +57,11 @@ public class PlayerSpawner : TuyenMonoBehaviour
 
     protected virtual void SpawnerCar()
     {
-        
+        GameObject spawnCar = Instantiate(playerData.carPrefabs, transform.position, transform.rotation);
+        spawnCar.transform.parent = transform;
+        carManager = GetComponentInChildren<CarManager>();
+
+        this.SetCamera();
+
     }
 }

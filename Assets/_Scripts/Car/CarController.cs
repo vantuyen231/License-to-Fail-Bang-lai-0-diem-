@@ -54,6 +54,7 @@ public class CarController : TuyenMonoBehaviour
     protected override void Start()
     {
         base.Start();
+        this.LoadComponents();
     }
 
     #region Loand Components

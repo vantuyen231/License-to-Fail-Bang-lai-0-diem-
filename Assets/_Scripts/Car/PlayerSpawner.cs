@@ -60,7 +60,7 @@ public class PlayerSpawner : TuyenMonoBehaviour
         GameObject spawnCar = Instantiate(playerData.carPrefabs, transform.position, transform.rotation);
         spawnCar.transform.parent = transform;
         carManager = GetComponentInChildren<CarManager>();
-
+        carManager.Controller.LoadStatusCar(playerData);
         this.SetCamera();
 
     }

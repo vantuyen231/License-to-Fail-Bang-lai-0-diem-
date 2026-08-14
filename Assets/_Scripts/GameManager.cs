@@ -6,13 +6,16 @@ public class GameManager : TuyenSingleton<GameManager>
 {
     [Header("Player Status")]
     [SerializeField] protected int currentScore = 12;
+    [SerializeField] protected int scoreMission = 0;
     [SerializeField] protected int currentStars = 0;
     [SerializeField] protected int currentStatus = 0;
     [SerializeField] private int currentVelocity =0;
+    [SerializeField] protected int coin = 0;
 
     [SerializeField] protected CarPlayerDataSO carPlayerData;
 
     public int CurrentScore => currentScore;
+    public int ScoreMission => scoreMission;
     public int CurrentStars => currentStars;
     public int CurrentStatus => currentStatus;
     public int CurrentVelocity => currentVelocity;
@@ -42,5 +45,15 @@ public class GameManager : TuyenSingleton<GameManager>
     public void GetUseCar(CarPlayerDataSO car)
     {
         this.carPlayerData = car;
+    }
+
+    public void UpdateScorePlayer(int scorePlyer)
+    {
+        this.scoreMission = scorePlyer;
+    }
+
+    protected void CoinPlayer()
+    {
+
     }
 }

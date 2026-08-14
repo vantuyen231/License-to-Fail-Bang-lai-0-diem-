@@ -16,6 +16,7 @@ public class CarManager : TuyenMonoBehaviour
     public PlayerScore PlayerScore => playerScore;
     public CamLookAtPoint LookAtPoint => lookAtPoint;
     public PlayerSpawner PlayerSpawner => playerSpawner;
+    public CarController Controller => controller;
 
     protected override void Start()
     {

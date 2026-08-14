@@ -6,6 +6,8 @@ public class PlayerScore : TuyenMonoBehaviour
 {
     [SerializeField] protected int maxScore = 12;
     [SerializeField] protected int currentScore;
+    [SerializeField] protected int scoreMission = 0;
+    [SerializeField] protected int currentScoreMission;
     [SerializeField] protected int star;
     [SerializeField] protected int status;
     [Header("Type of collision")]

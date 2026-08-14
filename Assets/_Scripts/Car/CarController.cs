@@ -68,7 +68,7 @@ public class CarController : TuyenMonoBehaviour
         this.LoadCentreMass();
         this.LoadBodyCar();
         this.LoadCarManager();
-        this.LoadStatusCar();
+        //this.LoadStatusCar();
     }
 
     protected virtual void LoadRigidbody()
@@ -116,11 +116,9 @@ public class CarController : TuyenMonoBehaviour
         Debug.Log(transform.name + ": LoadCarManager", gameObject);
     }
 
-    protected virtual void LoadStatusCar()
+    public virtual void LoadStatusCar(CarPlayerDataSO dataCar)
     {
-        if(bodyCar ==  null || this.bodyCar.CarData == null) return;
-
-        CarPlayerDataSO dataCar = this.carManager.PlayerSpawner.PlayerDataSO;
+        if(dataCar == null) return;
 
         this.rollAngle = dataCar.rollAngel;
         this.yawAngle = dataCar.yallAngel;
@@ -128,6 +126,8 @@ public class CarController : TuyenMonoBehaviour
         this.steerWheel = dataCar.steerWheel;
         this.brakeForce = dataCar.brakeForce;
     }
+
+
     #endregion
 
     #region inputSystem, Update

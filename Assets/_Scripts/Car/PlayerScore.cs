@@ -1,34 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class PlayerScore : TuyenMonoBehaviour
 {
-    [SerializeField] protected int maxScore = 12;
-    [SerializeField] protected int currentScore;
+    [Header("Status License")]
+    [SerializeField] protected int maxLicense = 12;
+    [SerializeField] protected int currentLicense;
     [SerializeField] protected int scoreMission = 0;
     [SerializeField] protected int currentScoreMission;
+
+    [Header("Status Wanted")]
     [SerializeField] protected int star;
     [SerializeField] protected int status;
+
+    [Header("Mission Tracking")]
+    [SerializeField] protected int baseMissionReward = 100;
+    [SerializeField] protected int totalSessionCoins = 0;
+    [SerializeField] protected int completedMissionsCount = 0;
+
     [Header("Type of collision")]
     [SerializeField] protected int pedestrianCollision = 0;
     [SerializeField] protected int vehicleCollision = 0;
-        
+    
     [SerializeField] protected int currentHitCarNPC = 0;
     [SerializeField] protected int upStarHitCar = 2;
 
-    public int CurrentScore => currentScore;
+    public int CurrentScore => currentLicense;
 
     public int Star => star;
 
     protected override void Start()
     {
-        currentScore = maxScore;
+        currentLicense = maxLicense;
 
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.UpdateGameplayData(currentScore, star, status);
+            GameManager.Instance.UpdateGameplayData(currentLicense, star, status);
         }
+    }
+
+    //TEST Score
+    protected virtual void Update()
+    {
+        this.ComputeEarnedCoins();
     }
 
 
@@ -44,29 +60,29 @@ public class PlayerScore : TuyenMonoBehaviour
                 this.HandleCarNPCHit(scoreReward);
                 break;
         }
-        if (currentScore <= 0) this.currentScore = 0;
+        if (currentLicense <= 0) this.currentLicense = 0;
         this.StatusPlayer();
         if (star > 5) this.star = 5;
 
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.UpdateGameplayData(currentScore, star, status);
+            GameManager.Instance.UpdateGameplayData(currentLicense, star, status);
         }
     }
 
     protected virtual void HandleNPCHit(int scoreReward)
     {
         pedestrianCollision += 1;
-        currentScore -= scoreReward;
-        if (currentScore > 0) return;
+        currentLicense -= scoreReward;
+        if (currentLicense > 0) return;
         star = star + 1;
     }
 
     protected virtual void HandleCarNPCHit(int scoreReward)
     {
         vehicleCollision += 1;
-        currentScore -= scoreReward;
-        if (currentScore > 0) return;
+        currentLicense -= scoreReward;
+        if (currentLicense > 0) return;
         currentHitCarNPC++;
         if(currentHitCarNPC >= upStarHitCar)
         {
@@ -83,9 +99,21 @@ public class PlayerScore : TuyenMonoBehaviour
 
     protected virtual void StatusPlayer()
     {
-        if(currentScore > 8) status = 0;
-        if(currentScore > 4 && currentScore <= 8) status = 1;
-        if (currentScore <= 4) status = 2;
+        if(currentLicense > 8) status = 0;
+        if(currentLicense > 4 && currentLicense <= 8) status = 1;
+        if (currentLicense <= 4) status = 2;
         
+    }
+
+    public virtual void DestinationHit()
+    {
+        Debug.Log("Hit");
+       
+    }
+
+    protected virtual void ComputeEarnedCoins()
+    {
+        float licenseMultiplier = (float)currentLicense / maxLicense;
+        float earned = this.baseMissionReward * licenseMultiplier;
     }
 }

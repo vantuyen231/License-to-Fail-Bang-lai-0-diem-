@@ -4,17 +4,36 @@ using UnityEngine;
 
 public class DestinationPoint : TuyenMonoBehaviour
 {
-    [SerializeField] protected int score = 100; 
+    [SerializeField] protected bool isCompleted = false;
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        this.DoneDestination();
+        if(isCompleted) return;
+        BodyCar bodyCar = other.GetComponent<BodyCar>();
+        if (bodyCar == null) return;
+
+        CarManager carManager = bodyCar.GetComponentInParent<CarManager>();
+        if (carManager == null) return;
+
+        PlayerScore playerScore = carManager.GetComponentInChildren<PlayerScore>();
+        if (playerScore != null)
+        {
+            this.isCompleted = true;
+
+            playerScore.DestinationHit();
+
+            this.DoneDestination();
+        }
     }
 
     protected virtual void DoneDestination()
     {
-        //GameManager.Instance.ScoreMission = score;
         Debug.Log("Done Destination");
-        GameManager.Instance.UpdateScorePlayer(score);
+
+    }
+
+    protected virtual void OnEnable()
+    {
+        isCompleted = false;
     }
 }

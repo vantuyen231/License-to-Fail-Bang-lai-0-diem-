@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class CloseMenuBtn : ButtonAbstract
 {
-
-
-    public virtual void CloseMenu()
-    {
-        MenuUI.Instance.Hide();
-    }
     protected override void OnClick()
     {
         this.CloseMenu();
     }
+
+    public virtual void CloseMenu()
+    {
+        MenuUI.Instance.Hide();
+        GameManager.Instance.ContinueGame();
+    }
+
 }

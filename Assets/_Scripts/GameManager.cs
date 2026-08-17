@@ -12,6 +12,8 @@ public class GameManager : TuyenSingleton<GameManager>
     [SerializeField] private int currentVelocity =0;
     [SerializeField] protected int coin = 0;
 
+    [SerializeField] protected bool isPauseGame = false;
+
     [SerializeField] protected CarPlayerDataSO carPlayerData;
 
     public int CurrentScore => currentScore;
@@ -55,5 +57,17 @@ public class GameManager : TuyenSingleton<GameManager>
     protected void CoinPlayer()
     {
 
+    }
+
+    public void PauseGame()
+    {
+        isPauseGame = true;
+        Time.timeScale = 0f;
+    }
+
+    public void ContinueGame()
+    {
+        isPauseGame = false;
+        Time.timeScale = 1f;
     }
 }

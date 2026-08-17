@@ -18,13 +18,14 @@ public class PlayerScore : TuyenMonoBehaviour
     [Header("Mission Tracking")]
     [SerializeField] protected int baseMissionReward = 100;
     [SerializeField] protected int totalSessionCoins = 0;
+    [SerializeField] protected int sumSessionCoins = 0;
     [SerializeField] protected int completedMissionsCount = 0;
 
     [Header("Type of collision")]
     [SerializeField] protected int pedestrianCollision = 0;
     [SerializeField] protected int vehicleCollision = 0;
     
-    [SerializeField] protected int currentHitCarNPC = 0;
+    [SerializeField] protected int currentHitCar = 0;
     [SerializeField] protected int upStarHitCar = 2;
 
     public int CurrentScore => currentLicense;
@@ -41,11 +42,7 @@ public class PlayerScore : TuyenMonoBehaviour
         }
     }
 
-    //TEST Score
-    protected virtual void Update()
-    {
-        this.ComputeEarnedCoins();
-    }
+
 
 
     public virtual void AddScore(HitObjectType type, int scoreReward, string nameHit)
@@ -83,11 +80,11 @@ public class PlayerScore : TuyenMonoBehaviour
         vehicleCollision += 1;
         currentLicense -= scoreReward;
         if (currentLicense > 0) return;
-        currentHitCarNPC++;
-        if(currentHitCarNPC >= upStarHitCar)
+        currentHitCar++;
+        if(currentHitCar >= upStarHitCar)
         {
             star++;
-            currentHitCarNPC = 0;
+            currentHitCar = 0;
         }
     }
 
@@ -108,6 +105,9 @@ public class PlayerScore : TuyenMonoBehaviour
     public virtual void DestinationHit()
     {
         Debug.Log("Hit");
+        this.ComputeEarnedCoins();
+
+
        
     }
 
@@ -115,5 +115,29 @@ public class PlayerScore : TuyenMonoBehaviour
     {
         float licenseMultiplier = (float)currentLicense / maxLicense;
         float earned = this.baseMissionReward * licenseMultiplier;
+
+        float safeBonus = this.GetBonusRate(vehicleCollision, pedestrianCollision);
+        float bonusCoins = baseMissionReward * safeBonus;
+
+
+        totalSessionCoins = Mathf.RoundToInt(earned +  bonusCoins);
+        Debug.Log("Earned: " + earned + ", sefaBonusPercent: " + safeBonus + ", BonusCoins: " + bonusCoins);
+        sumSessionCoins = sumSessionCoins + totalSessionCoins;
+    }
+
+    protected virtual float GetBonusRate(int hitCar, int hitNPC)
+    {
+
+        if (hitCar <= 2  || hitNPC <= 1) return 0.50f;
+        if (hitCar <= 4 && hitNPC <= 2) return 0.25f;
+        if (hitCar <= 8 && hitNPC <= 2) return 0.05f;
+        return 0.00f;
+    }
+
+    protected virtual void ResetStatusPlay()
+    {
+        pedestrianCollision = 0;
+        vehicleCollision = 0;
+        currentHitCar = 0;
     }
 }

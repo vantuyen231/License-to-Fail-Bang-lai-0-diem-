@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class CloseTutorialBtn : ButtonAbstract
 {
-    protected virtual void CloseTutorial()
-    {
-        TutorialUI.Instance.Hide();
-    }
-
     protected override void OnClick()
     {
         this.CloseTutorial();
     }
+    protected virtual void CloseTutorial()
+    {
+        TutorialUI.Instance.Hide();
+        GameManager.Instance.ContinueGame();
+    }
+
+
 }

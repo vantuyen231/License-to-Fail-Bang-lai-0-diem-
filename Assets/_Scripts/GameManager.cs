@@ -16,6 +16,7 @@ public class GameManager : TuyenSingleton<GameManager>
 
     [SerializeField] protected CarPlayerDataSO carPlayerData;
 
+    #region (Public Value)
     public int CurrentScore => currentScore;
     public int ScoreMission => scoreMission;
     public int CurrentStars => currentStars;
@@ -23,7 +24,7 @@ public class GameManager : TuyenSingleton<GameManager>
     public int CurrentVelocity => currentVelocity;
 
     public CarPlayerDataSO CarPlayerData => carPlayerData;
-
+    #endregion
 
 
     protected override void Awake()
@@ -32,6 +33,7 @@ public class GameManager : TuyenSingleton<GameManager>
         DontDestroyOnLoad(gameObject);
     }
 
+    #region(UI gameplay Update)
     public void UpdateGameplayData(int score, int stars, int status)
     {
         this.currentScore = score;
@@ -44,21 +46,27 @@ public class GameManager : TuyenSingleton<GameManager>
         this.currentVelocity = velocity;
     }
 
+    public void UpdateScorePlayer(int scorePlyer)
+    {
+        this.scoreMission = scorePlyer;
+    }
+    #endregion
+
+
+
     public void GetUseCar(CarPlayerDataSO car)
     {
         this.carPlayerData = car;
     }
 
-    public void UpdateScorePlayer(int scorePlyer)
-    {
-        this.scoreMission = scorePlyer;
-    }
+
 
     protected void CoinPlayer()
     {
 
     }
 
+    #region (PauseGame);
     public void PauseGame()
     {
         isPauseGame = true;
@@ -70,4 +78,7 @@ public class GameManager : TuyenSingleton<GameManager>
         isPauseGame = false;
         Time.timeScale = 1f;
     }
+    #endregion
+
+
 }

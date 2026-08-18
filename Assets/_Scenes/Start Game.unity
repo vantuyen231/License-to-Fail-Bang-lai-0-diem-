@@ -3665,9 +3665,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScore: 12
+  scoreMission: 0
   currentStars: 0
   currentStatus: 0
   currentVelocity: 0
+  coin: 0
+  isPauseGame: 0
   carPlayerData: {fileID: 0}
 --- !u!4 &1779293218
 Transform:

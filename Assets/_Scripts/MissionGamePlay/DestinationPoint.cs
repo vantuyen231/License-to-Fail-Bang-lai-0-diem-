@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestinationPoint : TuyenMonoBehaviour
+public class DestinationPoint : PoolObj
 {
     [SerializeField] protected bool isCompleted = false;
 
@@ -35,5 +35,10 @@ public class DestinationPoint : TuyenMonoBehaviour
     protected virtual void OnEnable()
     {
         isCompleted = false;
+    }
+
+    public override string GetName()
+    {
+        throw new System.NotImplementedException();
     }
 }

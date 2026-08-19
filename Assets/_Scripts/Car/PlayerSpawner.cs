@@ -11,6 +11,7 @@ public class PlayerSpawner : TuyenMonoBehaviour
     [SerializeField] protected CarManager carManager;
 
     public CarPlayerDataSO PlayerDataSO => playerData;
+    public CarManager CarManager => carManager;
     
     protected override void Start()
     {

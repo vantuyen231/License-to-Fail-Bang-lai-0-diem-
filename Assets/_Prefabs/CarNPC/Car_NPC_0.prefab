@@ -171,6 +171,7 @@ MonoBehaviour:
   carNPCMoving: {fileID: 5508507416278131552}
   carNPCInfo: {fileID: 1125595089355399093}
   triggerStopCar: {fileID: 1435960183614399838}
+  rb: {fileID: 0}
   isHit: 0
 --- !u!114 &5508507416278131552
 MonoBehaviour:
@@ -187,7 +188,14 @@ MonoBehaviour:
   pointToGo: {fileID: 0}
   ctrl: {fileID: 3634276559495903145}
   nextPoint: {fileID: 0}
-  stopCar: 0
+  stopCarTrigger: 0
+  stopCarRaycast: 0
+  currentTimeStuck: 0
+  maxTimeStuck: 5
+  currentDistance: 0
+  stuckCheckDistance: 3
+  velocityCarNPC: 0
+  isStuck: 0
   raycast: {fileID: 4850656542324077184}
   maxRaycast: 5
   obstacleLayer:

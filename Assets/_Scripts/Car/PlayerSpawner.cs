@@ -1,4 +1,5 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,7 +13,8 @@ public class PlayerSpawner : TuyenMonoBehaviour
 
     public CarPlayerDataSO PlayerDataSO => playerData;
     public CarManager CarManager => carManager;
-    
+
+    public static event Action<CarManager> OnPlayerSpawned;
     protected override void Start()
     {
         GetCarData();
@@ -63,6 +65,6 @@ public class PlayerSpawner : TuyenMonoBehaviour
         carManager = GetComponentInChildren<CarManager>();
         carManager.Controller.LoadStatusCar(playerData);
         this.SetCamera();
-
+        OnPlayerSpawned?.Invoke(carManager);
     }
 }

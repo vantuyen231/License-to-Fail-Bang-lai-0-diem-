@@ -4,24 +4,57 @@ using UnityEngine;
 
 public class PoliceCarMoving : TuyenMonoBehaviour
 {
+    [SerializeField] protected float moveSpeed = 25f;
+    [SerializeField] protected float turnSpeed = 120f;
+    [SerializeField] protected Transform centerOfMass;
     [SerializeField] protected CarManager carPlayer;
+    [SerializeField] protected Rigidbody rb;
+    [SerializeField] protected float currentForwardInput;
+    [SerializeField] protected float currentTurnInput;
 
-    protected override void Start()
+    private void FixedUpdate()
     {
-        base.Start();
-        this.LoadComponents();
+        this.ApplyMotor();
+        this.ApplySteering();
     }
 
-    protected override void LoadComponents()
+
+    public virtual void SetInputs(float forward, float turn)
     {
-        base.LoadComponents();
-        this.LoadTargetPlayer();
+        this.currentForwardInput = Mathf.Clamp(forward, -1f, 1f);
+        this.currentTurnInput = Mathf.Clamp(turn, -1f, 1f);
     }
 
-    protected virtual void LoadTargetPlayer()
+    protected virtual void ApplyMotor()
     {
-        if(carPlayer != null) return;
-        carPlayer = FindObjectOfType<CarManager>();
-        Debug.Log(transform.name + ": LoadTargetPlayer ", gameObject);
+        Vector3 forceDirection = transform.forward * (this.currentForwardInput * this.moveSpeed);
+        this.rb.AddForce(forceDirection, ForceMode.Acceleration);
     }
+
+    protected virtual void ApplySteering()
+    {
+        if (Mathf.Abs(this.currentForwardInput) > 0.05f)
+        {
+            float turn = this.currentTurnInput * this.turnSpeed * Time.fixedDeltaTime;
+            Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
+            this.rb.MoveRotation(this.rb.rotation * turnRotation);
+        }
+    }
+    protected virtual void OnEnable()
+    {
+        PlayerSpawner.OnPlayerSpawned += HandlePlayerSpawned;
+    }
+
+    protected virtual void OnDisable()
+    {
+        PlayerSpawner.OnPlayerSpawned -= HandlePlayerSpawned;
+    }
+
+    private void HandlePlayerSpawned(CarManager player)
+    {
+        this.carPlayer = player;
+        Debug.Log(transform.name + ": da Target tu Event", gameObject);
+    }
+
+
 }

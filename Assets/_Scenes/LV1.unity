@@ -4702,7 +4702,7 @@ GameObject:
   - component: {fileID: 45829432}
   - component: {fileID: 45829433}
   m_Layer: 0
-  m_Name: GameObject_3
+  m_Name: FrontLeftWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21582,6 +21582,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd812a7b3e716c04e9db693064c47e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &190514860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2397621468118695034, guid: 8914a72257ad78245b18c3664f11d096, type: 3}
+  m_PrefabInstance: {fileID: 2002104184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &190514864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190514860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f0c42e968f7ae4aabe356afa8d6691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &191575428
 GameObject:
   m_ObjectHideFlags: 0
@@ -23022,6 +23039,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 20ddfda892117f74b92d06aaac48984f, type: 3}
   m_PrefabInstance: {fileID: 205640675}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &205798962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3664811705211809293, guid: 8914a72257ad78245b18c3664f11d096, type: 3}
+  m_PrefabInstance: {fileID: 2002104184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &205798966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205798962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f0c42e968f7ae4aabe356afa8d6691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &205971639
 GameObject:
   m_ObjectHideFlags: 0
@@ -34138,6 +34172,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4148530030851855363, guid: 49843f6700f7eb841b1974cc6352ae3f, type: 3}
   m_PrefabInstance: {fileID: 305157115}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &305522234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7948660828100032839, guid: 8914a72257ad78245b18c3664f11d096, type: 3}
+  m_PrefabInstance: {fileID: 2002104184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &305522238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305522234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f0c42e968f7ae4aabe356afa8d6691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &305525274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46658,7 +46709,7 @@ GameObject:
   m_Component:
   - component: {fileID: 412127446}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: WheelColider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46677,10 +46728,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1083883269}
   - {fileID: 429409572}
-  - {fileID: 2123926979}
+  - {fileID: 1083883269}
   - {fileID: 45829432}
+  - {fileID: 2123926979}
   m_Father: {fileID: 1231421901}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &412291600
@@ -49019,7 +49070,7 @@ GameObject:
   - component: {fileID: 429409572}
   - component: {fileID: 429409573}
   m_Layer: 0
-  m_Name: GameObject_1
+  m_Name: BackLeftWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64219,6 +64270,16 @@ MonoBehaviour:
   rb: {fileID: 565847458}
   currentForwardInput: 0
   currentTurnInput: 0
+  wheelCollidersCtrl:
+  - {fileID: 429409573}
+  - {fileID: 1083883270}
+  - {fileID: 45829433}
+  - {fileID: 2123926980}
+  wheelTransformsCtrl:
+  - {fileID: 190514864}
+  - {fileID: 1309766654}
+  - {fileID: 205798966}
+  - {fileID: 305522238}
 --- !u!1001 &566250952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -122033,7 +122094,7 @@ GameObject:
   - component: {fileID: 1083883269}
   - component: {fileID: 1083883270}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: BackRightWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148702,6 +148763,23 @@ Transform:
   - {fileID: 196666430}
   m_Father: {fileID: 482760909}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &1309766650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7752030738778784939, guid: 8914a72257ad78245b18c3664f11d096, type: 3}
+  m_PrefabInstance: {fileID: 2002104184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1309766654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309766650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f0c42e968f7ae4aabe356afa8d6691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1310373447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -221828,6 +221906,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -4819223349682164798, guid: 8914a72257ad78245b18c3664f11d096, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2131631098}
+    - targetCorrespondingSourceObject: {fileID: 2397621468118695034, guid: 8914a72257ad78245b18c3664f11d096, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 190514864}
+    - targetCorrespondingSourceObject: {fileID: 7752030738778784939, guid: 8914a72257ad78245b18c3664f11d096, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1309766654}
+    - targetCorrespondingSourceObject: {fileID: -3664811705211809293, guid: 8914a72257ad78245b18c3664f11d096, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 205798966}
+    - targetCorrespondingSourceObject: {fileID: -7948660828100032839, guid: 8914a72257ad78245b18c3664f11d096, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 305522238}
   m_SourcePrefab: {fileID: 100100000, guid: 8914a72257ad78245b18c3664f11d096, type: 3}
 --- !u!1001 &2002270371
 PrefabInstance:
@@ -235985,7 +236075,7 @@ GameObject:
   - component: {fileID: 2123926979}
   - component: {fileID: 2123926980}
   m_Layer: 0
-  m_Name: GameObject_2
+  m_Name: FrontRightWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

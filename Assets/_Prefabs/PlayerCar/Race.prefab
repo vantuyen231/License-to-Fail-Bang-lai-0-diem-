@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b2e580813059345b23497667e2d4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpawner: {fileID: 0}
   controller: {fileID: 354374768389805766}
   lookAtPoint: {fileID: 3351882773138878635}
   frontBumpCtrl: {fileID: 6819933278455540008}
@@ -138,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8201fa652b76f2c429d6088474560003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carManager: {fileID: 0}
   wheelCollidersCtrl:
   - {fileID: 3065194626238071670}
   - {fileID: 966713634499150869}
@@ -1342,13 +1344,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45108aa2c074adb4a960ffeb21b3eaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScore: 12
-  currentScore: 0
+  maxLicense: 12
+  currentLicense: 0
+  scoreMission: 0
+  currentScoreMission: 0
   star: 0
   status: 0
+  baseMissionReward: 100
+  totalSessionCoins: 0
+  sumSessionCoins: 0
+  completedMissionsCount: 0
   pedestrianCollision: 0
   vehicleCollision: 0
-  currentHitCarNPC: 0
+  currentHitCar: 0
   upStarHitCar: 2
 --- !u!1 &9017523981788365841
 GameObject:

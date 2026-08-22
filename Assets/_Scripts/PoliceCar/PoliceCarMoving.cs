@@ -5,13 +5,12 @@ using UnityEngine;
 public class PoliceCarMoving : TuyenMonoBehaviour
 {
     [SerializeField] protected float moveSpeed = 25f;
-    [SerializeField] protected float turnSpeed = 120f;
 
     [SerializeField] protected float motorPower = 2000f;   
     [SerializeField] protected float brakePower = 4000f;   
     [SerializeField] protected float maxSteerAngle = 35f;
 
-    [SerializeField] protected Transform centerOfMass;
+    [SerializeField] protected CarCentreOfMass centerOfMess;
     [SerializeField] protected CarManager carPlayer;
     [SerializeField] protected Rigidbody rb;
     [SerializeField] protected float currentForwardInput;
@@ -21,10 +20,19 @@ public class PoliceCarMoving : TuyenMonoBehaviour
     [SerializeField] protected List<WheelCollider> wheelCollidersCtrl = new List<WheelCollider>();
     [SerializeField] protected List<WheelTransformCtrl> wheelTransformsCtrl = new List<WheelTransformCtrl>();
 
+    public CarManager CarM => carPlayer;
+    public Rigidbody Rb => rb;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        rb.centerOfMass = centerOfMess.localPosition;
+    }
     private void FixedUpdate()
     {
         this.ApplyMotor();
         this.ApplySteering();
+        this.UpdateWheel();
     }
 
     protected override void LoadComponents()
@@ -33,7 +41,7 @@ public class PoliceCarMoving : TuyenMonoBehaviour
         this.LoadWheelColliders();
         this.LoadWheelTransform();
         this.LoadRigidbody();
-        this.LoadTransform();
+        this.LoadPoliceCentre();
     }
 
     protected virtual void LoadWheelColliders()
@@ -56,12 +64,13 @@ public class PoliceCarMoving : TuyenMonoBehaviour
         Debug.Log(transform.name + ": LoadRigidbody", gameObject);
     }
 
-    protected virtual void LoadTransform()
+    protected virtual void LoadPoliceCentre()
     {
-        if (centerOfMass != null) return;
-        centerOfMass = GetComponent<Transform>();
-        Debug.Log(transform.name + ": LoadTransform", gameObject);
+        if (centerOfMess != null) return;
+        centerOfMess = GetComponentInChildren<CarCentreOfMass>();
+        Debug.Log(transform.name + ": LoadPoliceCentre", gameObject);
     }
+
 
     public virtual void SetInputs(float forward, float turn)
     {
@@ -99,12 +108,28 @@ public class PoliceCarMoving : TuyenMonoBehaviour
 
     protected virtual void ApplySteering()
     {
-        if (Mathf.Abs(this.currentForwardInput) > 0.05f)
-        {
-            wheelCollidersCtrl[2].steerAngle = this.currentTurnInput * this.turnSpeed;
-            wheelCollidersCtrl[3].steerAngle = this.currentTurnInput * this.turnSpeed;
-        }
+        wheelCollidersCtrl[2].steerAngle = this.currentTurnInput * this.maxSteerAngle;
+        wheelCollidersCtrl[3].steerAngle = this.currentTurnInput * this.maxSteerAngle;
     }
+
+    private void UpdateWheel()
+    {
+        for (int i = 0; i < wheelCollidersCtrl.Count; i++)
+        {
+            RotationWheel(wheelCollidersCtrl[i], wheelTransformsCtrl[i].transform);
+        }
+
+    }
+
+    private void RotationWheel(WheelCollider wheelCollider, Transform transform)
+    {
+        Vector3 pos;
+        Quaternion rot;
+        wheelCollider.GetWorldPose(out pos, out rot);
+        transform.position = pos;
+        transform.rotation = rot;
+    }
+
     protected virtual void OnEnable()
     {
         PlayerSpawner.OnPlayerSpawned += HandlePlayerSpawned;

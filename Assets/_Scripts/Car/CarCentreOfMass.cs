@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CarCentreOfMass : MonoBehaviour
 {
+    internal Vector3 localPosition;
+
     // Start is called before the first frame update
     void Start()
     {

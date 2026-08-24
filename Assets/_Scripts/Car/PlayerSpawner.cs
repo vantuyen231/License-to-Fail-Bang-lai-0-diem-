@@ -55,7 +55,7 @@ public class PlayerSpawner : TuyenMonoBehaviour
         carManager = GetComponentInChildren<CarManager>();
         virtualCamera.LookAt = carManager.LookAtPoint.transform;
         virtualCamera.Follow = carManager.transform;
-        Debug.Log("Set Done");
+        //Debug.Log("Set Done");
     }
 
     protected virtual void SpawnerCar()

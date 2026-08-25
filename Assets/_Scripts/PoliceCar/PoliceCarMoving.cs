@@ -130,21 +130,11 @@ public class PoliceCarMoving : TuyenMonoBehaviour
         transform.rotation = rot;
     }
 
-    protected virtual void OnEnable()
+    public virtual void LoadTargetPlayer()
     {
-        PlayerSpawner.OnPlayerSpawned += HandlePlayerSpawned;
+        carPlayer = FindAnyObjectByType<CarManager>();
     }
 
-    protected virtual void OnDisable()
-    {
-        PlayerSpawner.OnPlayerSpawned -= HandlePlayerSpawned;
-    }
-
-    private void HandlePlayerSpawned(CarManager player)
-    {
-        this.carPlayer = player;
-        Debug.Log(transform.name + ": da Target tu Event", gameObject);
-    }
 
 
 }

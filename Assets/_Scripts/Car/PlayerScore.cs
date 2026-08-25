@@ -14,6 +14,7 @@ public class PlayerScore : TuyenMonoBehaviour
     [Header("Status Wanted")]
     [SerializeField] protected int star;
     [SerializeField] protected int status;
+    [SerializeField] protected float starCoolDownTimer = 20f;
 
     [Header("Mission Tracking")]
     [SerializeField] protected int baseMissionReward = 100;
@@ -42,7 +43,10 @@ public class PlayerScore : TuyenMonoBehaviour
         }
     }
 
-
+    private void FixedUpdate()
+    {
+        this.CheckCoolDownStar();
+    }
 
 
     public virtual void AddScore(HitObjectType type, int scoreReward, string nameHit)
@@ -100,6 +104,17 @@ public class PlayerScore : TuyenMonoBehaviour
         if(currentLicense > 4 && currentLicense <= 8) status = 1;
         if (currentLicense <= 4) status = 2;
         
+    }
+
+    protected virtual void CheckCoolDownStar()
+    {
+        if(star <=0) return;
+        starCoolDownTimer -= Time.deltaTime;
+        if (starCoolDownTimer < 0)
+        {
+            this.star--;
+
+        }
     }
 
     public virtual void DestinationHit()

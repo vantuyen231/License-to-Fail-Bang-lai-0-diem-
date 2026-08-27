@@ -39,6 +39,7 @@ public class GameManager : TuyenSingleton<GameManager>
         this.currentScore = score;
         this.currentStars = stars;
         this.currentStatus = status;
+        Debug.Log("Add score");
     }
 
     public void UpdateVelocity(int velocity)

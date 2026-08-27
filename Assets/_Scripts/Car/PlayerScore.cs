@@ -14,7 +14,8 @@ public class PlayerScore : TuyenMonoBehaviour
     [Header("Status Wanted")]
     [SerializeField] protected int star;
     [SerializeField] protected int status;
-    [SerializeField] protected float starCoolDownTimer = 20f;
+    [SerializeField] protected float starCoolDownTimer = 0;
+    [SerializeField] protected float starCDMaxLimit = 20f;
 
     [Header("Mission Tracking")]
     [SerializeField] protected int baseMissionReward = 100;
@@ -36,6 +37,7 @@ public class PlayerScore : TuyenMonoBehaviour
     protected override void Start()
     {
         currentLicense = maxLicense;
+        starCoolDownTimer = starCDMaxLimit;
 
         if (GameManager.Instance != null)
         {
@@ -110,11 +112,15 @@ public class PlayerScore : TuyenMonoBehaviour
     {
         if(star <=0) return;
         starCoolDownTimer -= Time.deltaTime;
-        if (starCoolDownTimer < 0)
+        if(starCoolDownTimer >= 0) return;
+        this.star--;
+        if (GameManager.Instance != null)
         {
-            this.star--;
-
+            GameManager.Instance.UpdateGameplayData(currentLicense, star, status);
         }
+        starCoolDownTimer = starCDMaxLimit;
+
+
     }
 
     public virtual void DestinationHit()

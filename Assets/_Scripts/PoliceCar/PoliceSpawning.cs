@@ -12,9 +12,13 @@ public class PoliceSpawning : TuyenMonoBehaviour
     [SerializeField] protected int spawnTimeLimit = 15;
     [SerializeField] protected float currentTime =0f;
 
+    [Header("List Police Active")]
+    [SerializeField] protected List<PoliceCarCtrl> policeActiver = new List<PoliceCarCtrl>();
+
     private void FixedUpdate()
     {
         this.CheckCanSpawnPolice();
+        this.DeSpawnPolice();
     }
 
     protected override void LoadComponents()
@@ -87,6 +91,16 @@ public class PoliceSpawning : TuyenMonoBehaviour
         {
             poliveMoving.LoadTargetPlayer();
         }
+        this.policeActiver.Add(newPolice);
+    }
+
+    protected virtual void DeSpawnPolice()
+    {
+        if (policeActive <= maxSpawn) return;
+        int indexDeSpawn = Random.Range(0, policeActiver.Count);
+        PoliceCarCtrl policeDespawn = policeActiver[indexDeSpawn];
+        this.policeSpawnCtrl.PoliceSpawner.Despawn(policeDespawn);
+        policeActiver.Remove(policeActiver[indexDeSpawn]);
     }
 
 

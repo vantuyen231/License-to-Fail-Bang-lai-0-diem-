@@ -30,6 +30,10 @@ public class PlayerScore : TuyenMonoBehaviour
     [SerializeField] protected int currentHitCar = 0;
     [SerializeField] protected int upStarHitCar = 2;
 
+    [Header("State Game")]
+    [SerializeField] protected bool isLose = false;
+    [SerializeField] protected bool isWin = false;
+
     public int CurrentScore => currentLicense;
 
     public int Star => star;

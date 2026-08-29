@@ -12,6 +12,9 @@ public class GameManager : TuyenSingleton<GameManager>
     [SerializeField] private int currentVelocity =0;
     [SerializeField] protected int coin = 0;
 
+    [Header("State Game")]
+    [SerializeField] protected bool isWinGame = false;
+    [SerializeField] protected bool isLoseGame = false;
     [SerializeField] protected bool isPauseGame = false;
 
     [SerializeField] protected CarPlayerDataSO carPlayerData;

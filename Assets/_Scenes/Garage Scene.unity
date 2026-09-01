@@ -193,8 +193,10 @@ MonoBehaviour:
   currentStatus: 0
   currentVelocity: 0
   coin: 0
+  isWinGame: 0
+  isLoseGame: 0
   isPauseGame: 0
-  carPlayerData: {fileID: 0}
+  carPlayerData: {fileID: 11400000, guid: 8f5aca10237c92849a978cf3ec598c26, type: 2}
 --- !u!4 &33944430
 Transform:
   m_ObjectHideFlags: 0
@@ -204,7 +206,7 @@ Transform:
   m_GameObject: {fileID: 33944428}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.2504683, y: -0.07794356, z: 0.16070865}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2718,7 +2720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &567455717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2733,7 +2735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCar: 0
   currentCar: 0
-  carStats: {fileID: 0}
+  carStats: {fileID: 11400000, guid: 8f5aca10237c92849a978cf3ec598c26, type: 2}
   isUse: 1
 --- !u!4 &567455718
 Transform:
@@ -2744,7 +2746,7 @@ Transform:
   m_GameObject: {fileID: 567455716}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 119.589615, y: 210.97255, z: 73.66859}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -23,12 +23,13 @@ public class StatusManager : TuyenMonoBehaviour
 
     protected virtual void LoadUIStatusPlayers()
     {
+        if (uIStatusPlayers.Count > 0) return;
         uIStatusPlayers.AddRange(GetComponentsInChildren<UIStatusPlayer>());
     }
 
     protected virtual void StartStatus()
     {
-        foreach(var player in uIStatusPlayers)
+        foreach (var player in uIStatusPlayers)
         {
             player.gameObject.SetActive(false);
         }
@@ -36,7 +37,16 @@ public class StatusManager : TuyenMonoBehaviour
 
     public virtual void SetStatusPlayer(int status)
     {
-        statusNow = status;
-        uIStatusPlayers[statusNow].gameObject.SetActive(true);
+        if (this.uIStatusPlayers == null || this.uIStatusPlayers.Count == 0) return;
+
+        this.statusNow = Mathf.Clamp(status, 0, this.uIStatusPlayers.Count - 1);
+
+        for (int i = 0; i < this.uIStatusPlayers.Count; i++)
+        {
+            if (this.uIStatusPlayers[i] == null) continue;
+
+            bool isActive = (i == this.statusNow);
+            this.uIStatusPlayers[i].gameObject.SetActive(isActive);
+        }
     }
 }

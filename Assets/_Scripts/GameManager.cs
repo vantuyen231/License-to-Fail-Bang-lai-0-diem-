@@ -5,12 +5,19 @@ using UnityEngine;
 public class GameManager : TuyenSingleton<GameManager>
 {
     [Header("Player Status")]
-    [SerializeField] protected int currentScore = 12;
     [SerializeField] protected int scoreMission = 0;
     [SerializeField] protected int currentStars = 0;
     [SerializeField] protected int currentStatus = 0;
     [SerializeField] private int currentVelocity =0;
+
+    [Header("WinGameStatus")]
+    [SerializeField] protected int mission = 0;
+    [SerializeField] protected float bonus = 0;
+    [SerializeField] protected int currentScore = 12;
     [SerializeField] protected int coin = 0;
+    [SerializeField] protected int pedestrial = 0;
+    [SerializeField] protected int vehical = 0;
+
 
     [Header("State Game")]
     [SerializeField] protected bool isWinGame = false;
@@ -34,6 +41,17 @@ public class GameManager : TuyenSingleton<GameManager>
     {
         base.Awake();
         DontDestroyOnLoad(gameObject);
+    }
+
+    protected override void LoadInstance()
+    {
+        base.LoadInstance();
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject );
+            Debug.Log("Do Destroy Singletion: " + gameObject);
+            return;
+        }
     }
 
     #region(UI gameplay Update)

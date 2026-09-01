@@ -14,6 +14,8 @@ public class ExitBtn : ButtonAbstract
 
     protected virtual void SwitchScene()
     {
+        GameManager.Instance.ContinueGame();
+
         SceneManager.LoadScene(this.sceneName);
     }
 }

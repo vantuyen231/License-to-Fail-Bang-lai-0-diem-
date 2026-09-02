@@ -23,6 +23,7 @@ public class GameManager : TuyenSingleton<GameManager>
     [SerializeField] protected bool isWinGame = false;
     [SerializeField] protected bool isLoseGame = false;
     [SerializeField] protected bool isPauseGame = false;
+    [SerializeField] protected bool isWanted = false;
 
     [SerializeField] protected CarPlayerDataSO carPlayerData;
 
@@ -32,6 +33,7 @@ public class GameManager : TuyenSingleton<GameManager>
     public int CurrentStars => currentStars;
     public int CurrentStatus => currentStatus;
     public int CurrentVelocity => currentVelocity;
+    public bool IsWanted => isWanted;
 
     public CarPlayerDataSO CarPlayerData => carPlayerData;
     #endregion
@@ -81,7 +83,10 @@ public class GameManager : TuyenSingleton<GameManager>
         this.carPlayerData = car;
     }
 
-
+    public void SetPlayerWanted(bool status)
+    {
+        this.isWanted = status;
+    }
 
     protected void CoinPlayer()
     {
@@ -102,5 +107,16 @@ public class GameManager : TuyenSingleton<GameManager>
     }
     #endregion
 
+    public void WinGame()
+    {
+        Debug.Log("You Win");
+        this.PauseGame();
+        WinUI.Instance.Show();
+    }
 
+    public void LoseGame()
+    {
+        Debug.Log("You Lose");
+        LoseUI.Instance.Show();
+    }
 }

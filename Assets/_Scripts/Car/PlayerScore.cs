@@ -52,6 +52,16 @@ public class PlayerScore : TuyenMonoBehaviour
     private void FixedUpdate()
     {
         this.CheckCoolDownStar();
+
+        if (isWin && isLose == false)
+        {
+            this.WinGame();
+        }
+
+        if (isLose && isWin == false)
+        {
+            this.LoseGame();
+        }
     }
 
 
@@ -114,7 +124,12 @@ public class PlayerScore : TuyenMonoBehaviour
 
     protected virtual void CheckCoolDownStar()
     {
-        if(star <=0) return;
+        if (star <= 0)
+        {
+            GameManager.Instance.SetPlayerWanted(false);
+            return;
+        }
+        GameManager.Instance.SetPlayerWanted(true);
         starCoolDownTimer -= Time.deltaTime;
         if(starCoolDownTimer >= 0) return;
         this.star--;
@@ -164,5 +179,19 @@ public class PlayerScore : TuyenMonoBehaviour
         pedestrianCollision = 0;
         vehicleCollision = 0;
         currentHitCar = 0;
+    }
+
+    protected virtual void WinGame()
+    {
+
+        GameManager.Instance.WinGame();
+
+    }
+
+    protected virtual void LoseGame()
+    {
+
+        GameManager.Instance.LoseGame();
+
     }
 }

@@ -7,11 +7,15 @@ public class UIStarManager : TuyenMonoBehaviour
 {
     [SerializeField] protected List<StarPlayer> starPlayers = new List<StarPlayer>();
     [SerializeField] protected int starCount = 0;
+    [SerializeField] protected bool isShow;
+
 
     protected override void Start()
     {
         base.Start();
         this.LoadStartStar();
+        this.Hide();
+
     }
     protected override void LoadComponents()
     {
@@ -40,5 +44,17 @@ public class UIStarManager : TuyenMonoBehaviour
         starPlayers[starCount].gameObject.SetActive(true);
 
 
+    }
+
+    public virtual void Hide()
+    {
+        isShow = false;
+        gameObject.SetActive(isShow);
+    }
+
+    public virtual void Show()
+    {
+        isShow = true;
+        gameObject.SetActive(isShow);
     }
 }

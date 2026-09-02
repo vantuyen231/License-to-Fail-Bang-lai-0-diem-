@@ -26,6 +26,14 @@ public class UITop : TuyenMonoBehaviour
         if (uIStarManager != null)
         {
             this.uIStarManager.AddStar();
+            if (GameManager.Instance.IsWanted == true)
+            {
+                uIStarManager.Show();
+            }
+            else
+            {
+                uIStarManager.Hide();
+            }
         }
     }
 }

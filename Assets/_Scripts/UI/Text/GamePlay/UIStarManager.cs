@@ -50,11 +50,23 @@ public class UIStarManager : TuyenMonoBehaviour
     {
         isShow = false;
         gameObject.SetActive(isShow);
+
     }
 
     public virtual void Show()
     {
         isShow = true;
         gameObject.SetActive(isShow);
+        this.ShowStar();
+    }
+
+    protected virtual void ShowStar()
+    {
+        if (GameManager.Instance == null) return;
+        starCount = GameManager.Instance.CurrentStars;
+        for (int i = 0; i < starPlayers.Count; i++)
+        {
+            starPlayers[i].gameObject.SetActive(i < starCount);
+        }
     }
 }

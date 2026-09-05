@@ -84,6 +84,7 @@ public class PlayerScore : TuyenMonoBehaviour
         if (GameManager.Instance != null)
         {
             GameManager.Instance.UpdateGameplayData(currentLicense, star, status);
+            GameManager.Instance.NotifiHit(type, scoreReward, nameHit);
         }
     }
 

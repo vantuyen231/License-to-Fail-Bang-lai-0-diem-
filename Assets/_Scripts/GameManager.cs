@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,6 +39,12 @@ public class GameManager : TuyenSingleton<GameManager>
     public CarPlayerDataSO CarPlayerData => carPlayerData;
     #endregion
 
+    public static event Action<HitObjectType, int, string> OnObjectHitNoti;
+
+    public void NotifiHit(HitObjectType hitObjectType, int scoreReward, string nameHit)
+    {
+        OnObjectHitNoti?.Invoke(hitObjectType, scoreReward, nameHit);
+    }
 
     protected override void Awake()
     {

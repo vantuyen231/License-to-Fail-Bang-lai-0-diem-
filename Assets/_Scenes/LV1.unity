@@ -19736,6 +19736,8 @@ MonoBehaviour:
   isLoseGame: 0
   isPauseGame: 0
   isWanted: 0
+  maxMission: 5
+  indexMission: 3
   carPlayerData: {fileID: 11400000, guid: 8f5aca10237c92849a978cf3ec598c26, type: 2}
 --- !u!4 &171216054 stripped
 Transform:
@@ -41884,6 +41886,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 58ab6d24a062f024c8edee487e0b5ab1, type: 3}
   m_PrefabInstance: {fileID: 370588281}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &370745373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 370745375}
+  - component: {fileID: 370745374}
+  m_Layer: 0
+  m_Name: MissionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &370745374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370745373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 984f5607a483bd64880ee555d9f002a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indexMissionPlayer: 0
+  missions:
+  - {fileID: 1112162806}
+  - {fileID: 897049710}
+  - {fileID: 623008982}
+  - {fileID: 2027835133}
+  - {fileID: 2068270592}
+  missionsPlayer: []
+  tempMission: []
+  timeNextMission: 2.5
+  isDone: 0
+  timer: 0
+  curretMission: 0
+  isCoolingDown: 0
+--- !u!4 &370745375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370745373}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1112162807}
+  - {fileID: 897049709}
+  - {fileID: 623008981}
+  - {fileID: 2027835132}
+  - {fileID: 2068270591}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &370833363
 GameObject:
   m_ObjectHideFlags: 0
@@ -71398,6 +71463,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: be1bbafe98ae8fe47a534027bf5258cf, type: 3}
   m_PrefabInstance: {fileID: 622870845}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &623008980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 623008981}
+  - component: {fileID: 623008982}
+  m_Layer: 0
+  m_Name: EscapePolice_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &623008981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623008980}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 370745375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &623008982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623008980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76e35cc8f94f684daa27eddda762695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionType: 2
+  missionName: EscapePolice
+  missionDescription: 
+  isComplete: 0
 --- !u!1 &623047921
 GameObject:
   m_ObjectHideFlags: 0
@@ -102190,6 +102303,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: acd44a6df5844b543959a88bfbd5a36c, type: 3}
   m_PrefabInstance: {fileID: 895903143}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &897049708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 897049709}
+  - component: {fileID: 897049710}
+  m_Layer: 0
+  m_Name: EscapePolice_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &897049709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897049708}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 370745375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &897049710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897049708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76e35cc8f94f684daa27eddda762695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionType: 2
+  missionName: EscapePolice
+  missionDescription: 
+  isComplete: 0
 --- !u!1001 &898821437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126927,6 +127088,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c88a4ee7b53b6074eb5139d63184faf8, type: 3}
   m_PrefabInstance: {fileID: 1111355303}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1112162805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1112162807}
+  - component: {fileID: 1112162806}
+  m_Layer: 0
+  m_Name: EscapePolice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1112162806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112162805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76e35cc8f94f684daa27eddda762695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionType: 2
+  missionName: EscapePolice
+  missionDescription: 
+  isComplete: 0
+--- !u!4 &1112162807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112162805}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 370745375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1112321437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -228077,6 +228286,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ddcda91f4d878414c847571498145c3a, type: 3}
   m_PrefabInstance: {fileID: 2027571874}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2027835131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2027835132}
+  - component: {fileID: 2027835133}
+  m_Layer: 0
+  m_Name: EscapePolice_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2027835132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027835131}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 370745375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2027835133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027835131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76e35cc8f94f684daa27eddda762695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionType: 2
+  missionName: EscapePolice
+  missionDescription: 
+  isComplete: 0
 --- !u!1001 &2029761092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -232773,6 +233030,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 943bdb79b4e70e946b5158c0d01d5047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2068270590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2068270591}
+  - component: {fileID: 2068270592}
+  m_Layer: 0
+  m_Name: EscapePolice_4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2068270591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068270590}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 370745375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2068270592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068270590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76e35cc8f94f684daa27eddda762695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionType: 2
+  missionName: EscapePolice
+  missionDescription: 
+  isComplete: 0
 --- !u!1001 &2069110839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -242895,3 +243200,4 @@ SceneRoots:
   - {fileID: 1391539474}
   - {fileID: 1097212755}
   - {fileID: 170686231}
+  - {fileID: 370745375}

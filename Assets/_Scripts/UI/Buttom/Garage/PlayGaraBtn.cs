@@ -13,6 +13,7 @@ public class PlayGaraBtn : ButtonAbstract
 
     protected virtual void PlayGame()
     {
+        GameManager.Instance.GetRandomNumMission();
         SceneManager.LoadScene(this.nextScene);
         ShopManager.Instance.SetUseCar();
     }

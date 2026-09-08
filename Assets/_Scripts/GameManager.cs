@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameManager : TuyenSingleton<GameManager>
 {
     [Header("Player Status")]
@@ -26,6 +27,12 @@ public class GameManager : TuyenSingleton<GameManager>
     [SerializeField] protected bool isPauseGame = false;
     [SerializeField] protected bool isWanted = false;
 
+
+    [Header("Mission Game")]
+    [SerializeField] protected int maxMission = 4;
+    [SerializeField] protected int indexMission = 0;
+    
+
     [SerializeField] protected CarPlayerDataSO carPlayerData;
 
     #region (Public Value)
@@ -35,6 +42,7 @@ public class GameManager : TuyenSingleton<GameManager>
     public int CurrentStatus => currentStatus;
     public int CurrentVelocity => currentVelocity;
     public bool IsWanted => isWanted;
+    public int IndexMission => indexMission;
 
     public CarPlayerDataSO CarPlayerData => carPlayerData;
     #endregion
@@ -125,5 +133,10 @@ public class GameManager : TuyenSingleton<GameManager>
     {
         Debug.Log("You Lose");
         LoseUI.Instance.Show();
+    }
+
+    public void GetRandomNumMission()
+    {
+        indexMission = UnityEngine.Random.Range(1, maxMission);
     }
 }

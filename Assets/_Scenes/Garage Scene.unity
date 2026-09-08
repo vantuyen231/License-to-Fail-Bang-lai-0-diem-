@@ -200,6 +200,9 @@ MonoBehaviour:
   isWinGame: 0
   isLoseGame: 0
   isPauseGame: 0
+  isWanted: 0
+  maxMission: 4
+  indexMission: 0
   carPlayerData: {fileID: 11400000, guid: 8f5aca10237c92849a978cf3ec598c26, type: 2}
 --- !u!4 &33944430
 Transform:
@@ -2724,7 +2727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &567455717
 MonoBehaviour:
   m_ObjectHideFlags: 0

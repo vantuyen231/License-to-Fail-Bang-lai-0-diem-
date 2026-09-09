@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
@@ -38,6 +39,7 @@ public class PlayerScore : TuyenMonoBehaviour
 
     public int Star => star;
 
+    public static event Action OnPlayerHit;
     protected override void Start()
     {
         currentLicense = maxLicense;
@@ -67,6 +69,7 @@ public class PlayerScore : TuyenMonoBehaviour
 
     public virtual void AddScore(HitObjectType type, int scoreReward, string nameHit)
     {
+        OnPlayerHit?.Invoke();
         Debug.Log("Type Hit car: " + type + ".Name: " + nameHit + ".Score: " + scoreReward);
         switch(type)
         {

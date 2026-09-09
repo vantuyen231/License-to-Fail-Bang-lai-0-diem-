@@ -41918,7 +41918,7 @@ MonoBehaviour:
   indexMissionPlayer: 0
   missions:
   - {fileID: 1112162806}
-  - {fileID: 897049710}
+  - {fileID: 0}
   - {fileID: 623008982}
   - {fileID: 2027835133}
   - {fileID: 2068270592}
@@ -102314,7 +102314,7 @@ GameObject:
   - component: {fileID: 897049709}
   - component: {fileID: 897049710}
   m_Layer: 0
-  m_Name: EscapePolice_1
+  m_Name: AvoidObstaclesMission
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102344,12 +102344,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 897049708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f76e35cc8f94f684daa27eddda762695, type: 3}
+  m_Script: {fileID: 11500000, guid: 426659afcb171f744a2065095fa8d288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missionType: 2
-  missionName: EscapePolice
-  missionDescription: 
+  missionType: 1
+  missionName: Avoid Obstacles
+  missionDescription: Reach the destination without hitting any obstacles.
   isComplete: 0
 --- !u!1001 &898821437
 PrefabInstance:

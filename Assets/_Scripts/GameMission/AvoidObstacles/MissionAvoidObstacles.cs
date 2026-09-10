@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class MissionAvoidObstacles : BaseMission
     [Header("Mission States")]
     [SerializeField] protected bool isMissionActive = false;
 
+    public static event Action<int> OnUpdateCountdown;
+    public static event Action OnStartMission;
     protected override void Start()
     {
 

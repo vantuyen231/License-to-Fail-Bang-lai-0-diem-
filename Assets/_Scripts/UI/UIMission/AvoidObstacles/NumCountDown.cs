@@ -9,4 +9,14 @@ public class NumCountDown : TextAbstract
     {
         textMeshProUGUI.text = indexCD.ToString();
     }
+
+    public virtual void Show()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public virtual void Hide()
+    {
+        gameObject.SetActive(false);
+    }
 }

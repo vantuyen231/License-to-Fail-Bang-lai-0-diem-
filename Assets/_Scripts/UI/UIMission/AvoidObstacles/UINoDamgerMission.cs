@@ -6,6 +6,7 @@ public class UINoDamgerMission : TuyenMonoBehaviour
 {
     [SerializeField] protected TitleNoDMission titleNoDMission;
     [SerializeField] protected CountDownMission numEndMission;
+    [SerializeField] protected MissionState stateMission = MissionState.None;
 
 
     protected override void Start()
@@ -16,20 +17,26 @@ public class UINoDamgerMission : TuyenMonoBehaviour
     }
     protected virtual void OnEnable()
     {
-        MissionAvoidObstacles.SetUpMission += ShowUIMission;
-        MissionAvoidObstacles.ShowNumStage += ShowNumStart;
-        MissionAvoidObstacles.OnUpdateCountdown += HandleUpdateCountdown;
-        MissionAvoidObstacles.OnStartMission += HandMissionGo;
-        MissionAvoidObstacles.UpdateCountDownMission += CountDownEndMission;
+        //MissionAvoidObstacles.SetUpMission += ShowUIMission;
+        //MissionAvoidObstacles.ShowNumStage += ShowNumStart;
+        //MissionAvoidObstacles.OnUpdateCountdown += HandleUpdateCountdown;
+        //MissionAvoidObstacles.OnStartMission += HandMissionGo;
+        //MissionAvoidObstacles.UpdateCountDownMission += CountDownEndMission;
+
+        MissionAvoidObstacles.UpdateStateMission += ShowUI;
+        MissionAvoidObstacles.OnTimeTick += UpdateTimerTrick;
     }
 
     protected virtual void OnDisable()
     {
-        MissionAvoidObstacles.SetUpMission -= ShowUIMission;
-        MissionAvoidObstacles.ShowNumStage -= ShowNumStart;
-        MissionAvoidObstacles.OnUpdateCountdown -= HandleUpdateCountdown;
-        MissionAvoidObstacles.OnStartMission -= HandMissionGo;
-        MissionAvoidObstacles.UpdateCountDownMission -= CountDownEndMission;
+        //MissionAvoidObstacles.SetUpMission -= ShowUIMission;
+        //MissionAvoidObstacles.ShowNumStage -= ShowNumStart;
+        //MissionAvoidObstacles.OnUpdateCountdown -= HandleUpdateCountdown;
+        //MissionAvoidObstacles.OnStartMission -= HandMissionGo;
+        //MissionAvoidObstacles.UpdateCountDownMission -= CountDownEndMission;
+
+        MissionAvoidObstacles.UpdateStateMission -= ShowUI;
+        MissionAvoidObstacles.OnTimeTick -= UpdateTimerTrick;
 
     }
 
@@ -58,6 +65,54 @@ public class UINoDamgerMission : TuyenMonoBehaviour
     protected virtual void CountDownEndMission(float index)
     {
         numEndMission.UpdateCDEndMission(index);
+    }
+
+    protected virtual void ShowUI(MissionState state)
+    {
+        stateMission = state;
+        switch (state)
+        {
+            case MissionState.TitleStage:
+                this.Show(titleNoDMission.transform);
+                this.titleNoDMission.CountDown.Hide();
+                Debug.Log("Title");
+                break;
+            case MissionState.CountdownStage:
+                titleNoDMission.CountDown.Show();
+                Debug.Log("Count Down");
+                break;
+            case MissionState.ActiveGameplay:
+                this.Hide(titleNoDMission.transform);
+                this.numEndMission.Show();
+                Debug.Log("PlayMission");
+                break;
+            case MissionState.Success:
+                Debug.Log("Mission Complete");
+                break;
+            case MissionState.Failed:
+                Debug.Log("Mission Fail");
+                break;
+            default:
+                Debug.Log("Null");
+                break;
+        }
+    }
+
+
+    protected virtual void UpdateTimerTrick(float time)
+    {
+        switch (this.stateMission)
+        {
+            case MissionState.CountdownStage:
+                titleNoDMission.CountDown.UpdateCD(Mathf.CeilToInt(time));
+                break;
+            case MissionState.ActiveGameplay:
+                numEndMission.UpdateCDEndMission(time);
+                break;
+            default:
+                Debug.Log("Null");
+                break;
+        }
     }
 
     protected override void LoadComponents()

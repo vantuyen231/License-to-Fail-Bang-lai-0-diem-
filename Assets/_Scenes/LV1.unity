@@ -102530,6 +102530,7 @@ MonoBehaviour:
   secondsLeft: 0
   currentReady: 0
   isMissionActive: 0
+  currentState: 0
 --- !u!1001 &898821437
 PrefabInstance:
   m_ObjectHideFlags: 0

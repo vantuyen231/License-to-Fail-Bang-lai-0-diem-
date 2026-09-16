@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class UINoDamgerMission : TuyenMonoBehaviour
 {
     [SerializeField] protected TitleNoDMission titleNoDMission;
     [SerializeField] protected CountDownMission numEndMission;
+    [SerializeField] protected CompleteMission completeMission;
+    [SerializeField] protected FailMisssion failMission;
+    [SerializeField] protected int timeEndUI = 2;
+
+    [Header("StateMission")]
     [SerializeField] protected MissionState stateMission = MissionState.None;
 
 
@@ -17,55 +23,17 @@ public class UINoDamgerMission : TuyenMonoBehaviour
     }
     protected virtual void OnEnable()
     {
-        //MissionAvoidObstacles.SetUpMission += ShowUIMission;
-        //MissionAvoidObstacles.ShowNumStage += ShowNumStart;
-        //MissionAvoidObstacles.OnUpdateCountdown += HandleUpdateCountdown;
-        //MissionAvoidObstacles.OnStartMission += HandMissionGo;
-        //MissionAvoidObstacles.UpdateCountDownMission += CountDownEndMission;
-
         MissionAvoidObstacles.UpdateStateMission += ShowUI;
         MissionAvoidObstacles.OnTimeTick += UpdateTimerTrick;
     }
 
     protected virtual void OnDisable()
     {
-        //MissionAvoidObstacles.SetUpMission -= ShowUIMission;
-        //MissionAvoidObstacles.ShowNumStage -= ShowNumStart;
-        //MissionAvoidObstacles.OnUpdateCountdown -= HandleUpdateCountdown;
-        //MissionAvoidObstacles.OnStartMission -= HandMissionGo;
-        //MissionAvoidObstacles.UpdateCountDownMission -= CountDownEndMission;
-
         MissionAvoidObstacles.UpdateStateMission -= ShowUI;
         MissionAvoidObstacles.OnTimeTick -= UpdateTimerTrick;
 
     }
 
-    protected virtual void ShowUIMission()
-    {
-        this.Show(titleNoDMission.transform);
-        this.titleNoDMission.CountDown.Hide();
-    }
-
-    protected virtual void HandleUpdateCountdown(int countdown)
-    {
-        titleNoDMission.CountDown.UpdateCD(countdown);
-    }
-
-    protected virtual void HandMissionGo()
-    {
-        this.Hide(titleNoDMission.transform);
-        this.numEndMission.Show();
-    }
-
-    protected virtual void ShowNumStart()
-    {
-        titleNoDMission.CountDown.Show();
-    }
-
-    protected virtual void CountDownEndMission(float index)
-    {
-        numEndMission.UpdateCDEndMission(index);
-    }
 
     protected virtual void ShowUI(MissionState state)
     {
@@ -75,6 +43,8 @@ public class UINoDamgerMission : TuyenMonoBehaviour
             case MissionState.TitleStage:
                 this.Show(titleNoDMission.transform);
                 this.titleNoDMission.CountDown.Hide();
+                this.Hide(completeMission.transform);
+                this.Hide(failMission.transform);
                 Debug.Log("Title");
                 break;
             case MissionState.CountdownStage:
@@ -87,9 +57,15 @@ public class UINoDamgerMission : TuyenMonoBehaviour
                 Debug.Log("PlayMission");
                 break;
             case MissionState.Success:
+                this.numEndMission.Hide();
+                this.Show(completeMission.transform);
+                StartCoroutine(this.CountDownUIShow(completeMission.transform));
                 Debug.Log("Mission Complete");
                 break;
             case MissionState.Failed:
+                this.numEndMission.Hide();
+                this.Show(failMission.transform);
+                StartCoroutine(CountDownUIShow(failMission.transform));
                 Debug.Log("Mission Fail");
                 break;
             default:
@@ -115,11 +91,20 @@ public class UINoDamgerMission : TuyenMonoBehaviour
         }
     }
 
+    protected virtual IEnumerator CountDownUIShow(Transform uiCheckTime)
+    {
+        yield return new WaitForSeconds(timeEndUI);
+        this.Hide(uiCheckTime);
+    }
+
+    #region LoandComponents
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadTitleMission();
         this.LoadNumEndMission();
+        this.LoadCompleteMission();
+        this.LoadFailMisssion();
     }
 
     protected virtual void LoadTitleMission()
@@ -136,6 +121,23 @@ public class UINoDamgerMission : TuyenMonoBehaviour
         Debug.Log(transform.name + " LoadNumCountDown:", gameObject);
     }
 
+    protected virtual void LoadCompleteMission()
+    {
+        if (completeMission != null) return;
+        completeMission = GetComponentInChildren<CompleteMission>();
+        Debug.Log(transform.name + " LoadCompleteMission:", gameObject);
+    }
+
+    protected virtual void LoadFailMisssion()
+    {
+        if (failMission != null) return;
+        failMission = GetComponentInChildren<FailMisssion>();
+        Debug.Log(transform.name + " LoadFailMisssion:", gameObject);
+    }
+    #endregion
+
+
+    #region Show/Hide UI
     public virtual void Show(Transform uiShow)
     {
         uiShow.gameObject.SetActive(true);
@@ -145,4 +147,5 @@ public class UINoDamgerMission : TuyenMonoBehaviour
     {
         uiShow.gameObject.SetActive(false);
     }
+    #endregion
 }

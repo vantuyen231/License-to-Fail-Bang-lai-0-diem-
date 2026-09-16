@@ -22,10 +22,6 @@ public class MissionManager : TuyenMonoBehaviour
     [SerializeField] protected bool isCoolingDown = false;
 
 
-
-
-
-
     protected override void Start()
     {
         base.Start();
@@ -44,6 +40,16 @@ public class MissionManager : TuyenMonoBehaviour
             this.DoMission();
 
         }
+    }
+
+    protected virtual void OnEnable()
+    {
+        MissionAvoidObstacles.DoneMission += CheckDoneMission;
+    }
+
+    protected virtual void OnDisable()
+    {
+        MissionAvoidObstacles.DoneMission -= CheckDoneMission;
     }
 
     protected override void LoadComponents()

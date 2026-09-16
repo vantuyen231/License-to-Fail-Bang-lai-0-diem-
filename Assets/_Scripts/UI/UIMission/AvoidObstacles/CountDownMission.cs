@@ -7,7 +7,7 @@ public class CountDownMission : TextAbstract
 {
     public virtual void UpdateCDEndMission(float currentNum)
     {
-        textMeshProUGUI.text = currentNum.ToString();
+        textMeshProUGUI.text = currentNum.ToString("F1") + "s";
     }
 
     public virtual void Show()

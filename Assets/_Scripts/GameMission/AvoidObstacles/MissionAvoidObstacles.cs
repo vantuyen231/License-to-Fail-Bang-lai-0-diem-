@@ -13,7 +13,7 @@ public class MissionAvoidObstacles : BaseMission
     [SerializeField] protected float timeIntroTittle = 3f;
     [SerializeField] protected float timeReadyMission = 3f;
 
-    [SerializeField] protected int secondsLeft = 0;
+    [SerializeField] protected float secondsLeft = 0;
 
     [SerializeField] protected float currentReady = 0f;
 
@@ -23,14 +23,11 @@ public class MissionAvoidObstacles : BaseMission
     [SerializeField] protected bool isMissionActive = false;
     [SerializeField] protected MissionState currentState = MissionState.None;
 
-    //public static event Action SetUpMission;
-    //public static event Action ShowNumStage;
-    //public static event Action<int> OnUpdateCountdown;
-    //public static event Action OnStartMission;
-    //public static event Action<float> UpdateCountDownMission;
 
     public static event Action<MissionState> UpdateStateMission;
     public static event Action<float> OnTimeTick;
+    public static event Action<bool> DoneMission;
+
     protected override void Start()
     {
         base.Start();
@@ -50,58 +47,28 @@ public class MissionAvoidObstacles : BaseMission
 
     protected virtual void HitDetection()
     {
+        if (this.currentState != MissionState.ActiveGameplay) return;
         this.ChangeState(MissionState.Failed);
+        StopAllCoroutines();
+        isMissionActive = false;
         Debug.Log("Hit, mission fail");
+        DoneMission?.Invoke(true);
+        this.FinishMission();
     }
 
     protected override void StartMission()
     {
         base.StartMission();
-        //SetUpMission?.Invoke();
         this.isMissionActive = false;
         StartCoroutine(this.SetReadyMission());
     }
+
     protected virtual IEnumerator SetReadyMission()
     {
         yield return StartCoroutine(this.TitleMission());
-        //SetUpMission?.Invoke();
-        //yield return new WaitForSeconds(timeIntroTittle);
-        //ShowNumStage?.Invoke();
         yield return StartCoroutine(this.CountDownMission());
-        //currentReady = this.timeReadyMission;
-        //while (currentReady > 0)
-        //{
-        //    secondsLeft = Mathf.CeilToInt(currentReady);
-
-        //    OnUpdateCountdown?.Invoke(secondsLeft);
-
-        //    yield return new WaitForSeconds(1f);
-        //    currentReady -= 1f;
-        //}
-        //Debug.Log("Start Mission");
-        //this.isMissionActive = true;
-        //OnStartMission?.Invoke();
         yield return StartCoroutine(this.ActiveMission());
-
-        //yield return StartCoroutine(this.CurrentEndMission());
-
-
     }
-
-    //protected virtual IEnumerator CurrentEndMission()
-    //{
-
-    //    timer = timeMission;
-    //    while (timer >= 0)
-    //    {
-    //        timer -= Time.deltaTime;
-    //        UpdateCountDownMission?.Invoke(timer);
-    //        yield return null;
-    //    }
-
-    //    this.timer = 0f;
-    //    this.isMissionActive = false;
-    //}
 
     protected virtual IEnumerator TitleMission()
     {
@@ -112,7 +79,7 @@ public class MissionAvoidObstacles : BaseMission
     protected virtual IEnumerator CountDownMission()
     {
         this.ChangeState(MissionState.CountdownStage);
-        float currentReady = this.timeReadyMission;
+        currentReady = this.timeReadyMission;
         while (currentReady > 0)
         {
             OnTimeTick?.Invoke(Mathf.CeilToInt(currentReady));
@@ -128,24 +95,28 @@ public class MissionAvoidObstacles : BaseMission
         this.ChangeState(MissionState.ActiveGameplay);
         this.isMissionActive = true;
 
-        float currentMission = this.timeMission;
-        while (currentMission > 0 && this.currentState == MissionState.ActiveGameplay)
+        secondsLeft = this.timeMission;
+        while (secondsLeft > 0 && this.currentState == MissionState.ActiveGameplay)
         {
-            OnTimeTick?.Invoke(Mathf.CeilToInt(currentMission));
+            OnTimeTick?.Invoke(Mathf.Max(0f, secondsLeft));
             yield return null;
-            currentReady -= Time.deltaTime;
+            secondsLeft -= Time.deltaTime;
         }
-        //if (this.currentState == MissionState.ActiveGameplay)
-        //{
-        //    OnTimeTick?.Invoke(0f);
-        //    isMissionActive = false;
-        //}
+        if (this.currentState == MissionState.ActiveGameplay)
+        {
+            OnTimeTick?.Invoke(0.0f);
+            this.SuccessMission();
+
+        }
     }
 
     protected virtual void SuccessMission()
     {
         this.ChangeState(MissionState.Success);
+        isMissionActive = false;
+        DoneMission?.Invoke(true);
         Debug.Log("Done Mission");
+        this.FinishMission();
     }
 
 

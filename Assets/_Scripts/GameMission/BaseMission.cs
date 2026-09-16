@@ -20,5 +20,6 @@ public abstract class BaseMission : TuyenMonoBehaviour
     {
         this.isComplete = true;
         gameObject.SetActive(false);
+        Debug.Log("Hide Mision");
     }
 }

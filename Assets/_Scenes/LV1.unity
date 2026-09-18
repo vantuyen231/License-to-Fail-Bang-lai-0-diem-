@@ -42464,6 +42464,8 @@ MonoBehaviour:
   timer: 0
   curretMission: 0
   isCoolingDown: 0
+  missionFail: 0
+  maxPossiblePass: 0
 --- !u!4 &370745375
 Transform:
   m_ObjectHideFlags: 0
@@ -97817,6 +97819,7 @@ MonoBehaviour:
   missionName: Avoid Obstacles
   missionDescription: Reach the destination without hitting any obstacles.
   isComplete: 0
+  missionManager: {fileID: 370745374}
   timeMission: 30
   timer: 0
   scoreMission: 100
@@ -103121,6 +103124,7 @@ MonoBehaviour:
   missionName: Avoid Obstacles
   missionDescription: Reach the destination without hitting any obstacles.
   isComplete: 0
+  missionManager: {fileID: 370745374}
   timeMission: 30
   timer: 0
   scoreMission: 100
@@ -229263,6 +229267,7 @@ MonoBehaviour:
   missionName: Avoid Obstacles
   missionDescription: Reach the destination without hitting any obstacles.
   isComplete: 0
+  missionManager: {fileID: 370745374}
   timeMission: 30
   timer: 0
   scoreMission: 100
@@ -237839,6 +237844,7 @@ MonoBehaviour:
   missionName: Avoid Obstacles
   missionDescription: Reach the destination without hitting any obstacles.
   isComplete: 0
+  missionManager: {fileID: 370745374}
   timeMission: 30
   timer: 0
   scoreMission: 100

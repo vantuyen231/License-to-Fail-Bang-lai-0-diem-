@@ -70,7 +70,7 @@ public class PlayerScore : TuyenMonoBehaviour
     public virtual void AddScore(HitObjectType type, int scoreReward, string nameHit)
     {
         OnPlayerHit?.Invoke();
-        Debug.Log("Type Hit car: " + type + ".Name: " + nameHit + ".Score: " + scoreReward);
+        //Debug.Log("Type Hit car: " + type + ".Name: " + nameHit + ".Score: " + scoreReward);
         switch(type)
         {
             case HitObjectType.Pedestrian:

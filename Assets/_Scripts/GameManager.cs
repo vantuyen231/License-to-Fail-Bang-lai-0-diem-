@@ -29,7 +29,7 @@ public class GameManager : TuyenSingleton<GameManager>
 
 
     [Header("Mission Game")]
-    [SerializeField] protected int maxMission = 4;
+    [SerializeField] protected int maxMission = 5;
     [SerializeField] protected int indexMission = 0;
     
 

@@ -5,10 +5,14 @@ using UnityEngine;
 public abstract class BaseMission : TuyenMonoBehaviour
 {
     [SerializeField] protected MissionType missionType;
+    [SerializeField] protected MissionManager missionManager;
+    [Header("Status Mission")]
     [SerializeField] protected string missionName;
     [SerializeField] protected string missionDescription;
 
     [SerializeField] protected bool isComplete = false;
+    [SerializeField] protected bool isSucess = false;
+
 
     protected virtual void StartMission()
     {
@@ -16,10 +20,23 @@ public abstract class BaseMission : TuyenMonoBehaviour
         gameObject.SetActive(true);
     }
 
-    protected virtual void FinishMission()
+    protected virtual void FinishMission(bool state)
     {
         this.isComplete = true;
+        missionManager.CheckDoneMission(this, state);
         gameObject.SetActive(false);
-        Debug.Log("Hide Mision");
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadMissionManager();
+    }
+
+    protected virtual void LoadMissionManager()
+    {
+        if (missionManager != null) return;
+        missionManager = GetComponentInParent<MissionManager>();
+        Debug.Log(transform.name + ": LoadMissionManager", gameObject);
     }
 }

@@ -20,13 +20,18 @@ public class MissionManager : TuyenMonoBehaviour
     [SerializeField] protected float timer = 0;
     [SerializeField] protected int curretMission = 0;
     [SerializeField] protected bool isCoolingDown = false;
+    [SerializeField] protected int missionFail = 0;
+    [SerializeField] protected int missionSucess = 0;
+    [SerializeField] protected int maxPossiblePass = 0;
 
 
     protected override void Start()
     {
         base.Start();
-        this.GetNumMission();
-        this.GetRandomMission();
+        this.InitShift();
+        //this.GetNumMission();
+        //this.GetRandomMission();
+        ////this.CheckWinGame();
     }
 
     protected virtual void Update()
@@ -35,22 +40,9 @@ public class MissionManager : TuyenMonoBehaviour
         {
             this.CoolDownMission();
             return;
-        }else
-        {
-            this.DoMission();
-
         }
     }
 
-    protected virtual void OnEnable()
-    {
-        MissionAvoidObstacles.DoneMission += CheckDoneMission;
-    }
-
-    protected virtual void OnDisable()
-    {
-        MissionAvoidObstacles.DoneMission -= CheckDoneMission;
-    }
 
     protected override void LoadComponents()
     {
@@ -62,6 +54,20 @@ public class MissionManager : TuyenMonoBehaviour
     {
         if( missions.Count > 0 ) return;
         missions.AddRange(GetComponentsInChildren<BaseMission>(true));
+    }
+
+    protected virtual void InitShift()
+    {
+        this.GetNumMission();
+        this.GetRandomMission();
+
+        maxPossiblePass = Mathf.CeilToInt(indexMissionPlayer / 2.0f);
+
+        curretMission = 0;
+        missionSucess = 0;
+        missionFail = 0;
+
+        this.DoMission();
     }
 
 
@@ -78,7 +84,6 @@ public class MissionManager : TuyenMonoBehaviour
         missionsPlayer.Clear();
 
         tempMission = new List <BaseMission>(missions);
-        //List<BaseMission> tempMission = new List<BaseMission>(missions);
         for (int i = 0; i < indexMissionPlayer; i++)
         {
             if (tempMission.Count == 0) break;
@@ -94,36 +99,59 @@ public class MissionManager : TuyenMonoBehaviour
     {
         if( missionsPlayer == null ) return ;
 
-        if (curretMission >= missionsPlayer.Count)
+        if (curretMission < indexMissionPlayer)
         {
-            GameManager.Instance.WinGame();
-            return;
+            missionsPlayer[curretMission].SetActive(true);
         }
 
-        missionsPlayer[curretMission].SetActive(true);
-        if (isDone == false) return;
-        isDone = false;
-        missionsPlayer[curretMission].SetActive(false);
-
-        isCoolingDown = true;
 
     }
 
     protected virtual void CoolDownMission()
     {
-        isCoolingDown = true;
         timer += Time.deltaTime;
         if( timer >= timeNextMission )
         {
             timer = 0;
-            curretMission++;
             isCoolingDown = false;
             Debug.Log("Do next mission");
+            this.DoMission();
         }
     }
 
-    public virtual void CheckDoneMission(bool status)
+    public virtual void CheckDoneMission(BaseMission mission, bool status)
     {
-        isDone  = status;
+        if (status == true)
+        {
+            Debug.Log("ManagerMission: sucess");
+            missionSucess++;
+        }
+        else
+        {
+            Debug.Log("ManagerMission: fail");
+            missionFail++;
+        }
+
+        this.CheckWinGame();
+    }
+
+    protected virtual void CheckWinGame()
+    {
+        curretMission++;
+
+        if (missionFail >= maxPossiblePass)
+        {
+            GameManager.Instance.LoseGame();
+            return;
+        }
+
+        if (curretMission > indexMissionPlayer)
+        {
+            if (missionFail >= maxPossiblePass) GameManager.Instance.LoseGame();
+            else GameManager.Instance.WinGame();
+            return;
+        }
+        isCoolingDown = true ;
+        timer = 0;
     }
 }

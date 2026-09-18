@@ -45,28 +45,28 @@ public class UINoDamgerMission : TuyenMonoBehaviour
                 this.titleNoDMission.CountDown.Hide();
                 this.Hide(completeMission.transform);
                 this.Hide(failMission.transform);
-                Debug.Log("Title");
+                //Debug.Log("Title");
                 break;
             case MissionState.CountdownStage:
                 titleNoDMission.CountDown.Show();
-                Debug.Log("Count Down");
+                //Debug.Log("Count Down");
                 break;
             case MissionState.ActiveGameplay:
                 this.Hide(titleNoDMission.transform);
                 this.numEndMission.Show();
-                Debug.Log("PlayMission");
+                //Debug.Log("PlayMission");
                 break;
             case MissionState.Success:
                 this.numEndMission.Hide();
                 this.Show(completeMission.transform);
                 StartCoroutine(this.CountDownUIShow(completeMission.transform));
-                Debug.Log("Mission Complete");
+                //Debug.Log("Mission Complete");
                 break;
             case MissionState.Failed:
                 this.numEndMission.Hide();
                 this.Show(failMission.transform);
                 StartCoroutine(CountDownUIShow(failMission.transform));
-                Debug.Log("Mission Fail");
+                //Debug.Log("Mission Fail");
                 break;
             default:
                 Debug.Log("Null");

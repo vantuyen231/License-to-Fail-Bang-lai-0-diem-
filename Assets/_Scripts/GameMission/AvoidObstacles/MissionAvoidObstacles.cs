@@ -26,7 +26,6 @@ public class MissionAvoidObstacles : BaseMission
 
     public static event Action<MissionState> UpdateStateMission;
     public static event Action<float> OnTimeTick;
-    public static event Action<bool> DoneMission;
 
     protected override void Start()
     {
@@ -51,9 +50,8 @@ public class MissionAvoidObstacles : BaseMission
         this.ChangeState(MissionState.Failed);
         StopAllCoroutines();
         isMissionActive = false;
-        Debug.Log("Hit, mission fail");
-        DoneMission?.Invoke(true);
-        this.FinishMission();
+        //Debug.Log("Hit, mission fail");
+        this.FinishMission(false);
     }
 
     protected override void StartMission()
@@ -114,9 +112,8 @@ public class MissionAvoidObstacles : BaseMission
     {
         this.ChangeState(MissionState.Success);
         isMissionActive = false;
-        DoneMission?.Invoke(true);
         Debug.Log("Done Mission");
-        this.FinishMission();
+        this.FinishMission(true);
     }
 
 

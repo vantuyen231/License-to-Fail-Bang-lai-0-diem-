@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class MissionEscapePolice : BaseMission
 {
-
+    protected override void OnStartMission()
+    {
+        
+    }
 }

@@ -7,32 +7,11 @@ public class MissionAvoidObstacles : BaseMission
 {
     [Header("Mission Configs")]
     [SerializeField] protected float timeMission = 30f;
-    [SerializeField] protected float timer = 0f;
     [SerializeField] protected int scoreMission = 100;
-    [SerializeField] protected float currentTimeMission = 0f;
-    [SerializeField] protected float timeIntroTittle = 3f;
-    [SerializeField] protected float timeReadyMission = 3f;
-
     [SerializeField] protected float secondsLeft = 0;
+    [SerializeField] protected UINoDamgerMission uiMission;
 
-    [SerializeField] protected float currentReady = 0f;
-
-
-
-    [Header("Mission States")]
-    [SerializeField] protected bool isMissionActive = false;
-    [SerializeField] protected MissionState currentState = MissionState.None;
-
-
-    public static event Action<MissionState> UpdateStateMission;
-    public static event Action<float> OnTimeTick;
-
-    protected override void Start()
-    {
-        base.Start();
-        this.StartMission();
-    }
-
+    private Coroutine timerCoroutine;
 
     protected virtual void OnEnable()
     {
@@ -44,83 +23,81 @@ public class MissionAvoidObstacles : BaseMission
         PlayerScore.OnPlayerHit -= HitDetection;
     }
 
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadUIMission();
+    }
+
+    protected virtual void LoadUIMission()
+    {
+        if (this.uiMission != null) return;
+
+        this.uiMission = FindObjectOfType<UINoDamgerMission>();
+        Debug.Log(transform.name + ": LoadUIMission", gameObject);
+    }
+
+    protected override void ResetValue()
+    {
+        base.ResetValue();
+        this.missionType = MissionType.NoViolation;
+        this.missionName = "Avoid Obstacles";
+        this.missionDescription = "Reach the destination without hitting any obstacles.";
+    }
+
     protected virtual void HitDetection()
     {
         if (this.currentState != MissionState.ActiveGameplay) return;
-        this.ChangeState(MissionState.Failed);
-        StopAllCoroutines();
-        isMissionActive = false;
-        //Debug.Log("Hit, mission fail");
+        if (timerCoroutine != null) StopCoroutine(timerCoroutine);
+        Debug.Log("Mision AO: mission fail");
         this.FinishMission(false);
     }
 
-    protected override void StartMission()
+
+    protected virtual IEnumerator GameplayTimerRoutine()
     {
-        base.StartMission();
-        this.isMissionActive = false;
-        StartCoroutine(this.SetReadyMission());
-    }
-
-    protected virtual IEnumerator SetReadyMission()
-    {
-        yield return StartCoroutine(this.TitleMission());
-        yield return StartCoroutine(this.CountDownMission());
-        yield return StartCoroutine(this.ActiveMission());
-    }
-
-    protected virtual IEnumerator TitleMission()
-    {
-        this.ChangeState(MissionState.TitleStage);
-        yield return new WaitForSeconds(timeIntroTittle);
-    }
-
-    protected virtual IEnumerator CountDownMission()
-    {
-        this.ChangeState(MissionState.CountdownStage);
-        currentReady = this.timeReadyMission;
-        while (currentReady > 0)
-        {
-            OnTimeTick?.Invoke(Mathf.CeilToInt(currentReady));
-            yield return new WaitForSeconds(1f);
-            currentReady -= 1f;
-        }
-        currentReady = 0;
-    }
-
-    protected virtual IEnumerator ActiveMission()
-    {
-
-        this.ChangeState(MissionState.ActiveGameplay);
-        this.isMissionActive = true;
-
         secondsLeft = this.timeMission;
         while (secondsLeft > 0 && this.currentState == MissionState.ActiveGameplay)
         {
-            OnTimeTick?.Invoke(Mathf.Max(0f, secondsLeft));
+
+            SendTime(Mathf.Max(0f, this.secondsLeft));
             yield return null;
             secondsLeft -= Time.deltaTime;
         }
         if (this.currentState == MissionState.ActiveGameplay)
         {
-            OnTimeTick?.Invoke(0.0f);
-            this.SuccessMission();
+            SendTime(0.0f);
+            this.FinishMission(true);
 
         }
     }
 
-    protected virtual void SuccessMission()
+    protected override void StartMission()
     {
-        this.ChangeState(MissionState.Success);
-        isMissionActive = false;
-        Debug.Log("Done Mission");
-        this.FinishMission(true);
+        if (uiMission != null) uiMission.gameObject.SetActive(true);
+        base.StartMission();
     }
 
-
-
-    protected virtual void ChangeState(MissionState state)
+    protected override IEnumerator CountDownEndUI(bool state)
     {
-        this.currentState = state;
-        UpdateStateMission?.Invoke(state);
+        yield return new WaitForSeconds(this.endUIMission);
+
+        if (uiMission != null)
+        {
+            uiMission.gameObject.SetActive(false);
+        }
+
+        if (missionManager != null)
+        {
+            missionManager.CheckDoneMission(this, state);
+        }
+
+        gameObject.SetActive(false);
+    }
+
+    protected override void OnStartMission()
+    {
+        if (timerCoroutine != null) StopCoroutine(timerCoroutine);
+        timerCoroutine = StartCoroutine(this.GameplayTimerRoutine());
     }
 }

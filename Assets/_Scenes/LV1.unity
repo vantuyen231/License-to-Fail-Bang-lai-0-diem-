@@ -42459,12 +42459,13 @@ MonoBehaviour:
   - {fileID: 852750134}
   missionsPlayer: []
   tempMission: []
-  timeNextMission: 2.5
+  timeNextMission: 5
   isDone: 0
   timer: 0
   curretMission: 0
   isCoolingDown: 0
   missionFail: 0
+  missionSucess: 0
   maxPossiblePass: 0
 --- !u!4 &370745375
 Transform:
@@ -97816,20 +97817,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionType: 1
+  missionManager: {fileID: 370745374}
   missionName: Avoid Obstacles
   missionDescription: Reach the destination without hitting any obstacles.
   isComplete: 0
-  missionManager: {fileID: 370745374}
-  timeMission: 30
-  timer: 0
-  scoreMission: 100
-  currentTimeMission: 0
+  isSucess: 0
+  endUIMission: 2
   timeIntroTittle: 3
   timeReadyMission: 3
-  secondsLeft: 0
   currentReady: 0
+  timeMissionBase: 0
   isMissionActive: 0
   currentState: 0
+  timeMission: 30
+  scoreMission: 100
+  secondsLeft: 0
+  uiMission: {fileID: 1037127823}
 --- !u!1 &852986199
 GameObject:
   m_ObjectHideFlags: 0
@@ -103121,20 +103124,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionType: 1
+  missionManager: {fileID: 370745374}
   missionName: Avoid Obstacles
   missionDescription: Reach the destination without hitting any obstacles.
   isComplete: 0
-  missionManager: {fileID: 370745374}
-  timeMission: 30
-  timer: 0
-  scoreMission: 100
-  currentTimeMission: 0
+  isSucess: 0
+  endUIMission: 2
   timeIntroTittle: 3
   timeReadyMission: 3
-  secondsLeft: 0
   currentReady: 0
+  timeMissionBase: 0
   isMissionActive: 0
   currentState: 0
+  timeMission: 30
+  scoreMission: 100
+  secondsLeft: 0
+  uiMission: {fileID: 1037127823}
 --- !u!1001 &898821437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -229264,20 +229269,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionType: 1
+  missionManager: {fileID: 370745374}
   missionName: Avoid Obstacles
   missionDescription: Reach the destination without hitting any obstacles.
   isComplete: 0
-  missionManager: {fileID: 370745374}
-  timeMission: 30
-  timer: 0
-  scoreMission: 100
-  currentTimeMission: 0
+  isSucess: 0
+  endUIMission: 2
   timeIntroTittle: 3
   timeReadyMission: 3
-  secondsLeft: 0
   currentReady: 0
+  timeMissionBase: 0
   isMissionActive: 0
   currentState: 0
+  timeMission: 30
+  scoreMission: 100
+  secondsLeft: 0
+  uiMission: {fileID: 1037127823}
 --- !u!1 &2021059730
 GameObject:
   m_ObjectHideFlags: 0
@@ -237841,20 +237848,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionType: 1
+  missionManager: {fileID: 370745374}
   missionName: Avoid Obstacles
   missionDescription: Reach the destination without hitting any obstacles.
   isComplete: 0
-  missionManager: {fileID: 370745374}
-  timeMission: 30
-  timer: 0
-  scoreMission: 100
-  currentTimeMission: 0
+  isSucess: 0
+  endUIMission: 2
   timeIntroTittle: 3
   timeReadyMission: 3
-  secondsLeft: 0
   currentReady: 0
+  timeMissionBase: 0
   isMissionActive: 0
   currentState: 0
+  timeMission: 30
+  scoreMission: 100
+  secondsLeft: 0
+  uiMission: {fileID: 1037127823}
 --- !u!1 &2087364803
 GameObject:
   m_ObjectHideFlags: 0

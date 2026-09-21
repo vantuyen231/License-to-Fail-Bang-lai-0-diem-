@@ -23,19 +23,19 @@ public class UINoDamgerMission : TuyenMonoBehaviour
     }
     protected virtual void OnEnable()
     {
-        MissionAvoidObstacles.UpdateStateMission += ShowUI;
-        MissionAvoidObstacles.OnTimeTick += UpdateTimerTrick;
+        BaseMission.UpdateStateMission += ShowUI;
+        BaseMission.OnTimeTick += UpdateTimerTrick;
     }
 
     protected virtual void OnDisable()
     {
-        MissionAvoidObstacles.UpdateStateMission -= ShowUI;
-        MissionAvoidObstacles.OnTimeTick -= UpdateTimerTrick;
+        BaseMission.UpdateStateMission -= ShowUI;
+        BaseMission.OnTimeTick -= UpdateTimerTrick;
 
     }
 
 
-    protected virtual void ShowUI(MissionState state)
+    protected virtual void ShowUI(MissionState state, float displayDuration)
     {
         stateMission = state;
         switch (state)
@@ -59,13 +59,13 @@ public class UINoDamgerMission : TuyenMonoBehaviour
             case MissionState.Success:
                 this.numEndMission.Hide();
                 this.Show(completeMission.transform);
-                StartCoroutine(this.CountDownUIShow(completeMission.transform));
+                StartCoroutine(this.CountDownUIShow(completeMission.transform,displayDuration));
                 //Debug.Log("Mission Complete");
                 break;
             case MissionState.Failed:
                 this.numEndMission.Hide();
                 this.Show(failMission.transform);
-                StartCoroutine(CountDownUIShow(failMission.transform));
+                StartCoroutine(CountDownUIShow(failMission.transform,displayDuration));
                 //Debug.Log("Mission Fail");
                 break;
             default:
@@ -91,9 +91,9 @@ public class UINoDamgerMission : TuyenMonoBehaviour
         }
     }
 
-    protected virtual IEnumerator CountDownUIShow(Transform uiCheckTime)
+    protected virtual IEnumerator CountDownUIShow(Transform uiCheckTime,float duration)
     {
-        yield return new WaitForSeconds(timeEndUI);
+        yield return new WaitForSeconds(duration);
         this.Hide(uiCheckTime);
     }
 

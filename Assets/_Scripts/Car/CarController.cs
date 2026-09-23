@@ -1,4 +1,5 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
@@ -51,6 +52,7 @@ public class CarController : TuyenMonoBehaviour
     [SerializeField] protected float moveInput = 0;
     [SerializeField] protected float steerInput = 0;
 
+    public static event Action<int> SpeedPlayer;
     protected override void Start()
     {
         base.Start();
@@ -153,10 +155,6 @@ public class CarController : TuyenMonoBehaviour
         TurnCam();
         SimulatorRollBodyCar();
         CarSpeed();
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    Debug.Log("Space!");
-        //}
     }
 
     private void OnEnable()
@@ -265,9 +263,6 @@ public class CarController : TuyenMonoBehaviour
         {
             playerSpeed = (int)rawSpeed;
         }
-
-        GameManager.Instance.UpdateVelocity(playerSpeed);
+        SpeedPlayer?.Invoke(playerSpeed);
     }
-
-
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class UITopL : TuyenMonoBehaviour
 {
@@ -12,8 +13,10 @@ public class UITopL : TuyenMonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        this.UpdateUITopLeft();
+        //this.UpdateUITopLeft(score,status);
     }
+
+    #region LoadComponent
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -34,12 +37,10 @@ public class UITopL : TuyenMonoBehaviour
         statusManager = GetComponentInChildren<StatusManager>();
         Debug.Log(transform.name + ": LoadStatusManager", gameObject);
     }
+    #endregion
 
-    public virtual void UpdateUITopLeft()
+    public virtual void UpdateUITopLeft(int score, int status)
     {
-        int score = GameManager.Instance.CurrentScore;
-        int status = GameManager.Instance.CurrentStatus;
-
         if (scoreLicense == null && statusManager == null) return;
         this.scoreLicense.SetScoreText(score.ToString());
         this.statusManager.SetStatusPlayer(status);

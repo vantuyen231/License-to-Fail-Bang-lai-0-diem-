@@ -9,7 +9,6 @@ public class UIStarManager : TuyenMonoBehaviour
     [SerializeField] protected int starCount = 0;
     [SerializeField] protected bool isShow;
 
-
     protected override void Start()
     {
         base.Start();
@@ -17,6 +16,7 @@ public class UIStarManager : TuyenMonoBehaviour
         this.Hide();
 
     }
+    #region LoadComponent
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -36,15 +36,13 @@ public class UIStarManager : TuyenMonoBehaviour
         if (starPlayers.Count > 0) return;
         this.starPlayers.AddRange(GetComponentsInChildren<StarPlayer>());
     }
+    #endregion
 
-    public virtual void AddStar()
-    {
-        if(starPlayers == null && starCount >4) return;
-
-        starPlayers[starCount].gameObject.SetActive(true);
-
-
-    }
+    //public virtual void AddStar()
+    //{
+    //    if(starPlayers == null && starCount >4) return;
+    //    starPlayers[starCount].gameObject.SetActive(true);
+    //}
 
     public virtual void Hide()
     {
@@ -53,17 +51,16 @@ public class UIStarManager : TuyenMonoBehaviour
 
     }
 
-    public virtual void Show()
+    public virtual void Show(int star)
     {
         isShow = true;
         gameObject.SetActive(isShow);
-        this.ShowStar();
+        this.ShowStar(star);
     }
 
-    protected virtual void ShowStar()
+    protected virtual void ShowStar(int star)
     {
-        if (GameManager.Instance == null) return;
-        starCount = GameManager.Instance.CurrentStars;
+        starCount = star;
         for (int i = 0; i < starPlayers.Count; i++)
         {
             starPlayers[i].gameObject.SetActive(i < starCount);

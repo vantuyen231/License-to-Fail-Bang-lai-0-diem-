@@ -15,12 +15,12 @@ public class NotiText : TextAbstract
 
     protected virtual void OnEnable()
     {
-        GameManager.OnObjectHitNoti += ShowHitNoti;
+        PlayerScore.ShowNoti += ShowHitNoti;
     }
 
     protected virtual void OnDisable()
     {
-        GameManager.OnObjectHitNoti -= ShowHitNoti;
+        PlayerScore.ShowNoti -= ShowHitNoti;
     }
 
     protected override void LoadComponents()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,13 +8,30 @@ public class UIManager : TuyenMonoBehaviour
     [SerializeField] protected UITopL topLeft;
     [SerializeField] protected UITopR topRight;
     [SerializeField] protected UITop topUI;
+    [SerializeField] protected UIMiddle middleUI;
     [SerializeField] protected UIBottomR bottomRight;
     [SerializeField] protected UIBottomL bottomLeft;
 
-
-    protected virtual void FixedUpdate()
+    protected virtual void OnEnable()
     {
-        this.UpdateUI();
+        PlayerScore.ChangeStatusPlayer += UIPlayerUpdate;
+        CarController.SpeedPlayer += UISpeedCar;
+    }
+
+    protected virtual void OnDisable()
+    {
+        PlayerScore.ChangeStatusPlayer -= UIPlayerUpdate;
+        CarController.SpeedPlayer -= UISpeedCar;
+    }
+
+    private void UISpeedCar(int velocity)
+    {
+        if (this.topRight != null) topRight.UpdateUITopR(velocity);
+    }
+    protected virtual void UIPlayerUpdate(int license, int star, int status, bool isWanted)
+    {
+        if(this.topLeft != null) topLeft.UpdateUITopLeft(license, status);
+        if(this.topUI != null) topUI.UITopUpdate(star, isWanted);
     }
 
     #region Load Components
@@ -23,8 +41,16 @@ public class UIManager : TuyenMonoBehaviour
         this.LoadUITopL();
         this.LoadUITopR();
         this.LoadUITop();
+        this.LoadUIMiddle();
         this.LoadUIBottomL();
         this.LoadUIBottomR();
+    }
+
+    private void LoadUIMiddle()
+    {
+        if (middleUI != null) return;
+        middleUI = GetComponentInChildren<UIMiddle>();
+        Debug.Log(transform.name + ": LoadUIMiddle", gameObject);
     }
 
     private void LoadUITopL()
@@ -64,11 +90,4 @@ public class UIManager : TuyenMonoBehaviour
     #endregion
 
 
-    protected virtual void UpdateUI()
-    {
-        if(GameManager.Instance == null) return;
-        this.topLeft.UpdateUITopLeft();
-        this.topRight.UpdateUITopR();
-        this.topUI.UITopUpdate();
-    }
 }

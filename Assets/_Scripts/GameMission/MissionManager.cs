@@ -24,14 +24,20 @@ public class MissionManager : TuyenMonoBehaviour
     [SerializeField] protected int missionSucess = 0;
     [SerializeField] protected int maxPossiblePass = 0;
 
+    [Header("WinGameStatus")]
+    [SerializeField] protected int scoreMission = 0;
+    [SerializeField] protected float bonus = 0;
+    [SerializeField] protected int pedestrial = 0;
+    [SerializeField] protected int vehical = 0;
+
 
     protected override void Start()
     {
         base.Start();
         this.InitShift();
-        //this.GetNumMission();
-        //this.GetRandomMission();
-        ////this.CheckWinGame();
+        this.GetNumMission();
+        this.GetRandomMission();
+        this.CheckWinGame();
     }
 
     protected virtual void Update()
@@ -42,7 +48,6 @@ public class MissionManager : TuyenMonoBehaviour
             return;
         }
     }
-
 
     protected override void LoadComponents()
     {
@@ -66,7 +71,6 @@ public class MissionManager : TuyenMonoBehaviour
         curretMission = 0;
         missionSucess = 0;
         missionFail = 0;
-
         this.DoMission();
     }
 
@@ -103,8 +107,6 @@ public class MissionManager : TuyenMonoBehaviour
         {
             missionsPlayer[curretMission].SetActive(true);
         }
-
-
     }
 
     protected virtual void CoolDownMission()
@@ -145,8 +147,9 @@ public class MissionManager : TuyenMonoBehaviour
             return;
         }
 
-        if (curretMission > indexMissionPlayer)
+        if (curretMission >= indexMissionPlayer)
         {
+            Debug.Log("Game manager: Done game");
             if (missionFail >= maxPossiblePass) GameManager.Instance.LoseGame();
             else GameManager.Instance.WinGame();
             return;

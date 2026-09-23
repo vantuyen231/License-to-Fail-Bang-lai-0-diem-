@@ -21,9 +21,9 @@ public class UITopR : TuyenMonoBehaviour
     }
 
 
-    public virtual void UpdateUITopR()
+    public virtual void UpdateUITopR(int velocityCar)
     {
-        int velocity = GameManager.Instance.CurrentVelocity;
+        int velocity = velocityCar;
         this.carVelocity.SetCarVelocity(velocity.ToString());
     }
 }

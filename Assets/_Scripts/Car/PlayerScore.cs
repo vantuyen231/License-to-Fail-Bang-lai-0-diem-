@@ -32,38 +32,38 @@ public class PlayerScore : TuyenMonoBehaviour
     [SerializeField] protected int upStarHitCar = 2;
 
     [Header("State Game")]
+    [SerializeField] protected bool isWanted = false;
     [SerializeField] protected bool isLose = false;
     [SerializeField] protected bool isWin = false;
 
     public int CurrentScore => currentLicense;
-
     public int Star => star;
 
+    public static event Action<int, int, int, bool> ChangeStatusPlayer;
+    public static event Action<HitObjectType, int, string> ShowNoti;
     public static event Action OnPlayerHit;
+
     protected override void Start()
     {
         currentLicense = maxLicense;
         starCoolDownTimer = starCDMaxLimit;
 
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.UpdateGameplayData(currentLicense, star, status);
-        }
+        ChangeStatusPlayer?.Invoke(currentLicense, star, status, isWanted);
     }
 
     private void FixedUpdate()
     {
         this.CheckCoolDownStar();
 
-        if (isWin && isLose == false)
-        {
-            this.WinGame();
-        }
+        //if (isWin && isLose == false)
+        //{
+        //    this.WinGame();
+        //}
 
-        if (isLose && isWin == false)
-        {
-            this.LoseGame();
-        }
+        //if (isLose && isWin == false)
+        //{
+        //    this.LoseGame();
+        //}
     }
 
 
@@ -84,11 +84,8 @@ public class PlayerScore : TuyenMonoBehaviour
         this.StatusPlayer();
         if (star > 5) this.star = 5;
 
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.UpdateGameplayData(currentLicense, star, status);
-            GameManager.Instance.NotifiHit(type, scoreReward, nameHit);
-        }
+        ChangeStatusPlayer?.Invoke(currentLicense, star, status, isWanted);
+        ShowNoti?.Invoke(type, scoreReward, nameHit);
     }
 
     protected virtual void HandleNPCHit(int scoreReward)
@@ -112,10 +109,6 @@ public class PlayerScore : TuyenMonoBehaviour
         }
     }
 
-    protected virtual void HandlePoliceHit(int scoreReward)
-    {
-        star = star + 1;
-    }
 
 
     protected virtual void StatusPlayer()
@@ -130,19 +123,19 @@ public class PlayerScore : TuyenMonoBehaviour
     {
         if (star <= 0)
         {
-            GameManager.Instance.SetPlayerWanted(false);
+            isWanted = false;
+            ChangeStatusPlayer?.Invoke(currentLicense, star, status, isWanted);
             return;
         }
-        GameManager.Instance.SetPlayerWanted(true);
+        isWanted = true;
+        ChangeStatusPlayer?.Invoke(currentLicense, star, status, isWanted);
+
         starCoolDownTimer -= Time.deltaTime;
         if(starCoolDownTimer >= 0) return;
         this.star--;
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.UpdateGameplayData(currentLicense, star, status);
-        }
-        starCoolDownTimer = starCDMaxLimit;
+        ChangeStatusPlayer?.Invoke(currentLicense, star, status, isWanted);
 
+        starCoolDownTimer = starCDMaxLimit;
 
     }
 
@@ -150,9 +143,6 @@ public class PlayerScore : TuyenMonoBehaviour
     {
         Debug.Log("Hit");
         this.ComputeEarnedCoins();
-
-
-       
     }
 
     protected virtual void ComputeEarnedCoins()
@@ -185,17 +175,17 @@ public class PlayerScore : TuyenMonoBehaviour
         currentHitCar = 0;
     }
 
-    protected virtual void WinGame()
-    {
+    //protected virtual void WinGame()
+    //{
 
-        GameManager.Instance.WinGame();
+    //    GameManager.Instance.WinGame();
 
-    }
+    //}
 
-    protected virtual void LoseGame()
-    {
+    //protected virtual void LoseGame()
+    //{
 
-        GameManager.Instance.LoseGame();
+    //    GameManager.Instance.LoseGame();
 
-    }
+    //}
 }

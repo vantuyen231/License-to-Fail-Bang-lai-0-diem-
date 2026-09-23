@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoliceCarSpawner : Spawner<PoliceCarCtrl>
+public class BaseUIMission : TuyenMonoBehaviour
 {
 
 }

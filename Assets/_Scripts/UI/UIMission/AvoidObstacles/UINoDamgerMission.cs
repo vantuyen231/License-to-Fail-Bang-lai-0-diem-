@@ -7,8 +7,7 @@ public class UINoDamgerMission : TuyenMonoBehaviour
 {
     [SerializeField] protected TitleNoDMission titleNoDMission;
     [SerializeField] protected CountDownMission numEndMission;
-    [SerializeField] protected CompleteMission completeMission;
-    [SerializeField] protected FailMisssion failMission;
+
     [SerializeField] protected int timeEndUI = 2;
 
     [Header("StateMission")]
@@ -20,6 +19,8 @@ public class UINoDamgerMission : TuyenMonoBehaviour
         base.Start();
         this.Hide(titleNoDMission.transform);
         this.Hide(numEndMission.transform);
+        //this.Hide(completeMission.transform);
+        //this.Hide(failMission.transform);
     }
     protected virtual void OnEnable()
     {
@@ -43,8 +44,8 @@ public class UINoDamgerMission : TuyenMonoBehaviour
             case MissionState.TitleStage:
                 this.Show(titleNoDMission.transform);
                 this.titleNoDMission.CountDown.Hide();
-                this.Hide(completeMission.transform);
-                this.Hide(failMission.transform);
+                //this.Hide(completeMission.transform);
+                //this.Hide(failMission.transform);
                 //Debug.Log("Title");
                 break;
             case MissionState.CountdownStage:
@@ -58,14 +59,14 @@ public class UINoDamgerMission : TuyenMonoBehaviour
                 break;
             case MissionState.Success:
                 this.numEndMission.Hide();
-                this.Show(completeMission.transform);
-                StartCoroutine(this.CountDownUIShow(completeMission.transform,displayDuration));
+                //this.Show(completeMission.transform);
+                //StartCoroutine(this.CountDownUIShow(completeMission.transform,displayDuration));
                 //Debug.Log("Mission Complete");
                 break;
             case MissionState.Failed:
                 this.numEndMission.Hide();
-                this.Show(failMission.transform);
-                StartCoroutine(CountDownUIShow(failMission.transform,displayDuration));
+                //this.Show(failMission.transform);
+                //StartCoroutine(CountDownUIShow(failMission.transform,displayDuration));
                 //Debug.Log("Mission Fail");
                 break;
             default:
@@ -103,8 +104,6 @@ public class UINoDamgerMission : TuyenMonoBehaviour
         base.LoadComponents();
         this.LoadTitleMission();
         this.LoadNumEndMission();
-        this.LoadCompleteMission();
-        this.LoadFailMisssion();
     }
 
     protected virtual void LoadTitleMission()
@@ -121,19 +120,6 @@ public class UINoDamgerMission : TuyenMonoBehaviour
         Debug.Log(transform.name + " LoadNumCountDown:", gameObject);
     }
 
-    protected virtual void LoadCompleteMission()
-    {
-        if (completeMission != null) return;
-        completeMission = GetComponentInChildren<CompleteMission>();
-        Debug.Log(transform.name + " LoadCompleteMission:", gameObject);
-    }
-
-    protected virtual void LoadFailMisssion()
-    {
-        if (failMission != null) return;
-        failMission = GetComponentInChildren<FailMisssion>();
-        Debug.Log(transform.name + " LoadFailMisssion:", gameObject);
-    }
     #endregion
 
 

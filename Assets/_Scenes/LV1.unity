@@ -17988,6 +17988,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7155684608894559965, guid: 4fc7e62e811acac4a8949a5e1a15f45f, type: 3}
   m_PrefabInstance: {fileID: 154469111}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &155661125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 155661126}
+  - component: {fileID: 155661127}
+  m_Layer: 5
+  m_Name: UIEscapePoliceMission
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &155661126
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155661125}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1766507112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &155661127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155661125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4242543af6bed1c44b5ec317a3888999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &156354318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19722,20 +19770,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9bfea0179e70ed448e229984dad9429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreMission: 0
-  currentStars: 0
-  currentStatus: 0
-  currentVelocity: 0
-  mission: 0
-  bonus: 0
-  currentScore: 12
   coin: 0
-  pedestrial: 0
-  vehical: 0
   isWinGame: 0
   isLoseGame: 0
   isPauseGame: 0
-  isWanted: 0
   maxMission: 5
   indexMission: 3
   carPlayerData: {fileID: 11400000, guid: 8f5aca10237c92849a978cf3ec598c26, type: 2}
@@ -42467,6 +42505,10 @@ MonoBehaviour:
   missionFail: 0
   missionSucess: 0
   maxPossiblePass: 0
+  scoreMission: 0
+  bonus: 0
+  pedestrial: 0
+  vehical: 0
 --- !u!4 &370745375
 Transform:
   m_ObjectHideFlags: 0
@@ -42484,6 +42526,7 @@ Transform:
   - {fileID: 2087243226}
   - {fileID: 2020849050}
   - {fileID: 852750133}
+  - {fileID: 429610554}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &370833363
@@ -50164,6 +50207,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d423ba7e9a8dafe4b9f8d9ad91733f32, type: 3}
   m_PrefabInstance: {fileID: 429196721}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &429610553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 429610554}
+  - component: {fileID: 429610555}
+  m_Layer: 0
+  m_Name: EscapePoliceMission
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &429610554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429610553}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 370745375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &429610555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429610553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76e35cc8f94f684daa27eddda762695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionType: 2
+  missionManager: {fileID: 370745374}
+  missionName: 
+  missionDescription: 
+  isComplete: 0
+  isSucess: 0
+  endUIMission: 2
+  timeIntroTittle: 3
+  timeReadyMission: 3
+  currentReady: 0
+  timeMissionBase: 0
+  isMissionActive: 0
+  currentState: 0
 --- !u!1001 &430059843
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76595,6 +76695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   policeSpawner: {fileID: 660980187}
+  policeSpawning: {fileID: 660980188}
 --- !u!1001 &661551837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89825,7 +89926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -97829,7 +97930,7 @@ MonoBehaviour:
   timeMissionBase: 0
   isMissionActive: 0
   currentState: 0
-  timeMission: 30
+  timeMission: 5
   scoreMission: 100
   secondsLeft: 0
   uiMission: {fileID: 1037127823}
@@ -103136,7 +103237,7 @@ MonoBehaviour:
   timeMissionBase: 0
   isMissionActive: 0
   currentState: 0
-  timeMission: 30
+  timeMission: 5
   scoreMission: 100
   secondsLeft: 0
   uiMission: {fileID: 1037127823}
@@ -119346,8 +119447,6 @@ RectTransform:
   m_Children:
   - {fileID: 782548074}
   - {fileID: 1597321160}
-  - {fileID: 1599849581}
-  - {fileID: 1980480941}
   m_Father: {fileID: 1766507112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -119369,8 +119468,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleNoDMission: {fileID: 782548077}
   numEndMission: {fileID: 1597321163}
-  completeMission: {fileID: 1599849582}
-  failMission: {fileID: 1980480942}
   timeEndUI: 2
   stateMission: 0
 --- !u!1 &1038818626
@@ -138370,6 +138467,7 @@ MonoBehaviour:
   topLeft: {fileID: 1151521892}
   topRight: {fileID: 2137772467}
   topUI: {fileID: 392770854}
+  middleUI: {fileID: 1766507113}
   bottomRight: {fileID: 920855750}
   bottomLeft: {fileID: 1190129133}
 --- !u!1001 &1197261163
@@ -180243,7 +180341,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599849580}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -180251,7 +180349,7 @@ RectTransform:
   - {fileID: 393567322}
   - {fileID: 334888666}
   - {fileID: 951636672}
-  m_Father: {fileID: 1037127822}
+  m_Father: {fileID: 1766507112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -197611,6 +197709,9 @@ RectTransform:
   - {fileID: 1023982721}
   - {fileID: 210762547}
   - {fileID: 1037127822}
+  - {fileID: 155661126}
+  - {fileID: 1599849581}
+  - {fileID: 1980480941}
   m_Father: {fileID: 1196378942}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -197630,6 +197731,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7739c3830b0c6c41bbb2905ca60ebe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noDamgerMission: {fileID: 0}
+  escapePoliceMission: {fileID: 0}
+  completeMission: {fileID: 1599849582}
+  failMission: {fileID: 1980480942}
 --- !u!1001 &1767301847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -223904,14 +224009,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980480940}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 297760222}
   - {fileID: 1735707276}
-  m_Father: {fileID: 1037127822}
+  m_Father: {fileID: 1766507112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -229281,7 +229386,7 @@ MonoBehaviour:
   timeMissionBase: 0
   isMissionActive: 0
   currentState: 0
-  timeMission: 30
+  timeMission: 5
   scoreMission: 100
   secondsLeft: 0
   uiMission: {fileID: 1037127823}
@@ -237860,7 +237965,7 @@ MonoBehaviour:
   timeMissionBase: 0
   isMissionActive: 0
   currentState: 0
-  timeMission: 30
+  timeMission: 5
   scoreMission: 100
   secondsLeft: 0
   uiMission: {fileID: 1037127823}

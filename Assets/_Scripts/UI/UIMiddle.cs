@@ -2,17 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIMiddle : MonoBehaviour
+public class UIMiddle : TuyenMonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] protected UINoDamgerMission noDamgerMission;
+    [SerializeField] protected UIEscapePoliceMission escapePoliceMission;
+    [SerializeField] protected CompleteMission completeMission;
+    [SerializeField] protected FailMisssion failMission;
+
+    protected override void Start()
     {
-        
+        //this.Hide(completeMission.transform);
+        //this.Hide(failMission.transform);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void LoadComponents()
     {
-        
+        base.LoadComponents();
+        this.LoadCompleteMission();
+        this.LoadFailMisssion();
+    }
+    protected virtual void LoadCompleteMission()
+    {
+        if (completeMission != null) return;
+        completeMission = GetComponentInChildren<CompleteMission>();
+        Debug.Log(transform.name + " LoadCompleteMission:", gameObject);
+    }
+
+    protected virtual void LoadFailMisssion()
+    {
+        if (failMission != null) return;
+        failMission = GetComponentInChildren<FailMisssion>();
+        Debug.Log(transform.name + " LoadFailMisssion:", gameObject);
     }
 }

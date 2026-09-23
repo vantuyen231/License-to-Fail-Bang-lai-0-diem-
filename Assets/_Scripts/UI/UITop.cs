@@ -21,14 +21,14 @@ public class UITop : TuyenMonoBehaviour
         Debug.Log(transform.name + ": LoadUIStarManager", gameObject);
     }
 
-    public virtual void UITopUpdate()
+    public virtual void UITopUpdate(int star, bool isWanted)
     {
         if (uIStarManager != null)
         {
-            this.uIStarManager.AddStar();
-            if (GameManager.Instance.IsWanted == true)
+            //this.uIStarManager.AddStar();
+            if (isWanted == true)
             {
-                uIStarManager.Show();
+                uIStarManager.Show(star);
             }
             else
             {

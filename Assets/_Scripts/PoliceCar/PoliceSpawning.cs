@@ -21,6 +21,7 @@ public class PoliceSpawning : TuyenMonoBehaviour
         this.DeSpawnPolice();
     }
 
+    #region LoadComponent
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -42,6 +43,7 @@ public class PoliceSpawning : TuyenMonoBehaviour
         int randomIndex = Random.Range(0, NPCSpawnTrigger.Instance.LocalPointStreet.Count);
         selectedPoliceSpawnPoint = NPCSpawnTrigger.Instance.LocalPointStreet[randomIndex];
     }
+    #endregion
 
     protected virtual void CheckActivePolice()
     {
@@ -50,18 +52,16 @@ public class PoliceSpawning : TuyenMonoBehaviour
         int policeOff = this.policeSpawnCtrl.PoliceSpawner.InPoolObjs.Count;
         int policeOn = this.policeSpawnCtrl.PoliceSpawner.SpawnCount;
         policeActive = policeOn - policeOff;
-
-
     }
 
-    protected virtual void CheckCurrentPolice()
+    public virtual void CheckCurrentPolice(int star)
     {
-        maxSpawn = GameManager.Instance.CurrentStars;
+        maxSpawn = star;
     }
 
     protected virtual void CheckCanSpawnPolice()
     {
-        this.CheckCurrentPolice();
+        //this.CheckCurrentPolice();
         this.CheckActivePolice();
         if (policeActive >= maxSpawn) return;
         currentTime += Time.deltaTime;

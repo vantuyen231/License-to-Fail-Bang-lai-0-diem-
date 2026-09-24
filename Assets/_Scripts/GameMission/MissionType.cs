@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum MissionType
 {
+    None,
     ReachLocation,
     NoViolation, 
     EscapePolice,

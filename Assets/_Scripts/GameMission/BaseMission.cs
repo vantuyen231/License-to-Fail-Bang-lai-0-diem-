@@ -28,7 +28,7 @@ public abstract class BaseMission : TuyenMonoBehaviour
     [SerializeField] protected MissionState currentState = MissionState.None;
 
 
-    public static event Action<MissionState,float> UpdateStateMission;
+    public static event Action<MissionType,MissionState,float> UpdateStateMission;
     public static event Action<float> OnTimeTick;
 
 
@@ -70,7 +70,7 @@ public abstract class BaseMission : TuyenMonoBehaviour
     protected virtual void ChangeState(MissionState state, float duration)
     {
         this.currentState = state;
-        UpdateStateMission?.Invoke(state,duration);
+        UpdateStateMission?.Invoke(missionType,state,duration);
     }
 
     protected virtual IEnumerator TitleMission()

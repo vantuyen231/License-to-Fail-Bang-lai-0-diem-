@@ -197731,8 +197731,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7739c3830b0c6c41bbb2905ca60ebe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noDamgerMission: {fileID: 0}
-  escapePoliceMission: {fileID: 0}
+  noDamgerMission: {fileID: 1037127823}
+  escapePoliceMission: {fileID: 155661127}
   completeMission: {fileID: 1599849582}
   failMission: {fileID: 1980480942}
 --- !u!1001 &1767301847

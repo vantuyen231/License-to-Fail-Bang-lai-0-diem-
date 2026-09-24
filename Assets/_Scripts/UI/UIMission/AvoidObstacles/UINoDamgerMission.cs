@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 
-public class UINoDamgerMission : TuyenMonoBehaviour
+public class UINoDamgerMission : BaseUIMission
 {
     [SerializeField] protected TitleNoDMission titleNoDMission;
     [SerializeField] protected CountDownMission numEndMission;
@@ -36,7 +36,7 @@ public class UINoDamgerMission : TuyenMonoBehaviour
     }
 
 
-    protected virtual void ShowUI(MissionState state, float displayDuration)
+    protected virtual void ShowUI(MissionType missionType, MissionState state, float displayDuration)
     {
         stateMission = state;
         switch (state)

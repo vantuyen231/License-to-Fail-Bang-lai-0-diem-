@@ -37,7 +37,7 @@ public class MissionManager : TuyenMonoBehaviour
         this.InitShift();
         this.GetNumMission();
         this.GetRandomMission();
-        this.CheckWinGame();
+        //this.CheckWinGame();
     }
 
     protected virtual void Update()
@@ -105,7 +105,8 @@ public class MissionManager : TuyenMonoBehaviour
 
         if (curretMission < indexMissionPlayer)
         {
-            missionsPlayer[curretMission].SetActive(true);
+            missionsPlayer[curretMission].gameObject.SetActive(true);
+            Debug.Log(missionsPlayer[curretMission].name);
         }
     }
 
@@ -135,6 +136,7 @@ public class MissionManager : TuyenMonoBehaviour
         }
 
         this.CheckWinGame();
+
     }
 
     protected virtual void CheckWinGame()

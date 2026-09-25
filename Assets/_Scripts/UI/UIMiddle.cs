@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIMiddle : TuyenMonoBehaviour
@@ -9,34 +10,91 @@ public class UIMiddle : TuyenMonoBehaviour
     [SerializeField] protected UIEscapePoliceMission escapePoliceMission;
     [SerializeField] protected CompleteMission completeMission;
     [SerializeField] protected FailMisssion failMission;
+    [SerializeField] protected CountDownMission countDownMission;
 
-    [SerializeField] protected List<BaseUIMission> missions;
     [SerializeField] protected MissionType missionActive = MissionType.None;
+    [SerializeField] protected BaseUIMission currentUIMission;
 
     protected override void Start()
     {
-        this.Hide(completeMission.transform);
-        this.Hide(failMission.transform);
+        this.HideAllMission();
     }
 
     protected virtual void OnEnable()
     {
         BaseMission.UpdateStateMission += ShowUIMission;
+        BaseMission.OnTimeTick += ShowCountDown;
     }
+
 
     protected virtual void OnDisable()
     {
         BaseMission.UpdateStateMission -= ShowUIMission;
+        BaseMission.OnTimeTick -= ShowCountDown;
+
     }
 
     protected void ShowUIMission(MissionType type, MissionState state, float dur)
     {
+        missionActive = type;
+        if (state == MissionState.TitleStage)
+        {
+            currentUIMission = GetCurrentMission(type);
+        }
         this.ActiveUIMission(type);
+        this.ActiveEndMission(state,dur);
     }
 
     protected virtual void ActiveUIMission(MissionType missionType)
     {
+        this.HideAllMission();
 
+        if(currentUIMission == null) return;
+        this.Show(currentUIMission.transform);
+    }
+
+    protected virtual void ActiveEndMission(MissionState state, float duration)
+    {
+        //this.HideAllMission();
+        switch (state)
+        {
+            case MissionState.Success:
+                Show(completeMission.transform);
+                break;
+            case MissionState.Failed:
+                Show(failMission.transform); break;
+            default:
+                break;
+        }
+    }
+
+    private void ShowCountDown(float obj)
+    {
+        
+    }
+
+    protected virtual BaseUIMission GetCurrentMission(MissionType missionType)
+    {
+        switch (missionType)
+        {
+            case MissionType.ReachLocation:
+                return noDamgerMission;
+            case MissionType.EscapePolice:
+                return escapePoliceMission;
+            case MissionType.NoViolation:
+            case MissionType.MaintainSpeed:
+            default:
+                return null;
+        }
+    }
+
+    protected virtual void HideAllMission()
+    {
+        this.Hide(noDamgerMission.transform);
+        this.Hide(escapePoliceMission.transform);
+        this.Hide(completeMission.transform);
+        this.Hide(failMission.transform);
+        this.Hide(countDownMission.transform);
     }
     #region LoadComponent
     protected override void LoadComponents()
@@ -46,6 +104,7 @@ public class UIMiddle : TuyenMonoBehaviour
         this.LoadFailMisssion();
         this.LoadNoDamagerMission();
         this.LoadEscapeMission();
+        this.LoadCountDownMission();
     }
 
     private void LoadNoDamagerMission()
@@ -75,6 +134,14 @@ public class UIMiddle : TuyenMonoBehaviour
         failMission = GetComponentInChildren<FailMisssion>();
         Debug.Log(transform.name + " LoadFailMisssion:", gameObject);
     }
+
+    protected virtual void LoadCountDownMission()
+    {
+        if (countDownMission != null) return;
+        countDownMission = GetComponentInChildren<CountDownMission>();
+        Debug.Log(transform.name + " LoadCountDownMission:", gameObject);
+    }
+
     #endregion
 
     #region Show/Hide UI

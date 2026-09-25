@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissionEscapePolice : BaseMission
+public class MissionEscapePolice : TimeBaseMission
 {
-    protected override void OnStartMission()
-    {
-        
-    }
+
 }

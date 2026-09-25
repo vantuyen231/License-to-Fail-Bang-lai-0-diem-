@@ -5,32 +5,34 @@ using UnityEngine;
 
 public abstract class BaseMission : TuyenMonoBehaviour
 {
-    [SerializeField] protected MissionType missionType;
     [SerializeField] protected MissionManager missionManager;
-    [Header("Status Mission")]
+
+    [Header("Mission:")]
+    [SerializeField] protected MissionType missionType = MissionType.None;
     [SerializeField] protected string missionName;
     [SerializeField] protected string missionDescription;
+    [SerializeField] protected int scoreMission = 100;
 
-    [SerializeField] protected bool isComplete = false;
-    [SerializeField] protected bool isSucess = false;
-
-    [SerializeField] protected int endUIMission = 2;
-
-    //--------------------------------------
+    [Header("Status Mission")]
     [SerializeField] protected float timeIntroTittle = 3f;
     [SerializeField] protected float timeReadyMission = 3f;
     [SerializeField] protected float currentReady = 0f;
     [SerializeField] protected float timeMissionBase = 0f;
-
+    [SerializeField] protected int endUIMission = 2;
 
     [Header("Mission States")]
     [SerializeField] protected bool isMissionActive = false;
     [SerializeField] protected MissionState currentState = MissionState.None;
+    [SerializeField] protected bool isComplete = false;
+    [SerializeField] protected bool isSucess = false;
 
 
     public static event Action<MissionType,MissionState,float> UpdateStateMission;
     public static event Action<float> OnTimeTick;
+    public static event Action<int> GetScoreMission;
 
+    public MissionType MissionType => missionType;
+    public MissionState CurrentState => currentState;
 
     protected override void Start()
     {
@@ -56,19 +58,9 @@ public abstract class BaseMission : TuyenMonoBehaviour
 
     protected abstract void OnStartMission();
 
-    protected virtual IEnumerator CountDownEndUI(bool state)
-    {
-        yield return new WaitForSeconds(endUIMission);
-        if (missionManager != null)
-        {
-            missionManager.CheckDoneMission(this, state);
-        }
-
-        gameObject.SetActive(false);
-    }
-
     protected virtual void ChangeState(MissionState state, float duration)
     {
+        Debug.Log(state);
         this.currentState = state;
         UpdateStateMission?.Invoke(missionType,state,duration);
     }
@@ -94,19 +86,37 @@ public abstract class BaseMission : TuyenMonoBehaviour
 
     protected virtual void ActiveMission()
     {
-        this.ChangeState(MissionState.ActiveGameplay, timeMissionBase);
         this.isMissionActive = true;
+        this.ChangeState(MissionState.ActiveGameplay, timeMissionBase);
     }
 
     protected virtual void FinishMission(bool state)
     {
+        if (isComplete) return;
         this.isComplete = true;
         isMissionActive = false;
-        this.ChangeState(state ? MissionState.Success : MissionState.Failed, endUIMission);
+        if (state == true)
+        {
+            ChangeState(MissionState.Success, endUIMission);
+            GetScoreMission?.Invoke(scoreMission);
+        }else
+        {
+            ChangeState(MissionState.Failed, endUIMission);
+        }
         StartCoroutine(CountDownEndUI(state));
 
     }
 
+    protected virtual IEnumerator CountDownEndUI(bool state)
+    {
+        yield return new WaitForSeconds(endUIMission);
+        if (missionManager != null)
+        {
+            missionManager.CheckDoneMission(this, state);
+        }
+
+        gameObject.SetActive(false);
+    }
 
     protected virtual void SendTime(float timer)
     {

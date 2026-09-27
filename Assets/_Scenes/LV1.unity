@@ -18039,7 +18039,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleNoDMission: {fileID: 1720763863}
   stateMission: 0
-  numEndMission: {fileID: 0}
 --- !u!1001 &156354318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36865,6 +36864,7 @@ GameObject:
   - component: {fileID: 321058011}
   - component: {fileID: 321058013}
   - component: {fileID: 321058012}
+  - component: {fileID: 321058014}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -36988,6 +36988,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321058010}
   m_CullTransparentMesh: 1
+--- !u!114 &321058014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321058010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc31c8d037993844bf672d533d7f8c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMeshProUGUI: {fileID: 321058012}
 --- !u!1 &321128186
 GameObject:
   m_ObjectHideFlags: 0
@@ -119560,7 +119573,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleNoDMission: {fileID: 782548077}
   stateMission: 0
-  numEndMission: {fileID: 0}
   timeEndUI: 2
 --- !u!1 &1038818626
 GameObject:
@@ -180507,6 +180519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1cc5d024d48eb64290658638bd48087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uIScoreSuccess: {fileID: 321058014}
 --- !u!114 &1599849583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197969,6 +197982,7 @@ MonoBehaviour:
   failMission: {fileID: 1980480942}
   countDownMission: {fileID: 1801484886}
   missionActive: 0
+  missionState: 0
   currentUIMission: {fileID: 0}
 --- !u!1001 &1767301847
 PrefabInstance:

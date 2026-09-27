@@ -7,7 +7,7 @@ public class BaseUIMission : TuyenMonoBehaviour
     [Header("StateMission")]
     [SerializeField] protected TitleNoDMission titleNoDMission;
     [SerializeField] protected MissionState stateMission = MissionState.None;
-    [SerializeField] protected CountDownMission numEndMission;
+    //[SerializeField] protected CountDownMission numEndMission;
 
 
     protected override void LoadComponents()
@@ -23,7 +23,7 @@ public class BaseUIMission : TuyenMonoBehaviour
         Debug.Log(transform.name + " LoadTitleMission:", gameObject);
     }
 
-    protected virtual void ShowUI(MissionType missionType, MissionState state, float displayDuration)
+    public virtual void ShowUI(MissionType missionType, MissionState state, float displayDuration)
     {
         stateMission = state;
         switch (state)
@@ -32,29 +32,28 @@ public class BaseUIMission : TuyenMonoBehaviour
                 this.Show(titleNoDMission.transform);
                 this.titleNoDMission.CountDown.Hide();
                 //this.Hide(completeMission.transform);
-                //this.Hide(failMission.transform);
-                //Debug.Log("Title");
+
+                Debug.Log("Title");
                 break;
             case MissionState.CountdownStage:
                 titleNoDMission.CountDown.Show();
-                //Debug.Log("Count Down");
+                Debug.Log("Count Down");
                 break;
             case MissionState.ActiveGameplay:
                 this.Hide(titleNoDMission.transform);
-                this.numEndMission.Show();
-                //Debug.Log("PlayMission");
+                //this.numEndMission.Show();
+                Debug.Log("PlayMission");
                 break;
             case MissionState.Success:
-                this.numEndMission.Hide();
+                //this.numEndMission.Hide();
                 //this.Show(completeMission.transform);
                 //StartCoroutine(this.CountDownUIShow(completeMission.transform,displayDuration));
-                //Debug.Log("Mission Complete");
+                Debug.Log("Mission Complete");
                 break;
             case MissionState.Failed:
-                this.numEndMission.Hide();
-                //this.Show(failMission.transform);
+                //this.numEndMission.Hide();
                 //StartCoroutine(CountDownUIShow(failMission.transform,displayDuration));
-                //Debug.Log("Mission Fail");
+                Debug.Log("Mission Fail");
                 break;
             default:
                 Debug.Log("Null");
@@ -62,20 +61,11 @@ public class BaseUIMission : TuyenMonoBehaviour
         }
     }
 
-    protected virtual void UpdateTimerTrick(float time)
+    public virtual void UpdateTimerTrick(float time)
     {
-        switch (this.stateMission)
-        {
-            case MissionState.CountdownStage:
-                titleNoDMission.CountDown.UpdateCD(Mathf.CeilToInt(time));
-                break;
-            case MissionState.ActiveGameplay:
-                numEndMission.UpdateCDEndMission(time);
-                break;
-            default:
-                Debug.Log("Null");
-                break;
-        }
+        if (stateMission == MissionState.CountdownStage && titleNoDMission != null && titleNoDMission.CountDown != null)
+            titleNoDMission.CountDown.UpdateCD(Mathf.CeilToInt(time));
+
     }
 
     protected virtual IEnumerator CountDownUIShow(Transform uiCheckTime, float duration)

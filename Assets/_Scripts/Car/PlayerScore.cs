@@ -54,18 +54,22 @@ public class PlayerScore : TuyenMonoBehaviour
     private void FixedUpdate()
     {
         this.CheckCoolDownStar();
-
-        //if (isWin && isLose == false)
-        //{
-        //    this.WinGame();
-        //}
-
-        //if (isLose && isWin == false)
-        //{
-        //    this.LoseGame();
-        //}
     }
 
+    protected virtual void OnEnable()
+    {
+        BaseMission.GetScoreMission += AddScoreMission;
+    }
+
+    protected virtual void OnDisable()
+    {
+        BaseMission.GetScoreMission -= AddScoreMission;
+    }
+
+    protected void AddScoreMission(int scoreM)
+    {
+        this.scoreMission = scoreM;
+    }
 
     public virtual void AddScore(HitObjectType type, int scoreReward, string nameHit)
     {
@@ -108,7 +112,6 @@ public class PlayerScore : TuyenMonoBehaviour
             currentHitCar = 0;
         }
     }
-
 
 
     protected virtual void StatusPlayer()
@@ -175,17 +178,4 @@ public class PlayerScore : TuyenMonoBehaviour
         currentHitCar = 0;
     }
 
-    //protected virtual void WinGame()
-    //{
-
-    //    GameManager.Instance.WinGame();
-
-    //}
-
-    //protected virtual void LoseGame()
-    //{
-
-    //    GameManager.Instance.LoseGame();
-
-    //}
 }

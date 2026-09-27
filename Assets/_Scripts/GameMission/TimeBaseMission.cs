@@ -22,6 +22,7 @@ public class TimeBaseMission : BaseMission
         {
 
             SendTime(Mathf.Max(0f, this.secondsLeft));
+
             yield return null;
             secondsLeft -= Time.deltaTime;
         }

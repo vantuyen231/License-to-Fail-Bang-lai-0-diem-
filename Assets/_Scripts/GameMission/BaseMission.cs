@@ -104,7 +104,7 @@ public abstract class BaseMission : TuyenMonoBehaviour
             ChangeState(MissionState.Failed, endUIMission);
         }
         StartCoroutine(CountDownEndUI(state));
-
+        
     }
 
     protected virtual IEnumerator CountDownEndUI(bool state)

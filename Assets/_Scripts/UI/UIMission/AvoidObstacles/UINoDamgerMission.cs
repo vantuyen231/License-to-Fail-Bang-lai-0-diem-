@@ -17,18 +17,4 @@ public class UINoDamgerMission : BaseUIMission
     }
 
 
-    #region LoandComponents
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadNumEndMission();
-    }
-
-    protected virtual void LoadNumEndMission()
-    {
-        if (numEndMission != null) return;
-        numEndMission = GetComponentInChildren<CountDownMission>();
-        Debug.Log(transform.name + " LoadNumCountDown:", gameObject);
-    }
-    #endregion
 }

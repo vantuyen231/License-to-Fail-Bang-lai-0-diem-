@@ -13,8 +13,10 @@ public class UIMiddle : TuyenMonoBehaviour
     [SerializeField] protected CountDownMission countDownMission;
 
     [SerializeField] protected MissionType missionActive = MissionType.None;
+    [SerializeField] protected MissionState missionState = MissionState.None;
     [SerializeField] protected BaseUIMission currentUIMission;
 
+    private Coroutine endUICoroutine;
     protected override void Start()
     {
         this.HideAllMission();
@@ -24,25 +26,30 @@ public class UIMiddle : TuyenMonoBehaviour
     {
         BaseMission.UpdateStateMission += ShowUIMission;
         BaseMission.OnTimeTick += ShowCountDown;
+        BaseMission.GetScoreMission += ShowUIScore;
     }
+
 
 
     protected virtual void OnDisable()
     {
         BaseMission.UpdateStateMission -= ShowUIMission;
         BaseMission.OnTimeTick -= ShowCountDown;
-
+        BaseMission.GetScoreMission -= ShowUIScore;
     }
 
     protected void ShowUIMission(MissionType type, MissionState state, float dur)
     {
         missionActive = type;
+        missionState = state;
         if (state == MissionState.TitleStage)
         {
             currentUIMission = GetCurrentMission(type);
         }
         this.ActiveUIMission(type);
-        this.ActiveEndMission(state,dur);
+        this.UIMission(type, state, dur);
+        this.ActiveEndMission(state, dur);
+
     }
 
     protected virtual void ActiveUIMission(MissionType missionType)
@@ -55,22 +62,51 @@ public class UIMiddle : TuyenMonoBehaviour
 
     protected virtual void ActiveEndMission(MissionState state, float duration)
     {
-        //this.HideAllMission();
+        if (endUICoroutine != null)
+        {
+            StopCoroutine(endUICoroutine);
+            endUICoroutine = null;
+        }
         switch (state)
         {
             case MissionState.Success:
                 Show(completeMission.transform);
+                StartCoroutine(CountDownUIShow(completeMission.transform,duration));
                 break;
             case MissionState.Failed:
-                Show(failMission.transform); break;
+                Show(failMission.transform);
+                StartCoroutine(CountDownUIShow(failMission.transform, duration));
+                break;
             default:
                 break;
         }
     }
 
-    private void ShowCountDown(float obj)
+    protected void ShowCountDown(float timer)
     {
-        
+        switch (missionState)
+        {
+            case MissionState.CountdownStage:
+                currentUIMission.UpdateTimerTrick(timer);
+                break;
+            case MissionState.ActiveGameplay:
+                this.Show(countDownMission.transform);
+                countDownMission.UpdateCDEndMission(timer);
+                break;
+            default :
+                break;
+        }
+
+    }
+
+    protected virtual void UIMission(MissionType type, MissionState state, float dur)
+    {
+        currentUIMission.ShowUI(type, state, dur);
+    }
+
+    protected void ShowUIScore(int index)
+    {
+        completeMission.UIScoreSuccess.UpdateScoreMission(index);
     }
 
     protected virtual BaseUIMission GetCurrentMission(MissionType missionType)
@@ -95,6 +131,12 @@ public class UIMiddle : TuyenMonoBehaviour
         this.Hide(completeMission.transform);
         this.Hide(failMission.transform);
         this.Hide(countDownMission.transform);
+    }
+
+    protected virtual IEnumerator CountDownUIShow(Transform uiCheckTime, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        this.Hide(uiCheckTime);
     }
     #region LoadComponent
     protected override void LoadComponents()

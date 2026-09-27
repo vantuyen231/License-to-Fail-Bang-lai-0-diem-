@@ -50,4 +50,9 @@ public class MissionAvoidObstacles : TimeBaseMission
         this.FinishMission(false);
     }
 
+    protected override void OnTimeOut()
+    {
+        this.FinishMission(true);
+    }
+
 }

@@ -11,6 +11,7 @@ public class PlayerScore : TuyenMonoBehaviour
     [SerializeField] protected int currentLicense;
     [SerializeField] protected int scoreMission = 0;
     [SerializeField] protected int currentScoreMission;
+    [SerializeField] protected float bonusCoins;
 
     [Header("Status Wanted")]
     [SerializeField] protected int star;
@@ -41,6 +42,7 @@ public class PlayerScore : TuyenMonoBehaviour
 
     public static event Action<int, int, int, bool> ChangeStatusPlayer;
     public static event Action<HitObjectType, int, string> ShowNoti;
+    public static event Action<float,int,int,int,int> CallScorePlayer;
     public static event Action OnPlayerHit;
 
     protected override void Start()
@@ -68,7 +70,13 @@ public class PlayerScore : TuyenMonoBehaviour
 
     protected void AddScoreMission(int scoreM)
     {
-        this.scoreMission = scoreM;
+        this.scoreMission += scoreM;
+    }
+
+    public virtual void AddFinalScore()
+    {
+        CallScorePlayer?.Invoke(bonusCoins, scoreMission, vehicleCollision, pedestrianCollision, sumSessionCoins);
+        Debug.Log("Add final score");
     }
 
     public virtual void AddScore(HitObjectType type, int scoreReward, string nameHit)
@@ -154,7 +162,7 @@ public class PlayerScore : TuyenMonoBehaviour
         float earned = this.baseMissionReward * licenseMultiplier;
 
         float safeBonus = this.GetBonusRate(vehicleCollision, pedestrianCollision);
-        float bonusCoins = baseMissionReward * safeBonus;
+        bonusCoins = baseMissionReward * safeBonus;
 
 
         totalSessionCoins = Mathf.RoundToInt(earned +  bonusCoins);

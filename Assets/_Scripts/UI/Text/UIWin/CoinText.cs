@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoinText : TextAbstract
 {
-    public virtual void UpdateBonus(string numCoin)
+    public virtual void UpdateCoin(string numCoin)
     {
         textMeshProUGUI.text = ("Coin: " + numCoin);
     }

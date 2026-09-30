@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MissionText : TextAbstract
 {
-    public virtual void UpdateBonus(string numMission)
+    public virtual void UpdateMission(string numMission)
     {
         textMeshProUGUI.text = ("Bonus: " + numMission);
     }

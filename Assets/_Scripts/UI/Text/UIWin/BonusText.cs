@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BonusText : TextAbstract
 {
-    public virtual void UpdateBonus(string numBonus)
+    public virtual void UpdateBonus(int numBonus)
     {
         textMeshProUGUI.text = ("Bonus: "+numBonus);
     }

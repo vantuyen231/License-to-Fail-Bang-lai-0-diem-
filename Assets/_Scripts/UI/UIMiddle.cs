@@ -27,6 +27,7 @@ public class UIMiddle : TuyenMonoBehaviour
         BaseMission.UpdateStateMission += ShowUIMission;
         BaseMission.OnTimeTick += ShowCountDown;
         BaseMission.GetScoreMission += ShowUIScore;
+        PlayerScore.CallScorePlayer += ShowUIWinGame;
     }
 
 
@@ -137,6 +138,11 @@ public class UIMiddle : TuyenMonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         this.Hide(uiCheckTime);
+    }
+
+    protected virtual void ShowUIWinGame(float bonus, int score, int hitCar, int hitNPC, int coin)
+    {
+
     }
     #region LoadComponent
     protected override void LoadComponents()

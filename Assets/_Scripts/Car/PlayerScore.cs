@@ -61,11 +61,13 @@ public class PlayerScore : TuyenMonoBehaviour
     protected virtual void OnEnable()
     {
         BaseMission.GetScoreMission += AddScoreMission;
+        MissionManager.EndGame += AddFinalScore;
     }
 
     protected virtual void OnDisable()
     {
         BaseMission.GetScoreMission -= AddScoreMission;
+        MissionManager.EndGame -= AddFinalScore;
     }
 
     protected void AddScoreMission(int scoreM)
@@ -73,8 +75,10 @@ public class PlayerScore : TuyenMonoBehaviour
         this.scoreMission += scoreM;
     }
 
-    public virtual void AddFinalScore()
+    protected virtual void AddFinalScore(bool stateGame)
     {
+        if(stateGame == true) isWin = true;
+        if(stateGame == false) isLose = true;
         CallScorePlayer?.Invoke(bonusCoins, scoreMission, vehicleCollision, pedestrianCollision, sumSessionCoins);
         Debug.Log("Add final score");
     }

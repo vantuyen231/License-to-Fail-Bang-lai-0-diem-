@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ScoreText : TextAbstract
 {
-    public virtual void UpdateBonus(string numScpre)
+    public virtual void UpdateScore(int numScpre)
     {
-        textMeshProUGUI.text = ("Bonus: " + numScpre);
+        textMeshProUGUI.text = ("Score: " + numScpre);
     }
 }

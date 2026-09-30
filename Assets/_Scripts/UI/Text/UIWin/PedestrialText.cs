@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PedestrialText : TextAbstract
 {
-    public virtual void UpdateBonus(string numPedes)
+    public virtual void UpdatePedestrial(int numPedes)
     {
-        textMeshProUGUI.text = ("Bonus: " + numPedes);
+        textMeshProUGUI.text = ("Pedestrial: " + numPedes);
     }
 }

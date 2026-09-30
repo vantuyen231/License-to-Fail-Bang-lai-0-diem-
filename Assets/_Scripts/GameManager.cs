@@ -73,7 +73,7 @@ public class GameManager : TuyenSingleton<GameManager>
     public void WinGame()
     {
         Debug.Log("You Win");
-        this.PauseGame();
+        //this.PauseGame();
         WinUI.Instance.Show();
     }
 

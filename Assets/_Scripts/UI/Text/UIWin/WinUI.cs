@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class WinUI : TuyenSingleton<WinUI>
 {
     [SerializeField] protected bool isShow;
+    [SerializeField] protected WinPannelUI winPannel;
     [SerializeField] protected BonusText bonusText;
     [SerializeField] protected CoinText coinText; 
     [SerializeField] protected MissionText missionText;
@@ -18,6 +20,20 @@ public class WinUI : TuyenSingleton<WinUI>
         this.Hide();
     }
 
+    protected virtual void OnEnable()
+    {
+        MissionManager.EndGame += UpdateLastScore;
+        PlayerScore.CallScorePlayer += ShowWinUI;
+    }
+
+
+    protected virtual void OnDisable()
+    {
+        MissionManager.EndGame -= UpdateLastScore;
+        PlayerScore.CallScorePlayer -= ShowWinUI;
+    }
+
+    #region LoadComponents
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -27,8 +43,14 @@ public class WinUI : TuyenSingleton<WinUI>
         this.LoadScoreText();
         this.LoadVehicalText();
         this.LoadPedestrialText();
+        this.LoadWinPannelUI();
     }
-
+    protected virtual void LoadWinPannelUI()
+    {
+        if (winPannel != null) return;
+        winPannel = GetComponentInChildren<WinPannelUI>();
+        Debug.Log(transform.name + ": LoadWinPannelUI", gameObject);
+    }
     protected virtual void LoadBonusText()
     {
         if (bonusText != null) return;
@@ -70,22 +92,38 @@ public class WinUI : TuyenSingleton<WinUI>
         scoreText = GetComponentInChildren<ScoreText>();
         Debug.Log(transform.name + ": LoadScoreText", gameObject);
     }
+    #endregion
 
     public virtual void Hide()
     {
         isShow = false;
-        gameObject.SetActive(isShow);
+        winPannel.Hide();
+        //gameObject.SetActive(isShow);
     }
 
     public virtual void Show()
     {
         isShow = true;
-        this.UpdateLastScore();
-        gameObject.SetActive(isShow);
+        winPannel.Show();
+        //this.UpdateLastScore();
+        //gameObject.SetActive(isShow);
+    }
+    private void ShowWinUI(float bonus, int score, int car, int npc, int coin)
+    {
+        int bonusInt = Mathf.RoundToInt(bonus);
+        bonusText.UpdateBonus(bonusInt);
+        scoreText.UpdateScore(score);
+        vehicalText.UpdateVehical(car);
+        peedestrialText.UpdatePedestrial(npc);
+        Debug.Log("WinUI");
     }
 
-    protected virtual void UpdateLastScore()
+    protected virtual void UpdateLastScore(bool stateGame)
     {
-
+        if (stateGame)
+        {
+            this.Show();
+        }
+        else this.Hide();
     }
 }

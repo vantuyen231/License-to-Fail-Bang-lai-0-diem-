@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class VehicalText : TextAbstract
 {
-    public virtual void UpdateBonus(string numVehical)
+    public virtual void UpdateVehical(int numVehical)
     {
-        textMeshProUGUI.text = ("Bonus: " + numVehical);
+        textMeshProUGUI.text = ("Vehical: " + numVehical);
     }
 }

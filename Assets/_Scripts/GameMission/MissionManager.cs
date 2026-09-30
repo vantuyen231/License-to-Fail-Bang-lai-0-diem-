@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,14 +30,17 @@ public class MissionManager : TuyenMonoBehaviour
     [SerializeField] protected float bonus = 0;
     [SerializeField] protected int pedestrial = 0;
     [SerializeField] protected int vehical = 0;
+    [SerializeField] protected bool isWinGame = false;
+
+    public static event Action<bool> EndGame;
 
 
     protected override void Start()
     {
         base.Start();
         this.InitShift();
-        this.GetNumMission();
-        this.GetRandomMission();
+        //this.GetNumMission();
+        //this.GetRandomMission();
         //this.CheckWinGame();
     }
 
@@ -92,7 +96,7 @@ public class MissionManager : TuyenMonoBehaviour
         {
             if (tempMission.Count == 0) break;
 
-            int index = Random.Range(0, tempMission.Count);
+            int index = UnityEngine.Random.Range(0, tempMission.Count);
 
             missionsPlayer.Add(tempMission[index]);
             tempMission.RemoveAt(index);
@@ -108,7 +112,7 @@ public class MissionManager : TuyenMonoBehaviour
             missionsPlayer[curretMission].gameObject.SetActive(true);
             Debug.Log(missionsPlayer[curretMission].name);
         }
-    }
+    } 
 
     protected virtual void CoolDownMission()
     {
@@ -145,16 +149,25 @@ public class MissionManager : TuyenMonoBehaviour
 
         if (missionFail >= maxPossiblePass)
         {
-            GameManager.Instance.LoseGame();
+            //GameManager.Instance.LoseGame();
+            EndGame?.Invoke(false);
             return;
         }
 
         if (curretMission >= indexMissionPlayer)
         {
             Debug.Log("Game manager: Done game");
-            if (missionFail >= maxPossiblePass) GameManager.Instance.LoseGame();
-            else GameManager.Instance.WinGame();
-            return;
+            if (missionFail >= maxPossiblePass)
+            {
+                //GameManager.Instance.LoseGame();
+                EndGame?.Invoke(false);
+            }
+            else
+            {
+                //GameManager.Instance.WinGame();
+                EndGame?.Invoke(true);
+            }
+                return;
         }
         isCoolingDown = true ;
         timer = 0;

@@ -51,9 +51,9 @@ public class GameManager : TuyenSingleton<GameManager>
         this.carPlayerData = car;
     }
 
-    protected void CoinPlayer()
+    public void CoinPlayer(int indexCoin)
     {
-
+        this.coin += indexCoin;
     }
 
     #region (PauseGame);

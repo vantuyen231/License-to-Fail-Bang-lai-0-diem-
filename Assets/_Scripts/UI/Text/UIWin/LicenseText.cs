@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LicenseText : TextAbstract
 {
-    public virtual void UpdateBonus(string numLicense)
+    public virtual void UpdateLicense(int numLicense)
     {
-        textMeshProUGUI.text = ("Bonus: " + numLicense);
+        textMeshProUGUI.text = ("License: " + numLicense);
     }
 }

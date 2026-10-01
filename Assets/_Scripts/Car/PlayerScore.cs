@@ -10,7 +10,7 @@ public class PlayerScore : TuyenMonoBehaviour
     [SerializeField] protected int maxLicense = 12;
     [SerializeField] protected int currentLicense;
     [SerializeField] protected int scoreMission = 0;
-    [SerializeField] protected int currentScoreMission;
+    //[SerializeField] protected int currentScoreMission = 0;
     [SerializeField] protected float bonusCoins;
 
     [Header("Status Wanted")]
@@ -44,6 +44,7 @@ public class PlayerScore : TuyenMonoBehaviour
     public static event Action<HitObjectType, int, string> ShowNoti;
     public static event Action<float,int,int,int,int> CallScorePlayer;
     public static event Action OnPlayerHit;
+    public static event Action<int> ScoreMissionPlayer;
 
     protected override void Start()
     {
@@ -73,11 +74,13 @@ public class PlayerScore : TuyenMonoBehaviour
     protected void AddScoreMission(int scoreM)
     {
         this.scoreMission += scoreM;
+        ScoreMissionPlayer?.Invoke(scoreMission);
     }
 
-    protected virtual void AddFinalScore(bool stateGame)
+    protected virtual void AddFinalScore(bool stateGame, int missionComplete, int maxMission)
     {
-        if(stateGame == true) isWin = true;
+        this.ComputeEarnedCoins();
+        if (stateGame == true) isWin = true;
         if(stateGame == false) isLose = true;
         CallScorePlayer?.Invoke(bonusCoins, scoreMission, vehicleCollision, pedestrianCollision, sumSessionCoins);
         Debug.Log("Add final score");
@@ -157,7 +160,7 @@ public class PlayerScore : TuyenMonoBehaviour
     public virtual void DestinationHit()
     {
         Debug.Log("Hit");
-        this.ComputeEarnedCoins();
+        //this.ComputeEarnedCoins();
     }
 
     protected virtual void ComputeEarnedCoins()
@@ -172,6 +175,7 @@ public class PlayerScore : TuyenMonoBehaviour
         totalSessionCoins = Mathf.RoundToInt(earned +  bonusCoins);
         Debug.Log("Earned: " + earned + ", sefaBonusPercent: " + safeBonus + ", BonusCoins: " + bonusCoins);
         sumSessionCoins = sumSessionCoins + totalSessionCoins;
+        GameManager.Instance.CoinPlayer(sumSessionCoins);
     }
 
     protected virtual float GetBonusRate(int hitCar, int hitNPC)

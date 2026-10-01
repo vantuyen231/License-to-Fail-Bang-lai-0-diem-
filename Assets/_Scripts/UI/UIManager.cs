@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class UIManager : TuyenMonoBehaviour
 {
@@ -16,12 +17,15 @@ public class UIManager : TuyenMonoBehaviour
     {
         PlayerScore.ChangeStatusPlayer += UIPlayerUpdate;
         CarController.SpeedPlayer += UISpeedCar;
+        PlayerScore.ScoreMissionPlayer += UIScoreM;
     }
 
     protected virtual void OnDisable()
     {
         PlayerScore.ChangeStatusPlayer -= UIPlayerUpdate;
         CarController.SpeedPlayer -= UISpeedCar;
+        PlayerScore.ScoreMissionPlayer -= UIScoreM;
+
     }
 
     private void UISpeedCar(int velocity)
@@ -32,6 +36,11 @@ public class UIManager : TuyenMonoBehaviour
     {
         if(this.topLeft != null) topLeft.UpdateUITopLeft(license, status);
         if(this.topUI != null) topUI.UITopUpdate(star, isWanted);
+    }
+
+    protected virtual void UIScoreM(int score)
+    {
+        if(this.topLeft != null) topLeft.UpdateScoreUITL(score);
     }
 
     #region Load Components

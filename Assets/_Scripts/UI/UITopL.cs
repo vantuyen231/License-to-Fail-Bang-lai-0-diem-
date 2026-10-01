@@ -7,14 +7,9 @@ using UnityEngine.SocialPlatforms.Impl;
 public class UITopL : TuyenMonoBehaviour
 {
     [SerializeField] protected ScoreLicense scoreLicense;
-
     [SerializeField] protected StatusManager statusManager;
+    [SerializeField] protected UIScoreMission scoreMission;
 
-
-    protected virtual void FixedUpdate()
-    {
-        //this.UpdateUITopLeft(score,status);
-    }
 
     #region LoadComponent
     protected override void LoadComponents()
@@ -22,6 +17,7 @@ public class UITopL : TuyenMonoBehaviour
         base.LoadComponents();
         this.LoadScoreLicense();
         this.LoadStatusManager();
+        this.LoadUIScoreMission();
     }
 
     protected virtual void LoadScoreLicense()
@@ -37,12 +33,24 @@ public class UITopL : TuyenMonoBehaviour
         statusManager = GetComponentInChildren<StatusManager>();
         Debug.Log(transform.name + ": LoadStatusManager", gameObject);
     }
+
+    protected virtual void LoadUIScoreMission()
+    {
+        if (scoreMission != null) return;
+        scoreMission = GetComponentInChildren<UIScoreMission>();
+        Debug.Log(transform.name + ": LoadUIScoreMission", gameObject);
+    }
     #endregion
 
-    public virtual void UpdateUITopLeft(int score, int status)
+    public virtual void UpdateUITopLeft(int license, int status)
     {
         if (scoreLicense == null && statusManager == null) return;
-        this.scoreLicense.SetScoreText(score.ToString());
+        this.scoreLicense.SetScoreText(license.ToString());
         this.statusManager.SetStatusPlayer(status);
+    }
+
+    public virtual void UpdateScoreUITL(int score)
+    {
+        this.scoreMission.UpdateScorePlayer(score);
     }
 }

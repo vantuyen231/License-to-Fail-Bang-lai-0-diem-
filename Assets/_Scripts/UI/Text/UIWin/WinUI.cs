@@ -13,6 +13,7 @@ public class WinUI : TuyenSingleton<WinUI>
     [SerializeField] protected VehicalText vehicalText;
     [SerializeField] protected PedestrialText peedestrialText;
     [SerializeField] protected ScoreText scoreText;
+    [SerializeField] protected LicenseText licenseText;
 
     protected override void Start()
     {
@@ -23,6 +24,7 @@ public class WinUI : TuyenSingleton<WinUI>
     protected virtual void OnEnable()
     {
         MissionManager.EndGame += UpdateLastScore;
+        PlayerScore.ChangeStatusPlayer += UpdateLicense;
         PlayerScore.CallScorePlayer += ShowWinUI;
     }
 
@@ -44,12 +46,19 @@ public class WinUI : TuyenSingleton<WinUI>
         this.LoadVehicalText();
         this.LoadPedestrialText();
         this.LoadWinPannelUI();
+        this.LoadLicenseText();
     }
     protected virtual void LoadWinPannelUI()
     {
         if (winPannel != null) return;
         winPannel = GetComponentInChildren<WinPannelUI>();
         Debug.Log(transform.name + ": LoadWinPannelUI", gameObject);
+    }
+    protected virtual void LoadLicenseText()
+    {
+        if (licenseText != null) return;
+        licenseText = GetComponentInChildren<LicenseText>();
+        Debug.Log(transform.name + ": LoadLicenseText", gameObject);
     }
     protected virtual void LoadBonusText()
     {
@@ -108,21 +117,27 @@ public class WinUI : TuyenSingleton<WinUI>
         //this.UpdateLastScore();
         //gameObject.SetActive(isShow);
     }
-    private void ShowWinUI(float bonus, int score, int car, int npc, int coin)
+    protected void ShowWinUI(float bonus, int score, int car, int npc, int coin)
     {
         int bonusInt = Mathf.RoundToInt(bonus);
         bonusText.UpdateBonus(bonusInt);
         scoreText.UpdateScore(score);
         vehicalText.UpdateVehical(car);
         peedestrialText.UpdatePedestrial(npc);
+        coinText.UpdateCoin(coin);
         Debug.Log("WinUI");
     }
-
-    protected virtual void UpdateLastScore(bool stateGame)
+    protected void UpdateLicense(int license, int star, int status, bool isWanted)
+    {
+        licenseText.UpdateLicense(license);
+    }
+     
+    protected virtual void UpdateLastScore(bool stateGame, int completeMission, int maxMission)
     {
         if (stateGame)
         {
             this.Show();
+            missionText.UpdateMission(completeMission, maxMission);
         }
         else this.Hide();
     }

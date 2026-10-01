@@ -32,7 +32,7 @@ public class MissionManager : TuyenMonoBehaviour
     [SerializeField] protected int vehical = 0;
     [SerializeField] protected bool isWinGame = false;
 
-    public static event Action<bool> EndGame;
+    public static event Action<bool,int, int> EndGame;
 
 
     protected override void Start()
@@ -149,8 +149,9 @@ public class MissionManager : TuyenMonoBehaviour
 
         if (missionFail >= maxPossiblePass)
         {
-            //GameManager.Instance.LoseGame();
-            EndGame?.Invoke(false);
+            GameManager.Instance.PauseGame();
+            EndGame?.Invoke(false,missionSucess, indexMissionPlayer);
+
             return;
         }
 
@@ -159,13 +160,13 @@ public class MissionManager : TuyenMonoBehaviour
             Debug.Log("Game manager: Done game");
             if (missionFail >= maxPossiblePass)
             {
-                //GameManager.Instance.LoseGame();
-                EndGame?.Invoke(false);
+                GameManager.Instance.PauseGame();
+                EndGame?.Invoke(false, missionSucess, indexMissionPlayer);
             }
             else
             {
-                //GameManager.Instance.WinGame();
-                EndGame?.Invoke(true);
+                GameManager.Instance.PauseGame();
+                EndGame?.Invoke(true, missionSucess, indexMissionPlayer);
             }
                 return;
         }

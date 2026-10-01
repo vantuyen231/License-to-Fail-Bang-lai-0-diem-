@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MissionText : TextAbstract
 {
-    public virtual void UpdateMission(string numMission)
+    public virtual void UpdateMission(int numComplete, int maxMission)
     {
-        textMeshProUGUI.text = ("Bonus: " + numMission);
+        textMeshProUGUI.text = ("Test Pass: " + numComplete + "/" + maxMission);
     }
 }

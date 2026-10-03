@@ -7,17 +7,20 @@ public class PoliceSpawning : TuyenMonoBehaviour
     [SerializeField] protected PoliceSpawnCtrl policeSpawnCtrl;
     [SerializeField] protected LocalPointStreet selectedPoliceSpawnPoint;
     [SerializeField] protected int maxSpawn;
-    [SerializeField] protected float currentSpawn;
     [SerializeField] protected int policeActive = 0;
     [SerializeField] protected int spawnTimeLimit = 15;
+    [SerializeField] protected int spawnTimeMission = 3;
     [SerializeField] protected float currentTime =0f;
+    [SerializeField] protected bool isMission = false;
 
     [Header("List Police Active")]
     [SerializeField] protected List<PoliceCarCtrl> policeActiver = new List<PoliceCarCtrl>();
 
     private void FixedUpdate()
     {
+
         this.CheckCanSpawnPolice();
+        if(isMission == true) return;
         this.DeSpawnPolice();
     }
 
@@ -56,6 +59,7 @@ public class PoliceSpawning : TuyenMonoBehaviour
 
     public virtual void CheckCurrentPolice(int star)
     {
+        if(isMission ==  true) return;
         maxSpawn = star;
     }
 
@@ -65,7 +69,8 @@ public class PoliceSpawning : TuyenMonoBehaviour
         this.CheckActivePolice();
         if (policeActive >= maxSpawn) return;
         currentTime += Time.deltaTime;
-        if (currentTime < spawnTimeLimit) return;
+        int spawnTime = isMission ? spawnTimeMission : spawnTimeLimit;
+        if (currentTime < spawnTime) return;
         this.SpawnPolicePoint();
         if(selectedPoliceSpawnPoint == null) return;
         this.SpawnPolice();
@@ -103,6 +108,35 @@ public class PoliceSpawning : TuyenMonoBehaviour
         policeActiver.Remove(policeActiver[indexDeSpawn]);
     }
 
+    public virtual void DespawnAllActivePolice()
+    {
+        foreach (PoliceCarCtrl police in policeActiver)
+        {
+            if (police != null && police.gameObject.activeSelf)
+            {
+                this.policeSpawnCtrl.PoliceSpawner.Despawn(police);
+            }
+        }
+        this.policeActiver.Clear();
+        this.currentTime = 0f;
+    }
 
+    public virtual void SpawnPoliceInMission(int amountSpawn)
+    {
+        Debug.Log("Spawn Police: " + amountSpawn);
+        this.DespawnAllActivePolice();
+        isMission = true;
+        maxSpawn = amountSpawn;
+
+        currentTime = spawnTimeMission;
+    }
+
+    public virtual void ClearAllEndMission()
+    {
+        Debug.Log("Despawn Police");
+        this.DespawnAllActivePolice();
+        this.maxSpawn = 0;
+        this.isMission = false;
+    }
 
 }

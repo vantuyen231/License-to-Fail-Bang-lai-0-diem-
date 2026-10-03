@@ -8,6 +8,7 @@ public class PoliceSpawnCtrl : TuyenSingleton<PoliceSpawnCtrl>
     [SerializeField] protected PoliceSpawning policeSpawning;
 
     public PoliceCarSpawner PoliceSpawner => policeSpawner;
+    public PoliceSpawning PoliceSpawning => policeSpawning;
 
     protected override void LoadComponents()
     {

@@ -32,6 +32,14 @@ public class MissionManager : TuyenMonoBehaviour
     [SerializeField] protected int vehical = 0;
     [SerializeField] protected bool isWinGame = false;
 
+    [Header("Buster Details")]
+    [SerializeField] protected float currentBuster = 0;
+    [SerializeField] protected float increaseRate = 25f;
+    [SerializeField] protected float decreaseRate = 15f;
+    [SerializeField] protected int policeCount = 0;
+    [SerializeField] protected bool isBuster = false;
+    [SerializeField] protected bool isEscapeMission = false;
+
     public static event Action<bool,int, int> EndGame;
 
 
@@ -39,9 +47,6 @@ public class MissionManager : TuyenMonoBehaviour
     {
         base.Start();
         this.InitShift();
-        //this.GetNumMission();
-        //this.GetRandomMission();
-        //this.CheckWinGame();
     }
 
     protected virtual void Update()
@@ -51,6 +56,18 @@ public class MissionManager : TuyenMonoBehaviour
             this.CoolDownMission();
             return;
         }
+    }
+
+    protected void OnEnable()
+    {
+        BusterChecker.OnCheckPlayerBustedStatus += BusterStatus;
+        BaseMission.UpdateStateMission += CheckMissionEscape;
+    }
+
+    protected void OnDisable()
+    {
+        BusterChecker.OnCheckPlayerBustedStatus -= BusterStatus;
+        BaseMission.UpdateStateMission -= CheckMissionEscape;
     }
 
     protected override void LoadComponents()
@@ -172,5 +189,31 @@ public class MissionManager : TuyenMonoBehaviour
         }
         isCoolingDown = true ;
         timer = 0;
+    }
+
+    protected virtual void CheckMissionEscape(MissionType mission, MissionState state, float duration)
+    {
+        if (mission == MissionType.EscapePolice)
+        {
+            isEscapeMission = true ;
+        }
+        else
+        {
+            isEscapeMission = false ;
+        }
+    }
+
+    protected void BusterStatus(bool checkBust)
+    {
+        isBuster = checkBust ;
+        if (checkBust)
+        {
+            currentBuster += increaseRate * Time.deltaTime;
+        }
+        else
+        {
+            currentBuster -= decreaseRate * Time.deltaTime;
+        }
+            Debug.Log("isBust: " + checkBust);
     }
 }

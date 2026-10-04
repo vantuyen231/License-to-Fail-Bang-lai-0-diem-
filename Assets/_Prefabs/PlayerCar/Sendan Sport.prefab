@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 862174796649721246}
   - component: {fileID: 3305962316403713483}
   - component: {fileID: 3831971945936525320}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spoiler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 1736985185983824227}
   - component: {fileID: 2558358472710772085}
   - component: {fileID: 2793594014699089622}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,14 +784,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45108aa2c074adb4a960ffeb21b3eaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScore: 12
-  currentScore: 0
+  maxLicense: 12
+  currentLicense: 0
+  scoreMission: 0
+  bonusCoins: 0
   star: 0
   status: 0
+  starCoolDownTimer: 0
+  starCDMaxLimit: 20
+  baseMissionReward: 100
+  totalSessionCoins: 0
+  sumSessionCoins: 0
+  completedMissionsCount: 0
   pedestrianCollision: 0
   vehicleCollision: 0
-  currentHitCarNPC: 0
+  currentHitCar: 0
   upStarHitCar: 2
+  isWanted: 0
+  isLose: 0
+  isWin: 0
 --- !u!1 &5026687874550937300
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +812,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8763499456265996708}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -837,7 +848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8099996221670149477}
   - component: {fileID: 8956739904063785668}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: BackLeftWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1121,7 +1132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4576757935647547522}
   - component: {fileID: 1731868604905687527}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: FrontRightWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1192,7 +1203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1564194319609611754}
   - component: {fileID: 3658311964504015676}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: BackRightWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1359,7 +1370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7669066691964373716}
   - component: {fileID: 494397960186925937}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: FrontLeftWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -59,7 +59,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2715371062905986970}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: sedan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 9018677868160237933}
   - component: {fileID: 7024650228285184949}
   - component: {fileID: 2585112535832478239}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: wheel-front-right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9018383064917238260}
   - component: {fileID: 918679242890240115}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: BackRightWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7905215432734336158}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1603105790244242037}
   - component: {fileID: 9037244976806853936}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: BackLeftWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,7 +549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3983707788963609410}
   - component: {fileID: 3046216417626763866}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: FrontLeftWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 1032485602424139131}
   - component: {fileID: 4903136388996507798}
   - component: {fileID: 8113144620314991760}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: wheel-front-left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -750,14 +750,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45108aa2c074adb4a960ffeb21b3eaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScore: 12
-  currentScore: 0
+  maxLicense: 12
+  currentLicense: 0
+  scoreMission: 0
+  bonusCoins: 0
   star: 0
   status: 0
+  starCoolDownTimer: 0
+  starCDMaxLimit: 20
+  baseMissionReward: 100
+  totalSessionCoins: 0
+  sumSessionCoins: 0
+  completedMissionsCount: 0
   pedestrianCollision: 0
   vehicleCollision: 0
-  currentHitCarNPC: 0
+  currentHitCar: 0
   upStarHitCar: 2
+  isWanted: 0
+  isLose: 0
+  isWin: 0
 --- !u!1 &5290126134438810676
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8957517682734177006}
   - component: {fileID: 556831203443948080}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: FrontRightWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -882,6 +893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b2e580813059345b23497667e2d4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpawner: {fileID: 0}
   controller: {fileID: 6217524633412986491}
   lookAtPoint: {fileID: 973430198163389695}
   frontBumpCtrl: {fileID: 6832009661487429848}
@@ -900,6 +912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8201fa652b76f2c429d6088474560003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carManager: {fileID: 0}
   wheelCollidersCtrl:
   - {fileID: 9037244976806853936}
   - {fileID: 918679242890240115}
@@ -1079,7 +1092,7 @@ GameObject:
   - component: {fileID: 2086049643435562988}
   - component: {fileID: 2085266163145211347}
   - component: {fileID: 8144588042199296919}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: wheel-back-right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1176,7 +1189,7 @@ GameObject:
   - component: {fileID: 8242345838804669701}
   - component: {fileID: 3291869632599250737}
   - component: {fileID: 464704814792621159}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: body
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1362,7 +1375,7 @@ GameObject:
   - component: {fileID: 3966708211693241776}
   - component: {fileID: 2012475659196296510}
   - component: {fileID: 4826740941108539130}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: wheel-back-left
   m_TagString: Untagged
   m_Icon: {fileID: 0}

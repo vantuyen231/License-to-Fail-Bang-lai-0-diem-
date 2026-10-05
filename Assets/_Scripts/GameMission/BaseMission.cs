@@ -65,6 +65,7 @@ public abstract class BaseMission : TuyenMonoBehaviour
         UpdateStateMission?.Invoke(missionType,state,duration);
     }
 
+    #region StateMission
     protected virtual IEnumerator TitleMission()
     {
         this.ChangeState(MissionState.TitleStage, timeIntroTittle);
@@ -106,6 +107,7 @@ public abstract class BaseMission : TuyenMonoBehaviour
         StartCoroutine(CountDownEndUI(state));
         
     }
+    #endregion
 
     protected virtual IEnumerator CountDownEndUI(bool state)
     {
@@ -116,6 +118,20 @@ public abstract class BaseMission : TuyenMonoBehaviour
         }
 
         gameObject.SetActive(false);
+    }
+
+    public virtual void ForceFail(bool state)
+    {
+        Debug.Log(transform.name + "Fail");
+        if (isComplete) return;
+        StopAllCoroutines();
+        this.OnForceFail();
+        this.FinishMission(state);
+    }
+
+    protected virtual void OnForceFail()
+    {
+
     }
 
     protected virtual void SendTime(float timer)

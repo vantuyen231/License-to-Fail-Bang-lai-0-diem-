@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WinPannelUI : TuyenMonoBehaviour
+public class LosePannelUI : TuyenMonoBehaviour
 {
     [SerializeField] protected CanvasGroup canvasGroup;
 
@@ -17,7 +17,7 @@ public class WinPannelUI : TuyenMonoBehaviour
         canvasGroup = GetComponent<CanvasGroup>();
         Debug.Log(transform.name + ": LoadCanvasGroup", gameObject);
     }
-    public virtual void HidePannelWin()
+    public virtual void HidePannelLose()
     {
         if (canvasGroup != null)
         {
@@ -27,7 +27,7 @@ public class WinPannelUI : TuyenMonoBehaviour
         }
     }
 
-    public virtual void ShowPannelWin()
+    public virtual void ShowPannelLose()
     {
         if (canvasGroup != null)
         {

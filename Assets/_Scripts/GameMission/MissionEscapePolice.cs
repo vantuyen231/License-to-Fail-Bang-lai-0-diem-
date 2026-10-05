@@ -16,4 +16,10 @@ public class MissionEscapePolice : TimeBaseMission
         this.FinishMission(true);
         PoliceSpawnCtrl.Instance.PoliceSpawning.ClearAllEndMission();
     }
+
+    protected override void OnForceFail()
+    {
+        base.OnForceFail();
+        PoliceSpawnCtrl.Instance.PoliceSpawning.ClearAllEndMission();
+    }
 }

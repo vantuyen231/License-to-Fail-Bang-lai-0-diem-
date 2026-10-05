@@ -32,6 +32,7 @@ public class WinUI : TuyenSingleton<WinUI>
     protected virtual void OnDisable()
     {
         MissionManager.EndGame -= UpdateLastScore;
+        PlayerScore.ChangeStatusPlayer -= UpdateLicense;
         PlayerScore.CallScorePlayer -= ShowWinUI;
     }
 
@@ -106,14 +107,14 @@ public class WinUI : TuyenSingleton<WinUI>
     public virtual void Hide()
     {
         isShow = false;
-        winPannel.Hide();
+        winPannel.HidePannelWin();
         //gameObject.SetActive(isShow);
     }
 
     public virtual void Show()
     {
         isShow = true;
-        winPannel.Show();
+        winPannel.ShowPannelWin();
         //this.UpdateLastScore();
         //gameObject.SetActive(isShow);
     }

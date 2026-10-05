@@ -49,4 +49,14 @@ public class TimeBaseMission : BaseMission
         base.FinishMission(state);
     }
 
+    protected override void OnForceFail()
+    {
+        base.OnForceFail();
+        if (this.timerCoroutine != null)
+        {
+            StopCoroutine(this.timerCoroutine);
+            this.timerCoroutine = null;
+        }
+        this.SendTime(0.0f);
+    }
 }

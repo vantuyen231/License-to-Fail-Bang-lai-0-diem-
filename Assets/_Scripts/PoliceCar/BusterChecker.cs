@@ -9,10 +9,11 @@ public class BusterChecker : MonoBehaviour
     [SerializeField] protected LayerMask targetCheck;
     [SerializeField] private float maxBustedSpeedKmh = 15f;
     [SerializeField] protected Collider[] hitPlayer = new Collider[1];
+    [SerializeField] protected bool isHitPlayer = false;
 
     private Coroutine checkCoroutine;
 
-    public static event Action<bool> OnCheckPlayerBustedStatus;
+    public static event Action<BusterChecker, bool> OnCheckPlayerBustedStatus;
 
     protected void OnEnable()
     {
@@ -21,13 +22,18 @@ public class BusterChecker : MonoBehaviour
     protected void OnDisable()
     {
         if (checkCoroutine != null) StopCoroutine(checkCoroutine);
-        OnCheckPlayerBustedStatus?.Invoke(false);
+        if (isHitPlayer)
+        {
+            isHitPlayer = false;
+            OnCheckPlayerBustedStatus?.Invoke(this, false);
+        }
     }
     protected virtual void CheckPlayer()
     {
         int playerBuster = Physics.OverlapSphereNonAlloc(transform.position, radiosCheckBuster, hitPlayer, targetCheck);
+        bool isHit = false;
         Debug.Log("playerBuster "+playerBuster);
-        if (playerBuster > 0)
+        if (playerBuster > 0 && hitPlayer != null)
         {
             Rigidbody playerRb = hitPlayer[0].attachedRigidbody;
             Debug.Log("playerRb: " + playerRb);
@@ -36,10 +42,14 @@ public class BusterChecker : MonoBehaviour
                 float speedKmh = playerRb.velocity.magnitude * 3.6f;
                 if (speedKmh < maxBustedSpeedKmh)
                 {
-                    OnCheckPlayerBustedStatus?.Invoke(true);
-                    return;
+                    isHit = true;
                 }
             }
+        }
+        if (isHit != isHitPlayer)
+        {
+            isHitPlayer = isHit;
+            OnCheckPlayerBustedStatus?.Invoke(this,isHitPlayer);
         }
     }
 

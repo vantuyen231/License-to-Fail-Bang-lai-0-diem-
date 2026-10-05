@@ -37,7 +37,7 @@ public class MissionManager : TuyenMonoBehaviour
     [SerializeField] protected float increaseRate = 25f;
     [SerializeField] protected float decreaseRate = 15f;
     [SerializeField] protected int policeCount = 0;
-    [SerializeField] protected bool isBuster = false;
+    [SerializeField] protected bool isBusterBoom = false;
     [SerializeField] protected bool isEscapeMission = false;
 
     public static event Action<bool,int, int> EndGame;
@@ -51,6 +51,7 @@ public class MissionManager : TuyenMonoBehaviour
 
     protected virtual void Update()
     {
+        this.BusterCheck();
         if (isCoolingDown == true)
         {
             this.CoolDownMission();
@@ -60,13 +61,13 @@ public class MissionManager : TuyenMonoBehaviour
 
     protected void OnEnable()
     {
-        BusterChecker.OnCheckPlayerBustedStatus += BusterStatus;
+        BusterChecker.OnCheckPlayerBustedStatus += CheckPoliceHit;
         BaseMission.UpdateStateMission += CheckMissionEscape;
     }
 
     protected void OnDisable()
     {
-        BusterChecker.OnCheckPlayerBustedStatus -= BusterStatus;
+        BusterChecker.OnCheckPlayerBustedStatus -= CheckPoliceHit;
         BaseMission.UpdateStateMission -= CheckMissionEscape;
     }
 
@@ -203,17 +204,55 @@ public class MissionManager : TuyenMonoBehaviour
         }
     }
 
-    protected void BusterStatus(bool checkBust)
+    protected void CheckPoliceHit(BusterChecker police, bool checkBust)
     {
-        isBuster = checkBust ;
         if (checkBust)
         {
-            currentBuster += increaseRate * Time.deltaTime;
+            policeCount++;
         }
         else
         {
+            policeCount = Mathf.Max(0, policeCount-1);
+        }
+    }
+
+    protected virtual void BusterCheck()
+    {
+        if (isBusterBoom) return;
+        if (policeCount > 0)
+        {
+            currentBuster += increaseRate * Time.deltaTime;
+        }else if (currentBuster > 0)
+        {
             currentBuster -= decreaseRate * Time.deltaTime;
         }
-            Debug.Log("isBust: " + checkBust);
+
+        currentBuster = Mathf.Clamp(currentBuster, 0, 100);
+
+        if (currentBuster >= 100)
+        {
+            isBusterBoom = true ;
+            this.BusterOver();
+        }
+    }
+
+    protected void BusterOver()
+    {
+        if (isEscapeMission)
+        {
+            if (curretMission < missionsPlayer.Count)
+            {
+                Debug.Log("Mission Escape Police fail");
+                missionsPlayer[curretMission].ForceFail(false);
+                //this.CheckDoneMission(missionsPlayer[curretMission], false);
+            }
+        }
+        else
+        {
+            GameManager.Instance.PauseGame();
+            EndGame?.Invoke(false, missionSucess, indexMissionPlayer);
+            Debug.Log("Game over");
+            return;
+        }
     }
 }

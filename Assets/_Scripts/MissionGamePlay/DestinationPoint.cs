@@ -6,6 +6,11 @@ public class DestinationPoint : PoolObj
 {
     [SerializeField] protected bool isCompleted = false;
 
+    protected virtual void OnEnable()
+    {
+        isCompleted = false;
+    }
+
     protected virtual void OnTriggerEnter(Collider other)
     {
         if(isCompleted) return;
@@ -32,13 +37,13 @@ public class DestinationPoint : PoolObj
 
     }
 
-    protected virtual void OnEnable()
-    {
-        isCompleted = false;
-    }
-
     public override string GetName()
     {
-        throw new System.NotImplementedException();
+        return "DestinationPoint";
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
     }
 }

@@ -115,10 +115,11 @@ public class UIMiddle : TuyenMonoBehaviour
         switch (missionType)
         {
             case MissionType.ReachLocation:
-                return noDamgerMission;
+                
             case MissionType.EscapePolice:
                 return escapePoliceMission;
             case MissionType.NoViolation:
+                return noDamgerMission;
             case MissionType.MaintainSpeed:
             default:
                 return null;

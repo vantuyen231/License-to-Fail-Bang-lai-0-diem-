@@ -39,8 +39,10 @@ public class MissionManager : TuyenMonoBehaviour
     [SerializeField] protected int policeCount = 0;
     [SerializeField] protected bool isBusterBoom = false;
     [SerializeField] protected bool isEscapeMission = false;
+    [SerializeField] protected int maxBuster = 100;
 
     public static event Action<bool,int, int> EndGame;
+    public static event Action<float> UpdateBusterStatus;
 
 
     protected override void Start()
@@ -124,6 +126,8 @@ public class MissionManager : TuyenMonoBehaviour
     protected virtual void DoMission()
     {
         if( missionsPlayer == null ) return ;
+
+        this.ResetBuster();
 
         if (curretMission < indexMissionPlayer)
         {
@@ -227,9 +231,10 @@ public class MissionManager : TuyenMonoBehaviour
             currentBuster -= decreaseRate * Time.deltaTime;
         }
 
-        currentBuster = Mathf.Clamp(currentBuster, 0, 100);
+        currentBuster = Mathf.Clamp(currentBuster, 0, maxBuster);
+        UpdateBusterStatus?.Invoke(currentBuster / maxBuster);
 
-        if (currentBuster >= 100)
+        if (currentBuster >= maxBuster)
         {
             isBusterBoom = true ;
             this.BusterOver();
@@ -244,7 +249,7 @@ public class MissionManager : TuyenMonoBehaviour
             {
                 Debug.Log("Mission Escape Police fail");
                 missionsPlayer[curretMission].ForceFail(false);
-                //this.CheckDoneMission(missionsPlayer[curretMission], false);
+                this.ResetBuster();
             }
         }
         else
@@ -254,5 +259,11 @@ public class MissionManager : TuyenMonoBehaviour
             Debug.Log("Game over");
             return;
         }
+    }
+
+    private void ResetBuster()
+    {
+        isBusterBoom = false;
+        currentBuster = 0f;
     }
 }

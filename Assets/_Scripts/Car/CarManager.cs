@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarManager : TuyenMonoBehaviour
+public class CarManager : TuyenSingleton<CarManager>
 {
     [SerializeField] protected PlayerSpawner playerSpawner;
     [SerializeField] protected CarController controller;

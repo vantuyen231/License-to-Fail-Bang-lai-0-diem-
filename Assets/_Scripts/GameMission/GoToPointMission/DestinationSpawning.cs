@@ -34,5 +34,18 @@ public class DestinationSpawning : TuyenMonoBehaviour
     public void GetPointSpawnGoal(DestinationArea area)
     {
         areaSpawnGoal = area;
+        this.SpawnDestination();
+    }
+    [ContextMenu("spawn destination")]
+
+    protected void SpawnDestination()
+    {
+        DestinationPoint newDestinationPrefab = destinationSpawnCtrl.DestinationSpwan.PoolPrefabs.GetByName(nameof(DestinationPoint));
+        DestinationPoint newDestination = destinationSpawnCtrl.DestinationSpwan.Spawn(newDestinationPrefab);
+
+        newDestination.transform.position = areaSpawnGoal.transform.position;
+        newDestination.transform.rotation = areaSpawnGoal.transform.rotation;
+        newDestination.ResetDestinationTrigger();
+        newDestination.SetActive(true);
     }
 }

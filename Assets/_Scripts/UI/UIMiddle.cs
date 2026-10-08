@@ -8,6 +8,7 @@ public class UIMiddle : TuyenMonoBehaviour
 {
     [SerializeField] protected UINoDamgerMission noDamgerMission;
     [SerializeField] protected UIEscapePoliceMission escapePoliceMission;
+    [SerializeField] protected UIGoToPointMission toPointMission;
     [SerializeField] protected CompleteMission completeMission;
     [SerializeField] protected FailMisssion failMission;
     [SerializeField] protected CountDownMission countDownMission;
@@ -115,7 +116,7 @@ public class UIMiddle : TuyenMonoBehaviour
         switch (missionType)
         {
             case MissionType.ReachLocation:
-                
+                return toPointMission;
             case MissionType.EscapePolice:
                 return escapePoliceMission;
             case MissionType.NoViolation:
@@ -130,6 +131,7 @@ public class UIMiddle : TuyenMonoBehaviour
     {
         this.Hide(noDamgerMission.transform);
         this.Hide(escapePoliceMission.transform);
+        this.Hide(toPointMission.transform);
         this.Hide(completeMission.transform);
         this.Hide(failMission.transform);
         this.Hide(countDownMission.transform);
@@ -153,6 +155,7 @@ public class UIMiddle : TuyenMonoBehaviour
         this.LoadFailMisssion();
         this.LoadNoDamagerMission();
         this.LoadEscapeMission();
+        this.LoadUIGoToPointMission();
         this.LoadCountDownMission();
     }
 
@@ -168,6 +171,13 @@ public class UIMiddle : TuyenMonoBehaviour
         if (escapePoliceMission != null) return;
         escapePoliceMission = GetComponentInChildren<UIEscapePoliceMission>();
         Debug.Log(transform.name + " LoadEscapeMission:", gameObject);
+    }
+
+    private void LoadUIGoToPointMission()
+    {
+        if (toPointMission != null) return;
+        toPointMission = GetComponentInChildren<UIGoToPointMission>();
+        Debug.Log(transform.name + " LoadUIGoToPointMission:", gameObject);
     }
 
     protected virtual void LoadCompleteMission()

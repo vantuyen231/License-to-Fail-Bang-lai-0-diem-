@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,11 @@ public class DestinationPoint : PoolObj
 {
     [SerializeField] protected bool isCompleted = false;
 
-    protected virtual void OnEnable()
-    {
-        isCompleted = false;
-    }
+    public static event Action<bool> OnCompleted;
+    //protected virtual void OnEnable()
+    //{
+    //    isCompleted = false;
+    //}
 
     protected virtual void OnTriggerEnter(Collider other)
     {
@@ -26,13 +28,14 @@ public class DestinationPoint : PoolObj
             this.isCompleted = true;
 
             playerScore.DestinationHit();
-
+            OnCompleted?.Invoke(isCompleted);
             this.DoneDestination();
         }
     }
 
     protected virtual void DoneDestination()
     {
+        despawn.DoDespawn();
         Debug.Log("Done Destination");
 
     }
@@ -45,5 +48,9 @@ public class DestinationPoint : PoolObj
     protected override void LoadComponents()
     {
         base.LoadComponents();
+    }
+    public void ResetDestinationTrigger()
+    {
+        isCompleted = false;
     }
 }

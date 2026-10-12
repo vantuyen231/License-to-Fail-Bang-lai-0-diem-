@@ -8,6 +8,7 @@ public class UIWayPoint : TuyenMonoBehaviour
     [SerializeField] protected Transform targetDestination;
 
     [SerializeField] protected float rotationSpeed = 15f;
+    [SerializeField] protected Vector3 dirToTarget;
 
     protected virtual void Update()
     {
@@ -17,7 +18,7 @@ public class UIWayPoint : TuyenMonoBehaviour
             return;
         }
 
-        this.KeepFacingCamera();
+        //this.KeepFacingCamera();
         this.RotationArrow();
     }
 
@@ -32,17 +33,26 @@ public class UIWayPoint : TuyenMonoBehaviour
     [ContextMenu("RotationArrow")]
     protected void RotationArrow()
     {
+        if (targetDestination == null || arrowWayPoint == null) return;
+
         Vector3 playerPos = transform.position;
         Vector3 targetPos = targetDestination.position;
-        Vector3 dirToTarget = targetPos - playerPos;
+        dirToTarget = targetPos - playerPos;
 
-        Vector2 dir2D = new Vector2(dirToTarget.x, dirToTarget.z);
+        Vector3 flatDir = targetPos - playerPos;
+        flatDir.y = 0; 
+
         Vector3 camForward = Camera.main.transform.forward;
-        Vector2 camForward2D = new Vector2(camForward.x, camForward.z);
+        camForward.y = 0;
+        camForward.Normalize();
 
-        float angle = Vector2.SignedAngle(camForward2D, dir2D);
+        flatDir.Normalize();
 
-        Quaternion targetRot = Quaternion.Euler(0, 0, -angle);
+        float targetAngle = Vector3.SignedAngle(camForward, flatDir, Vector3.up);
+
+        Vector3 initialEuler = arrowWayPoint.localEulerAngles;
+        Quaternion targetRot = Quaternion.Euler(initialEuler.x, initialEuler.y, -targetAngle);
+
         arrowWayPoint.localRotation = Quaternion.Slerp(arrowWayPoint.localRotation, targetRot, Time.deltaTime * rotationSpeed);
     }
 }

@@ -12,6 +12,7 @@ public class CarManager : TuyenSingleton<CarManager>
     [SerializeField] protected MapTrigger mapTrigger;
     [SerializeField] protected NPCSpawnTrigger spawnTrigger;
     [SerializeField] protected PlayerScore playerScore;
+    [SerializeField] protected UIWayPoint wayPoint;
 
     public PlayerScore PlayerScore => playerScore;
     public CamLookAtPoint LookAtPoint => lookAtPoint;
@@ -34,6 +35,7 @@ public class CarManager : TuyenSingleton<CarManager>
         this.LoadPlayerScore();
         this.LoadCamLookAtPoint();
         this.LoadPlayerSpawner();
+        this.LoadUIWayPoint();
     }
 
     private void LoadPlayerSpawner()
@@ -79,6 +81,13 @@ public class CarManager : TuyenSingleton<CarManager>
         if (playerScore != null) return;
         playerScore = GetComponentInChildren<PlayerScore>();
         Debug.Log(transform.name + ": LoadPlayerScore", gameObject );
+    }
+
+    private void LoadUIWayPoint()
+    {
+        if (wayPoint != null) return;
+        wayPoint = GetComponentInChildren<UIWayPoint>();
+        Debug.Log(transform.name + ": LoadUIWayPoint", gameObject);
     }
 
 

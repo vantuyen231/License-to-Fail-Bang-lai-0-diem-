@@ -1,25 +1,61 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIWayPoint : TuyenMonoBehaviour
 {
-    [SerializeField] protected RectTransform arrowWayPoint;
+    [SerializeField] protected UIArrowWayPoint arrowWayPoint;
     [SerializeField] protected Transform targetDestination;
+    [SerializeField] protected CanvasGroup canvasGroup;
+    [SerializeField] protected bool isWayPoint = false;
 
     [SerializeField] protected float rotationSpeed = 15f;
     [SerializeField] protected Vector3 dirToTarget;
 
     protected virtual void Update()
     {
-        if (targetDestination == null || !targetDestination.gameObject.activeSelf)
-        {
-            gameObject.SetActive(false);
-            return;
-        }
-
-        //this.KeepFacingCamera();
+        if (!isWayPoint) return;
+        //if (targetDestination == null || !targetDestination.gameObject.activeSelf)
+        //{
+        //    gameObject.SetActive(false);
+        //    return;
+        //}
+        this.KeepFacingCamera();
         this.RotationArrow();
+    }
+
+    protected void OnEnable()
+    {
+        BaseMission.UpdateStateMission += GetOnMission;
+        DestinationSpawning.CallDestinationPos += GetDestinationPos;
+    }
+
+    protected void OnDisable()
+    {
+        BaseMission.UpdateStateMission -= GetOnMission;
+        DestinationSpawning.CallDestinationPos -= GetDestinationPos;
+    }
+
+    protected virtual void GetOnMission(MissionType missionType,MissionState state,float duration)
+    {
+        if (missionType == MissionType.ReachLocation && state == MissionState.ActiveGameplay)
+        {
+            isWayPoint = true;
+            canvasGroup.alpha = 1;
+
+        }
+        else
+        {
+            isWayPoint = false;
+            canvasGroup.alpha = 0;
+        }
+    }
+
+    protected void GetDestinationPos(Transform destinationPos)
+    {
+        targetDestination = destinationPos;
     }
 
     protected virtual void KeepFacingCamera()
@@ -30,7 +66,6 @@ public class UIWayPoint : TuyenMonoBehaviour
         }
     }
 
-    [ContextMenu("RotationArrow")]
     protected void RotationArrow()
     {
         if (targetDestination == null || arrowWayPoint == null) return;
@@ -50,9 +85,31 @@ public class UIWayPoint : TuyenMonoBehaviour
 
         float targetAngle = Vector3.SignedAngle(camForward, flatDir, Vector3.up);
 
-        Vector3 initialEuler = arrowWayPoint.localEulerAngles;
+        Vector3 initialEuler = arrowWayPoint.transform.localEulerAngles;
         Quaternion targetRot = Quaternion.Euler(initialEuler.x, initialEuler.y, -targetAngle);
 
-        arrowWayPoint.localRotation = Quaternion.Slerp(arrowWayPoint.localRotation, targetRot, Time.deltaTime * rotationSpeed);
+        arrowWayPoint.transform.localRotation = Quaternion.Slerp(arrowWayPoint.transform.localRotation, targetRot, Time.deltaTime * rotationSpeed);
+    }
+
+
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadRectTransform();
+        this.LoadCanvasGroup();
+    }
+    protected virtual void LoadRectTransform()
+    {
+        if (this.arrowWayPoint != null) return;
+        arrowWayPoint = GetComponentInChildren<UIArrowWayPoint>();
+        Debug.Log(transform.name + ": LoadRectTransform", gameObject);
+    }
+
+    protected virtual void LoadCanvasGroup()
+    {
+        if (this.canvasGroup != null) return;
+        canvasGroup = GetComponent<CanvasGroup>();
+        Debug.Log(transform.name + ": LoadCanvasGroup", gameObject);
     }
 }

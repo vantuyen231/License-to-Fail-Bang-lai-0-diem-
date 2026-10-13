@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class DestinationSpawning : TuyenMonoBehaviour
     [SerializeField] protected DestinationManager destinationManager;
     [SerializeField] protected DestinationArea areaSpawnGoal;
     public DestinationSpawnCtrl DestinationSpawnCtrl => destinationSpawnCtrl;
+
+    public static event Action<Transform> CallDestinationPos;
 
     #region LoadComponents
     protected override void LoadComponents()
@@ -47,5 +50,6 @@ public class DestinationSpawning : TuyenMonoBehaviour
         newDestination.transform.rotation = areaSpawnGoal.transform.rotation;
         newDestination.ResetDestinationTrigger();
         newDestination.SetActive(true);
+        CallDestinationPos?.Invoke(newDestination.transform);
     }
 }

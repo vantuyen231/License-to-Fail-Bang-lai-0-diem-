@@ -20,7 +20,7 @@ public class DestinationManager : TuyenMonoBehaviour
         GoToPointMission.OnPositionPlayer -= GetAreaGoal;
     }
 
-    protected void GetAreaGoal(Vector3 player, float minDistance)
+    protected void GetAreaGoal(Transform player, float minDistance)
     {
         choiceArea.Clear();
         Debug.Log("CarPosition: "+ player);
@@ -28,7 +28,7 @@ public class DestinationManager : TuyenMonoBehaviour
 
         foreach (DestinationArea area in destinationAreas)
         {
-            float distanceArea = Vector3.Distance(player,area.transform.position);
+            float distanceArea = Vector3.Distance(player.transform.position,area.transform.position);
             if (distanceArea > minDistance)
             {
                 choiceArea.Add(area);

@@ -8,5 +8,5 @@ public enum MissionType
     ReachLocation,
     NoViolation, 
     EscapePolice,
-    MaintainSpeed
+    TimedDelivery
 }

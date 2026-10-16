@@ -12,6 +12,7 @@ public class UIMiddle : TuyenMonoBehaviour
     [SerializeField] protected CompleteMission completeMission;
     [SerializeField] protected FailMisssion failMission;
     [SerializeField] protected CountDownMission countDownMission;
+    [SerializeField] protected UISpeedDeliveryMission speedDeliveryMission;
 
     [SerializeField] protected MissionType missionActive = MissionType.None;
     [SerializeField] protected MissionState missionState = MissionState.None;
@@ -121,7 +122,8 @@ public class UIMiddle : TuyenMonoBehaviour
                 return escapePoliceMission;
             case MissionType.NoViolation:
                 return noDamgerMission;
-            case MissionType.MaintainSpeed:
+            case MissionType.TimedDelivery:
+                return speedDeliveryMission;
             default:
                 return null;
         }
@@ -135,6 +137,7 @@ public class UIMiddle : TuyenMonoBehaviour
         this.Hide(completeMission.transform);
         this.Hide(failMission.transform);
         this.Hide(countDownMission.transform);
+        this.Hide(speedDeliveryMission.transform);
     }
 
     protected virtual IEnumerator CountDownUIShow(Transform uiCheckTime, float duration)
@@ -156,6 +159,7 @@ public class UIMiddle : TuyenMonoBehaviour
         this.LoadNoDamagerMission();
         this.LoadEscapeMission();
         this.LoadUIGoToPointMission();
+        this.LoadUISpeedDeliveryMission();
         this.LoadCountDownMission();
     }
 
@@ -178,6 +182,13 @@ public class UIMiddle : TuyenMonoBehaviour
         if (toPointMission != null) return;
         toPointMission = GetComponentInChildren<UIGoToPointMission>();
         Debug.Log(transform.name + " LoadUIGoToPointMission:", gameObject);
+    }
+
+    private void LoadUISpeedDeliveryMission()
+    {
+        if (speedDeliveryMission != null) return;
+        speedDeliveryMission = GetComponentInChildren<UISpeedDeliveryMission>();
+        Debug.Log(transform.name + " LoadUISpeedDeliveryMission:", gameObject);
     }
 
     protected virtual void LoadCompleteMission()

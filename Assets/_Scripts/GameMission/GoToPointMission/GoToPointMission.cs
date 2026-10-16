@@ -6,7 +6,7 @@ using UnityEngine;
 public class GoToPointMission : BaseMission
 {
     [SerializeField] protected Transform playerPosition;
-    [SerializeField] protected float minDistanceArea = 100f;
+    [SerializeField] protected float minDistanceArea = 300f;
 
 
     public static event Action<Transform,float> OnPositionPlayer;

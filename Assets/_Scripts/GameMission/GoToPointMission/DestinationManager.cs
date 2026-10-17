@@ -10,17 +10,17 @@ public class DestinationManager : TuyenMonoBehaviour
     [SerializeField] protected DestinationSpawning destinationSpawning;
 
 
-    protected void OnEnable()
-    {
-        GoToPointMission.OnPositionPlayer += GetAreaGoal;
-    }
+    //protected void OnEnable()
+    //{
+    //    GoToPointMission.OnPositionPlayer += GetAreaGoal;
+    //}
 
-    protected void OnDisable()
-    {
-        GoToPointMission.OnPositionPlayer -= GetAreaGoal;
-    }
+    //protected void OnDisable()
+    //{
+    //    GoToPointMission.OnPositionPlayer -= GetAreaGoal;
+    //}
 
-    protected void GetAreaGoal(Transform player, float minDistance)
+    public void GetAreaGoal(Transform player, float minDistance)
     {
         choiceArea.Clear();
         Debug.Log("CarPosition: "+ player);

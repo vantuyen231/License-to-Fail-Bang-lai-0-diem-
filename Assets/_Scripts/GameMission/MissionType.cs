@@ -8,5 +8,6 @@ public enum MissionType
     ReachLocation,
     NoViolation, 
     EscapePolice,
-    TimedDelivery
+    TimedDelivery,
+    SequentialRoute
 }

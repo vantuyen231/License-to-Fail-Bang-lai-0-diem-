@@ -8,10 +8,6 @@ public class DestinationPoint : PoolObj
     [SerializeField] protected bool isCompleted = false;
 
     public static event Action<bool> OnCompleted;
-    //protected virtual void OnEnable()
-    //{
-    //    isCompleted = false;
-    //}
 
     protected virtual void OnTriggerEnter(Collider other)
     {

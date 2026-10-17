@@ -16,13 +16,15 @@ public class UIArrowWayPoint : TuyenMonoBehaviour
 
     protected void OnEnable()
     {
-        GoToPointMission.OnPositionPlayer += GetPlayerPos ;
+        //GoToPointMission.OnPositionPlayer += GetPlayerPos ;
         DestinationSpawning.CallDestinationPos += GetDestinationPos;
+        this.GetPlayerPos();
+
     }
 
     protected void OnDisable()
     {
-        GoToPointMission.OnPositionPlayer -= GetPlayerPos;
+        //GoToPointMission.OnPositionPlayer -= GetPlayerPos;
         DestinationSpawning.CallDestinationPos -= GetDestinationPos;
     }
     void Update()
@@ -67,9 +69,10 @@ public class UIArrowWayPoint : TuyenMonoBehaviour
         distancePoint = Vector3.Distance(tranformPos, targetPos);
     }
 
-    protected void GetPlayerPos(Transform player, float index)
+    protected void GetPlayerPos()//Transform player, float index)
     {
-        playerPos = player;
+        if(CarManager.Instance == null) return;
+        playerPos = CarManager.Instance.transform;
     }
 
     protected void GetDestinationPos(Transform destinationPos)

@@ -18893,8 +18893,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionManager: {fileID: 370745374}
   missionType: 4
-  missionName: Reach Destination in Time
-  missionDescription: Reach Destination in Time
+  missionName: 
+  missionDescription: 
   scoreMission: 100
   timeIntroTittle: 3
   timeReadyMission: 3
@@ -18905,10 +18905,11 @@ MonoBehaviour:
   currentState: 0
   isComplete: 0
   isSucess: 0
-  timeMission: 30
+  timeMission: 100
   secondsLeft: 0
   playerPosition: {fileID: 0}
   minDistanceArea: 300
+  destinationManager: {fileID: 641625956}
 --- !u!4 &161369238
 Transform:
   m_ObjectHideFlags: 0
@@ -25426,6 +25427,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ddcda91f4d878414c847571498145c3a, type: 3}
   m_PrefabInstance: {fileID: 225770914}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &225808207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 225808209}
+  - component: {fileID: 225808208}
+  m_Layer: 0
+  m_Name: NDestinationMission
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &225808208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225808207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6dd91628f3e63449c448642686c453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionManager: {fileID: 370745374}
+  missionType: 5
+  missionName: Go around the City
+  missionDescription: 
+  scoreMission: 100
+  timeIntroTittle: 3
+  timeReadyMission: 3
+  currentReady: 0
+  timeMissionBase: 0
+  endUIMission: 2
+  isMissionActive: 0
+  currentState: 0
+  isComplete: 0
+  isSucess: 0
+  maxDestinationSpawn: 3
+  currentDestination: 0
+  playerPosition: {fileID: 0}
+  minDistanceArea: 300
+  destinationManager: {fileID: 641625956}
+--- !u!4 &225808209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225808207}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 370745375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &226776095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31495,6 +31559,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4148530030851855363, guid: 49843f6700f7eb841b1974cc6352ae3f, type: 3}
   m_PrefabInstance: {fileID: 275168285}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &275246478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 275246480}
+  - component: {fileID: 275246479}
+  m_Layer: 0
+  m_Name: NDestinationMission_4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &275246479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275246478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6dd91628f3e63449c448642686c453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionManager: {fileID: 370745374}
+  missionType: 5
+  missionName: Go around the City
+  missionDescription: 
+  scoreMission: 100
+  timeIntroTittle: 3
+  timeReadyMission: 3
+  currentReady: 0
+  timeMissionBase: 0
+  endUIMission: 2
+  isMissionActive: 0
+  currentState: 0
+  isComplete: 0
+  isSucess: 0
+  maxDestinationSpawn: 3
+  currentDestination: 0
+  playerPosition: {fileID: 0}
+  minDistanceArea: 300
+  destinationManager: {fileID: 641625956}
+--- !u!4 &275246480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275246478}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 370745375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &275724190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36038,6 +36165,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7155684608894559965, guid: 4fc7e62e811acac4a8949a5e1a15f45f, type: 3}
   m_PrefabInstance: {fileID: 309938229}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &310352408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 310352410}
+  - component: {fileID: 310352409}
+  m_Layer: 0
+  m_Name: NDestinationMission_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &310352409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310352408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6dd91628f3e63449c448642686c453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionManager: {fileID: 370745374}
+  missionType: 5
+  missionName: Go around the City
+  missionDescription: 
+  scoreMission: 100
+  timeIntroTittle: 3
+  timeReadyMission: 3
+  currentReady: 0
+  timeMissionBase: 0
+  endUIMission: 2
+  isMissionActive: 0
+  currentState: 0
+  isComplete: 0
+  isSucess: 0
+  maxDestinationSpawn: 3
+  currentDestination: 0
+  playerPosition: {fileID: 0}
+  minDistanceArea: 300
+  destinationManager: {fileID: 641625956}
+--- !u!4 &310352410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310352408}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 370745375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &310700814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42982,10 +43172,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexMissionPlayer: 0
   missions:
-  - {fileID: 897049710}
-  - {fileID: 429610555}
-  - {fileID: 1296922207}
-  - {fileID: 1427133074}
+  - {fileID: 225808208}
+  - {fileID: 584129799}
+  - {fileID: 310352409}
+  - {fileID: 940098285}
+  - {fileID: 275246479}
   missionsPlayer: []
   tempMission: []
   timeNextMission: 2.5
@@ -43029,6 +43220,11 @@ Transform:
   - {fileID: 1296922208}
   - {fileID: 1582105581}
   - {fileID: 1427133075}
+  - {fileID: 225808209}
+  - {fileID: 584129800}
+  - {fileID: 310352410}
+  - {fileID: 940098286}
+  - {fileID: 275246480}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &370833363
@@ -43571,6 +43767,98 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca9630c231b249c48806a146c5c39396, type: 3}
+--- !u!1 &375923038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 375923040}
+  - component: {fileID: 375923042}
+  - component: {fileID: 375923041}
+  - component: {fileID: 375923039}
+  m_Layer: 5
+  m_Name: Title
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &375923039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375923038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a221ec912de8dc74ab6df9bb8f61e266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countDown: {fileID: 1939088304}
+--- !u!224 &375923040
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375923038}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000108, y: 1.0000108, z: 1.0000108}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 927391503}
+  - {fileID: 500553888}
+  - {fileID: 1939088307}
+  m_Father: {fileID: 1144254825}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000030517578, y: 83.499954}
+  m_SizeDelta: {x: 715.26, y: 404.18}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &375923041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375923038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7019608}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 8e82ee6af1074d04f8daa3ce41592850, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &375923042
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375923038}
+  m_CullTransparentMesh: 1
 --- !u!1 &377291813
 GameObject:
   m_ObjectHideFlags: 0
@@ -59240,6 +59528,140 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d423ba7e9a8dafe4b9f8d9ad91733f32, type: 3}
+--- !u!1 &500553887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 500553888}
+  - component: {fileID: 500553890}
+  - component: {fileID: 500553889}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &500553888
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500553887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 375923040}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 33.180016}
+  m_SizeDelta: {x: 660.3, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &500553889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500553887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Go around the city
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &500553890
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500553887}
+  m_CullTransparentMesh: 1
 --- !u!4 &500687505 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 111204bbc516ac3469a447dc2265a0b5, type: 3}
@@ -68433,6 +68855,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c18a19953f4e9b549a302dc0b2bbd641, type: 3}
   m_PrefabInstance: {fileID: 582598623}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &584129798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 584129800}
+  - component: {fileID: 584129799}
+  m_Layer: 0
+  m_Name: NDestinationMission_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &584129799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584129798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6dd91628f3e63449c448642686c453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionManager: {fileID: 370745374}
+  missionType: 5
+  missionName: Go around the City
+  missionDescription: 
+  scoreMission: 100
+  timeIntroTittle: 3
+  timeReadyMission: 3
+  currentReady: 0
+  timeMissionBase: 0
+  endUIMission: 2
+  isMissionActive: 0
+  currentState: 0
+  isComplete: 0
+  isSucess: 0
+  maxDestinationSpawn: 3
+  currentDestination: 0
+  playerPosition: {fileID: 0}
+  minDistanceArea: 300
+  destinationManager: {fileID: 641625956}
+--- !u!4 &584129800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584129798}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 370745375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &584431165
 GameObject:
   m_ObjectHideFlags: 0
@@ -107808,6 +108293,140 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d423ba7e9a8dafe4b9f8d9ad91733f32, type: 3}
+--- !u!1 &927391502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 927391503}
+  - component: {fileID: 927391505}
+  - component: {fileID: 927391504}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &927391503
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927391502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 375923040}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 117.5}
+  m_SizeDelta: {x: 315.66, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &927391504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927391502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Mission:'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4279769000
+  m_fontColor: {r: 0.6603774, g: 0.09033466, b: 0.09591616, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 70.8
+  m_fontSizeBase: 70.8
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &927391505
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927391502}
+  m_CullTransparentMesh: 1
 --- !u!1001 &927531534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -109244,6 +109863,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 20ddfda892117f74b92d06aaac48984f, type: 3}
   m_PrefabInstance: {fileID: 939932836}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &940098284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 940098286}
+  - component: {fileID: 940098285}
+  m_Layer: 0
+  m_Name: NDestinationMission_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &940098285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940098284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6dd91628f3e63449c448642686c453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionManager: {fileID: 370745374}
+  missionType: 5
+  missionName: Go around the City
+  missionDescription: 
+  scoreMission: 100
+  timeIntroTittle: 3
+  timeReadyMission: 3
+  currentReady: 0
+  timeMissionBase: 0
+  endUIMission: 2
+  isMissionActive: 0
+  currentState: 0
+  isComplete: 0
+  isSucess: 0
+  maxDestinationSpawn: 3
+  currentDestination: 0
+  playerPosition: {fileID: 0}
+  minDistanceArea: 300
+  destinationManager: {fileID: 641625956}
+--- !u!4 &940098286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940098284}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 370745375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &941305873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133991,6 +134673,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7155684608894559965, guid: 4fc7e62e811acac4a8949a5e1a15f45f, type: 3}
   m_PrefabInstance: {fileID: 1144244861}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1144254823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1144254825}
+  - component: {fileID: 1144254824}
+  m_Layer: 5
+  m_Name: UINDestinationMission
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1144254824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144254823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2903e9624fa1f444a852d14c529e43c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleNoDMission: {fileID: 375923039}
+  stateMission: 0
+--- !u!224 &1144254825
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144254823}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 375923040}
+  m_Father: {fileID: 1766507112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1144978318
 GameObject:
   m_ObjectHideFlags: 0
@@ -152290,8 +153023,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionManager: {fileID: 370745374}
   missionType: 4
-  missionName: Reach Destination in Time
-  missionDescription: Reach Destination in Time
+  missionName: 
+  missionDescription: 
   scoreMission: 100
   timeIntroTittle: 3
   timeReadyMission: 3
@@ -152302,10 +153035,11 @@ MonoBehaviour:
   currentState: 0
   isComplete: 0
   isSucess: 0
-  timeMission: 30
+  timeMission: 100
   secondsLeft: 0
   playerPosition: {fileID: 0}
   minDistanceArea: 300
+  destinationManager: {fileID: 641625956}
 --- !u!4 &1296922208
 Transform:
   m_ObjectHideFlags: 0
@@ -164645,8 +165379,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionManager: {fileID: 370745374}
   missionType: 4
-  missionName: Reach Destination in Time
-  missionDescription: Reach Destination in Time
+  missionName: 
+  missionDescription: 
   scoreMission: 100
   timeIntroTittle: 3
   timeReadyMission: 3
@@ -164657,10 +165391,11 @@ MonoBehaviour:
   currentState: 0
   isComplete: 0
   isSucess: 0
-  timeMission: 30
+  timeMission: 100
   secondsLeft: 0
   playerPosition: {fileID: 0}
   minDistanceArea: 300
+  destinationManager: {fileID: 641625956}
 --- !u!4 &1427133075
 Transform:
   m_ObjectHideFlags: 0
@@ -169145,6 +169880,7 @@ MonoBehaviour:
   isSucess: 0
   playerPosition: {fileID: 0}
   minDistanceArea: 100
+  destinationManager: {fileID: 0}
 --- !u!1001 &1479829582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179685,8 +180421,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionManager: {fileID: 370745374}
   missionType: 4
-  missionName: Reach Destination in Time
-  missionDescription: Reach Destination in Time
+  missionName: 
+  missionDescription: 
   scoreMission: 100
   timeIntroTittle: 3
   timeReadyMission: 3
@@ -179697,10 +180433,11 @@ MonoBehaviour:
   currentState: 0
   isComplete: 0
   isSucess: 0
-  timeMission: 30
+  timeMission: 100
   secondsLeft: 0
   playerPosition: {fileID: 0}
   minDistanceArea: 300
+  destinationManager: {fileID: 641625956}
 --- !u!1001 &1582214372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189858,8 +190595,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionManager: {fileID: 370745374}
   missionType: 4
-  missionName: Reach Destination in Time
-  missionDescription: Reach Destination in Time
+  missionName: 
+  missionDescription: 
   scoreMission: 100
   timeIntroTittle: 3
   timeReadyMission: 3
@@ -189870,10 +190607,11 @@ MonoBehaviour:
   currentState: 0
   isComplete: 0
   isSucess: 0
-  timeMission: 30
+  timeMission: 100
   secondsLeft: 0
   playerPosition: {fileID: 0}
   minDistanceArea: 300
+  destinationManager: {fileID: 641625956}
 --- !u!4 &1674041031
 Transform:
   m_ObjectHideFlags: 0
@@ -200241,6 +200979,7 @@ RectTransform:
   - {fileID: 155661126}
   - {fileID: 641517022}
   - {fileID: 865945149}
+  - {fileID: 1144254825}
   - {fileID: 1801484885}
   m_Father: {fileID: 1196378942}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -200268,6 +201007,7 @@ MonoBehaviour:
   failMission: {fileID: 1980480942}
   countDownMission: {fileID: 1801484886}
   speedDeliveryMission: {fileID: 865945150}
+  multiDestinationMission: {fileID: 1144254824}
   missionActive: 0
   missionState: 0
   currentUIMission: {fileID: 0}
@@ -222363,6 +223103,154 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.98, y: 3.5, z: 0.98}
   m_Center: {x: 0, y: 1.75, z: 0}
+--- !u!1 &1939088303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1939088307}
+  - component: {fileID: 1939088306}
+  - component: {fileID: 1939088305}
+  - component: {fileID: 1939088304}
+  m_Layer: 5
+  m_Name: NumCountDown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1939088304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939088303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd12f18098f4154881390443bec8ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMeshProUGUI: {fileID: 1939088305}
+--- !u!114 &1939088305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939088303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 0
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4288160278
+  m_fontColor: {r: 0.08690815, g: 0.13403137, b: 0.5943396, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 94.13
+  m_fontSizeBase: 94.13
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1939088306
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939088303}
+  m_CullTransparentMesh: 1
+--- !u!224 &1939088307
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939088303}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 375923040}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -136}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1939328904
 GameObject:
   m_ObjectHideFlags: 0

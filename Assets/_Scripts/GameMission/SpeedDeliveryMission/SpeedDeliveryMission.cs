@@ -7,9 +7,17 @@ public class SpeedDeliveryMission : TimeBaseMission
 {
     [SerializeField] protected Transform playerPosition;
     [SerializeField] protected float minDistanceArea = 300f;
+    [SerializeField] protected DestinationManager destinationManager;
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        missionType = MissionType.TimedDelivery;
+        timeMission = 100f;
+        this.LoadDestinationManager();
+    }
 
 
-    public static event Action<Transform, float> OnPositionPlayer;
     private void OnEnable()
     {
         DestinationPoint.OnCompleted += HitDestination;
@@ -23,7 +31,7 @@ public class SpeedDeliveryMission : TimeBaseMission
     {
         base.OnStartMission();
         playerPosition = CarManager.Instance.transform;
-        OnPositionPlayer?.Invoke(playerPosition, minDistanceArea);
+        destinationManager.GetAreaGoal(playerPosition, minDistanceArea);
     }
 
     protected void HitDestination(bool isHit)
@@ -32,4 +40,11 @@ public class SpeedDeliveryMission : TimeBaseMission
         this.FinishMission(isHit);
     }
 
+
+    protected virtual void LoadDestinationManager()
+    {
+        if (destinationManager != null) return;
+        destinationManager = FindAnyObjectByType<DestinationManager>();
+        Debug.Log(transform.name + ": LoadDestinationManager", gameObject);
+    }
 }

@@ -43172,9 +43172,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexMissionPlayer: 0
   missions:
-  - {fileID: 225808208}
-  - {fileID: 584129799}
-  - {fileID: 310352409}
+  - {fileID: 1479635040}
+  - {fileID: 161369237}
+  - {fileID: 1674041030}
   - {fileID: 940098285}
   - {fileID: 275246479}
   missionsPlayer: []
@@ -74611,6 +74611,58 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c18a19953f4e9b549a302dc0b2bbd641, type: 3}
   m_PrefabInstance: {fileID: 628090650}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &628546397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 628546399}
+  - component: {fileID: 628546398}
+  m_Layer: 5
+  m_Name: UIWayPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &628546398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628546397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f9f9e16abd6db49bef07e2c62851d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destinationWP: {fileID: 1226580952}
+  arrowWayPoint: {fileID: 857624411}
+--- !u!224 &628546399
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628546397}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1226580949}
+  - {fileID: 857624410}
+  m_Father: {fileID: 1766507112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &629234762
 GameObject:
   m_ObjectHideFlags: 0
@@ -75925,8 +75977,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2120705538}
-  - {fileID: 1226580949}
-  - {fileID: 857624410}
   m_Father: {fileID: 1766507112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -100050,12 +100100,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857624409}
-  m_LocalRotation: {x: 0.5553525, y: 0, z: 0, w: 0.8316151}
+  m_LocalRotation: {x: 0.5553525, y: -0, z: -0, w: 0.8316151}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 641517022}
+  m_Father: {fileID: 628546399}
   m_LocalEulerAnglesHint: {x: 67.47, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -101110,6 +101160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleNoDMission: {fileID: 1750976837}
   stateMission: 0
+  destinationWP: {fileID: 1226580952}
+  arrowWayPointUI: {fileID: 857624411}
 --- !u!1001 &866389541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134704,6 +134756,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleNoDMission: {fileID: 375923039}
   stateMission: 0
+  destinationWP: {fileID: 1226580952}
+  arrowWayPointUI: {fileID: 857624411}
 --- !u!224 &1144254825
 RectTransform:
   m_ObjectHideFlags: 0
@@ -144626,11 +144680,11 @@ RectTransform:
   m_GameObject: {fileID: 1226580948}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4999999, y: 1, z: 1}
+  m_LocalScale: {x: 1.4999998, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1674594071}
-  m_Father: {fileID: 641517022}
+  m_Father: {fileID: 628546399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -144689,9 +144743,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 1226580949}
   target: {fileID: 0}
-  heightOffset: 0
+  heightOffset: 1.7
   distanceText: {fileID: 1674594072}
-  goToPointUI: {fileID: 641517023}
+  wayPointUI: {fileID: 628546398}
 --- !u!1001 &1226886526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -200981,6 +201035,7 @@ RectTransform:
   - {fileID: 865945149}
   - {fileID: 1144254825}
   - {fileID: 1801484885}
+  - {fileID: 628546399}
   m_Father: {fileID: 1196378942}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -201008,9 +201063,11 @@ MonoBehaviour:
   countDownMission: {fileID: 1801484886}
   speedDeliveryMission: {fileID: 865945150}
   multiDestinationMission: {fileID: 1144254824}
+  wayPointUI: {fileID: 628546398}
   missionActive: 0
   missionState: 0
   currentUIMission: {fileID: 0}
+  isWayPoint: 0
 --- !u!1001 &1767301847
 PrefabInstance:
   m_ObjectHideFlags: 0

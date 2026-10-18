@@ -14,10 +14,12 @@ public class UIMiddle : TuyenMonoBehaviour
     [SerializeField] protected CountDownMission countDownMission;
     [SerializeField] protected UISpeedDeliveryMission speedDeliveryMission;
     [SerializeField] protected UINDestinationMission multiDestinationMission;
+    [SerializeField] protected UIWayPoint wayPointUI;
 
     [SerializeField] protected MissionType missionActive = MissionType.None;
     [SerializeField] protected MissionState missionState = MissionState.None;
     [SerializeField] protected BaseUIMission currentUIMission;
+    [SerializeField] protected bool isWayPoint = false;
 
     private Coroutine endUICoroutine;
     protected override void Start()
@@ -59,6 +61,8 @@ public class UIMiddle : TuyenMonoBehaviour
     protected virtual void ActiveUIMission(MissionType missionType)
     {
         this.HideAllMission();
+
+        isWayPoint =  currentUIMission is HUDWayPoint;
 
         if(currentUIMission == null) return;
         this.Show(currentUIMission.transform);
@@ -106,6 +110,15 @@ public class UIMiddle : TuyenMonoBehaviour
     protected virtual void UIMission(MissionType type, MissionState state, float dur)
     {
         currentUIMission.ShowUI(type, state, dur);
+        if (isWayPoint == false) return;
+        if (state == MissionState.ActiveGameplay)
+        {
+            this.Show(wayPointUI.transform);
+        }
+        else
+        {
+            this.Hide(wayPointUI.transform);
+        }
     }
 
     protected void ShowUIScore(int index)
@@ -166,6 +179,7 @@ public class UIMiddle : TuyenMonoBehaviour
         this.LoadUISpeedDeliveryMission();
         this.LoadCountDownMission();
         this.LoadUINDestinationMission();
+        this.LoadUIWayPoint();
     }
 
     private void LoadNoDamagerMission()
@@ -222,6 +236,13 @@ public class UIMiddle : TuyenMonoBehaviour
         if (countDownMission != null) return;
         countDownMission = GetComponentInChildren<CountDownMission>();
         Debug.Log(transform.name + " LoadCountDownMission:", gameObject);
+    }
+
+    protected virtual void LoadUIWayPoint()
+    {
+        if (wayPointUI != null) return;
+        wayPointUI = GetComponentInChildren<UIWayPoint>();
+        Debug.Log(transform.name + " LoadUIWayPoint:", gameObject);
     }
 
     #endregion

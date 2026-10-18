@@ -6,10 +6,10 @@ public class UIDestinationWP : TuyenMonoBehaviour
 {
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] protected Transform target;
-    [SerializeField] protected float heightOffset;
+    [SerializeField] protected float heightOffset = 1.7f;
 
     [SerializeField] protected UIDistanceDestination distanceText;
-    [SerializeField] protected UIGoToPointMission goToPointUI;
+    [SerializeField] protected UIWayPoint wayPointUI;
 
     protected void OnEnable()
     {
@@ -35,9 +35,9 @@ public class UIDestinationWP : TuyenMonoBehaviour
         }
         rectTransform.position = screenPos;
 
-        if (goToPointUI != null && goToPointUI.ArrowWayPoint != null)
+        if (wayPointUI != null && wayPointUI.ArrowWayPoint != null)
         {
-            float currentDistance = goToPointUI.ArrowWayPoint.DistancePoint;
+            float currentDistance = wayPointUI.ArrowWayPoint.DistancePoint;
 
             if (distanceText != null)
             {
@@ -61,7 +61,7 @@ public class UIDestinationWP : TuyenMonoBehaviour
     {
         this.LoadRectTransform();
         this.LoadUIDistanceDestination();
-        this.LoadUIGoToPointMission();
+        this.LoadUIWayPoint();
     }
 
     protected virtual void LoadUIDistanceDestination()
@@ -78,10 +78,10 @@ public class UIDestinationWP : TuyenMonoBehaviour
         Debug.Log(transform.name + ": LoadRectTransform", gameObject);
     }
 
-    protected virtual void LoadUIGoToPointMission()
+    protected virtual void LoadUIWayPoint()
     {
-        if (this.goToPointUI != null) return;
-        goToPointUI = GetComponentInParent<UIGoToPointMission>();
-        Debug.Log(transform.name + ": LoadUIGoToPointMission", gameObject);
+        if (this.wayPointUI != null) return;
+        wayPointUI = GetComponentInParent<UIWayPoint>();
+        Debug.Log(transform.name + ": LoadUIWayPoint", gameObject);
     }
 }

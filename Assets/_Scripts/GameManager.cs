@@ -87,4 +87,22 @@ public class GameManager : TuyenSingleton<GameManager>
     {
         indexMission = UnityEngine.Random.Range(1, maxMission);
     }
+
+    [Serializable]
+    public class SaveObject
+    {
+        public int coinPlayer;
+        public List<string> unlockedCarIDs;
+        public string selectedCarID;
+    }
+
+    public SaveObject Save()
+    {
+        return new SaveObject { coinPlayer = this.coin, };
+    }
+
+    public void Load(SaveObject saveObject)
+    {
+        coin = saveObject.coinPlayer;
+    }
 }

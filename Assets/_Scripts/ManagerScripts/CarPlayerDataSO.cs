@@ -9,8 +9,9 @@ public class CarPlayerDataSO : ScriptableObject
     [Header("Prefabs")]
     public GameObject carPrefabs;
 
-    [Header("NameCar")]
+    [Header("Car Details:")]
     public string nameCar;
+    public float carID;
 
     [Header("Cost")]
     public int costCar;

@@ -78,6 +78,6 @@ public class BuyBtn : ButtonAbstract
 
     protected virtual void UpdateCarStats()
     {
-        this.CheckHide();
+        //this.CheckHide();
     }
 }

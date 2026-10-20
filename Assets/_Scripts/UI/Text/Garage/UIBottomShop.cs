@@ -1,24 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIBottomShop : TuyenMonoBehaviour
 {
     [SerializeField] protected CostCar costUI;
     [SerializeField] protected BuyBtn buyUI;
+    [SerializeField] protected SelectGaraBtn selectGaraBtn;
+    [SerializeField] protected EquippedGaraBtn equippedGaraBtn;
     public bool show = true;
 
+    protected override void Start()
+    {
+        this.UpdateStateBtn();
+    }
     protected virtual void FixedUpdate()
     {
-        this.UpdateDisplayCost();
+        //this.UpdateDisplayCost();
     }
 
+    protected void OnEnable()
+    {
+        ShopManager.OnCarChanged += UpdateStateBtn;
+    }
+
+    protected void OnDisable()
+    {
+        ShopManager.OnCarChanged -= UpdateStateBtn;
+    }
+
+    #region (LoadComponents)
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadCostCar();
         this.LoadBuyBtn();
+        this.LoadSelectGaraBtn();
+        this.LoadEquippedGaraBtn();
     }
 
     protected virtual void LoadCostCar()
@@ -35,6 +56,38 @@ public class UIBottomShop : TuyenMonoBehaviour
         Debug.Log(transform.name + ": LoadBuyBtn", gameObject);
     }
 
+    protected virtual void LoadSelectGaraBtn()
+    {
+        if (selectGaraBtn != null) return;
+        selectGaraBtn = GetComponentInChildren<SelectGaraBtn>();
+        Debug.Log(transform.name + ": LoadSelectGaraBtn", gameObject);
+    }
+
+    protected virtual void LoadEquippedGaraBtn()
+    {
+        if (equippedGaraBtn != null) return;
+        equippedGaraBtn = GetComponentInChildren<EquippedGaraBtn>();
+        Debug.Log(transform.name + ": LoadEquippedGaraBtn", gameObject);
+    }
+    #endregion
+
+    protected void UpdateStateBtn()
+    {
+        bool isUnlocked = ShopManager.Instance.IsCurrentCarUnlocked();
+        bool isEquipped = ShopManager.Instance.IsCurrentCarSelected();
+        if (!isUnlocked)
+        {
+            SetButtonState(true, true, false, false);
+        }
+        else if (!isEquipped)
+        {
+            SetButtonState(false, false, true, false);
+        }
+        else
+        {
+            SetButtonState(false, false, false, true);
+        }
+    }
     protected virtual void UpdateDisplayCost()
     {
         if(show == false)
@@ -42,5 +95,23 @@ public class UIBottomShop : TuyenMonoBehaviour
             buyUI.Hide();
         }
         if(show == true) buyUI.Show();
+    }
+
+    private void SetButtonState(bool cost, bool buy, bool select, bool equipped)
+    {
+        costUI.gameObject.SetActive(cost);
+        buyUI.gameObject.SetActive(buy);
+        selectGaraBtn.gameObject.SetActive(select);
+        equippedGaraBtn.gameObject.SetActive(equipped);
+    }
+
+    protected void ShowBtn(Transform transform)
+    {
+        transform.gameObject.SetActive(true);
+    }
+
+    protected void HideBtn(Transform transform)
+    {
+        transform.gameObject.SetActive(false);
     }
 }

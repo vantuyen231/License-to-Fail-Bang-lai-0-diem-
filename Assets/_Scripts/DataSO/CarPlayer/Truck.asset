@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carPrefabs: {fileID: 6721341191676745948, guid: 97515dbec9ff5014dab9c5f2931f2a67, type: 3}
   nameCar: Truck
+  carID: 003
   costCar: 450
   rollAngel: 5
   yallAngel: 3

@@ -11,7 +11,7 @@ public class CarPlayerDataSO : ScriptableObject
 
     [Header("Car Details:")]
     public string nameCar;
-    public float carID;
+    public string carID;
 
     [Header("Cost")]
     public int costCar;

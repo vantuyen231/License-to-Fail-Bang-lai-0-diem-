@@ -20,10 +20,14 @@ public class GameManager : TuyenSingleton<GameManager>
     [SerializeField] protected int maxMission = 5;
     [SerializeField] protected int indexMission = 0;
     
-
+    [Header("PlayerData")]    
     [SerializeField] protected CarPlayerDataSO carPlayerData;
+    [SerializeField] protected List<string> unlockedCarIDs = new List<string> { "001" };
+    [SerializeField] protected string selectedCarID = "001";
+
 
     #region (Public Value)
+    public int Coin => coin;
     public int IndexMission => indexMission;
     public CarPlayerDataSO CarPlayerData => carPlayerData;
     #endregion
@@ -88,6 +92,16 @@ public class GameManager : TuyenSingleton<GameManager>
         indexMission = UnityEngine.Random.Range(1, maxMission);
     }
 
+    public bool IsCarUnlocked(string carID)
+    {
+        return unlockedCarIDs.Contains(carID);
+    }
+
+    public bool IsCarSelected(string carID)
+    {
+        return selectedCarID == carID;
+    }
+
     [Serializable]
     public class SaveObject
     {
@@ -98,11 +112,20 @@ public class GameManager : TuyenSingleton<GameManager>
 
     public SaveObject Save()
     {
-        return new SaveObject { coinPlayer = this.coin, };
+        return new SaveObject { 
+            coinPlayer = this.coin,
+            unlockedCarIDs = new List<string>(this.unlockedCarIDs),
+            selectedCarID = this.selectedCarID
+        };
     }
 
     public void Load(SaveObject saveObject)
     {
         coin = saveObject.coinPlayer;
+        if (saveObject.unlockedCarIDs != null)
+        {
+            unlockedCarIDs = saveObject.unlockedCarIDs;
+        }
+        selectedCarID = saveObject.selectedCarID;
     }
 }

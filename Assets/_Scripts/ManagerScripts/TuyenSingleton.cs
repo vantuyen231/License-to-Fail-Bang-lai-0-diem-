@@ -9,7 +9,11 @@ public abstract class TuyenSingleton<T> : TuyenMonoBehaviour where T : TuyenMono
     {
         get
         {
-            if (_instance == null) Debug.LogError("Singleton instance has not been created yet!");
+            if (_instance == null)
+            {
+                Debug.LogError("Singleton instance has not been created yet!");
+                Debug.Log(_instance);
+            }
             return _instance;
         }
     }

@@ -6,5 +6,6 @@ public class SelectGaraBtn : ButtonAbstract
 {
     protected override void OnClick()
     {
+        ShopManager.Instance.SelectCar();
     }
 }

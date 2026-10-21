@@ -25,6 +25,4 @@ public class CarPlayerDataSO : ScriptableObject
     public int steerWheel;
     public int brakeForce;
 
-    [Header("Player")]
-    public bool isBuy;
 }

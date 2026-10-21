@@ -12,7 +12,7 @@ public abstract class TextShopAbstrast : TextAbstract
     protected virtual void OnEnable()
     {
         ShopManager.OnCarChanged += this.OnCarChangedHandler;
-
+        //this.OnCarChangedHandler();
     }
 
     protected virtual void OnDisable()

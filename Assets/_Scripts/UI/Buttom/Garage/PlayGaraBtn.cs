@@ -15,6 +15,5 @@ public class PlayGaraBtn : ButtonAbstract
     {
         GameManager.Instance.GetRandomNumMission();
         SceneManager.LoadScene(this.nextScene);
-        ShopManager.Instance.SetUseCar();
     }
 }

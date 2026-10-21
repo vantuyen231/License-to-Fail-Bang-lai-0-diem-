@@ -10,11 +10,11 @@ using System.IO;
 
 public class SaveSystem : TuyenSingleton<SaveSystem>
 {
-    //protected override void Awake()
-    //{
-    //    base.Awake();
-    //    this.LoadGame();
-    //}
+    protected override void Awake()
+    {
+        base.Awake();
+        this.LoadGame();
+    }
     protected void Update()
     {
         if (Keyboard.current.tKey.wasPressedThisFrame)
@@ -32,7 +32,7 @@ public class SaveSystem : TuyenSingleton<SaveSystem>
         public GameManager.SaveObject managerSaveObject;
     }
 
-    protected void SaveGame()
+    public void SaveGame()
     {
         MainSaveObject mainSaveObject = new MainSaveObject
         {
@@ -43,7 +43,7 @@ public class SaveSystem : TuyenSingleton<SaveSystem>
         File.WriteAllText(Application.persistentDataPath + "/saveFile.sav", json);
     }
 
-    protected void LoadGame()
+    public void LoadGame()
     {
         string filePath = Application.persistentDataPath + "/saveFile.sav";
         if (File.Exists(filePath))

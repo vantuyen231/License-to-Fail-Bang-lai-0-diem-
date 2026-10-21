@@ -517,9 +517,9 @@ Transform:
   m_Children:
   - {fileID: 721946591}
   - {fileID: 1811570322}
-  - {fileID: 1550200616}
-  - {fileID: 254284014}
   - {fileID: 727895129}
+  - {fileID: 254284014}
+  - {fileID: 1550200616}
   - {fileID: 928286705}
   m_Father: {fileID: 1501889490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -542,9 +542,9 @@ MonoBehaviour:
   carPlayers:
   - {fileID: 1122871386}
   - {fileID: 1811570324}
-  - {fileID: 1550200618}
-  - {fileID: 254284016}
   - {fileID: 727895131}
+  - {fileID: 254284016}
+  - {fileID: 1550200618}
   - {fileID: 928286707}
 --- !u!136 &190323956
 CapsuleCollider:
@@ -4210,7 +4210,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 923560257}
   textBtn: {fileID: 514223304}
-  isShow: 0
 --- !u!1001 &928286704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7618,6 +7617,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1797562064}
+  - component: {fileID: 1797562065}
   m_Layer: 5
   m_Name: BuyUI
   m_TagString: Untagged
@@ -7646,6 +7646,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1797562065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797562063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e1a33a656154eb4e86363dc3cf9e570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buyBtn: {fileID: 923560260}
+  costCar: {fileID: 2113897443}
 --- !u!1 &1800017757
 GameObject:
   m_ObjectHideFlags: 0
@@ -9970,7 +9984,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshProUGUI: {fileID: 2113897441}
-  isShow: 1
 --- !u!1 &2117870179
 GameObject:
   m_ObjectHideFlags: 0

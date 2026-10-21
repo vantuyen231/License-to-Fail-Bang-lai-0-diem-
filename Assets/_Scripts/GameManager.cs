@@ -92,6 +92,14 @@ public class GameManager : TuyenSingleton<GameManager>
         indexMission = UnityEngine.Random.Range(1, maxMission);
     }
 
+    public void SetCoinPlayer(int coinBuyCar)
+    {
+        coin = coinBuyCar;
+        Debug.Log(coinBuyCar + "gameManager");
+
+        Debug.Log(coin +"gameManager");
+    }
+
     public bool IsCarUnlocked(string carID)
     {
         return unlockedCarIDs.Contains(carID);
@@ -100,6 +108,22 @@ public class GameManager : TuyenSingleton<GameManager>
     public bool IsCarSelected(string carID)
     {
         return selectedCarID == carID;
+    }
+
+    public void SetCarUnlocked(string carID)
+    {
+        if (!IsCarUnlocked(carID))
+        {
+            unlockedCarIDs.Add(carID);
+        }
+    }
+
+    public void SetSelectCar(string carID)
+    {
+        if (!IsCarSelected(carID))
+        {
+            selectedCarID = carID;
+        }
     }
 
     [Serializable]

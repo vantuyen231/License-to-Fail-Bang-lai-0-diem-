@@ -15,11 +15,8 @@ public class UIBottomShop : TuyenMonoBehaviour
 
     protected override void Start()
     {
+        base.Start();
         this.UpdateStateBtn();
-    }
-    protected virtual void FixedUpdate()
-    {
-        //this.UpdateDisplayCost();
     }
 
     protected void OnEnable()
@@ -77,6 +74,7 @@ public class UIBottomShop : TuyenMonoBehaviour
         bool isEquipped = ShopManager.Instance.IsCurrentCarSelected();
         if (!isUnlocked)
         {
+            this.SetCostCar();
             SetButtonState(true, true, false, false);
         }
         else if (!isEquipped)
@@ -88,14 +86,6 @@ public class UIBottomShop : TuyenMonoBehaviour
             SetButtonState(false, false, false, true);
         }
     }
-    protected virtual void UpdateDisplayCost()
-    {
-        if(show == false)
-        {
-            buyUI.Hide();
-        }
-        if(show == true) buyUI.Show();
-    }
 
     private void SetButtonState(bool cost, bool buy, bool select, bool equipped)
     {
@@ -105,13 +95,9 @@ public class UIBottomShop : TuyenMonoBehaviour
         equippedGaraBtn.gameObject.SetActive(equipped);
     }
 
-    protected void ShowBtn(Transform transform)
+    private void SetCostCar()
     {
-        transform.gameObject.SetActive(true);
-    }
-
-    protected void HideBtn(Transform transform)
-    {
-        transform.gameObject.SetActive(false);
+        int cost = ShopManager.Instance.CarStatsTest.costCar;
+        costUI.UpdateCost(cost);
     }
 }

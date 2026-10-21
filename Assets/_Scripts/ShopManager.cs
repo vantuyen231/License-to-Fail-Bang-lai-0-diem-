@@ -17,6 +17,7 @@ public class ShopManager : TuyenSingleton<ShopManager>
     public int CurrentCar => currentCar;
     public CarPlayerDataSO CarStatsTest => carStats;
 
+
     public void SetMaxCar(int max)
     {
         this.maxCar = max;
@@ -29,7 +30,7 @@ public class ShopManager : TuyenSingleton<ShopManager>
         {
             currentCar = 0;
         }
-        //Debug.Log("nextCar");
+        Debug.Log("Name Car: "+carStats.nameCar +"Cost: "+ carStats.costCar);
         OnCarChanged?.Invoke();
     }
 
@@ -70,19 +71,7 @@ public class ShopManager : TuyenSingleton<ShopManager>
         }
     }
 
-    public virtual void SetUseCar()
-    {
-        this.SetIsUseCar();
-        if (isUse)
-        {
-            GameManager.Instance.GetUseCar(carStats);
-            Debug.Log("Set Done");
-        }
-        else
-        {
-            Debug.Log("Can't Select");
-        }
-    }
+
 
     public bool IsCurrentCarUnlocked()
     {
@@ -96,15 +85,36 @@ public class ShopManager : TuyenSingleton<ShopManager>
         return GameManager.Instance.IsCarSelected(carStats.carID);
     }
 
-    public virtual void SetIsUseCar()
+    public virtual void BuyCar()
     {
-        if(carStats.isBuy == true)
+        if (carStats == null) return;
+        int carPrice = carStats.costCar;
+        int currentCoinPlayer = GameManager.Instance.Coin;
+        if (currentCoinPlayer >= carPrice)
         {
-            isUse = true;
-        }
-        else
-        {
-            isUse = false;
+            int currentPlayer = currentCoinPlayer - carPrice;
+            Debug.Log("coin" + currentPlayer);
+            GameManager.Instance.SetCoinPlayer(currentPlayer);
+            GameManager.Instance.SetCarUnlocked(carStats.carID);
+            GameManager.Instance.SetSelectCar(carStats.carID);
+            GameManager.Instance.GetUseCar(carStats);
+            SaveSystem.Instance.SaveGame();
+            OnCarChanged?.Invoke();
+            Debug.Log(GameManager.Instance.Coin);
         }
     }
+
+    public virtual void SelectCar()
+    {
+        if (carStats == null) return;
+        if (IsCurrentCarUnlocked())
+        {
+            GameManager.Instance.SetSelectCar(carStats.carID);
+            GameManager.Instance.GetUseCar(carStats);
+            SaveSystem.Instance.SaveGame();
+            OnCarChanged?.Invoke();
+        }
+
+    }
+
 }

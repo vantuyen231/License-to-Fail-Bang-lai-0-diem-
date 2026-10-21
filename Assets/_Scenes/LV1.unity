@@ -31562,69 +31562,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4148530030851855363, guid: 49843f6700f7eb841b1974cc6352ae3f, type: 3}
   m_PrefabInstance: {fileID: 275168285}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &275246478
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 275246480}
-  - component: {fileID: 275246479}
-  m_Layer: 0
-  m_Name: NDestinationMission_4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &275246479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 275246478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de6dd91628f3e63449c448642686c453, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  missionManager: {fileID: 370745374}
-  missionType: 5
-  missionName: Go around the City
-  missionDescription: 
-  scoreMission: 100
-  timeIntroTittle: 3
-  timeReadyMission: 3
-  currentReady: 0
-  timeMissionBase: 0
-  endUIMission: 2
-  isMissionActive: 0
-  currentState: 0
-  isComplete: 0
-  isSucess: 0
-  maxDestinationSpawn: 3
-  currentDestination: 0
-  playerPosition: {fileID: 0}
-  minDistanceArea: 300
-  destinationManager: {fileID: 641625956}
---- !u!4 &275246480
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 275246478}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 370745375}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &275724190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36168,69 +36105,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7155684608894559965, guid: 4fc7e62e811acac4a8949a5e1a15f45f, type: 3}
   m_PrefabInstance: {fileID: 309938229}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &310352408
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 310352410}
-  - component: {fileID: 310352409}
-  m_Layer: 0
-  m_Name: NDestinationMission_2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &310352409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310352408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de6dd91628f3e63449c448642686c453, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  missionManager: {fileID: 370745374}
-  missionType: 5
-  missionName: Go around the City
-  missionDescription: 
-  scoreMission: 100
-  timeIntroTittle: 3
-  timeReadyMission: 3
-  currentReady: 0
-  timeMissionBase: 0
-  endUIMission: 2
-  isMissionActive: 0
-  currentState: 0
-  isComplete: 0
-  isSucess: 0
-  maxDestinationSpawn: 3
-  currentDestination: 0
-  playerPosition: {fileID: 0}
-  minDistanceArea: 300
-  destinationManager: {fileID: 641625956}
---- !u!4 &310352410
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310352408}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 370745375}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &310700814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43175,11 +43049,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexMissionPlayer: 0
   missions:
+  - {fileID: 897049710}
   - {fileID: 1479635040}
+  - {fileID: 429610555}
   - {fileID: 161369237}
-  - {fileID: 1674041030}
-  - {fileID: 940098285}
-  - {fileID: 275246479}
+  - {fileID: 225808208}
   missionsPlayer: []
   tempMission: []
   timeNextMission: 2.5
@@ -43219,15 +43093,7 @@ Transform:
   - {fileID: 1479635039}
   - {fileID: 429610554}
   - {fileID: 161369238}
-  - {fileID: 1674041031}
-  - {fileID: 1296922208}
-  - {fileID: 1582105581}
-  - {fileID: 1427133075}
   - {fileID: 225808209}
-  - {fileID: 584129800}
-  - {fileID: 310352410}
-  - {fileID: 940098286}
-  - {fileID: 275246480}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &370833363
@@ -68858,69 +68724,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c18a19953f4e9b549a302dc0b2bbd641, type: 3}
   m_PrefabInstance: {fileID: 582598623}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &584129798
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 584129800}
-  - component: {fileID: 584129799}
-  m_Layer: 0
-  m_Name: NDestinationMission_1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &584129799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584129798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de6dd91628f3e63449c448642686c453, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  missionManager: {fileID: 370745374}
-  missionType: 5
-  missionName: Go around the City
-  missionDescription: 
-  scoreMission: 100
-  timeIntroTittle: 3
-  timeReadyMission: 3
-  currentReady: 0
-  timeMissionBase: 0
-  endUIMission: 2
-  isMissionActive: 0
-  currentState: 0
-  isComplete: 0
-  isSucess: 0
-  maxDestinationSpawn: 3
-  currentDestination: 0
-  playerPosition: {fileID: 0}
-  minDistanceArea: 300
-  destinationManager: {fileID: 641625956}
---- !u!4 &584129800
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584129798}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 370745375}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &584431165
 GameObject:
   m_ObjectHideFlags: 0
@@ -109918,69 +109721,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 20ddfda892117f74b92d06aaac48984f, type: 3}
   m_PrefabInstance: {fileID: 939932836}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &940098284
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 940098286}
-  - component: {fileID: 940098285}
-  m_Layer: 0
-  m_Name: NDestinationMission_3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &940098285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940098284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de6dd91628f3e63449c448642686c453, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  missionManager: {fileID: 370745374}
-  missionType: 5
-  missionName: Go around the City
-  missionDescription: 
-  scoreMission: 100
-  timeIntroTittle: 3
-  timeReadyMission: 3
-  currentReady: 0
-  timeMissionBase: 0
-  endUIMission: 2
-  isMissionActive: 0
-  currentState: 0
-  isComplete: 0
-  isSucess: 0
-  maxDestinationSpawn: 3
-  currentDestination: 0
-  playerPosition: {fileID: 0}
-  minDistanceArea: 300
-  destinationManager: {fileID: 641625956}
---- !u!4 &940098286
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940098284}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 370745375}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &941305873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153049,69 +152789,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b2838b582e54ac644bf24c73d5a6e1fd, type: 3}
   m_PrefabInstance: {fileID: 1296858179}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1296922206
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1296922208}
-  - component: {fileID: 1296922207}
-  m_Layer: 0
-  m_Name: SpeedDeliveryMission_2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1296922207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296922206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10a2ac9b4123a7549bb419b32d289296, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  missionManager: {fileID: 370745374}
-  missionType: 4
-  missionName: 
-  missionDescription: 
-  scoreMission: 100
-  timeIntroTittle: 3
-  timeReadyMission: 3
-  currentReady: 0
-  timeMissionBase: 0
-  endUIMission: 2
-  isMissionActive: 0
-  currentState: 0
-  isComplete: 0
-  isSucess: 0
-  timeMission: 100
-  secondsLeft: 0
-  playerPosition: {fileID: 0}
-  minDistanceArea: 300
-  destinationManager: {fileID: 641625956}
---- !u!4 &1296922208
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296922206}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 370745375}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1297224534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -165405,69 +165082,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 897a624cc653a544198786ce722703ff, type: 3}
   m_PrefabInstance: {fileID: 1427123644}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1427133073
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1427133075}
-  - component: {fileID: 1427133074}
-  m_Layer: 0
-  m_Name: SpeedDeliveryMission_4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1427133074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427133073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10a2ac9b4123a7549bb419b32d289296, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  missionManager: {fileID: 370745374}
-  missionType: 4
-  missionName: 
-  missionDescription: 
-  scoreMission: 100
-  timeIntroTittle: 3
-  timeReadyMission: 3
-  currentReady: 0
-  timeMissionBase: 0
-  endUIMission: 2
-  isMissionActive: 0
-  currentState: 0
-  isComplete: 0
-  isSucess: 0
-  timeMission: 100
-  secondsLeft: 0
-  playerPosition: {fileID: 0}
-  minDistanceArea: 300
-  destinationManager: {fileID: 641625956}
---- !u!4 &1427133075
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427133073}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 370745375}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1427150384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -180432,69 +180046,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fe6dd91f53a6b034b9ef8a9d1d5318c7, type: 3}
   m_PrefabInstance: {fileID: 1582002385}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1582105580
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1582105581}
-  - component: {fileID: 1582105582}
-  m_Layer: 0
-  m_Name: SpeedDeliveryMission_3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1582105581
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582105580}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 370745375}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1582105582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582105580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10a2ac9b4123a7549bb419b32d289296, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  missionManager: {fileID: 370745374}
-  missionType: 4
-  missionName: 
-  missionDescription: 
-  scoreMission: 100
-  timeIntroTittle: 3
-  timeReadyMission: 3
-  currentReady: 0
-  timeMissionBase: 0
-  endUIMission: 2
-  isMissionActive: 0
-  currentState: 0
-  isComplete: 0
-  isSucess: 0
-  timeMission: 100
-  secondsLeft: 0
-  playerPosition: {fileID: 0}
-  minDistanceArea: 300
-  destinationManager: {fileID: 641625956}
 --- !u!1001 &1582214372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -190590,69 +190141,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: be1bbafe98ae8fe47a534027bf5258cf, type: 3}
   m_PrefabInstance: {fileID: 1673485693}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1674041029
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1674041031}
-  - component: {fileID: 1674041030}
-  m_Layer: 0
-  m_Name: SpeedDeliveryMission_1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1674041030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674041029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10a2ac9b4123a7549bb419b32d289296, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  missionManager: {fileID: 370745374}
-  missionType: 4
-  missionName: 
-  missionDescription: 
-  scoreMission: 100
-  timeIntroTittle: 3
-  timeReadyMission: 3
-  currentReady: 0
-  timeMissionBase: 0
-  endUIMission: 2
-  isMissionActive: 0
-  currentState: 0
-  isComplete: 0
-  isSucess: 0
-  timeMission: 100
-  secondsLeft: 0
-  playerPosition: {fileID: 0}
-  minDistanceArea: 300
-  destinationManager: {fileID: 641625956}
---- !u!4 &1674041031
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674041029}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 370745375}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1674594070
 GameObject:
   m_ObjectHideFlags: 0

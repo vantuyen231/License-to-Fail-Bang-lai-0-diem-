@@ -6,6 +6,6 @@ public class EquippedGaraBtn : ButtonAbstract
 {
     protected override void OnClick()
     {
-        throw new System.NotImplementedException();
+       
     }
 }

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4062c6beb571f134bb6c316dba4c09bf, type: 3}
+  m_Name: SoundCar_1
+  m_EditorClassIdentifier: 
+  startCarSound: {fileID: 8300000, guid: 4f58ca4a93f28e546aecd655e08059f3, type: 3}
+  brakeCarSound: {fileID: 8300000, guid: 7fd5336b36cf7ab48bbe100c14e2b7a7, type: 3}
+  engineSound_1: {fileID: 8300000, guid: 83cbb34bef4a0704b986a8cbae17bf8a, type: 3}
+  engineSound_2: {fileID: 8300000, guid: becdc758600fb5c4182dcb3aa0efefeb, type: 3}
+  engineSound_3: {fileID: 8300000, guid: d7294b63432f7fe4d8988aff5c5b853d, type: 3}
+  engineSound_4: {fileID: 8300000, guid: 67df013829e4885469c960d49c29e6a5, type: 3}
+  engineSound_5: {fileID: 8300000, guid: 2e23ade05da95b4459e9ce25db0957b0, type: 3}
+  hornCarSound: {fileID: 8300000, guid: bf30bbdc2046c7d4ab41c2cde61eefe0, type: 3}

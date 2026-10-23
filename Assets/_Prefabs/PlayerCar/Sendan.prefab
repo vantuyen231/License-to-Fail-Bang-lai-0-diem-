@@ -706,6 +706,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f0c42e968f7ae4aabe356afa8d6691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4587404496325982530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1527573005418646255}
+  - component: {fileID: 9110465722626345606}
+  - component: {fileID: 1811628436185958528}
+  m_Layer: 0
+  m_Name: SoundCarPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1527573005418646255
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4587404496325982530}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2529853042910220404}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9110465722626345606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4587404496325982530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5cef800ddcd0a54ca42795e43603a07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundCarPlayerSO: {fileID: 11400000, guid: aba9feeaf677ef941bbd0ac10010405d, type: 2}
+--- !u!114 &1811628436185958528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4587404496325982530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a3adf11770c5d4c820c38109943570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4635740557291230288
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,6 +937,7 @@ Transform:
   - {fileID: 5744029107777547612}
   - {fileID: 648901980438435870}
   - {fileID: 3539984378170774025}
+  - {fileID: 1527573005418646255}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4685086600077570915
@@ -900,7 +959,6 @@ MonoBehaviour:
   mapTrigger: {fileID: 1450985216656302024}
   spawnTrigger: {fileID: 4366699539387529905}
   playerScore: {fileID: 2366739067127815547}
-  wayPoint: {fileID: 0}
 --- !u!114 &6217524633412986491
 MonoBehaviour:
   m_ObjectHideFlags: 0

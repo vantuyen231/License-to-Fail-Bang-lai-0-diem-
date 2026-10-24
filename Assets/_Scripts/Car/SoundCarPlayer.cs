@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class SoundCarPlayer : TuyenMonoBehaviour
 {
-    [SerializeField] protected SoundCarPlayerSO soundCarPlayerSO;
+    [SerializeField] protected SoundCarPlayerSO soundCarPlayerSO; //{ get; private set; }
+    public SoundCarPlayerSO SoundCarPlayerSO => soundCarPlayerSO;
 }

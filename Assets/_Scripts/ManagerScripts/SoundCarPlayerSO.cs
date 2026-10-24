@@ -11,14 +11,14 @@ public class SoundCarPlayerSO : ScriptableObject
     [Header("Brake Sound")]
     public AudioClip brakeCarSound;
 
-    [Header("EngineSound")]
-    public AudioClip engineSound_1;
-    public AudioClip engineSound_2;
-    public AudioClip engineSound_3;
-    public AudioClip engineSound_4;
-    public AudioClip engineSound_5;
-
     [Header("HornCarSound")]
     public AudioClip hornCarSound;
-    
+
+    [Header("EngineSound")]
+    public AudioClip[] engineSound;
+
+    [Header("Engine Configurations")]
+    public float minRPM = 1000f;
+    public float rpmStep = 500f;
+
 }

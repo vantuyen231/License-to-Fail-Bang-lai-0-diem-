@@ -717,6 +717,7 @@ GameObject:
   - component: {fileID: 1527573005418646255}
   - component: {fileID: 9110465722626345606}
   - component: {fileID: 1811628436185958528}
+  - component: {fileID: 2654952222368060408}
   m_Layer: 0
   m_Name: SoundCarPlayer
   m_TagString: Untagged
@@ -764,6 +765,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a3adf11770c5d4c820c38109943570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSound: {fileID: 0}
+  startSound: {fileID: 0}
+  brakeSound: {fileID: 0}
+  hornSound: {fileID: 0}
+  engineLoopClips: []
+  minRPM: 1000
+  rpmStep: 500
+--- !u!114 &2654952222368060408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4587404496325982530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40f3290555e93b459ae1f1253a593c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSoundManager: {fileID: 1811628436185958528}
 --- !u!1 &4635740557291230288
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class PlayGaraBtn : ButtonAbstract
     [SerializeField] protected int nextScene = 2;
     protected override void OnClick()
     {
+        base.OnClick();
         this.PlayGame();
     }
 

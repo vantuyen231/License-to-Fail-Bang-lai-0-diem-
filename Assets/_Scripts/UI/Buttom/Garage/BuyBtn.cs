@@ -8,6 +8,7 @@ public class BuyBtn : ButtonAbstract
 {
     protected override void OnClick()
     {
+        base.OnClick();
         if (button != null && (!button.interactable || !button.enabled)) return;
 
         if (ShopManager.Instance != null && ShopManager.Instance.CarStatsTest != null)

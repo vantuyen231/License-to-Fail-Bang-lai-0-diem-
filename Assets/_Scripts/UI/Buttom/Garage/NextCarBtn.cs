@@ -6,6 +6,8 @@ public class NextCarBtn : ButtonAbstract
 {
     protected override void OnClick()
     {
+        base.OnClick();
+        //AudioManager.Instance.SoundSFX(clickBtn);
         ShopManager.Instance.NextCar();
     }
 

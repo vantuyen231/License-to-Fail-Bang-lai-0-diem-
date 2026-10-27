@@ -9,6 +9,7 @@ public class ExitBtn : ButtonAbstract
 
     protected override void OnClick()
     {
+        base.OnClick();
         this.SwitchScene();
     }
 

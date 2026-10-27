@@ -6,6 +6,7 @@ public class SettingBtn : ButtonAbstract
 {
     protected override void OnClick()
     {
+        base.OnClick();
         this.OpenMenu();
     }
     protected virtual void OpenMenu()

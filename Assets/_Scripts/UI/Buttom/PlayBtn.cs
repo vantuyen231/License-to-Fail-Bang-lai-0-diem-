@@ -14,6 +14,7 @@ public class PlayBtn : ButtonAbstract
 
     protected virtual void SwitchScene()
     {
+        //AudioManager.Instance.SoundSFX("ClickSound");
         SceneManager.LoadScene(this.sceneName);
     }
 

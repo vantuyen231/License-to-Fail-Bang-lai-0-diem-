@@ -8,6 +8,8 @@ public abstract class ButtonAbstract : TuyenMonoBehaviour
 {
     [SerializeField] protected Button button;
     [SerializeField] protected TextMeshProUGUI textBtn;
+    [SerializeField] protected string soundBtn;
+
 
     protected override void Start()
     {
@@ -39,7 +41,11 @@ public abstract class ButtonAbstract : TuyenMonoBehaviour
     protected virtual void AddOnClickEvent()
     {
         this.button.onClick.AddListener(this.OnClick);
+
     }
 
-    protected abstract void OnClick();
+    protected virtual void OnClick()
+    {
+        AudioManager.Instance.SoundSFX(soundBtn);
+    }
 }

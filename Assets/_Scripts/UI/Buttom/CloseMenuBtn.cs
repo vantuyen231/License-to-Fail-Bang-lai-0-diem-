@@ -6,6 +6,7 @@ public class CloseMenuBtn : ButtonAbstract
 {
     protected override void OnClick()
     {
+        base.OnClick();
         this.CloseMenu();
     }
 

@@ -15,6 +15,7 @@ public class OpTutorialBtn : ButtonAbstract
     }
     protected override void OnClick()
     {
+        base.OnClick();
         this.OpenTutorial();
         this.CloseMenu();
     }

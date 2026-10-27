@@ -13,14 +13,24 @@ MonoBehaviour:
   m_Name: AudioDataBase
   m_EditorClassIdentifier: 
   uiIAudio:
-  - audioName: UI
+  - audioName: BuySound
     clips:
     - {fileID: 8300000, guid: f84e8f2c0004b224cabcad9a0cff5b34, type: 3}
+    volume: 1
+  - audioName: ClickSound
+    clips:
     - {fileID: 8300000, guid: 353bc51dd53ed5e478b2b463360c7746, type: 3}
     volume: 1
-  - audioName: NPC
+  npcAudio:
+  - audioName: FootStep
     clips:
     - {fileID: 8300000, guid: 611f412c3b84c8c459f1d6b2e9383842, type: 3}
+    volume: 0
+  - audioName: Impact
+    clips:
     - {fileID: 8300000, guid: 3001c3e1a8d71ff44a3aa8f483bcb796, type: 3}
+    volume: 0
+  - audioName: AhNPC
+    clips:
     - {fileID: 8300000, guid: e27eb9f4af3f14d4eb844ef9b1a162e9, type: 3}
-    volume: 1
+    volume: 0

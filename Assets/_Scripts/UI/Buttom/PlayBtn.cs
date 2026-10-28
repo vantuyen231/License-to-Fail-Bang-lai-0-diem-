@@ -9,12 +9,12 @@ public class PlayBtn : ButtonAbstract
     [SerializeField] protected int sceneName = 1;
     protected override void OnClick()
     {
+        base.OnClick();
         this.SwitchScene();
     }
 
     protected virtual void SwitchScene()
     {
-        //AudioManager.Instance.SoundSFX("ClickSound");
         SceneManager.LoadScene(this.sceneName);
     }
 

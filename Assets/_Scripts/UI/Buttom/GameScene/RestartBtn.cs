@@ -7,6 +7,7 @@ public class RestartBtn : ButtonAbstract
 {
     protected override void OnClick()
     {
+        base.OnClick();
         this.RestartGame();
     }
 

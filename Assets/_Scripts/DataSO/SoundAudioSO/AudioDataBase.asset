@@ -25,12 +25,17 @@ MonoBehaviour:
   - audioName: FootStep
     clips:
     - {fileID: 8300000, guid: 611f412c3b84c8c459f1d6b2e9383842, type: 3}
-    volume: 0
+    volume: 1
   - audioName: Impact
     clips:
     - {fileID: 8300000, guid: 3001c3e1a8d71ff44a3aa8f483bcb796, type: 3}
-    volume: 0
+    volume: 1
   - audioName: AhNPC
     clips:
     - {fileID: 8300000, guid: e27eb9f4af3f14d4eb844ef9b1a162e9, type: 3}
-    volume: 0
+    volume: 1
+  bgmSound:
+  - audioName: BackGroundMusic
+    clips:
+    - {fileID: 8300000, guid: 64cae39fd49ba9d45abd4c032767de86, type: 3}
+    volume: 1

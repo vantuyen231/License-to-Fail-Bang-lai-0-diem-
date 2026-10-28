@@ -6,6 +6,7 @@ public class CloseTutorialBtn : ButtonAbstract
 {
     protected override void OnClick()
     {
+        base.OnClick();
         this.CloseTutorial();
     }
     protected virtual void CloseTutorial()

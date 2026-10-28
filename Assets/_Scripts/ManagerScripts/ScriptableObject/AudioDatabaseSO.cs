@@ -8,6 +8,8 @@ public class AudioDatabaseSO : ScriptableObject
     public List<AudioClipData> uiIAudio;
     public List<AudioClipData> npcAudio;
 
+    public List<AudioClipData> bgmSound;
+
     private Dictionary<string, AudioClipData> clipCollection;
 
     private void OnEnable()
@@ -16,6 +18,7 @@ public class AudioDatabaseSO : ScriptableObject
 
         this.AddToCollection(this.uiIAudio);
         this.AddToCollection(npcAudio);
+        this.AddToCollection(bgmSound);
     }
 
     public AudioClipData GetSound(string groundName)

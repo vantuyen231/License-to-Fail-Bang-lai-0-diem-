@@ -24,7 +24,7 @@ MonoBehaviour:
   npcAudio:
   - audioName: FootStep
     clips:
-    - {fileID: 8300000, guid: 611f412c3b84c8c459f1d6b2e9383842, type: 3}
+    - {fileID: 8300000, guid: 5d3d9cfc2a9d8af44a3937f81de459e7, type: 3}
     volume: 1
   - audioName: Impact
     clips:

@@ -43,16 +43,24 @@ public class AudioManager : TuyenSingleton<AudioManager>
             }
         }
     }
-    public void SoundSFX(string soundSFX)
+    public void SoundSFX(string soundSFX,  AudioSource targetAudioSource = null)
     {
         var audioSound = audioDatabaseSO.GetSound(soundSFX);
         if (audioSound == null) return;
         var clip = audioSound.GetRandomClip();
-        sfxSource.clip = clip;
-        sfxSource.volume = audioSound.volume;
-        sfxSource.PlayOneShot(clip);
+
+        AudioSource useAudioSource = targetAudioSource == null ? sfxSource : targetAudioSource;
+
+        Debug.Log($"Dang phat sound [{soundSFX}] qua loa cua: {useAudioSource.gameObject.name}", useAudioSource.gameObject);
+
+        useAudioSource.clip = clip;
+        useAudioSource.pitch = Random.Range(0.95f, 1.1f);
+        useAudioSource.volume = audioSound.volume;
+        useAudioSource.PlayOneShot(clip);
 
     }
+
+
 
     public void StarBgm(string soundBgm)
     {

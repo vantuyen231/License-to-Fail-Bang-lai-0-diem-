@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class NPCRagdoll : TuyenMonoBehaviour
 {
+    [SerializeField] protected NPCCtrl npcCtrl;
     [SerializeField] protected Animator npcAnimator;
     [SerializeField] protected CapsuleCollider npcCapsuleCollider;
     [SerializeField] public List<Rigidbody> npcRigidbodies = new List<Rigidbody>();
@@ -13,14 +14,23 @@ public class NPCRagdoll : TuyenMonoBehaviour
     public bool IsRagdoll => isRagdoll;
     [SerializeField] protected NavMeshAgent navMeshAgent;
 
+    #region Load Component
     protected override void LoadComponents()
     {
         base.LoadComponents();
+        this.LoadNPCCtrl();
         this.LoadNPCRigidbodies();
         this.LoadNPCAnimator();
         this.LoadNPCCapsuleCollider();
         this.LoadNPCCollider();
         this.LoadNPCNav();
+    }
+
+    protected virtual void LoadNPCCtrl()
+    {
+        if (npcCtrl != null) return;
+        npcCtrl = GetComponent<NPCCtrl>();
+        Debug.Log(transform.name + ": LoadNPCCtrl", gameObject);
     }
 
     protected virtual void LoadNPCAnimator()
@@ -51,7 +61,7 @@ public class NPCRagdoll : TuyenMonoBehaviour
         if (npcColliders.Count > 0) return;
         this.npcColliders.AddRange(GetComponentsInChildren<Collider>());
     }
-
+    #endregion
 
     protected override void Awake()
     {
@@ -69,6 +79,11 @@ public class NPCRagdoll : TuyenMonoBehaviour
     {
         //isRagdoll = !isRagdoll;
         isRagdoll = true;
+        if (npcCtrl != null && npcCtrl.NpcAudio != null)
+        {
+            npcCtrl.NpcAudio.HitNPC();
+            npcCtrl.NpcAudio.HurtSound();
+        }
         for (int i = 0; i < npcRigidbodies.Count; i++)
         {
             npcRigidbodies[i].isKinematic = false;

@@ -11,6 +11,8 @@ public class NPCCtrl : PoolObj
     public NPCRagdoll NpcRagdoll => npcRagdoll;
     [SerializeField] protected NPCMoving npcMoving;
     [SerializeField] protected NPCGameInfo npc;
+    [SerializeField] protected NPCAudio npcAudio;
+    public NPCAudio NpcAudio => npcAudio;
 
     protected void FixedUpdate()
     {
@@ -27,6 +29,7 @@ public class NPCCtrl : PoolObj
         this.LoadNPCRagdoll();
         this.LoadNPCMoving();
         this.LoadNPCGameInfo();
+        this.LoadNPCAudio();
     }
 
     protected virtual void LoadNPCRagdoll()
@@ -48,6 +51,13 @@ public class NPCCtrl : PoolObj
         if (npcMoving != null) return;
         npcMoving = GetComponent<NPCMoving>();
         Debug.Log(transform.name + ": LoadNPCMoving", gameObject);
+    }
+
+    protected virtual void LoadNPCAudio()
+    {
+        if (npcAudio != null) return;
+        npcAudio = GetComponent<NPCAudio>();
+        Debug.Log(transform.name + ": LoadNPCAudio", gameObject);
     }
 
     protected virtual void OffMoving()

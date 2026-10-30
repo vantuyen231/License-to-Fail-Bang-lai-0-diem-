@@ -1387,6 +1387,8 @@ GameObject:
   - component: {fileID: 953004014125483902}
   - component: {fileID: 3358608536218120114}
   - component: {fileID: 547765855683754718}
+  - component: {fileID: 2460767388331762971}
+  - component: {fileID: 3738604067771766889}
   m_Layer: 6
   m_Name: NPC_1
   m_TagString: Untagged
@@ -1402,7 +1404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3234605860510257235}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.021, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1429,6 +1431,7 @@ MonoBehaviour:
   npcRagdoll: {fileID: 2517417253953365432}
   npcMoving: {fileID: 4067678258821201734}
   npc: {fileID: 8241809158587751314}
+  npcAudio: {fileID: 3738604067771766889}
 --- !u!114 &2517417253953365432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1441,6 +1444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90983a2ab2d02cb478b0dc028bd0ef80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcCtrl: {fileID: 4719085177596919875}
   npcAnimator: {fileID: 7359142476923619674}
   npcCapsuleCollider: {fileID: 547765855683754718}
   npcRigidbodies:
@@ -1619,6 +1623,118 @@ CapsuleCollider:
   m_Height: 1.1275287
   m_Direction: 1
   m_Center: {x: -0.0053391457, y: 0.5692022, z: 0}
+--- !u!82 &2460767388331762971
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3234605860510257235}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 4
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.99999964
+      inSlope: -1.20048
+      outSlope: -1.20048
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0.26197615
+      outSlope: 0.26197615
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.9782605
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &3738604067771766889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3234605860510257235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493455bbc998b4041a7c0651d90f6692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcAudioSource: {fileID: 2460767388331762971}
+  footStepNPC: FootStep
+  hitNPC: Impact
+  hurtNPC: AhNPC
 --- !u!1 &3329229525668374595
 GameObject:
   m_ObjectHideFlags: 0

@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 7527924583398832273}
   - component: {fileID: 354374768389805766}
   - component: {fileID: 5157994419660269195}
+  - component: {fileID: 7628165367233631704}
   m_Layer: 0
   m_Name: Race
   m_TagString: Player
@@ -127,7 +128,6 @@ MonoBehaviour:
   mapTrigger: {fileID: 8283199641727762755}
   spawnTrigger: {fileID: 3057115512607572423}
   playerScore: {fileID: 8615673305497426650}
-  wayPoint: {fileID: 0}
 --- !u!114 &354374768389805766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +196,14 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!81 &7628165367233631704
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993548706635770169}
+  m_Enabled: 1
 --- !u!1 &1334555901070565075
 GameObject:
   m_ObjectHideFlags: 0

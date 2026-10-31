@@ -785,6 +785,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSoundManager: {fileID: 1811628436185958528}
+  startAudioSource: {fileID: 0}
+  brakeAudioSource: {fileID: 0}
+  hornAudioSource: {fileID: 0}
+  engineAudioSources: []
+  currentRPM: 1000
+  rpmDifference: 0
+  isBraking: 0
 --- !u!1 &4635740557291230288
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,6 +938,7 @@ GameObject:
   - component: {fileID: 4685086600077570915}
   - component: {fileID: 6217524633412986491}
   - component: {fileID: 3718291950483136559}
+  - component: {fileID: 5695380068188950861}
   m_Layer: 0
   m_Name: Sendan
   m_TagString: Player
@@ -1048,6 +1056,14 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!81 &5695380068188950861
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5326504928888084595}
+  m_Enabled: 1
 --- !u!1 &7344179727350723654
 GameObject:
   m_ObjectHideFlags: 0

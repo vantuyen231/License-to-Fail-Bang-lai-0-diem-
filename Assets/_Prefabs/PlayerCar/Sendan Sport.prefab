@@ -624,6 +624,7 @@ GameObject:
   - component: {fileID: 2663235676014978772}
   - component: {fileID: 6042145043783084671}
   - component: {fileID: 1286604078044305662}
+  - component: {fileID: 2500732020837788907}
   m_Layer: 0
   m_Name: Sendan Sport
   m_TagString: Player
@@ -672,7 +673,6 @@ MonoBehaviour:
   mapTrigger: {fileID: 4671341645172299183}
   spawnTrigger: {fileID: 2981817155622192763}
   playerScore: {fileID: 7390822307925270027}
-  wayPoint: {fileID: 0}
 --- !u!114 &6042145043783084671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,6 +741,14 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!81 &2500732020837788907
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3123935450046293520}
+  m_Enabled: 1
 --- !u!1 &4507335682386915984
 GameObject:
   m_ObjectHideFlags: 0

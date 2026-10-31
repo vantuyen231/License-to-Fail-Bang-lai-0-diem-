@@ -1153,6 +1153,7 @@ GameObject:
   - component: {fileID: 1963338085994383125}
   - component: {fileID: 8227880631851099360}
   - component: {fileID: 683675858949837255}
+  - component: {fileID: -7901932077421270570}
   m_Layer: 0
   m_Name: Truck
   m_TagString: Player
@@ -1201,7 +1202,6 @@ MonoBehaviour:
   mapTrigger: {fileID: 7741942697817124769}
   spawnTrigger: {fileID: 5312453761657029128}
   playerScore: {fileID: 8401562434015793615}
-  wayPoint: {fileID: 0}
 --- !u!114 &8227880631851099360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1270,6 +1270,14 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!81 &-7901932077421270570
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721341191676745948}
+  m_Enabled: 1
 --- !u!1 &7737030707493180422
 GameObject:
   m_ObjectHideFlags: 0

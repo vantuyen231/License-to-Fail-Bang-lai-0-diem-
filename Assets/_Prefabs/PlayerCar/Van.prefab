@@ -597,6 +597,7 @@ GameObject:
   - component: {fileID: 6808028568219339137}
   - component: {fileID: 4187594014075739092}
   - component: {fileID: 2392900816445816827}
+  - component: {fileID: -9152951292423310760}
   m_Layer: 0
   m_Name: Van
   m_TagString: Player
@@ -645,7 +646,6 @@ MonoBehaviour:
   mapTrigger: {fileID: 2066121602171740481}
   spawnTrigger: {fileID: 4285317054526897100}
   playerScore: {fileID: 394610017845189493}
-  wayPoint: {fileID: 0}
 --- !u!114 &4187594014075739092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,6 +714,14 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!81 &-9152951292423310760
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5131603877567866569}
+  m_Enabled: 1
 --- !u!1 &5916427711055389112
 GameObject:
   m_ObjectHideFlags: 0

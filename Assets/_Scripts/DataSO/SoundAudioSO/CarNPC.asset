@@ -21,3 +21,15 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: f6bf1ec858a5a2a469617d8f9dbc1795, type: 3}
     volume: 1
+  - audioName: Hit
+    clips:
+    - {fileID: 8300000, guid: 3001c3e1a8d71ff44a3aa8f483bcb796, type: 3}
+    volume: 1
+  - audioName: PoliceHorn
+    clips:
+    - {fileID: 8300000, guid: 8f6570841905d6242923b75023ba8665, type: 3}
+    volume: 1
+  - audioName: AmbulanceHorn
+    clips:
+    - {fileID: 8300000, guid: 14f4b5b8bfdf71e40b4595b1fe17106a, type: 3}
+    volume: 1

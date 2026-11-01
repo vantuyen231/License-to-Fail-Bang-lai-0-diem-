@@ -43,6 +43,8 @@ public class AudioManager : TuyenSingleton<AudioManager>
             }
         }
     }
+
+   
     public void SoundSFX(string soundSFX,  AudioSource targetAudioSource = null)
     {
         var audioSound = audioDatabaseSO.GetSound(soundSFX);
@@ -60,8 +62,38 @@ public class AudioManager : TuyenSingleton<AudioManager>
 
     }
 
+    public void CarNPCLoopSound(VehicalAudioSO vehicalAudio, string audioName, AudioSource targetAudioSource)
+    {
+        if (vehicalAudio == null || targetAudioSource == null) return;
 
+        var audioSound = vehicalAudio.GetSound(audioName);
+        if (audioSound == null) return;
 
+        var clip = audioSound.GetRandomClip();
+        if (clip == null) return;
+
+        targetAudioSource.clip = clip;
+        targetAudioSource.loop = true;
+        targetAudioSource.volume = audioSound.volume;
+        targetAudioSource.Play();
+    }
+
+    public void PlayVehicleOneShot(VehicalAudioSO vehicleData, string audioName, AudioSource targetAudioSource)
+    {
+        if (vehicleData == null || targetAudioSource == null) return;
+
+        var audioSound = vehicleData.GetSound(audioName);
+        if (audioSound == null) return;
+
+        var clip = audioSound.GetRandomClip();
+        if (clip == null) return;
+
+        targetAudioSource.pitch = Random.Range(0.95f, 1.05f);
+        targetAudioSource.volume = audioSound.volume;
+        targetAudioSource.PlayOneShot(clip);
+    }
+
+    #region BGMSound
     public void StarBgm(string soundBgm)
     {
         bgmShouldPlay = true;
@@ -141,4 +173,5 @@ public class AudioManager : TuyenSingleton<AudioManager>
 
         source.volume = targetVolume;
     }
+    #endregion
 }

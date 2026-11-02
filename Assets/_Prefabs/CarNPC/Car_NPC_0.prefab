@@ -64,7 +64,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8681831133765474470
 Transform:
   m_ObjectHideFlags: 0
@@ -97,10 +97,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.3, y: 0.7, z: 1}
-  m_Center: {x: 0, y: 0.56, z: 2.1}
+  m_Size: {x: 0.8, y: 0.7, z: 2}
+  m_Center: {x: 1.1, y: 0.5, z: 0.4}
 --- !u!114 &1435960183614399838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,13 +130,14 @@ GameObject:
   - component: {fileID: 2111494956596540186}
   - component: {fileID: -8568297415984555953}
   - component: {fileID: -6744210671209900748}
+  - component: {fileID: 2595972134572468064}
   m_Layer: 7
   m_Name: Car_NPC_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2976515460611273666
 Transform:
   m_ObjectHideFlags: 0
@@ -145,7 +146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6871621452785633037}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -172,8 +173,9 @@ MonoBehaviour:
   agent: {fileID: 227260421953027732}
   carNPCMoving: {fileID: 5508507416278131552}
   carNPCInfo: {fileID: 1125595089355399093}
-  triggerStopCar: {fileID: 1435960183614399838}
-  rb: {fileID: 0}
+  triggerStopCar: {fileID: 0}
+  rb: {fileID: 2111494956596540186}
+  carNPCAudio: {fileID: -6744210671209900748}
   isHit: 0
 --- !u!114 &5508507416278131552
 MonoBehaviour:
@@ -195,14 +197,14 @@ MonoBehaviour:
   currentTimeStuck: 0
   maxTimeStuck: 5
   currentDistance: 0
-  stuckCheckDistance: 3
+  stuckCheckDistance: 2.5
   velocityCarNPC: 0
   isStuck: 0
   raycast: {fileID: 4850656542324077184}
   maxRaycast: 5
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 200
+    m_Bits: 456
 --- !u!195 &227260421953027732
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -211,8 +213,8 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6871621452785633037}
   m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_AgentTypeID: -1372625422
+  m_Radius: 1
   m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
@@ -222,7 +224,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: -0.1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 1
 --- !u!114 &1125595089355399093
@@ -287,7 +289,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 7
+  MaxDistance: 9
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -374,6 +376,110 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901f45fd3ac0da14292c52f7042db05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vehicalAudioSO: {fileID: 11400000, guid: 7218937dbb0ea4d489d8ac4510ac92dd, type: 2}
+  loopAudioSource: {fileID: -8568297415984555953}
+  oneShotAudioSource: {fileID: 2595972134572468064}
+  engineSound: EngineCarNPC
+  hornSound: HornCarNPC
+  hitSound: HitCarNPC
+  isEmergencyVehicle: 0
+  sirenSoundKey: 
+--- !u!82 &2595972134572468064
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6871621452785633037}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 9
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.14285715
+      value: 1
+      inSlope: -3.0326557
+      outSlope: -3.0326557
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.08272944
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.4171092
+      outSlope: -0.4171092
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.2240339
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8569573148133530883
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carNPCMoving: {fileID: 5508507416278131552}
+  carNPCAudio: {fileID: -6744210671209900748}
 --- !u!1001 &2876150040722971492
 PrefabInstance:
   m_ObjectHideFlags: 0

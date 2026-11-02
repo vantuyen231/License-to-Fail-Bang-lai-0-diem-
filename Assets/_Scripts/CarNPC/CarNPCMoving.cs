@@ -9,6 +9,8 @@ public class CarNPCMoving : TuyenMonoBehaviour
     [SerializeField] protected LocalPointStreet pointToGo;
     [SerializeField] protected CarNPCCtrl ctrl;
     [SerializeField] protected LocalPointStreet nextPoint;
+    [SerializeField] protected CarNPCAudio carNPCAudio;
+
 
     [Header("Flags")]
     [SerializeField] protected bool stopCarTrigger = false;
@@ -47,6 +49,7 @@ public class CarNPCMoving : TuyenMonoBehaviour
         base.LoadComponents();
         this.LoadCarCtrl();
         this.LoadCarNPCRaycast();
+        this.LoadCarNPCAudio();
     }
 
     protected virtual void LoadCarCtrl()
@@ -61,6 +64,13 @@ public class CarNPCMoving : TuyenMonoBehaviour
         if (raycast != null) return;
         raycast = GetComponentInChildren<CarNPCRaycast>();
         Debug.Log(transform.name + "LoadCarNPCRaycast", gameObject);
+    }
+
+    protected virtual void LoadCarNPCAudio()
+    {
+        if (carNPCAudio != null) return;
+        carNPCAudio = GetComponentInParent<CarNPCAudio>();
+        Debug.Log(transform.name + ": LoadCarNPCAudio", gameObject);
     }
 
     public virtual void SetStartPointCarNPC(LocalPointStreet streetStartPoint)
@@ -140,7 +150,13 @@ public class CarNPCMoving : TuyenMonoBehaviour
 
     public virtual void SetStopByRaycast(bool state)
     {
+        bool previousState = IsCarStopping;
         this.stopCarRaycast = state;
+
+        if (!previousState && IsCarStopping)
+        {
+            carNPCAudio.PlayHorn();
+        }
         this.SetStopCar();
     }
 
@@ -150,6 +166,7 @@ public class CarNPCMoving : TuyenMonoBehaviour
         if (this.isStuck)
         {
             this.ctrl.Agent.isStopped = false;
+
             return;
         }
         this.ctrl.Agent.isStopped = IsCarStopping;

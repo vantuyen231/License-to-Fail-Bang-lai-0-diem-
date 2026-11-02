@@ -34,17 +34,25 @@ public class AudioManager : TuyenSingleton<AudioManager>
         {
             if (string.IsNullOrEmpty(currnetBgmGroupName) == false)
             {
-                NextBgm(currnetBgmGroupName);
+                //NextBgm(currnetBgmGroupName);
             }
 
             if (bgmSource.isPlaying && bgmShouldPlay == false)
             {
-                StopBgm();
+                //StopBgm();
             }
         }
     }
 
-   
+    #region Player
+    public void PlayerOneShotSound(SoundCarPlayerSO soundCarPlayerSO, string nameSound, AudioSource targetAudioSource)
+    {
+        if (soundCarPlayerSO == null || targetAudioSource == null) return;
+
+    }
+    #endregion
+
+    #region NPC
     public void SoundSFX(string soundSFX,  AudioSource targetAudioSource = null)
     {
         var audioSound = audioDatabaseSO.GetSound(soundSFX);
@@ -61,7 +69,9 @@ public class AudioManager : TuyenSingleton<AudioManager>
         useAudioSource.PlayOneShot(clip);
 
     }
+    #endregion
 
+    #region CarNPC
     public void CarNPCLoopSound(VehicalAudioSO vehicalAudio, string audioName, AudioSource targetAudioSource)
     {
         if (vehicalAudio == null || targetAudioSource == null) return;
@@ -92,6 +102,7 @@ public class AudioManager : TuyenSingleton<AudioManager>
         targetAudioSource.volume = audioSound.volume;
         targetAudioSource.PlayOneShot(clip);
     }
+    #endregion
 
     #region BGMSound
     public void StarBgm(string soundBgm)

@@ -41,9 +41,9 @@ public class PlayerSoundManager : TuyenMonoBehaviour
         if (engineLoopClips.Count > 0) return;
         SoundCarPlayerSO so = playerSound.SoundCarPlayerSO;
         if (playerSound == null) return;
-        startSound = so.startCarSound;
-        brakeSound = so.brakeCarSound;
-        hornSound = so.hornCarSound;
+        //startSound = so.startCarSound;
+        //brakeSound = so.brakeCarSound;
+        //hornSound = so.hornCarSound;
         minRPM = so.minRPM;
         rpmStep = so.rpmStep;
 

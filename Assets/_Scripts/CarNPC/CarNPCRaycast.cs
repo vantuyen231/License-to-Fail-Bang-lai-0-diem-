@@ -22,6 +22,7 @@ public class CarNPCRaycast : TuyenMonoBehaviour
         Debug.Log(transform.name + ": LoadCarNPCMoving", gameObject);
     }
 
+
     public virtual void RaycastCar()
     {
         //if (raycast == null) return;

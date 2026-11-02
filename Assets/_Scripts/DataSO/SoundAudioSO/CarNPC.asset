@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: CarNPC
   m_EditorClassIdentifier: 
   vehicalClips:
-  - audioName: Engine
+  - audioName: EngineCarNPC
     clips:
     - {fileID: 8300000, guid: bfb19630e06248c44a7dfe252414faab, type: 3}
-    volume: 1
-  - audioName: Horn
+    volume: 0.777
+  - audioName: HornCarNPC
     clips:
     - {fileID: 8300000, guid: f6bf1ec858a5a2a469617d8f9dbc1795, type: 3}
     volume: 1
-  - audioName: Hit
+  - audioName: HitCarNPC
     clips:
     - {fileID: 8300000, guid: 3001c3e1a8d71ff44a3aa8f483bcb796, type: 3}
     volume: 1

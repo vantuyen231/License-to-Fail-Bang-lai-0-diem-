@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4206609665239540542}
   - component: {fileID: 4844827682932252574}
   - component: {fileID: 8283199641727762755}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MapTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 354374768389805766}
   - component: {fileID: 5157994419660269195}
   - component: {fileID: 7628165367233631704}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Race
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3325205895187104025}
   - component: {fileID: 7190032584888953574}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FrontLeftWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 161939312569475619}
   - component: {fileID: 7578184320771228678}
   - component: {fileID: 6544128791898248693}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MinSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1638453841019101245}
   - component: {fileID: 6929335438656551890}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FrontRightWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 931559026600152613}
   - component: {fileID: 6521124130947883675}
   - component: {fileID: 2419171043296121742}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheel-front-right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 268155680707360525}
   - component: {fileID: 5739143538523404774}
   - component: {fileID: 6819933278455540008}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FrontBumpTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +589,7 @@ GameObject:
   - component: {fileID: 3027404386096151809}
   - component: {fileID: 4955425322312162241}
   - component: {fileID: 7588612008922251828}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MaxSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8464095041713425487}
   - component: {fileID: 3351882773138878635}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CamLookAtPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2630833499902299499}
   - component: {fileID: 3057115512607572423}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NPCSpawnTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -749,7 +749,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5682738732471468402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,7 +785,7 @@ GameObject:
   m_Component:
   - component: {fileID: 66914718741259979}
   - component: {fileID: 1735443515983069022}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CarCentreOfMass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 5346962870841573452}
   - component: {fileID: 7995880793439357830}
   - component: {fileID: 6655950814078332583}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheel-back-left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -925,7 +925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2235672749787299142}
   - component: {fileID: 3065194626238071670}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BackLeftWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -998,7 +998,7 @@ GameObject:
   - component: {fileID: 1128049566269755867}
   - component: {fileID: 5386263679687822940}
   - component: {fileID: 6695814679478421942}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheel-front-left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1091,7 +1091,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 822273440273750734}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: race
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1248,7 +1248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7402080516299806288}
   - component: {fileID: 966713634499150869}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BackRightWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1319,7 +1319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1130732334674995439}
   - component: {fileID: 8615673305497426650}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1384,7 +1384,7 @@ GameObject:
   - component: {fileID: 7050297203228590228}
   - component: {fileID: 8295521034937055363}
   - component: {fileID: 6791611864824120893}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheel-back-right
   m_TagString: Untagged
   m_Icon: {fileID: 0}

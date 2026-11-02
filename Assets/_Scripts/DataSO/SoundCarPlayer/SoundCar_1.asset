@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4062c6beb571f134bb6c316dba4c09bf, type: 3}
   m_Name: SoundCar_1
   m_EditorClassIdentifier: 
-  startCarSound: {fileID: 8300000, guid: 4f58ca4a93f28e546aecd655e08059f3, type: 3}
-  brakeCarSound: {fileID: 8300000, guid: 7fd5336b36cf7ab48bbe100c14e2b7a7, type: 3}
-  hornCarSound: {fileID: 8300000, guid: bf30bbdc2046c7d4ab41c2cde61eefe0, type: 3}
+  startCarSound:
+  - audioName: 
+    clips: []
+    volume: 0
   engineSound:
   - {fileID: 8300000, guid: 83cbb34bef4a0704b986a8cbae17bf8a, type: 3}
   - {fileID: 8300000, guid: becdc758600fb5c4182dcb3aa0efefeb, type: 3}

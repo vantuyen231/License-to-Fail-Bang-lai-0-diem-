@@ -10,6 +10,7 @@ public class CarNPCCtrl : PoolObj
     [SerializeField] protected CarNPCInfo carNPCInfo;
     [SerializeField] protected TriggerStopCar triggerStopCar;
     [SerializeField] protected Rigidbody rb;
+    [SerializeField] protected CarNPCAudio carNPCAudio;
     public TriggerStopCar TriggerStopCar => triggerStopCar;
 
     public NavMeshAgent Agent => agent;
@@ -25,6 +26,7 @@ public class CarNPCCtrl : PoolObj
         this.LoadCarNPCInfo();
         //this.LoadTriggerStopCar();
         this.LoadRigidbody();
+        this.LoadCarNPCAudio();
     }
     public override string GetName()
     {
@@ -64,5 +66,12 @@ public class CarNPCCtrl : PoolObj
         if (triggerStopCar != null) return;
         triggerStopCar = GetComponentInChildren<TriggerStopCar>();
         Debug.Log(transform.name + ": LoadTriggerStopCar", gameObject);
+    }
+
+    protected virtual void LoadCarNPCAudio()
+    {
+        if (carNPCAudio != null) return;
+        carNPCAudio = GetComponent<CarNPCAudio>();
+        Debug.Log(transform.name + ": LoadCarNPCAudio", gameObject);
     }
 }

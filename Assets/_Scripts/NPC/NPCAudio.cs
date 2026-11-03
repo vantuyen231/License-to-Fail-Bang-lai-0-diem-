@@ -26,20 +26,20 @@ public class NPCAudio : TuyenMonoBehaviour
     public void FootStepSound()
     {
         AudioManager.Instance.SoundSFX(footStepNPC, npcAudioSource);
-        Debug.Log( "Sound" + footStepNPC, transform);
+        //Debug.Log( "Sound" + footStepNPC, transform);
     }
 
     public void HitNPC()
     {
         AudioManager.Instance.SoundSFX(hitNPC, npcAudioSource);
-        Debug.Log("Sound" + hitNPC, transform);
+        //Debug.Log("Sound" + hitNPC, transform);
 
     }
 
     public void HurtSound()
     {
         AudioManager.Instance.SoundSFX(hurtNPC, npcAudioSource);
-        Debug.Log("Sound" + hurtNPC, transform);
+        //Debug.Log("Sound" + hurtNPC, transform);
 
     }
 }

@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class FrontBumpCtrl : TuyenMonoBehaviour
 {
-    [SerializeField] protected CarController carController;
+    [SerializeField] protected CarManager carManager;
     [SerializeField] protected float forceMultiplier = 0.5f;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        LoadCarCtrll();
+        LoadCarManager();
     }
-    protected virtual void LoadCarCtrll()
+    protected virtual void LoadCarManager()
     {
-        if(carController != null) return;
-        carController = transform.parent.GetComponent<CarController>();
+        if(carManager != null) return;
+        carManager = transform.parent.GetComponent<CarManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
 
-        PlayerScore playerScore = carController.GetComponentInChildren<PlayerScore>();
+        PlayerScore playerScore = carManager.GetComponentInChildren<PlayerScore>();
 
         CarNPCInfo carNPCInfo = other.gameObject.GetComponentInParent<CarNPCInfo>();
         if(carNPCInfo != null)
         {
             this.HitCarNPCTrigger(carNPCInfo, playerScore);
+            carManager.CarPlayerAudio.HitCarNPCSound();
             return;
         }
 
@@ -34,6 +35,7 @@ public class FrontBumpCtrl : TuyenMonoBehaviour
         if(npcGameInfo != null)
         {
             this.HitNPCTrigger(other, npcGameInfo, playerScore);
+
             return;
         }
     }
@@ -49,10 +51,10 @@ public class FrontBumpCtrl : TuyenMonoBehaviour
 
             npcRagdoll.EnableRagdoll();
 
-            Vector3 pushDirection = carController.RbCar.velocity.normalized;
+            Vector3 pushDirection = carManager.Controller.RbCar.velocity.normalized;
             if (pushDirection == Vector3.zero) pushDirection = transform.forward;
 
-            float pushForceMagnitude = carController.CarVeclocity * forceMultiplier;
+            float pushForceMagnitude = carManager.Controller.CarVeclocity * forceMultiplier;
 
             Vector3 finalPushForce = pushDirection * pushForceMagnitude;
 

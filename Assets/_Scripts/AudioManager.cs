@@ -48,7 +48,25 @@ public class AudioManager : TuyenSingleton<AudioManager>
     public void PlayerOneShotSound(SoundCarPlayerSO soundCarPlayerSO, string nameSound, AudioSource targetAudioSource)
     {
         if (soundCarPlayerSO == null || targetAudioSource == null) return;
+        var audioSound = soundCarPlayerSO.GetSound(nameSound);
+        if (audioSound == null) return;
 
+        var clip = audioSound.GetRandomClip();
+        if (clip == null) return;
+
+        targetAudioSource.pitch = Random.Range(0.95f, 1.05f);
+        targetAudioSource.volume = audioSound.volume;
+        targetAudioSource.PlayOneShot(clip);
+    }
+
+    public void StopPlayerOneShotSound(SoundCarPlayerSO soundCarPlayerSO, AudioSource targetAudioSource)
+    {
+        if (soundCarPlayerSO == null || targetAudioSource == null) return;
+
+        if (targetAudioSource != null && targetAudioSource.isPlaying)
+        {
+            targetAudioSource.Stop();
+        }
     }
     #endregion
 
@@ -61,7 +79,7 @@ public class AudioManager : TuyenSingleton<AudioManager>
 
         AudioSource useAudioSource = targetAudioSource == null ? sfxSource : targetAudioSource;
 
-        Debug.Log($"Dang phat sound [{soundSFX}] qua loa cua: {useAudioSource.gameObject.name}", useAudioSource.gameObject);
+        //Debug.Log($"Dang phat sound [{soundSFX}] qua loa cua: {useAudioSource.gameObject.name}", useAudioSource.gameObject);
 
         useAudioSource.clip = clip;
         useAudioSource.pitch = Random.Range(0.95f, 1.1f);

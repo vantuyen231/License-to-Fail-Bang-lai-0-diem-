@@ -12,11 +12,13 @@ public class CarManager : TuyenSingleton<CarManager>
     [SerializeField] protected MapTrigger mapTrigger;
     [SerializeField] protected NPCSpawnTrigger spawnTrigger;
     [SerializeField] protected PlayerScore playerScore;
+    [SerializeField] protected CarPlayerAudio carPlayerAudio;
 
     public PlayerScore PlayerScore => playerScore;
     public CamLookAtPoint LookAtPoint => lookAtPoint;
     public PlayerSpawner PlayerSpawner => playerSpawner;
     public CarController Controller => controller;
+    public CarPlayerAudio CarPlayerAudio => carPlayerAudio;
 
     protected override void Start()
     {
@@ -34,6 +36,7 @@ public class CarManager : TuyenSingleton<CarManager>
         this.LoadPlayerScore();
         this.LoadCamLookAtPoint();
         this.LoadPlayerSpawner();
+        this.LoadCarPlayerAudio();
     }
 
     private void LoadPlayerSpawner()
@@ -49,6 +52,7 @@ public class CarManager : TuyenSingleton<CarManager>
         lookAtPoint = GetComponentInChildren<CamLookAtPoint>();
         Debug.Log(transform.name + ": LoadCamLookAtPoint", gameObject);
     }
+
     private void LoadNPCSpawnTrigger()
     {
         if(spawnTrigger != null) return;
@@ -81,4 +85,10 @@ public class CarManager : TuyenSingleton<CarManager>
         Debug.Log(transform.name + ": LoadPlayerScore", gameObject );
     }
 
+    private void LoadCarPlayerAudio()
+    {
+        if (carPlayerAudio != null) return;
+        carPlayerAudio = GetComponentInChildren<CarPlayerAudio>();
+        Debug.Log(transform.name + ": LoadCarPlayerAudio", gameObject);
+    }
 }

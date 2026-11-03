@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8472670053433898964}
   - component: {fileID: 8213797835256668317}
   - component: {fileID: 133457313171328896}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FrontBumpTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec18d226a7eb26643bd196bd61e255ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carController: {fileID: 4187594014075739092}
+  carManager: {fileID: 0}
   forceMultiplier: 0.2
 --- !u!1 &1920756582771219092
 GameObject:
@@ -115,7 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5938199989145785300}
   - component: {fileID: 394610017845189493}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PlayerScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4520250720876646499}
   - component: {fileID: 102378074264524422}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CarCentreOfMass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 9033663362919659923}
   - component: {fileID: 3845285165292622278}
   - component: {fileID: 2066121602171740481}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MapTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 4971602482486429095}
   - component: {fileID: 420530175945509957}
   - component: {fileID: 4300749956888432483}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MinSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 4187594014075739092}
   - component: {fileID: 2392900816445816827}
   - component: {fileID: -9152951292423310760}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Van
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -646,6 +646,7 @@ MonoBehaviour:
   mapTrigger: {fileID: 2066121602171740481}
   spawnTrigger: {fileID: 4285317054526897100}
   playerScore: {fileID: 394610017845189493}
+  carPlayerAudio: {fileID: 0}
 --- !u!114 &4187594014075739092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -874,7 +875,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8593782809117931374}
   - component: {fileID: 4285317054526897100}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: NPCSpawnTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1366,7 +1367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 264147732128688090}
   - component: {fileID: 5468794306887322885}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CamLookAtPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1411,7 +1412,7 @@ GameObject:
   - component: {fileID: 8555252978506180993}
   - component: {fileID: 1088919238265193382}
   - component: {fileID: 366694337687472396}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MaxSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4206609665239540542}
   - component: {fileID: 4844827682932252574}
   - component: {fileID: 8283199641727762755}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MapTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 354374768389805766}
   - component: {fileID: 5157994419660269195}
   - component: {fileID: 7628165367233631704}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Race
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -128,6 +128,7 @@ MonoBehaviour:
   mapTrigger: {fileID: 8283199641727762755}
   spawnTrigger: {fileID: 3057115512607572423}
   playerScore: {fileID: 8615673305497426650}
+  carPlayerAudio: {fileID: 0}
 --- !u!114 &354374768389805766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,7 +287,7 @@ GameObject:
   - component: {fileID: 161939312569475619}
   - component: {fileID: 7578184320771228678}
   - component: {fileID: 6544128791898248693}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MinSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +522,7 @@ GameObject:
   - component: {fileID: 268155680707360525}
   - component: {fileID: 5739143538523404774}
   - component: {fileID: 6819933278455540008}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FrontBumpTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec18d226a7eb26643bd196bd61e255ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carController: {fileID: 354374768389805766}
+  carManager: {fileID: 0}
   forceMultiplier: 0.2
 --- !u!1 &3941858857178786966
 GameObject:
@@ -589,7 +590,7 @@ GameObject:
   - component: {fileID: 3027404386096151809}
   - component: {fileID: 4955425322312162241}
   - component: {fileID: 7588612008922251828}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MaxSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +657,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8464095041713425487}
   - component: {fileID: 3351882773138878635}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CamLookAtPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2630833499902299499}
   - component: {fileID: 3057115512607572423}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: NPCSpawnTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,7 +786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 66914718741259979}
   - component: {fileID: 1735443515983069022}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CarCentreOfMass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1319,7 +1320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1130732334674995439}
   - component: {fileID: 8615673305497426650}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PlayerScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}

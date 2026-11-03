@@ -162,6 +162,7 @@ public class CarController : TuyenMonoBehaviour
         playerInputSystem.Enable();
         playerInputSystem.Player.Brake.performed += ctx => { ApplyBrake(); };
         playerInputSystem.Player.Brake.canceled += ctx => { ReleaseBrake(); };
+        playerInputSystem.Player.Horn.performed += ctx => { HornCar(); };
     }
 
     private void OnDisable()
@@ -185,6 +186,11 @@ public class CarController : TuyenMonoBehaviour
 
     }
 
+    private void HornCar()
+    {
+        carManager.CarPlayerAudio.HornSound();
+    }
+
     #region Brake
     private void ApplyBrake()
     {
@@ -193,6 +199,7 @@ public class CarController : TuyenMonoBehaviour
 
         wheelCollidersCtrl[0].brakeTorque = brakeForce;
         wheelCollidersCtrl[1].brakeTorque = brakeForce;
+        carManager.CarPlayerAudio.BrakeCarSound();
     }
 
     private void ReleaseBrake()
@@ -202,6 +209,7 @@ public class CarController : TuyenMonoBehaviour
 
         wheelCollidersCtrl[0].brakeTorque = 0;
         wheelCollidersCtrl[1].brakeTorque = 0;
+        carManager.CarPlayerAudio.StopBrakeSound();
     }
     #endregion
 

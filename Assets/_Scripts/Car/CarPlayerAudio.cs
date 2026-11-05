@@ -15,6 +15,8 @@ public class CarPlayerAudio : TuyenMonoBehaviour
     [SerializeField] private AudioSource sfxAudioSource;
     [SerializeField] private AudioSource brakeAudioSource;
 
+    [SerializeField] protected int canBrakeSound = 25;
+
     [SerializeField] protected string startEngineSound = "StartCar";
     [SerializeField] protected string hitPlayerSound = "HitCar";
     [SerializeField] protected string hornPlayerSound = "HornCar";
@@ -24,18 +26,23 @@ public class CarPlayerAudio : TuyenMonoBehaviour
 
     protected override void Start()
     {
-        //this.StartEngineSound();
-        //this.InitializeEngineCar();
+        this.StartEngineSound();
+        this.InitializeEngineCar();
+    }
+
+    private void Update()
+    {
+        this.UpdateEngineRPMBlend();
     }
 
     #region LoadComponents
-    //protected override void LoadComponents()
-    //{
-    //    base.LoadComponents();
-    //    this.LoadCarController();
-    //    this.LoadSoundCarPlayer();
-    //    this.SetUpAudioSound();
-    //}
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadCarController();
+        this.LoadSoundCarPlayer();
+        this.SetUpAudioSound();
+    }
 
     protected virtual void LoadCarController()
     {
@@ -98,40 +105,77 @@ public class CarPlayerAudio : TuyenMonoBehaviour
             AudioSource engineLayerSource = engineSoundHolder.gameObject.AddComponent<AudioSource>();
 
             engineLayerSource.loop = true;
+            engineLayerSource.clip = engineDataCar.GetClip(i);
             engineLayerSource.maxDistance = 9f;
             engineLayerSource.playOnAwake = false;
             engineLayerSource.volume = engineDataCar.volume;
             engineLayerSource.rolloffMode = AudioRolloffMode.Custom;
             engineLayerSource.spatialBlend = 1;
 
+            engineLayerSource.Play();
+
             engineCarSound[i] = engineLayerSource;
 
         }
     }
 
+    private void UpdateEngineRPMBlend()
+    {
+        if (carController == null || engineCarSound == null || engineCarSound.Length == 0) return;
+
+        float maxSpeed = 10f;
+        float currentSpeed = carController.CarVeclocity;
+        float normalizedRPM = Mathf.Clamp01(currentSpeed / maxSpeed);
+
+        int count = engineCarSound.Length;
+
+        if (count == 1)
+        {
+            engineCarSound[0].volume = 1f;
+            engineCarSound[0].pitch = Mathf.Lerp(0.9f, 1.1f, normalizedRPM);
+            return;
+        }
+
+        for (int i = 0; i < count; i++)
+        {
+            float centerPoint = (float)i / (count - 1);
+
+            float distance = Mathf.Abs(normalizedRPM - centerPoint);
+
+            float targetVolume = Mathf.Clamp01(1f - (distance * count));
+
+            engineCarSound[i].volume = Mathf.Lerp(engineCarSound[i].volume, targetVolume, Time.deltaTime * 10f);
+
+            engineCarSound[i].pitch = Mathf.Lerp(0.95f, 1.1f, normalizedRPM);
+        }
+    }
+
     private void StartEngineSound()
     {
-        //AudioManager.Instance.PlayerOneShotSound(soundCarPlayerSO, startEngineSound, sfxAudioSource);
+        AudioManager.Instance.PlayerOneShotSound(soundCarPlayerSO, startEngineSound, sfxAudioSource);
     }
 
     public void HitCarNPCSound()
     {
-        //AudioManager.Instance.PlayerOneShotSound(soundCarPlayerSO, hitPlayerSound, sfxAudioSource);
+        AudioManager.Instance.PlayerOneShotSound(soundCarPlayerSO, hitPlayerSound, sfxAudioSource);
     }
 
     public void BrakeCarSound()
     {
-        //AudioManager.Instance.PlayerOneShotSound(soundCarPlayerSO, brakePlayerSound, brakeAudioSource);
+        if (carController.PlayerSpeed > canBrakeSound)
+        {
+            AudioManager.Instance.PlayerOneShotSound(soundCarPlayerSO, brakePlayerSound, brakeAudioSource);
+        }
     }
 
     public void StopBrakeSound()
     {
-        //AudioManager.Instance.StopPlayerOneShotSound(soundCarPlayerSO, brakeAudioSource);
+        AudioManager.Instance.StopPlayerOneShotSound(soundCarPlayerSO, brakeAudioSource);
     }
 
     public void HornSound()
     {
         if (sfxAudioSource.isPlaying) return;
-        //AudioManager.Instance.PlayerOneShotSound(soundCarPlayerSO, hornPlayerSound, sfxAudioSource);
+        AudioManager.Instance.PlayerOneShotSound(soundCarPlayerSO, hornPlayerSound, sfxAudioSource);
     }
 }

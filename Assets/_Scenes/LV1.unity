@@ -40294,6 +40294,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car_NPC_6
       objectReference: {fileID: 0}
+    - target: {fileID: 6914774194763626556, guid: 2891905bb3de2e04faa8c47c1ceb1b2f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -43115,8 +43119,8 @@ MonoBehaviour:
   vehical: 0
   isWinGame: 0
   currentBuster: 0
-  increaseRate: 25
-  decreaseRate: 15
+  increaseRate: 10
+  decreaseRate: 5
   policeCount: 0
   isBusterBoom: 0
   isEscapeMission: 0
@@ -43557,6 +43561,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1745191248}
     m_Modifications:
+    - target: {fileID: 2460767388331762971, guid: 4588bf1a6a2fd3a4e940d93af3bc0f22, type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3234605860510257235, guid: 4588bf1a6a2fd3a4e940d93af3bc0f22, type: 3}
       propertyPath: m_Name
       value: NPC_1
@@ -165195,6 +165203,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1745191248}
     m_Modifications:
+    - target: {fileID: 6956459836072328298, guid: 22a0f38d01ebcb24fa2a9ec85529e21f, type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6973553553299525009, guid: 22a0f38d01ebcb24fa2a9ec85529e21f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -248425,7 +248437,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1538496582399820451, guid: 1af96110c23adda49afb5da769a0b3be, type: 3}
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].time
-      value: 0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1538496582399820451, guid: 1af96110c23adda49afb5da769a0b3be, type: 3}
       propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value

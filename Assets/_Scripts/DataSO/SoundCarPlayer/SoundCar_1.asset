@@ -31,17 +31,11 @@ MonoBehaviour:
     volume: 1
   - audioName: EngineCar
     clips:
-    - {fileID: 8300000, guid: 83cbb34bef4a0704b986a8cbae17bf8a, type: 3}
-    - {fileID: 8300000, guid: becdc758600fb5c4182dcb3aa0efefeb, type: 3}
-    - {fileID: 8300000, guid: d7294b63432f7fe4d8988aff5c5b853d, type: 3}
-    - {fileID: 8300000, guid: 67df013829e4885469c960d49c29e6a5, type: 3}
-    - {fileID: 8300000, guid: 2e23ade05da95b4459e9ce25db0957b0, type: 3}
-    volume: 1
-  engineSound:
-  - {fileID: 8300000, guid: 83cbb34bef4a0704b986a8cbae17bf8a, type: 3}
-  - {fileID: 8300000, guid: becdc758600fb5c4182dcb3aa0efefeb, type: 3}
-  - {fileID: 8300000, guid: d7294b63432f7fe4d8988aff5c5b853d, type: 3}
-  - {fileID: 8300000, guid: 67df013829e4885469c960d49c29e6a5, type: 3}
-  - {fileID: 8300000, guid: 2e23ade05da95b4459e9ce25db0957b0, type: 3}
+    - {fileID: 8300000, guid: f18032b4d9f2fdb4b84f017a0977b9da, type: 3}
+    - {fileID: 8300000, guid: f8170f006cd523743a83a7d2a80a9111, type: 3}
+    - {fileID: 8300000, guid: 9589a1359ddf4264091259a5130f6c42, type: 3}
+    - {fileID: 8300000, guid: 8755d9c4715bb07498263a52dd4489d6, type: 3}
+    - {fileID: 8300000, guid: d6063dfd20013874a806ca4044734355, type: 3}
+    volume: 0.084
   minRPM: 1000
   rpmStep: 500

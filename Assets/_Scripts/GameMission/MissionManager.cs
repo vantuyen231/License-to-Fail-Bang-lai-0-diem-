@@ -34,8 +34,8 @@ public class MissionManager : TuyenMonoBehaviour
 
     [Header("Buster Details")]
     [SerializeField] protected float currentBuster = 0;
-    [SerializeField] protected float increaseRate = 25f;
-    [SerializeField] protected float decreaseRate = 15f;
+    [SerializeField] protected float increaseRate = 10f;
+    [SerializeField] protected float decreaseRate = 5f;
     [SerializeField] protected int policeCount = 0;
     [SerializeField] protected bool isBusterBoom = false;
     [SerializeField] protected bool isEscapeMission = false;

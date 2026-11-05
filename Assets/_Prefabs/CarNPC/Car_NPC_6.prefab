@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5272047899877319889
 Transform:
   m_ObjectHideFlags: 0
@@ -192,6 +192,7 @@ MonoBehaviour:
   pointToGo: {fileID: 0}
   ctrl: {fileID: 658576165833875208}
   nextPoint: {fileID: 0}
+  carNPCAudio: {fileID: 0}
   stopCarTrigger: 0
   stopCarRaycast: 0
   currentTimeStuck: 0
@@ -405,7 +406,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 9
+  MaxDistance: 15
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -415,22 +416,22 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.14285715
+      time: 0.5
       value: 1
-      inSlope: -3.1832626
-      outSlope: -3.1832626
+      inSlope: -1.4053018
+      outSlope: -1.4053018
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.08272944
+      outWeight: 0.13461539
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.4136943
-      outSlope: -0.4136943
+      inSlope: -1.6848308
+      outSlope: -1.6848308
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.2409421
+      inWeight: 0.12564102
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -525,7 +526,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carNPCMoving: {fileID: 1098774339357450986}
-  carNPCAudio: {fileID: 1842214404022889405}
 --- !u!1001 &6433130601521025955
 PrefabInstance:
   m_ObjectHideFlags: 0

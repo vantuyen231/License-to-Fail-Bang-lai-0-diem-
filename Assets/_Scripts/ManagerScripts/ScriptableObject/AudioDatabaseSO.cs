@@ -51,4 +51,10 @@ public class AudioClipData
 
         return clips[Random.Range(0, clips.Count)];
     }
+
+    public AudioClip GetClip(int index)
+    {
+        if (clips.Count == 0 || clips == null) return null;
+        return clips[index];
+    }
 }

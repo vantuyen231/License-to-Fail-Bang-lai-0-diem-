@@ -14,8 +14,6 @@ public class SoundCarPlayerSO : ScriptableObject
     //[Header("HornCarSound")]
     //public List<AudioClipData> hornCarSound;
 
-    [Header("EngineSound")]
-    public AudioClip[] engineSound;
 
     [Header("Engine Configurations")]
     public float minRPM = 1000f;

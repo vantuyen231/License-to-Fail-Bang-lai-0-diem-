@@ -1485,7 +1485,7 @@ GameObject:
   - component: {fileID: 2679863192257861643}
   - component: {fileID: 6833545635451296957}
   - component: {fileID: 8436183413997432473}
-  - component: {fileID: 3526880081565800232}
+  - component: {fileID: 977212990244868154}
   m_Layer: 0
   m_Name: SoundCarPlayer
   m_TagString: Untagged
@@ -1538,8 +1538,9 @@ MonoBehaviour:
   soundCarPlayerSO: {fileID: 11400000, guid: aba9feeaf677ef941bbd0ac10010405d, type: 2}
   engineSoundHolder: {fileID: 3969143976387977911}
   carController: {fileID: 6042145043783084671}
+  audioMixer: {fileID: 0}
   sfxAudioSource: {fileID: 8436183413997432473}
-  brakeAudioSource: {fileID: 3526880081565800232}
+  brakeAudioSource: {fileID: 0}
   canBrakeSound: 25
   startEngineSound: StartCar
   hitPlayerSound: HitCar
@@ -1556,7 +1557,7 @@ AudioSource:
   m_GameObject: {fileID: 9001689450885256306}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4881109094558528344, guid: 517f721b8f75c5d4ea0b932ee5fe84d0, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1643,7 +1644,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &3526880081565800232
+--- !u!82 &977212990244868154
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1652,7 +1653,7 @@ AudioSource:
   m_GameObject: {fileID: 9001689450885256306}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4881109094558528344, guid: 517f721b8f75c5d4ea0b932ee5fe84d0, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1664,9 +1665,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 9
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1699,7 +1700,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

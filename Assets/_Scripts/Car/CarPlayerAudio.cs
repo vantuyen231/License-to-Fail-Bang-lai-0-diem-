@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class CarPlayerAudio : TuyenMonoBehaviour
 {
@@ -12,6 +13,7 @@ public class CarPlayerAudio : TuyenMonoBehaviour
     [SerializeField] protected Transform engineSoundHolder;
     [SerializeField] protected CarController carController;
 
+    [SerializeField] protected UnityEngine.Audio.AudioMixerGroup audioMixer;
     [SerializeField] private AudioSource sfxAudioSource;
     [SerializeField] private AudioSource brakeAudioSource;
 
@@ -80,6 +82,7 @@ public class CarPlayerAudio : TuyenMonoBehaviour
         sfxAudioSource.playOnAwake = false;
         sfxAudioSource.spatialBlend = 1f;
         sfxAudioSource.rolloffMode = AudioRolloffMode.Custom;
+        sfxAudioSource.outputAudioMixerGroup = this.audioMixer;
         sfxAudioSource.maxDistance = 9f;
 
         if (engineSoundHolder != null) return;
@@ -110,6 +113,7 @@ public class CarPlayerAudio : TuyenMonoBehaviour
             engineLayerSource.playOnAwake = false;
             engineLayerSource.volume = engineDataCar.volume;
             engineLayerSource.rolloffMode = AudioRolloffMode.Custom;
+            engineLayerSource.outputAudioMixerGroup = this.audioMixer;
             engineLayerSource.spatialBlend = 1;
 
             engineLayerSource.Play();
@@ -152,6 +156,7 @@ public class CarPlayerAudio : TuyenMonoBehaviour
 
     private void StartEngineSound()
     {
+        if(AudioManager.Instance == null) return;
         AudioManager.Instance.PlayerOneShotSound(soundCarPlayerSO, startEngineSound, sfxAudioSource);
     }
 

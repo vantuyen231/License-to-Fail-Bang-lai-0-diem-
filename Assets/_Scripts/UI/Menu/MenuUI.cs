@@ -1,15 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class MenuUI : TuyenSingleton<MenuUI>
 {
     [SerializeField] protected bool isShow = true;
+    [SerializeField] protected AudioMixer audioMixer;
+    [SerializeField] protected float multiAudio = 25;
+
+    [Header("Back ground Slider")]
+    [SerializeField] protected Slider bgmSlider;
+    [SerializeField] protected string bgmParametr;
+
+    [Header("Sound Effects Slider")]
+    [SerializeField] protected Slider sfxSlider;
+    [SerializeField] protected string sfxParametr;
 
     protected override void Start()
     {
         base.Start();
         this.Hide();
+    }
+
+    public void BGMSetValue(float value)
+    {
+        float newValue = Mathf.Log10(value) * multiAudio;
+        audioMixer.SetFloat(bgmParametr, newValue);
+        
+    }
+
+    public void SFXSetValue(float value)
+    {
+        float newValue = Mathf.Log10(value) * multiAudio;
+        audioMixer.SetFloat(sfxParametr, newValue);
+
     }
 
     public virtual void Hide()

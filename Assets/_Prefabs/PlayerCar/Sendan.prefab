@@ -802,8 +802,10 @@ MonoBehaviour:
   soundCarPlayerSO: {fileID: 11400000, guid: aba9feeaf677ef941bbd0ac10010405d, type: 2}
   engineSoundHolder: {fileID: 7985581919474783603}
   carController: {fileID: 6217524633412986491}
+  audioMixer: {fileID: 4881109094558528344, guid: 517f721b8f75c5d4ea0b932ee5fe84d0, type: 2}
   sfxAudioSource: {fileID: 8707374199798927571}
   brakeAudioSource: {fileID: 9033168377193141082}
+  canBrakeSound: 25
   startEngineSound: StartCar
   hitPlayerSound: HitCar
   hornPlayerSound: HornCar
@@ -819,7 +821,7 @@ AudioSource:
   m_GameObject: {fileID: 4587404496325982530}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4881109094558528344, guid: 517f721b8f75c5d4ea0b932ee5fe84d0, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -915,7 +917,7 @@ AudioSource:
   m_GameObject: {fileID: 4587404496325982530}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4881109094558528344, guid: 517f721b8f75c5d4ea0b932ee5fe84d0, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1

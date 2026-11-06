@@ -1262,6 +1262,7 @@ MonoBehaviour:
   soundCarPlayerSO: {fileID: 11400000, guid: aba9feeaf677ef941bbd0ac10010405d, type: 2}
   engineSoundHolder: {fileID: 382139534270744699}
   carController: {fileID: 4187594014075739092}
+  audioMixer: {fileID: 0}
   sfxAudioSource: {fileID: 1056730039953484572}
   brakeAudioSource: {fileID: 6211184543245149295}
   canBrakeSound: 25
@@ -1280,7 +1281,7 @@ AudioSource:
   m_GameObject: {fileID: 7965018646572036433}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4881109094558528344, guid: 517f721b8f75c5d4ea0b932ee5fe84d0, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1376,7 +1377,7 @@ AudioSource:
   m_GameObject: {fileID: 7965018646572036433}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4881109094558528344, guid: 517f721b8f75c5d4ea0b932ee5fe84d0, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1388,9 +1389,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 9
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1423,7 +1424,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

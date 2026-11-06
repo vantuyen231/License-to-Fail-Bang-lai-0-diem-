@@ -1164,6 +1164,7 @@ MonoBehaviour:
   soundCarPlayerSO: {fileID: 11400000, guid: aba9feeaf677ef941bbd0ac10010405d, type: 2}
   engineSoundHolder: {fileID: 5918664525768651427}
   carController: {fileID: 3555383774983670226}
+  audioMixer: {fileID: 0}
   sfxAudioSource: {fileID: 1558383109282382062}
   brakeAudioSource: {fileID: 5866663527999294853}
   canBrakeSound: 25
@@ -1182,7 +1183,7 @@ AudioSource:
   m_GameObject: {fileID: 6153595080676210139}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4881109094558528344, guid: 517f721b8f75c5d4ea0b932ee5fe84d0, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1278,7 +1279,7 @@ AudioSource:
   m_GameObject: {fileID: 6153595080676210139}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4881109094558528344, guid: 517f721b8f75c5d4ea0b932ee5fe84d0, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1

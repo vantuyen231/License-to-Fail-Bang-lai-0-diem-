@@ -12,21 +12,15 @@ public class AudioManager : TuyenSingleton<AudioManager>
     private string currnetBgmGroupName;
     private Coroutine currentBgmCo;
     [SerializeField] private bool bgmShouldPlay;
-    protected override void Awake()
-    {
-        base.Awake();
 
-        if (sfxSource == null)
-        {
-            sfxSource = gameObject.AddComponent<AudioSource>();
-        }
 
-        if (bgmSource == null)
-        {
-            bgmSource = gameObject.AddComponent<AudioSource>();
-            //bgmSource.loop = true;
-        }
-    }
+    //protected override void Awake()
+    //{
+    //    base.Awake();
+    //    this.LoadBgmAudioSource();
+    //    this.LoadSfxAudioSource();
+
+    //}
 
     private void Update()
     {
@@ -34,15 +28,39 @@ public class AudioManager : TuyenSingleton<AudioManager>
         {
             if (string.IsNullOrEmpty(currnetBgmGroupName) == false)
             {
-                //NextBgm(currnetBgmGroupName);
+                NextBgm(currnetBgmGroupName);
             }
 
             if (bgmSource.isPlaying && bgmShouldPlay == false)
             {
-                //StopBgm();
+                StopBgm();
             }
         }
     }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadBgmAudioSource();
+        this.LoadSfxAudioSource();
+    }
+
+    private void LoadBgmAudioSource()
+    {
+        if (bgmSource != null) return;
+        Transform bgmChild = transform.Find("BgmSound");
+        bgmSource = bgmChild.GetComponent<AudioSource>();
+        Debug.Log(transform.name + ": LoadBgmAudioSource", gameObject);
+    }
+
+    private void LoadSfxAudioSource()
+    {
+        if (sfxSource != null) return;
+        Transform sfxChild = transform.Find("SFXSound");
+        sfxSource = sfxChild.GetComponent<AudioSource>();
+        Debug.Log(transform.name + ": LoadSfxAudioSource", gameObject);
+    }
+
 
     #region Player
     public void PlayerOneShotSound(SoundCarPlayerSO soundCarPlayerSO, string nameSound, AudioSource targetAudioSource)

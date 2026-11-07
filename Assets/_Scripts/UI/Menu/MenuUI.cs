@@ -50,6 +50,38 @@ public class MenuUI : TuyenSingleton<MenuUI>
         gameObject.SetActive(isShow);
     }
 
+    private void OnEnable()
+    {
+        bgmSlider.value = PlayerPrefs.GetFloat(bgmParametr, 0.6f);
+        sfxSlider.value = PlayerPrefs.GetFloat(sfxParametr, 0.6f);
+    }
+
+    private void OnDisable()
+    {
+        PlayerPrefs.SetFloat(bgmParametr, bgmSlider.value);
+        PlayerPrefs.SetFloat(sfxParametr, sfxSlider.value);
+    }
+
+    public void LoadUpVolume()
+    {
+        bgmSlider.value = PlayerPrefs.GetFloat(bgmParametr, 0.6f);
+        sfxSlider.value = PlayerPrefs.GetFloat(sfxParametr, 0.6f);
+        if (audioMixer != null)
+        {
+            if (!string.IsNullOrEmpty(bgmParametr))
+            {
+                float newValue = Mathf.Log10(bgmSlider.value) * multiAudio;
+                audioMixer.SetFloat(bgmParametr, newValue);
+            }
+
+            if (!string.IsNullOrEmpty(sfxParametr))
+            {
+                float newValue = Mathf.Log10(sfxSlider.value) * multiAudio;
+                audioMixer.SetFloat(sfxParametr, newValue);
+            }
+        }
+        Debug.Log("do " + transform);
+    }
     //public virtual void Toggle()
     //{
     //    if (this.isShow) this.Hide();

@@ -13,6 +13,10 @@ public class UIManager : TuyenMonoBehaviour
     [SerializeField] protected UIBottomR bottomRight;
     [SerializeField] protected UIBottomL bottomLeft;
 
+    protected override void Start()
+    {
+        transform.root.GetComponentInChildren<MenuUI>(true).LoadUpVolume();
+    }
     protected virtual void OnEnable()
     {
         PlayerScore.ChangeStatusPlayer += UIPlayerUpdate;

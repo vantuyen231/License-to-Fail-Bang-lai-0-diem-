@@ -13,6 +13,7 @@ public class CloseMenuBtn : ButtonAbstract
     public virtual void CloseMenu()
     {
         MenuUI.Instance.Hide();
+        //MenuUI.Instance.SetOnSFXGame();
         GameManager.Instance.ContinueGame();
     }
 

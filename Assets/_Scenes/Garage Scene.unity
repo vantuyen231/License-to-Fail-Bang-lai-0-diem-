@@ -3845,6 +3845,7 @@ MonoBehaviour:
   bgmParametr: bgmMixer
   sfxSlider: {fileID: 243862297}
   sfxParametr: sfxMixer
+  sfxGameParametr: sfxGameMixer
 --- !u!1 &659757020
 GameObject:
   m_ObjectHideFlags: 0

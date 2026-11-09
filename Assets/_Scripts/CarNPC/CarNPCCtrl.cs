@@ -12,7 +12,7 @@ public class CarNPCCtrl : PoolObj
     [SerializeField] protected Rigidbody rb;
     [SerializeField] protected CarNPCAudio carNPCAudio;
     public TriggerStopCar TriggerStopCar => triggerStopCar;
-
+    public CarNPCInfo CarNPCInfo => carNPCInfo;
     public NavMeshAgent Agent => agent;
     public Rigidbody Rb => rb;
 

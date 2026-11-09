@@ -17,6 +17,7 @@ public class MenuUI : TuyenSingleton<MenuUI>
     [Header("Sound Effects Slider")]
     [SerializeField] protected Slider sfxSlider;
     [SerializeField] protected string sfxParametr;
+    [SerializeField] protected string sfxGameParametr;
 
     protected override void Start()
     {
@@ -35,6 +36,8 @@ public class MenuUI : TuyenSingleton<MenuUI>
     {
         float newValue = Mathf.Log10(value) * multiAudio;
         audioMixer.SetFloat(sfxParametr, newValue);
+        if(isShow)return;
+        audioMixer.SetFloat(sfxGameParametr, newValue);
 
     }
 
@@ -42,12 +45,14 @@ public class MenuUI : TuyenSingleton<MenuUI>
     {
         isShow = false;
         gameObject.SetActive(isShow);
+        //this.SetOnSFXGame();
     }
 
     public virtual void Show()
     {
         isShow = true;
         gameObject.SetActive(isShow);
+        //this.MuteSFXGame();
     }
 
     private void OnEnable()
@@ -60,6 +65,7 @@ public class MenuUI : TuyenSingleton<MenuUI>
     {
         PlayerPrefs.SetFloat(bgmParametr, bgmSlider.value);
         PlayerPrefs.SetFloat(sfxParametr, sfxSlider.value);
+        PlayerPrefs.SetFloat(sfxGameParametr, sfxSlider.value);
     }
 
     public void LoadUpVolume()
@@ -78,9 +84,22 @@ public class MenuUI : TuyenSingleton<MenuUI>
             {
                 float newValue = Mathf.Log10(sfxSlider.value) * multiAudio;
                 audioMixer.SetFloat(sfxParametr, newValue);
+                audioMixer.SetFloat(sfxGameParametr, newValue);
+                if (isShow) MuteSFXGame();
+                else SetOnSFXGame();
             }
         }
-        Debug.Log("do " + transform);
+    }
+
+    public void MuteSFXGame()
+    {
+        audioMixer.SetFloat(sfxGameParametr, -80f);
+    }
+
+    public void SetOnSFXGame()
+    {
+        float newValue = Mathf.Log10(sfxSlider.value) * multiAudio;
+        audioMixer.SetFloat(sfxGameParametr, newValue);
     }
     //public virtual void Toggle()
     //{

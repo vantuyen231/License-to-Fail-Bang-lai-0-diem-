@@ -65,12 +65,14 @@ public class GameManager : TuyenSingleton<GameManager>
     {
         isPauseGame = true;
         Time.timeScale = 0f;
+        MenuUI.Instance.MuteSFXGame();
     }
 
     public void ContinueGame()
     {
         isPauseGame = false;
         Time.timeScale = 1f;
+        MenuUI.Instance.SetOnSFXGame();
     }
     #endregion
 

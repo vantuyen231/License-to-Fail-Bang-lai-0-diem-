@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CarNPCInfo : InfoObjectHit
 {
+    [SerializeField] protected VehicalAudioSO carSoundSO;
     [SerializeField] protected bool isHitCarNPC = false;
     public bool IsHitCarNPC => isHitCarNPC;
+    public VehicalAudioSO CarSoundSO => carSoundSO;
     protected override void Start()
     {
         if(objectDataSO != null) return;

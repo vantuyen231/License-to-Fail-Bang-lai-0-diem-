@@ -1262,7 +1262,7 @@ MonoBehaviour:
   soundCarPlayerSO: {fileID: 11400000, guid: aba9feeaf677ef941bbd0ac10010405d, type: 2}
   engineSoundHolder: {fileID: 382139534270744699}
   carController: {fileID: 4187594014075739092}
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: -9190715345790502673, guid: 517f721b8f75c5d4ea0b932ee5fe84d0, type: 2}
   sfxAudioSource: {fileID: 1056730039953484572}
   brakeAudioSource: {fileID: 6211184543245149295}
   canBrakeSound: 25

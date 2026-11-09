@@ -12,6 +12,7 @@ public class SettingBtn : ButtonAbstract
     protected virtual void OpenMenu()
     {
         MenuUI.Instance.Show();
+        //MenuUI.Instance.MuteSFXGame();
         GameManager.Instance.PauseGame();
     }
 

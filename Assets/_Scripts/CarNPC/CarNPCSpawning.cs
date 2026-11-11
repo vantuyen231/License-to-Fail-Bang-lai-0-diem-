@@ -45,6 +45,14 @@ public class CarNPCSpawning : TuyenMonoBehaviour
     protected virtual void TimeSystemSpawn()
     {
         if(carNPCActive >= maxSpawn) return;
+        if (carNPCActive == 0)
+        {
+            this.RandomCarNPCSpawn();
+            if (this.selectedCarNPCPoint == null) return;
+            this.SpawnCarNPCs();
+            this.timer = 0;
+            return;
+        }
         this.timer += Time.fixedDeltaTime;
         if (this.timer < spawnTime) return;
         this.RandomCarNPCSpawn(); 

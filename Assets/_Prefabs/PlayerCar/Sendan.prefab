@@ -799,7 +799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSound: {fileID: 9110465722626345606}
-  soundCarPlayerSO: {fileID: 11400000, guid: 7c52e237d389ff544b438c9785d1c8ff, type: 2}
+  soundCarPlayerSO: {fileID: 11400000, guid: aba9feeaf677ef941bbd0ac10010405d, type: 2}
   engineSoundHolder: {fileID: 7985581919474783603}
   carController: {fileID: 6217524633412986491}
   audioMixer: {fileID: -9190715345790502673, guid: 517f721b8f75c5d4ea0b932ee5fe84d0, type: 2}

@@ -996,7 +996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5cef800ddcd0a54ca42795e43603a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundCarPlayerSO: {fileID: 11400000, guid: aba9feeaf677ef941bbd0ac10010405d, type: 2}
+  soundCarPlayerSO: {fileID: 11400000, guid: 7c52e237d389ff544b438c9785d1c8ff, type: 2}
 --- !u!114 &4923704109858155206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1010,7 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSound: {fileID: 886253282498287987}
-  soundCarPlayerSO: {fileID: 11400000, guid: aba9feeaf677ef941bbd0ac10010405d, type: 2}
+  soundCarPlayerSO: {fileID: 11400000, guid: 7c52e237d389ff544b438c9785d1c8ff, type: 2}
   engineSoundHolder: {fileID: 2398183985539067390}
   carController: {fileID: 354374768389805766}
   audioMixer: {fileID: -9190715345790502673, guid: 517f721b8f75c5d4ea0b932ee5fe84d0, type: 2}

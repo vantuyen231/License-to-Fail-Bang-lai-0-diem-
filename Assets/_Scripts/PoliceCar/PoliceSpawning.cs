@@ -68,6 +68,14 @@ public class PoliceSpawning : TuyenMonoBehaviour
         //this.CheckCurrentPolice();
         this.CheckActivePolice();
         if (policeActive >= maxSpawn) return;
+        if (policeActive == 0)
+        {
+            this.SpawnPolicePoint();
+            if(selectedPoliceSpawnPoint == null) return;
+            this.SpawnPolice();
+            currentTime = 0f;
+            return;
+        }
         currentTime += Time.deltaTime;
         int spawnTime = isMission ? spawnTimeMission : spawnTimeLimit;
         if (currentTime < spawnTime) return;

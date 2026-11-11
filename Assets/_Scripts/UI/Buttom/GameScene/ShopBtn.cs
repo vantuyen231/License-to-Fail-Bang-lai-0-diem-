@@ -16,7 +16,7 @@ public class ShopBtn : ButtonAbstract
     protected virtual void SwitchScene()
     {
         GameManager.Instance.ContinueGame();
-
+        SaveSystem.Instance.SaveGame();
         SceneManager.LoadScene(this.sceneName);
     }
 }

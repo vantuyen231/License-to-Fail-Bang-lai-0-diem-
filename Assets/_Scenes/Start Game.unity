@@ -5014,6 +5014,7 @@ MonoBehaviour:
   unlockedCarIDs:
   - 001
   selectedCarID: 001
+  nameFolder: CarPlayer
 --- !u!4 &1779293218
 Transform:
   m_ObjectHideFlags: 0

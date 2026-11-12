@@ -19,7 +19,10 @@ public class GameManager : TuyenSingleton<GameManager>
     [Header("Mission Game")]
     [SerializeField] protected int maxMission = 5;
     [SerializeField] protected int indexMission = 0;
-    
+
+    [Header("Car Database Reference")]
+    [SerializeField] protected CarPlayerBaseDataSO carDatabase;
+
     [Header("PlayerData")]    
     [SerializeField] protected CarPlayerDataSO carPlayerData;
     [SerializeField] protected List<string> unlockedCarIDs = new List<string> { "001" };
@@ -50,9 +53,29 @@ public class GameManager : TuyenSingleton<GameManager>
         }
     }
 
+    public void UpdateCarData()
+    {
+        if (carDatabase != null)
+        {
+            CarPlayerDataSO foundCar = carDatabase.GetCarByID(selectedCarID);
+
+            if (foundCar != null)
+            {
+                carPlayerData = foundCar;
+                Debug.Log("Vehicle successfully synchronized: " + carPlayerData.nameCar + " with ID: " + selectedCarID);
+                return;
+            }
+        }
+        Debug.LogWarning("Can't found ID: " + selectedCarID);
+    }
+
     public void GetUseCar(CarPlayerDataSO car)
     {
         this.carPlayerData = car;
+        if (car != null)
+        {
+            this.selectedCarID = car.carID;
+        }
     }
 
     public void CoinPlayer(int indexCoin)
@@ -125,6 +148,7 @@ public class GameManager : TuyenSingleton<GameManager>
         if (!IsCarSelected(carID))
         {
             selectedCarID = carID;
+            this.UpdateCarData();
         }
     }
 
@@ -153,5 +177,6 @@ public class GameManager : TuyenSingleton<GameManager>
             unlockedCarIDs = saveObject.unlockedCarIDs;
         }
         selectedCarID = saveObject.selectedCarID;
+        this.UpdateCarData();
     }
 }

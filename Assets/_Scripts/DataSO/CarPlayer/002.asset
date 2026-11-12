@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fab6a6a75a180742be5dc3334f1736a, type: 3}
-  m_Name: Van
+  m_Name: 002
   m_EditorClassIdentifier: 
-  carPrefabs: {fileID: 5131603877567866569, guid: a397fac4c21280a4d92f14b36049c32f, type: 3}
-  nameCar: Van
-  carID: 004
-  costCar: 200
+  carPrefabs: {fileID: 3123935450046293520, guid: de6c0ba3b1507d9409ff0bae9a95232e, type: 3}
+  nameCar: Sedan R
+  carID: 002
+  costCar: 50
   rollAngel: 5
   yallAngel: 3
-  motorForce: 180
-  steerWheel: 20
-  brakeForce: 75
-  isBuy: 0
+  motorForce: 150
+  steerWheel: 30
+  brakeForce: 50
+  isBuy: 1

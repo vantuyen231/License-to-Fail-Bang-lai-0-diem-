@@ -7,7 +7,7 @@ public class CarNPCSpawning : TuyenMonoBehaviour
     [SerializeField] protected CarNPCSpawnCtrl carNPCSpawnCtrl;
     [SerializeField] protected LocalPointStreet selectedCarNPCPoint;
     [SerializeField] protected float timer = 0;
-    [SerializeField] protected float spawnTime = 5;
+    [SerializeField] protected float spawnTime = 3;
     [SerializeField] protected int maxSpawn = 20;
     [SerializeField] protected int carNPCActive;
     [SerializeField] protected int carNPCOff;

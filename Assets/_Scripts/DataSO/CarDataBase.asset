@@ -12,3 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a60dc97e988cc41891a36017785280, type: 3}
   m_Name: CarDataBase
   m_EditorClassIdentifier: 
+  allCars:
+  - {fileID: 11400000, guid: 8f5aca10237c92849a978cf3ec598c26, type: 2}
+  - {fileID: 11400000, guid: f72645077bd764c4a8da09a6d991e234, type: 2}
+  - {fileID: 11400000, guid: 4d9f6d6d0ccd74b4683327954fc6e6bd, type: 2}
+  - {fileID: 11400000, guid: 830c0107363318c43bbee1d153188fa7, type: 2}
+  - {fileID: 11400000, guid: 27d6484201ec4824a947cf1eed231813, type: 2}
+  - {fileID: 11400000, guid: 693e52df909101246aa7bd5eeef863ce, type: 2}

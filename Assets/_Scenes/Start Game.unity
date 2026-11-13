@@ -5010,11 +5010,11 @@ MonoBehaviour:
   isPauseGame: 0
   maxMission: 4
   indexMission: 0
+  carDatabase: {fileID: 11400000, guid: 0dc51fd4e499fa745a89a64c0858eb10, type: 2}
   carPlayerData: {fileID: 11400000, guid: 8f5aca10237c92849a978cf3ec598c26, type: 2}
   unlockedCarIDs:
   - 001
   selectedCarID: 001
-  nameFolder: CarPlayer
 --- !u!4 &1779293218
 Transform:
   m_ObjectHideFlags: 0

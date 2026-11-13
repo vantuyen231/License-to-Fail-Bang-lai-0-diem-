@@ -50,6 +50,15 @@ public class NPCsSpawning : TuyenMonoBehaviour
     {
         
         if (numNPCActive >= spawnMax) return;
+        if (numNPCActive == 0)
+        {
+            this.RandomChoisePointSpawn();
+            if (selectedPoint == null) return;
+
+            this.SpawnNPC();
+            timer = 0;
+            return;
+        }
         timer += Time.deltaTime;
         if(timer < delay ) return;
         this.RandomChoisePointSpawn();

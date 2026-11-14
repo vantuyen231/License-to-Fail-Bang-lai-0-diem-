@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MenuUI : TuyenSingleton<MenuUI>
 {
-    [SerializeField] protected bool isShow = true;
+    [SerializeField] public bool isShow = true;
     [SerializeField] protected AudioMixer audioMixer;
     [SerializeField] protected float multiAudio = 25;
 
